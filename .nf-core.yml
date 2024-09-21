@@ -1,0 +1,34 @@
+lint:
+  files_exist:
+  - CODE_OF_CONDUCT.md
+  - assets/nf-core-rnainn_logo_light.png
+  - docs/images/nf-core-rnainn_logo_light.png
+  - docs/images/nf-core-rnainn_logo_dark.png
+  - .github/ISSUE_TEMPLATE/config.yml
+  - .github/workflows/awstest.yml
+  - .github/workflows/awsfulltest.yml
+  - conf/igenomes.config
+  files_unchanged:
+  - CODE_OF_CONDUCT.md
+  - assets/nf-core-rnainn_logo_light.png
+  - docs/images/nf-core-rnainn_logo_light.png
+  - docs/images/nf-core-rnainn_logo_dark.png
+  - .github/ISSUE_TEMPLATE/bug_report.yml
+  multiqc_config:
+  - report_comment
+  nextflow_config:
+  - manifest.name
+  - manifest.homePage
+nf_core_version: 2.14.1
+repository_type: pipeline
+template:
+  author: blancoj@mskcc.org
+  description: MSKCC-CMO-Innovation RNA-seq analysis pipeline --> RNAinn is a comprehensive
+    RNA-seq analysis pipeline Nextflow implemented for the analysis of RNA-seq data.
+    It is designed to be highly flexible and can be run on a wide range of computing
+    environments, from a single laptop, to a computing cluster or cloud computing
+    environments. This pipeline was created using nf-core policies and tools.
+  name: rnainn
+  prefix: giovianco
+  skip:
+  - igenomes
