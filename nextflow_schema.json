@@ -129,6 +129,483 @@
                 }
             }
         },
+        "rnainn_preprocess": {
+            "title": "RNAinn pipeline custom options (preprocess)",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Options for when preprocess  reads by UMI",
+            "properties": {
+                "genome": {
+                    "type": "string",
+                    "description": "Human genome version",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Human genome version to use for alignment. Options are: GRCh37 & GRCh38."
+                },
+                "refs_dir": {
+                    "type": "integer",
+                    "format": "file-path",
+                    "description": "Directory containing reference files",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Directory containing reference files for the pipeline. This directory should contain the following subdirectories: `ensembl`, `star`, etc..."
+                },
+                "genome_base": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "Directory containing Human genome files",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Directory containing reference files for the pipeline. This directory should contain the following subdirectories: `ensembl`, `star`, etc..."
+                },
+                "ensembl_version": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "ENSEMBL directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": " ENSEMBL Human genome version to use for alignment."
+                },
+                "read_length": {
+                    "type": "string",
+                    "description": "Library size",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Library size of the reads."
+                },
+                "gtf": {
+                    "type": "string",
+                    "description": "GTF file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "GTF file to use for alignment."
+                },
+                "fasta": {
+                    "type": "string",
+                    "description": "Fasta file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Fasta file to use for alignment."
+                },
+                "fai": {
+                    "type": "string",
+                    "description": "Fai file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Fai file to use for alignment."
+                },
+                "star_index": {
+                    "type": "string",
+                    "description": "STAR index",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR index to use for alignment."
+                },
+                "chrgtf": {
+                    "type": "string",
+                    "description": "Chromosome GTF file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Chromosome GTF file to use for alignment."
+                },
+                "refflat": {
+                    "type": "string",
+                    "description": "RefFlat file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "RefFlat file to use for alignment."
+                },
+                "rrna_intervals": {
+                    "type": "string",
+                    "description": "rRNA intervals file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "rRNA intervals file to use for alignment."
+                },
+                "dict": {
+                    "type": "string",
+                    "description": "Dict file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Dict file to use for alignment."
+                },
+                "bwa_index": {
+                    "type": "string",
+                    "description": "BWA index",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "BWA index to use for alignment."
+                },
+                "star_seq_center": {
+                    "type": "string",
+                    "description": "STAR sequence center",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR sequence center to use for alignment."
+                },
+                "star_seq_platform": {
+                    "type": "string",
+                    "description": "STAR sequence platform",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR sequence platform to use for alignment."
+                },
+                "star_ignore_sjdbgtf": {
+                    "type": "string",
+                    "description": "STAR ignore sjdbgtf",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR ignore sjdbgtf to use for alignment."
+                },
+                "groupreadsbyumi_strategy": {
+                    "type": "string",
+                    "description": "Group reads by UMI strategy",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Group reads by UMI strategy to use for alignment."
+                },
+                "call_min_reads": {
+                    "type": "string",
+                    "description": "Call min reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Call min reads to use for alignment."
+                },
+                "call_min_baseq": {
+                    "type": "string",
+                    "description": "Call min baseq",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Call min baseq to use for alignment."
+                },
+                "filter_min_reads": {
+                    "type": "string",
+                    "description": "Filter min reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Filter min reads to use for alignment."
+                },
+                "filter_min_baseq": {
+                    "type": "string",
+                    "description": "Filter min baseq",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Filter min baseq to use for alignment."
+                },
+                "filter_max_read_error_rate": {
+                    "type": "string",
+                    "description": "Filter max read error rate",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Filter max read error rate to use for alignment."
+                },
+                "filter_max_base_error_rate": {
+                    "type": "string",
+                    "description": "Filter max base error rate",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Filter max base error rate to use for alignment."
+                },
+                "transcripts": {
+                    "type": "string",
+                    "description": "CDNA transcript file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "CDNA transcript file to use for alignment."
+                }
+            }
+        },
+        "rnainn_fusions": {
+            "title": "RNAinn pipeline custom options (fusions)",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Options for when fusions block is run",
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "To run or not all junctions/fusions steps",
+                    "help_text": "Do you fancy the whole enchilada?"
+                },
+                "arriba": {
+                    "type": "boolean",
+                    "description": "Tu run or not Arriba",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run Arriba?"
+                },
+                "fusioncatcher": {
+                    "type": "boolean",
+                    "description": "Tu run or not FusionCatcher",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run FusionCatcher?"
+                },
+                "starindex": {
+                    "type": "boolean",
+                    "description": "Tu build or not STAR index",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Build STAR index?"
+                },
+                "starfusion": {
+                    "type": "boolean",
+                    "description": "Tu run or not STAR-Fusion",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run STAR-Fusion?"
+                },
+                "starfusion_build": {
+                    "type": "boolean",
+                    "description": "Tu build or not STAR-Fusion index",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Build STAR-Fusion index?"
+                },
+                "stringtie": {
+                    "type": "boolean",
+                    "description": "Tu run or not StringTie",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run StringTie?"
+                },
+                "fusionreport": {
+                    "type": "boolean",
+                    "description": "Tu run or not FusionReport",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run FusionReport?"
+                },
+                "fusioninspector_only": {
+                    "type": "boolean",
+                    "description": "Tu run or not FusionInspector",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run FusionInspector?"
+                },
+                "fastp_trim": {
+                    "type": "boolean",
+                    "description": "Tu run or not Fastp for Trimming",
+                    "fa_icon": "far fa-eye-slash",
+                    "help_text": "Run Trim Fastp?"
+                },
+                "ensembl_ref": {
+                    "type": "string",
+                    "description": "ENSEMBL reference directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "ENSEMBL reference directory to use for alignment."
+                },
+                "arriba_ref": {
+                    "type": "string",
+                    "description": "Arriba reference directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Arriba reference directory to use for alignment."
+                },
+                "arriba_ref_blocklist": {
+                    "type": "string",
+                    "description": "Arriba reference blocklist",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Arriba reference blocklist to use for alignment."
+                },
+                "arriba_ref_cytobands": {
+                    "type": "string",
+                    "description": "Arriba reference cytobands",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Arriba reference cytobands to use for alignment."
+                },
+                "arriba_ref_known_fusions": {
+                    "type": "string",
+                    "description": "Arriba reference known fusions",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Arriba reference known fusions to use for alignment."
+                },
+                "arriba_ref_protein_domains": {
+                    "type": "string",
+                    "description": "Arriba reference protein domains",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Arriba reference protein domains to use for alignment."
+                },
+                "fusioncatcher_ref": {
+                    "type": "string",
+                    "description": "FusionCatcher reference directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionCatcher reference directory to use for alignment."
+                },
+                "hgnc_ref": {
+                    "type": "string",
+                    "description": "HGNC reference directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "HGNC reference directory to use for alignment."
+                },
+                "hgnc_date": {
+                    "type": "string",
+                    "description": "HGNC date",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "HGNC date to use for alignment."
+                },
+                "starfusion_ref": {
+                    "type": "string",
+                    "description": "STAR-Fusion reference directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR-Fusion reference directory to use for alignment."
+                },
+                "starfusion_ref_annot_gtf": {
+                    "type": "string",
+                    "description": "STAR-Fusion reference annotation GTF",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR-Fusion reference annotation GTF to use for alignment."
+                },
+                "fusionreport_ref": {
+                    "type": "string",
+                    "description": "FusionReport reference directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionReport reference directory to use for alignment."
+                },
+                "cram": {
+                    "type": "list",
+                    "description": "Tools to CRAM",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Tools to use CRAM for alignment outputs."
+                },
+                "trim_tail": {
+                    "type": "string",
+                    "description": "Trim tail",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Sequence to trim at the tail before alignment."
+                },
+                "adapter_fasta": {
+                    "type": "string",
+                    "description": "Adapter fasta",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Adapter fasta sequence to trim before alignment."
+                },
+                "fusioncatcher_limitSjdbInsertNsj": {
+                    "type": "string",
+                    "description": "FusionCatcher limitSjdbInsertNsj",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionCatcher limitSjdbInsertNsj to use for alignment."
+                },
+                "qiagen": {
+                    "type": "boolean",
+                    "description": "Qiagen credentials",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Qiagen authentication for data access."
+                },
+                "cosmic_passwd": {
+                    "type": "string",
+                    "description": "COSMIC password",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "COSMIC password for data access."
+                },
+                "cosmic_username": {
+                    "type": "string",
+                    "description": "COSMIC username",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "COSMIC username for data access."
+                },
+                "build_references": {
+                    "type": "boolean",
+                    "description": "Build references",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Build references for the pipeline."
+                },
+                "skip_qc": {
+                    "type": "boolean",
+                    "description": "Skip QC",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Skip QC for the pipeline."
+                },
+                "skip_vis": {
+                    "type": "boolean",
+                    "description": "Skip visualization",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Skip visualization for the pipeline."
+                },
+                "tools_cutoff": {
+                    "type": "string",
+                    "description": "Tools cutoff",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Tools cutoff for the pipeline."
+                },
+                "fusioninspector_limitSjdbInsertNsj": {
+                    "type": "string",
+                    "description": "FusionInspector limitSjdbInsertNsj",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionInspector limitSjdbInsertNsj for the pipeline."
+                },
+                "fusioninspector_limit-sjdb-insert-nsj": {
+                    "type": "string",
+                    "description": "FusionInspector limit-sjdb-insert-nsj",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionInspector limit-sjdb-insert-nsj for the pipeline."
+                },
+                "allowlist": {
+                    "type": "string",
+                    "description": "Allowlist",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Allowlist for the pipeline."
+                },
+                "arriba_fusions": {
+                    "type": "string",
+                    "description": "Arriba fusions",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Arriba fusions for the pipeline."
+                },
+                "starfusion_fusions": {
+                    "type": "string",
+                    "description": "STAR-Fusion fusions",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR-Fusion fusions for the pipeline."
+                },
+                "fusioncatcher_fusions": {
+                    "type": "string",
+                    "description": "FusionCatcher fusions",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionCatcher fusions for the pipeline."
+                },
+                "fusioninspector_fusions": {
+                    "type": "string",
+                    "description": "FusionInspector fusions",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionInspector fusions for the pipeline."
+                },
+                "rrna_refflat": {
+                    "type": "string",
+                    "description": "rRNA RefFlat",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "rRNA RefFlat for the pipeline."
+                },
+                "bed": {
+                    "type": "string",
+                    "description": "BED file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "BED file for the pipeline."
+                },
+                "portcullis": {
+                    "type": "boolean",
+                    "description": "Portcullis",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Portcullis for the pipeline."
+                },
+                "fusioninspector": {
+                    "type": "boolean",
+                    "description": "FusionInspector",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "FusionInspector for the pipeline."
+                }
+            }
+        },
+        "rnainn_expression": {
+            "title": "RNAinn pipeline custom options (expression)",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Options for when expression block is run",
+            "properties": {
+                "lib_type": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Type of library, paired and strand",
+                    "help_text": "What are you cooking?"
+                },
+                "rsem_ref": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to RSEM Index",
+                    "help_text": "Part of the references bundle"     
+                },
+                "salmon_index": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to Salmon Index",
+                    "help_text": "Part of the references bundle"                    
+                },
+                "alignment_mode": {
+                    "type": "boolean",
+                    "description": "Is Salmon in alignment",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Set to true to perform quants"
+                },
+                "chromosomes": {
+                    "type": "object",
+                    "description": "Chromosomes info",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "File with chromosomes names and lenght"
+                },
+                "kallisto_index": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to Kallisto Index",
+                    "help_text": "Part of the references bundle"                    
+                }
+            }
+        },
         "generic_options": {
             "title": "Generic options",
             "type": "object",

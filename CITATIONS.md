@@ -1,4 +1,4 @@
-# giovianco/rnainn: Citations
+# CMOinn/rnainn: Citations
 
 ## [nf-core](https://pubmed.ncbi.nlm.nih.gov/32055031/)
 

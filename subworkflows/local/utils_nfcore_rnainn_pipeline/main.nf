@@ -1,11 +1,11 @@
 //
-// Subworkflow with functionality specific to the giovianco/rnainn pipeline
+// Subworkflow with functionality specific to the CMOinn/rnainn pipeline
 //
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 include { UTILS_NFVALIDATION_PLUGIN } from '../../nf-core/utils_nfvalidation_plugin'
@@ -21,9 +21,9 @@ include { UTILS_NFCORE_PIPELINE     } from '../../nf-core/utils_nfcore_pipeline'
 include { workflowCitation          } from '../../nf-core/utils_nfcore_pipeline'
 
 /*
-========================================================================================
-    SUBWORKFLOW TO INITIALISE PIPELINE
-========================================================================================
+===================================================================================================
+                              SUBWORKFLOW TO INITIALISE PIPELINE
+===================================================================================================
 */
 
 workflow PIPELINE_INITIALISATION {
@@ -102,9 +102,9 @@ workflow PIPELINE_INITIALISATION {
 }
 
 /*
-========================================================================================
-    SUBWORKFLOW FOR PIPELINE COMPLETION
-========================================================================================
+===================================================================================================
+                              SUBWORKFLOW FOR PIPELINE COMPLETION
+===================================================================================================
 */
 
 workflow PIPELINE_COMPLETION {
@@ -112,9 +112,9 @@ workflow PIPELINE_COMPLETION {
     take:
     email           //  string: email address
     email_on_fail   //  string: email address sent on pipeline failure
-    plaintext_email // boolean: Send plain-text email instead of HTML
-    outdir          //    path: Path to output directory where results will be published
-    monochrome_logs // boolean: Disable ANSI colour codes in log output
+    plaintext_email //  boolean: Send plain-text email instead of HTML
+    outdir          //  path: Path to output directory where results will be published
+    monochrome_logs //  boolean: Disable ANSI colour codes in log output
     hook_url        //  string: hook URL for notifications
     multiqc_report  //  string: Path to MultiQC report
 
@@ -143,10 +143,22 @@ workflow PIPELINE_COMPLETION {
 }
 
 /*
-========================================================================================
-    FUNCTIONS
-========================================================================================
+===================================================================================================
+                                             FUNCTIONS
+===================================================================================================
 */
+
+//
+// Get attribute from genome config file e.g. fasta
+//
+def getGenomeAttribute(attribute) {
+    if (params.genomes && params.genome && params.genomes.containsKey(params.genome)) {
+        if (params.genomes[ params.genome ].containsKey(attribute)) {
+            return params.genomes[ params.genome ][ attribute ]
+        }
+    }
+    return null
+}
 
 //
 // Validate channels from input samplesheet
@@ -225,4 +237,28 @@ def methodsDescriptionText(mqc_methods_yaml) {
     def description_html = engine.createTemplate(methods_text).make(meta)
 
     return description_html.toString()
+}
+
+//
+// Function to check whether biotype field exists in GTF file
+//
+def biotypeInGtf(gtf_file, biotype) {
+    def hits = 0
+    gtf_file.eachLine { line ->
+        def attributes = line.split('\t')[-1].split()
+        if (attributes.contains(biotype)) {
+            hits += 1
+        }
+    }
+    if (hits) {
+        return true
+    } else {
+        log.warn "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+            "  Biotype attribute '${biotype}' not found in the last column of the GTF file!\n\n" +
+            "  Biotype QC will be skipped to circumvent the issue below:\n" +
+            "  https://github.com/nf-core/rnaseq/issues/460\n\n" +
+            "  Amend '--featurecounts_group_type' to change this behaviour.\n" +
+            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        return false
+    }
 }

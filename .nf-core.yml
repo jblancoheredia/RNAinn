@@ -28,7 +28,6 @@ template:
     It is designed to be highly flexible and can be run on a wide range of computing
     environments, from a single laptop, to a computing cluster or cloud computing
     environments. This pipeline was created using nf-core policies and tools.
-  name: rnainn
-  prefix: giovianco
+  name: CMOinn-RNAinn
   skip:
   - igenomes

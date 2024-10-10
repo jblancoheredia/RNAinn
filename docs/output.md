@@ -1,4 +1,4 @@
-# giovianco/rnainn: Output
+# CMOinn/rnainn: Output
 
 ## Introduction
 

@@ -1,34 +1,41 @@
 #!/usr/bin/env nextflow
-/*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    giovianco/rnainn
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Github : https://github.com/giovianco/rnainn
-----------------------------------------------------------------------------------------
-*/
-
 nextflow.enable.dsl = 2
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS / WORKFLOWS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+****************************************************************************************************************************
+                         RNAinn  is a comprehensive  RNA-seq analysis pipeline Nextflow implemented
+                         for the analysis of RNA-seq data. It is designed to be highly flexible and
+                         can be run on a wide range of computing environments,from a single laptop,
+                         to a computing cluster or cloud computing environments. Based on <nf-core>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                  Github : https://github.com/jblancoheredia/rnainn
+                                                Author : blancoj@mskcc.org
+****************************************************************************************************************************
 */
-
-include { RNAINN  } from './workflows/rnainn'
-include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_rnainn_pipeline'
-include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_rnainn_pipeline'
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    NAMED WORKFLOWS FOR PIPELINE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                               IMPORT WORKFLOW & SUBWORKFLOWS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+
+include { RNAINN                  } from './workflows/rnainn'
+include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_rnainn_pipeline'
+include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_rnainn_pipeline'
+include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_rnainn_pipeline'
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                   GENOME PARAMETER VALUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+params.refs_dir             = getGenomeAttribute('refs_dir')
 
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow GIOVIANCO_RNAINN {
+workflow CMOINN_RNAINN {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -72,7 +79,7 @@ workflow {
     //
     // WORKFLOW: Run main workflow
     //
-    GIOVIANCO_RNAINN (
+    CMOINN_RNAINN (
         PIPELINE_INITIALISATION.out.samplesheet
     )
 
@@ -86,12 +93,12 @@ workflow {
         params.outdir,
         params.monochrome_logs,
         params.hook_url,
-        GIOVIANCO_RNAINN.out.multiqc_report
+        CMOINN_RNAINN.out.multiqc_report
     )
 }
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    THE END
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                           THE END
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
