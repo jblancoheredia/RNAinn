@@ -23,6 +23,7 @@ process FUSIONCATCHER {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def reads = fasta.toString().replace(" ", ",")
     def single_end = meta.single_end ? "--single-end" : ""
+    def limitSjdbInsertNsj = params.fusioncatcher_limitSjdbInsertNsj ? "--limitSjdbInsertNsj ${params.fusioncatcher_limitSjdbInsertNsj}" : ""
     """
     fusioncatcher.py \\
         -d $reference \\
@@ -30,10 +31,11 @@ process FUSIONCATCHER {
         -p $task.cpus \\
         -o . \\
         --skip-blat \\
+        $limitSjdbInsertNsj \\
         $single_end \\
         $args
 
-    awk 'BEGIN{FS=OFS="\t"}{for(i=1; i<=NF; i++) if(\$i == "") \$i="NA"} 1' final-list_candidate-fusion-genes.txt > ${prefix}.fusioncatcher.fusion-genes.txt
+    awk 'BEGIN{FS=OFS="\\t"}{for(i=1; i<=NF; i++) if(\$i == "") \$i="NA"} 1' final-list_candidate-fusion-genes.txt > ${prefix}.fusioncatcher.fusion-genes.txt
     mv summary_candidate_fusions.txt ${prefix}.fusioncatcher.summary.txt
     mv fusioncatcher.log ${prefix}.fusioncatcher.log
 

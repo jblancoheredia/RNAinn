@@ -34,7 +34,11 @@ process FUSIONREPORT {
     fusion_report run $meta.id . $fusionreport_ref $tools --allow-multiple-gene-symbols --tool-cutoff $tools_cutoff $args $args2
 
     mv fusion_list.tsv ${prefix}.fusionreport.tsv
-    mv fusion_list_filtered.tsv ${prefix}.fusionreport_filtered.tsv
+    mv fusion_list_filtered.tsv ${prefix}.fusionreport_filtered_temp.tsv
+    
+    awk -F'--' '(\$1 != "NA" && \$2 != "NA") || (\$1 ~ /[^-]NA/ || \$2 ~ /NA[^-]/)' ${prefix}.fusionreport_filtered_temp.tsv > ${prefix}.fusionreport_filtered.tsv
+    rm ${prefix}.fusionreport_filtered_temp.tsv
+
     mv index.html ${prefix}_fusionreport_index.html
     [ ! -f fusions.csv ] || mv fusions.csv ${prefix}.fusions.csv
     [ ! -f fusions.json ] || mv fusions.json ${prefix}.fusions.json

@@ -287,6 +287,24 @@
                     "description": "CDNA transcript file",
                     "fa_icon": "fas fa-book",
                     "help_text": "CDNA transcript file to use for alignment."
+                },
+                "downsampling": {
+                    "type": "boolean",
+                    "description": "To run or not samples downsampling",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Automatic sample downsampling."
+                },
+                "downsampling_total_reads": {
+                    "type": "string",
+                    "description": "Number of Total Reads to downsample overwrites the automatic processing",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Number of total reads for sample downsampling."
+                },
+                "splicesites": {
+                    "type": "string",
+                    "description": "CDNA splicesites file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "CDNA splicesites file to use for alignment."
                 }
             }
         },
@@ -603,6 +621,24 @@
                     "fa_icon": "far fa-eye-slash",
                     "description": "Path to Kallisto Index",
                     "help_text": "Part of the references bundle"                    
+                },
+                "gtf_group_features": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Feature to count",
+                    "help_text": "What feature will be used for the countings"                    
+                },
+                "gtf_extra_attributes": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Extra feature to count",
+                    "help_text": "What other feature use for the countings"                    
+                },
+                "featurecounts_group_type": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Feature in gtf file to produce the group stats",
+                    "help_text": "Feature to use for the group counting stats"                    
                 }
             }
         },

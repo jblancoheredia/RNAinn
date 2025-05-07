@@ -8,8 +8,8 @@ process KALLISTO_TX2GENE {
         'biocontainers/python:3.9--1' }"
 
     input:
-    tuple val(meta), path(gtf)
-    tuple val(meta2), path ("quants/*")
+    path(gtf)
+    tuple val(meta), path(abundance, stageAs: 'quants/abundance.tsv')
     val quant_type
     val id
     val extra

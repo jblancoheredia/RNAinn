@@ -5,7 +5,7 @@ process FGBIO_COLLECTDUPLEXSEQMETRICS {
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/mulled-v2-51891ad0b60843e4aade9cde2eb5d40c5ae92b80:72c944cdea5caff7f03b96034968ce2a4f1737bc-0':
-        'biocontainers/mulled-v2-51891ad0b60843e4aade9cde2eb5d40c5ae92b80:72c944cdea5caff7f03b96034968ce2a4f1737bc-0' }"
+        'quay.io/biocontainers/mulled-v2-51891ad0b60843e4aade9cde2eb5d40c5ae92b80:72c944cdea5caff7f03b96034968ce2a4f1737bc-0' }"
 
     input:
     tuple val(meta), path(grouped_bam)
@@ -36,11 +36,10 @@ process FGBIO_COLLECTDUPLEXSEQMETRICS {
         --async-io=true \\
         --compression=1 \\
         CollectDuplexSeqMetrics \\
-        --input $grouped_bam \\
-        --output ${prefix}.duplex_seq_metrics \\
+        --input=$grouped_bam \\
+        --output=${prefix}.duplex_seq_metrics \\
         --duplex-umi-counts=true \\
-        $interval_list \\
-        $args;
+        --intervals=$interval_list
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

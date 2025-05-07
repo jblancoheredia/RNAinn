@@ -35,7 +35,7 @@ params.refs_dir             = getGenomeAttribute('refs_dir')
 //
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
-workflow CMOINN_RNAINN {
+workflow CTI_RNAINN {
 
     take:
     samplesheet // channel: samplesheet read in from --input
@@ -53,10 +53,11 @@ workflow CMOINN_RNAINN {
     multiqc_report = RNAINN.out.multiqc_report // channel: /path/to/multiqc_report.html
 
 }
+
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    RUN MAIN WORKFLOW
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                      RUN MAIN WORKFLOW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 workflow {
@@ -79,7 +80,7 @@ workflow {
     //
     // WORKFLOW: Run main workflow
     //
-    CMOINN_RNAINN (
+    CTI_RNAINN (
         PIPELINE_INITIALISATION.out.samplesheet
     )
 
@@ -93,7 +94,7 @@ workflow {
         params.outdir,
         params.monochrome_logs,
         params.hook_url,
-        CMOINN_RNAINN.out.multiqc_report
+        CTI_RNAINN.out.multiqc_report
     )
 }
 

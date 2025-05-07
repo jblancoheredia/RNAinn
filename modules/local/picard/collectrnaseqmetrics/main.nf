@@ -5,7 +5,7 @@ process PICARD_COLLECTRNASEQMETRICS {
     conda "bioconda::picard=3.1.0"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/picard:3.1.0--hdfd78af_0' :
-        'biocontainers/picard:3.1.0--hdfd78af_0' }"
+        'quay.io/biocontainers/picard:3.1.0--hdfd78af_0' }"
 
     input:
     tuple val(meta), path(bam), path(bai) 
@@ -13,7 +13,7 @@ process PICARD_COLLECTRNASEQMETRICS {
     path(rrna_intervals)
 
     output:
-    tuple val(meta), path("*rna_metrics.txt")    , emit: metrics
+    tuple val(meta), path("*rna_metrics.txt")   , emit: metrics
     path  "versions.yml"                        , emit: versions
 
     when:

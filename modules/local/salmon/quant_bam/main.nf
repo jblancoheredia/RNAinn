@@ -8,25 +8,23 @@ process SALMON_QUANT_BAM {
         'biocontainers/salmon:1.10.1--h7e5ed60_0' }"
 
     input:
-    tuple val(meta), path(bam), path(bai)
-    path  index
-    path  gtf
+    tuple val(meta), path(bam)
     path  transcript_fasta
     val   lib_type
 
     output:
-    tuple val(meta), path("${prefix}")              , emit: results
-    tuple val(meta), path("*info.json")             , emit: json_info, optional: true
-    tuple val(meta), path("*lib_format_counts.json"), emit: lib_format_counts, optional: true
-    path  "versions.yml"                            , emit: versions
+    tuple val(meta), path("${meta.id}") , emit: results
+    tuple val(meta), path("*info.json") , emit: json_info
+    path  "versions.yml"                , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
-    def prefix   = task.ext.prefix ?: "${meta.id}"
-    def reference   = "-t $transcript_fasta"
-    def input_reads = "-a $bam"
+    def args  = task.ext.args ?: ''
+    def prefix          = task.ext.prefix ?: "${meta.id}"
+    def reference       = "-t $transcript_fasta"
+    def input_reads     = "-a $bam"
 
     def strandedness_opts = [
         'A',  'U',   'SF',  'SR',
@@ -51,19 +49,13 @@ process SALMON_QUANT_BAM {
     }
     """
     salmon quant \\
-        --geneMap $gtf \\
-        --threads $task.cpus \\
-        --libType=$strandedness \\
         $reference \\
+        --libType=$strandedness \\
         $input_reads \\
+        $args \\
         -o $prefix
 
-    if [ -f $prefix/aux_info/meta_info.json ]; then
-        cp $prefix/aux_info/meta_info.json "${prefix}_meta_info.json"
-    fi
-    if [ -f $prefix/lib_format_counts.json ]; then
-        cp $prefix/lib_format_counts.json "${prefix}_lib_format_counts.json"
-    fi
+    cp $prefix/aux_info/meta_info.json "${prefix}_meta_info.json"
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -72,11 +64,10 @@ process SALMON_QUANT_BAM {
     """
 
     stub:
-    prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
     mkdir ${prefix}
     touch ${prefix}_meta_info.json
-    touch ${prefix}_lib_format_counts.json
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

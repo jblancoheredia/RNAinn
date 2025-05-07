@@ -9,7 +9,7 @@ process KALLISTO_TXIMPORT {
     input:
     tuple val(meta), path("quants/*")
     tuple val(meta2), path(tx2gene)
-    val quant_type
+    val(quant_type)
 
     output:
     tuple val(meta), path("*gene_tpm.tsv")                 , emit: tpm_gene

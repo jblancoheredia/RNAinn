@@ -5,7 +5,7 @@ process FGBIO_ZIPRAWBAM {
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/fgbio:2.2.1--hdfd78af_0' :
-        'biocontainers/fgbio:2.2.1--hdfd78af_0' }"
+        'quay.io/biocontainers/fgbio:2.2.1--hdfd78af_0' }"
 
     input:
     tuple val(meta), path(unmapped_bam)
