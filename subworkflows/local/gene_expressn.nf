@@ -19,6 +19,7 @@ include { SALMON_QUANT_FQS                                                      
 include { KALLISTO_SE_GENE                                                          } from '../../modules/local/kallisto/se_gene/main'
 include { RSEM_MERGE_COUNTS                                                         } from '../../modules/local/rsem/merge_counts/main'
 include { KALLISTO_TXIMPORT                                                         } from '../../modules/local/kallisto/tximport/main'
+include { DESEQ2_QC_KALLISTO                                                        } from '../../modules/local/kallisto/deseq2_qc/main'
 include { SALMON_BAM_SE_GENE                                                        } from '../../modules/local/salmon/quant_bam/se_gene/main'
 include { SALMON_FQS_SE_GENE                                                        } from '../../modules/local/salmon/quant_fqs/se_gene/main'
 include { SALMON_BAM_TX2GENE                                                        } from '../../modules/local/salmon/quant_bam/tx2gene/main'
@@ -84,66 +85,145 @@ workflow GENE_EXPRESSN {
     // MODULE: Run Kallisto pseudoalignment
     //
     KALLISTO_QUANT (ch_reads_all, ch_kallisto_index, params.gtf, params.chromosomes, [], [])
-    ch_pseudo_kallisto_results = KALLISTO_QUANT.out.results
-    ch_pseudo_kallisto_multiqc = KALLISTO_QUANT.out.log
     ch_versions = ch_versions.mix(KALLISTO_QUANT.out.versions)
+    ch_kallisto_results = KALLISTO_QUANT.out.results
+    ch_kallisto_multiqc = KALLISTO_QUANT.out.log
 
-//    //
-//    // MODULE: Run TX2GENE for Kallisto
-//    //
-//    KALLISTO_TX2GENE(ch_gtf, ch_pseudo_kallisto_results, 'kallisto', 'gene_id', 'gene_name')
-//    ch_versions = ch_versions.mix(KALLISTO_TX2GENE.out.versions)
-//    ch_kallisto_tx2gene = KALLISTO_TX2GENE.out.tx2gene
-//
-//    //
-//    // MODULE: Run TxImport for Kallisto
-//    //
-//    KALLISTO_TXIMPORT(ch_pseudo_kallisto_results, KALLISTO_TX2GENE.out.tx2gene, 'kallisto')
-//    ch_versions = ch_versions.mix(KALLISTO_TXIMPORT.out.versions)
-//
-//    //
-//    // MODULES: Run SummarizedExperiment for Kallisto
-//    //
-//    KALLISTO_SE_GENE(KALLISTO_TXIMPORT.out.counts_gene.concat(KALLISTO_TXIMPORT.out.tpm_gene).groupTuple(), KALLISTO_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
-//    ch_versions = ch_versions.mix(KALLISTO_SE_GENE.out.versions)
-//
-//    KALLISTO_SE_GENE_LENGTH_SCALED(KALLISTO_TXIMPORT.out.counts_gene_length_scaled.concat(KALLISTO_TXIMPORT.out.tpm_gene).groupTuple(), KALLISTO_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
-//
-//    KALLISTO_SE_GENE_SCALED(KALLISTO_TXIMPORT.out.counts_gene_scaled.concat(KALLISTO_TXIMPORT.out.tpm_gene).groupTuple(), KALLISTO_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
-//
-//    KALLISTO_SE_TRANSCRIPT(KALLISTO_TXIMPORT.out.counts_transcript.concat(KALLISTO_TXIMPORT.out.tpm_transcript).groupTuple(), KALLISTO_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    //
+    // MODULE: Run TX2GENE for Kallisto pseudoalignment
+    //
+    ch_kallisto_tx2gene_input = ch_kallisto_results.combine(ch_gtf.map{ it -> [it]})
+    KALLISTO_TX2GENE(ch_kallisto_tx2gene_input, 'kallisto', 'gene_id', 'gene_name')
+    ch_versions = ch_versions.mix(KALLISTO_TX2GENE.out.versions)
+    ch_kallisto_tx2gene = KALLISTO_TX2GENE.out.tx2gene
+
+    ch_kallisto_results_tx2gene_combined = ch_kallisto_results.join(ch_kallisto_tx2gene)
+
+    //
+    // MODULE: Run TxImport for Kallisto pseudoalignment
+    //
+    ch_kallisto_tximport_input = ch_kallisto_results_tx2gene_combined.map { meta, results_file, tx2gene_file ->
+        [meta, results_file, tx2gene_file]
+    }
+    KALLISTO_TXIMPORT(ch_kallisto_tximport_input, 'kallisto')
+    ch_kallisto_tpm_gene = KALLISTO_TXIMPORT.out.tpm_gene
+    ch_kallisto_counts_gene = KALLISTO_TXIMPORT.out.counts_gene
+    ch_versions = ch_versions.mix(KALLISTO_TXIMPORT.out.versions)
+    ch_kallisto_tpm_transcript = KALLISTO_TXIMPORT.out.tpm_transcript
+    ch_kallisto_counts_transcript = KALLISTO_TXIMPORT.out.counts_transcript
+    ch_kallisto_counts_gene_scaled = KALLISTO_TXIMPORT.out.counts_gene_scaled
+    ch_kallisto_counts_gene_length_scaled = KALLISTO_TXIMPORT.out.counts_gene_length_scaled
+    ch_kallisto_counts_gene_tpm_gene_combined = ch_kallisto_counts_gene.join(ch_kallisto_tpm_gene)
+    ch_kallisto_counts_gene_scaled_tpm_gene_combined = ch_kallisto_counts_gene_scaled.join(ch_kallisto_tpm_gene)
+    ch_kallisto_counts_transcript_tpm_transcript_combined = ch_kallisto_counts_transcript.join(ch_kallisto_tpm_transcript)
+    ch_kallisto_counts_gene_tpm_gene_tx2gene_combined = ch_kallisto_counts_gene_tpm_gene_combined.join(ch_kallisto_tx2gene)
+    ch_kallisto_counts_gene_length_scaled_tpm_gene_combined = ch_kallisto_counts_gene_length_scaled.join(ch_kallisto_tpm_gene)
+    ch_kallisto_counts_gene_scaled_tpm_gene_tx2gene_combined = ch_kallisto_counts_gene_scaled_tpm_gene_combined.join(ch_kallisto_tx2gene)
+    ch_kallisto_counts_transcript_tpm_transcript_tx2gene_combined = ch_kallisto_counts_transcript_tpm_transcript_combined.join(ch_kallisto_tx2gene)
+    ch_kallisto_counts_gene_length_scaled_tpm_gene_tx2gene_combined = ch_kallisto_counts_gene_length_scaled_tpm_gene_combined.join(ch_kallisto_tx2gene)
+
+    //
+    // MODULES: Run SummarizedExperiment for Kallisto pseudoalignment
+    //
+    ch_kallisto_se_gene_input = ch_kallisto_counts_gene_tpm_gene_tx2gene_combined.map { meta, counts_gene_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_file, tpm_gene_file, tx2gene_file]
+    }
+    KALLISTO_SE_GENE(ch_kallisto_se_gene_input)
+    ch_versions = ch_versions.mix(KALLISTO_SE_GENE.out.versions)
+
+    ch_kallisto_se_gene_length_scaled_input = ch_kallisto_counts_gene_length_scaled_tpm_gene_tx2gene_combined.map { meta, counts_gene_length_scaled_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_length_scaled_file, tpm_gene_file, tx2gene_file]
+    }
+    KALLISTO_SE_GENE_LENGTH_SCALED(ch_kallisto_se_gene_length_scaled_input)
+    ch_versions = ch_versions.mix(KALLISTO_SE_GENE_LENGTH_SCALED.out.versions)
+
+    ch_kallisto_se_gene_scaled_input = ch_kallisto_counts_gene_scaled_tpm_gene_tx2gene_combined.map { meta, counts_gene_scaled_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_scaled_file, tpm_gene_file, tx2gene_file]
+    }
+    KALLISTO_SE_GENE_SCALED(ch_kallisto_se_gene_scaled_input)
+    ch_versions = ch_versions.mix(KALLISTO_SE_GENE_SCALED.out.versions)
+
+    ch_kallisto_se_transcript_input = ch_kallisto_counts_transcript_tpm_transcript_tx2gene_combined.map { meta, counts_transcript_file, tpm_transcript_file, tx2gene_file ->
+        [meta, counts_transcript_file, tpm_transcript_file, tx2gene_file]
+    }
+    KALLISTO_SE_TRANSCRIPT(ch_kallisto_se_transcript_input)
+    ch_versions = ch_versions.mix(KALLISTO_SE_TRANSCRIPT.out.versions)
+
+    //
+    // MODULE: Run Dseq2 QC for Kallisto STAR-aligned
+    //
+    DESEQ2_QC_KALLISTO(KALLISTO_TXIMPORT.out.counts_gene_length_scaled.map { it[1] }, ch_pca_header_multiqc, ch_clustering_header_multiqc)
+    ch_multiqc_files = ch_multiqc_files.mix(DESEQ2_QC_KALLISTO.out.pca_multiqc.collect())
+    ch_multiqc_files = ch_multiqc_files.mix(DESEQ2_QC_KALLISTO.out.dists_multiqc.collect())
+    ch_versions = ch_versions.mix(DESEQ2_QC_KALLISTO.out.versions)
 
     //
     // MODULE: Run Salmon pseudoalignment
     //
     SALMON_QUANT_FQS(ch_reads_all, params.salmon_index, params.lib_type)
     ch_versions = ch_versions.mix(SALMON_QUANT_FQS.out.versions)
-    ch_salmon_fqs_results = SALMON_QUANT_FQS.out.results
     ch_salmon_fqs_multiqc = SALMON_QUANT_FQS.out.log
+    ch_salmon_fqs_quant = SALMON_QUANT_FQS.out.quant
 
     //
     // MODULE: Run TX2GENE for Salmon pseudoalignment
     //
-    SALMON_FQS_TX2GENE(ch_gtf, ch_salmon_fqs_results, 'salmon', 'gene_id', 'gene_name')
+    ch_salmon_fqs_tx2gene_input = ch_salmon_fqs_quant.combine(ch_gtf.map{ it -> [it]})
+    SALMON_FQS_TX2GENE(ch_salmon_fqs_tx2gene_input, 'salmon', 'gene_id', 'gene_name')
     ch_versions = ch_versions.mix(SALMON_FQS_TX2GENE.out.versions)
+    ch_salmon_fqs_tx2gene = SALMON_FQS_TX2GENE.out.tx2gene
+
+    ch_salmon_fqs_quant_tx2gene_combined = ch_salmon_fqs_quant.join(ch_salmon_fqs_tx2gene)
 
     //
     // MODULE: Run TxImport for Salmon pseudoalignment
     //
-    SALMON_FQS_TXIMPORT(ch_salmon_fqs_results, SALMON_FQS_TX2GENE.out.tx2gene, 'salmon')
+    ch_salmon_fqs_tximport_input = ch_salmon_fqs_quant_tx2gene_combined.map { meta, quant_file, tx2gene_file ->
+        [meta, quant_file, tx2gene_file]
+    }
+    SALMON_FQS_TXIMPORT(ch_salmon_fqs_tximport_input, 'salmon')
+    ch_salmon_fqs_tpm_gene = SALMON_FQS_TXIMPORT.out.tpm_gene
     ch_versions = ch_versions.mix(SALMON_FQS_TXIMPORT.out.versions)
+    ch_salmon_fqs_counts_gene = SALMON_FQS_TXIMPORT.out.counts_gene
+    ch_salmon_fqs_tpm_transcript = SALMON_FQS_TXIMPORT.out.tpm_transcript
+    ch_salmon_fqs_counts_transcript = SALMON_FQS_TXIMPORT.out.counts_transcript
+    ch_salmon_fqs_counts_gene_scaled = SALMON_FQS_TXIMPORT.out.counts_gene_scaled
+    ch_salmon_fqs_counts_gene_length_scaled = SALMON_FQS_TXIMPORT.out.counts_gene_length_scaled
+    ch_salmon_fqs_counts_gene_tpm_gene_combined = ch_salmon_fqs_counts_gene.join(ch_salmon_fqs_tpm_gene)
+    ch_salmon_fqs_counts_gene_scaled_tpm_gene_combined = ch_salmon_fqs_counts_gene_scaled.join(ch_salmon_fqs_tpm_gene)
+    ch_salmon_fqs_counts_transcript_tpm_transcript_combined = ch_salmon_fqs_counts_transcript.join(ch_salmon_fqs_tpm_transcript)
+    ch_salmon_fqs_counts_gene_tpm_gene_tx2gene_combined = ch_salmon_fqs_counts_gene_tpm_gene_combined.join(ch_salmon_fqs_tx2gene)
+    ch_salmon_fqs_counts_gene_length_scaled_tpm_gene_combined = ch_salmon_fqs_counts_gene_length_scaled.join(ch_salmon_fqs_tpm_gene)
+    ch_salmon_fqs_counts_gene_scaled_tpm_gene_tx2gene_combined = ch_salmon_fqs_counts_gene_scaled_tpm_gene_combined.join(ch_salmon_fqs_tx2gene)
+    ch_salmon_fqs_counts_transcript_tpm_transcript_tx2gene_combined = ch_salmon_fqs_counts_transcript_tpm_transcript_combined.join(ch_salmon_fqs_tx2gene)
+    ch_salmon_fqs_counts_gene_length_scaled_tpm_gene_tx2gene_combined = ch_salmon_fqs_counts_gene_length_scaled_tpm_gene_combined.join(ch_salmon_fqs_tx2gene)
 
     //
     // MODULES: Run SummarizedExperiment for Salmon pseudoalignment
     //
-    SALMON_FQS_SE_GENE(SALMON_FQS_TXIMPORT.out.counts_gene.concat(SALMON_FQS_TXIMPORT.out.tpm_gene).groupTuple(), SALMON_FQS_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_fqs_se_gene_input = ch_salmon_fqs_counts_gene_tpm_gene_tx2gene_combined.map { meta, counts_gene_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_file, tpm_gene_file, tx2gene_file]
+    }
+    SALMON_FQS_SE_GENE(ch_salmon_fqs_se_gene_input)
     ch_versions = ch_versions.mix(SALMON_FQS_SE_GENE.out.versions)
 
-    SALMON_FQS_SE_GENE_LENGTH_SCALED(SALMON_FQS_TXIMPORT.out.counts_gene_length_scaled.concat(SALMON_FQS_TXIMPORT.out.tpm_gene).groupTuple(), SALMON_FQS_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_fqs_se_gene_length_scaled_input = ch_salmon_fqs_counts_gene_length_scaled_tpm_gene_tx2gene_combined.map { meta, counts_gene_length_scaled_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_length_scaled_file, tpm_gene_file, tx2gene_file]
+    }
+    SALMON_FQS_SE_GENE_LENGTH_SCALED(ch_salmon_fqs_se_gene_length_scaled_input)
+    ch_versions = ch_versions.mix(SALMON_FQS_SE_GENE_LENGTH_SCALED.out.versions)
 
-    SALMON_FQS_SE_GENE_SCALED(SALMON_FQS_TXIMPORT.out.counts_gene_scaled.concat(SALMON_FQS_TXIMPORT.out.tpm_gene).groupTuple(), SALMON_FQS_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_fqs_se_gene_scaled_input = ch_salmon_fqs_counts_gene_scaled_tpm_gene_tx2gene_combined.map { meta, counts_gene_scaled_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_scaled_file, tpm_gene_file, tx2gene_file]
+    }
+    SALMON_FQS_SE_GENE_SCALED(ch_salmon_fqs_se_gene_scaled_input)
+    ch_versions = ch_versions.mix(SALMON_FQS_SE_GENE_SCALED.out.versions)
 
-    SALMON_FQS_SE_TRANSCRIPT(SALMON_FQS_TXIMPORT.out.counts_transcript.concat(SALMON_FQS_TXIMPORT.out.tpm_transcript).groupTuple(), SALMON_FQS_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_fqs_se_transcript_input = ch_salmon_fqs_counts_transcript_tpm_transcript_tx2gene_combined.map { meta, counts_transcript_file, tpm_transcript_file, tx2gene_file ->
+        [meta, counts_transcript_file, tpm_transcript_file, tx2gene_file]
+    }
+    SALMON_FQS_SE_TRANSCRIPT(ch_salmon_fqs_se_transcript_input)
+    ch_versions = ch_versions.mix(SALMON_FQS_SE_TRANSCRIPT.out.versions)
 
     //
     // MODULE: Run Dseq2 QC for Salmon STAR-aligned
@@ -201,32 +281,68 @@ workflow GENE_EXPRESSN {
     //
     SALMON_QUANT_BAM(ch_star_bam_transcript, params.transcripts, params.lib_type)
     ch_versions = ch_versions.mix(SALMON_QUANT_BAM.out.versions)
-    ch_salmon_bam_results = SALMON_QUANT_BAM.out.results
     ch_salmon_bam_multiqc = SALMON_QUANT_BAM.out.log
+    ch_salmon_bam_quant = SALMON_QUANT_BAM.out.quant
 
     //
     // MODULE: Run TX2GENE for Salmon with STAR alignment
     //
-    SALMON_BAM_TX2GENE(ch_gtf, ch_salmon_bam_results, 'salmon', 'gene_id', 'gene_name')
+    ch_salmon_bam_tx2gene_input = ch_salmon_bam_quant.combine(ch_gtf.map{ it -> [it]})
+    SALMON_BAM_TX2GENE(ch_salmon_bam_tx2gene_input, 'salmon', 'gene_id', 'gene_name')
     ch_versions = ch_versions.mix(SALMON_BAM_TX2GENE.out.versions)
+    ch_salmon_bam_tx2gene = SALMON_BAM_TX2GENE.out.tx2gene
+
+    ch_salmon_bam_quant_tx2gene_combined = ch_salmon_bam_quant.join(ch_salmon_fqs_tx2gene)
 
     //
     // MODULE: Run TxImport for Salmon with STAR alignment
     //
-    SALMON_BAM_TXIMPORT(ch_salmon_bam_results, SALMON_BAM_TX2GENE.out.tx2gene, 'salmon')
+    ch_salmon_bam_tximport_input = ch_salmon_bam_quant_tx2gene_combined.map { meta, quant_file, tx2gene_file ->
+        [meta, quant_file, tx2gene_file]
+    }
+    SALMON_BAM_TXIMPORT(ch_salmon_bam_tximport_input, 'salmon')
+    ch_salmon_bam_tpm_gene = SALMON_BAM_TXIMPORT.out.tpm_gene
     ch_versions = ch_versions.mix(SALMON_BAM_TXIMPORT.out.versions)
+    ch_salmon_bam_counts_gene = SALMON_BAM_TXIMPORT.out.counts_gene
+    ch_salmon_bam_tpm_transcript = SALMON_BAM_TXIMPORT.out.tpm_transcript
+    ch_salmon_bam_counts_transcript = SALMON_BAM_TXIMPORT.out.counts_transcript
+    ch_salmon_bam_counts_gene_scaled = SALMON_BAM_TXIMPORT.out.counts_gene_scaled
+    ch_salmon_bam_counts_gene_length_scaled = SALMON_BAM_TXIMPORT.out.counts_gene_length_scaled
+    ch_salmon_bam_counts_gene_tpm_gene_combined = ch_salmon_bam_counts_gene.join(ch_salmon_bam_tpm_gene)
+    ch_salmon_bam_counts_gene_scaled_tpm_gene_combined = ch_salmon_bam_counts_gene_scaled.join(ch_salmon_bam_tpm_gene)
+    ch_salmon_bam_counts_transcript_tpm_transcript_combined = ch_salmon_bam_counts_transcript.join(ch_salmon_bam_tpm_transcript)
+    ch_salmon_bam_counts_gene_tpm_gene_tx2gene_combined = ch_salmon_bam_counts_gene_tpm_gene_combined.join(ch_salmon_bam_tx2gene)
+    ch_salmon_bam_counts_gene_length_scaled_tpm_gene_combined = ch_salmon_bam_counts_gene_length_scaled.join(ch_salmon_bam_tpm_gene)
+    ch_salmon_bam_counts_gene_scaled_tpm_gene_tx2gene_combined = ch_salmon_bam_counts_gene_scaled_tpm_gene_combined.join(ch_salmon_bam_tx2gene)
+    ch_salmon_bam_counts_transcript_tpm_transcript_tx2gene_combined = ch_salmon_bam_counts_transcript_tpm_transcript_combined.join(ch_salmon_bam_tx2gene)
+    ch_salmon_bam_counts_gene_length_scaled_tpm_gene_tx2gene_combined = ch_salmon_bam_counts_gene_length_scaled_tpm_gene_combined.join(ch_salmon_bam_tx2gene)
 
     //
-    // MODULES: Run SummarizedExperiment for Salmon with STAR alignment
+    // MODULES: Run SummarizedExperiment for Salmon pseudoalignment
     //
-    SALMON_BAM_SE_GENE(SALMON_BAM_TXIMPORT.out.counts_gene.concat(SALMON_BAM_TXIMPORT.out.tpm_gene).groupTuple(), SALMON_BAM_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] }) 
+    ch_salmon_bam_se_gene_input = ch_salmon_bam_counts_gene_tpm_gene_tx2gene_combined.map { meta, counts_gene_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_file, tpm_gene_file, tx2gene_file]
+    }
+    SALMON_BAM_SE_GENE(ch_salmon_bam_se_gene_input)
     ch_versions = ch_versions.mix(SALMON_BAM_SE_GENE.out.versions)
 
-    SALMON_BAM_SE_GENE_LENGTH_SCALED(SALMON_BAM_TXIMPORT.out.counts_gene_length_scaled.concat(SALMON_BAM_TXIMPORT.out.tpm_gene).groupTuple(), SALMON_BAM_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_bam_se_gene_length_scaled_input = ch_salmon_bam_counts_gene_length_scaled_tpm_gene_tx2gene_combined.map { meta, counts_gene_length_scaled_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_length_scaled_file, tpm_gene_file, tx2gene_file]
+    }
+    SALMON_BAM_SE_GENE_LENGTH_SCALED(ch_salmon_bam_se_gene_length_scaled_input)
+    ch_versions = ch_versions.mix(SALMON_BAM_SE_GENE_LENGTH_SCALED.out.versions)
 
-    SALMON_BAM_SE_GENE_SCALED(SALMON_BAM_TXIMPORT.out.counts_gene_scaled.concat(SALMON_BAM_TXIMPORT.out.tpm_gene).groupTuple(), SALMON_BAM_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_bam_se_gene_scaled_input = ch_salmon_bam_counts_gene_scaled_tpm_gene_tx2gene_combined.map { meta, counts_gene_scaled_file, tpm_gene_file, tx2gene_file ->
+        [meta, counts_gene_scaled_file, tpm_gene_file, tx2gene_file]
+    }
+    SALMON_BAM_SE_GENE_SCALED(ch_salmon_bam_se_gene_scaled_input)
+    ch_versions = ch_versions.mix(SALMON_BAM_SE_GENE_SCALED.out.versions)
 
-    SALMON_BAM_SE_TRANSCRIPT(SALMON_BAM_TXIMPORT.out.counts_transcript.concat(SALMON_BAM_TXIMPORT.out.tpm_transcript).groupTuple(), SALMON_BAM_TX2GENE.out.tx2gene, ch_samplesheet.map { [ [:], it ] })
+    ch_salmon_bam_se_transcript_input = ch_salmon_bam_counts_transcript_tpm_transcript_tx2gene_combined.map { meta, counts_transcript_file, tpm_transcript_file, tx2gene_file ->
+        [meta, counts_transcript_file, tpm_transcript_file, tx2gene_file]
+    }
+    SALMON_BAM_SE_TRANSCRIPT(ch_salmon_bam_se_transcript_input)
+    ch_versions = ch_versions.mix(SALMON_BAM_SE_TRANSCRIPT.out.versions)
 
     //
     // MODULE: Run Dseq2 QC for Salmon STAR-aligned

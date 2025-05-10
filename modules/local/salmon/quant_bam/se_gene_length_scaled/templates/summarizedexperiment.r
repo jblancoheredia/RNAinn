@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 # Written by Lorena Pantano and revised for flexibility in handling assays
+# Modified by Juan Blanco Heredia blancoj@mskcc.org for mskcc/RNAinn pipeline. 
 # Released under the MIT license.
 
 library(SummarizedExperiment)
@@ -14,7 +15,9 @@ library(SummarizedExperiment)
 #' @return output Data frame
 
 read_delim_flexible <- function(file, header = TRUE, row.names = NULL, check.names = FALSE, stringsAsFactors = FALSE){
-
+    if (!file.exists(file)) {
+        stop(paste("File not found:", file))
+    }
     ext <- tolower(tail(strsplit(basename(file), split = "\\\\.")[[1]], 1))
 
     if (ext == "tsv" || ext == "txt") {
@@ -22,7 +25,8 @@ read_delim_flexible <- function(file, header = TRUE, row.names = NULL, check.nam
     } else if (ext == "csv") {
         separator <- ","
     } else {
-        stop(paste("Unknown separator for", ext))
+        warning(paste("Unknown file extension for", file, "- defaulting to tab separator"))
+        separator <- "\\t"
     }
 
     read.delim(
@@ -42,7 +46,13 @@ read_delim_flexible <- function(file, header = TRUE, row.names = NULL, check.nam
 #' @return named list of options and values similar to optparse
 
 parse_args <- function(x){
+    if (x == "") {
+        return(list())
+    }
     args_list <- unlist(strsplit(x, ' ?--')[[1]])[-1]
+    if (length(args_list) == 0) {
+        return(list())
+    }
     args_vals <- lapply(args_list, function(x) scan(text=x, what='character', quiet = TRUE))
 
     # Ensure the option vectors are length 2 (key/ value) to catch empty ones
@@ -115,7 +125,9 @@ checkRowColNames <- function(matrices) {
 #' @return A data frame of processed metadata with duplicate rows aggregated, and row names set to the unique identifier.
 
 parse_metadata <- function(metadata_path, ids, metadata_id_col = NULL){
-
+    if (!file.exists(metadata_path)) {
+        stop(paste("Metadata file not found:", metadata_path))
+    }
     metadata <- read_delim_flexible(metadata_path, stringsAsFactors = FALSE, header = TRUE)
     if (is.null(metadata_id_col)){
         metadata_id_col <- findColumnWithAllEntries(ids, metadata)
@@ -144,8 +156,8 @@ parse_metadata <- function(metadata_path, ids, metadata_id_col = NULL){
 
 # Matrices
 
-args_opt <- parse_args('$task.ext.args')
-matrix_files <- as.list(strsplit('$matrix_files', ' ')[[1]])
+args_opt <- parse_args('${task.ext.args}')
+matrix_files <- as.list(strsplit('${matrix_files}', ' ')[[1]])
 
 if ('assay_names' %in% names(args_opt)){
     names(matrix_files) <- unlist(strsplit(args_opt[['assay_names']], ',')[[1]])
@@ -156,6 +168,7 @@ if ('assay_names' %in% names(args_opt)){
 # Build and verify the main assays list for the summarisedexperiment
 
 assay_list <- lapply(matrix_files, function(m){
+    cat("Processing matrix file:", m, "\\n")
     mat <- read_delim_flexible(m, row.names = 1, stringsAsFactors = FALSE)
     mat[,sapply(mat, is.numeric), drop = FALSE]
 })
@@ -169,38 +182,46 @@ se <- SummarizedExperiment(
 
 # Add column (sample) metadata if provided
 
-if ('$coldata' != ''){
+coldata_file <- '${coldata}'
+if (coldata_file != '' && file.exists(coldata_file)) {
+    cat("Processing column metadata file:", coldata_file, "\\n")
     coldata <- parse_metadata(
-        metadata_path = '$coldata',
+        metadata_path = coldata_file,
         ids = colnames(assay_list[[1]]),
         metadata_id_col = args_opt\$coldata_id_col
     )
 
     colData(se) <- DataFrame(coldata)
+} else {
+    cat("No column metadata file provided or file not found.\\n")
 }
 
 # Add row (feature) metadata if provided
 
-if ('$rowdata' != ''){
+rowdata_file <- '${rowdata_path}'
+if (rowdata_file != '' && file.exists(rowdata_file)) {
+    cat("Processing row metadata file:", rowdata_file, "\\n")
     rowdata <- parse_metadata(
-        metadata_path = '$rowdata',
+        metadata_path = rowdata_file,
         ids = rownames(assay_list[[1]]),
         metadata_id_col = args_opt\$rowdata_id_col
     )
 
     rowData(se) <- DataFrame(rowdata)
+} else {
+    cat("No row metadata file provided or file not found.\\n")
 }
 
-# Write outputs as RDS files
+    # Write outputs as RDS files
 
 prefix <- tools::file_path_sans_ext(matrix_files[1])
-if ('$task.ext.prefix' != 'null'){
-    prefix = '$task.ext.prefix'
-} else if ('$meta.id' != 'null'){
-    prefix = '$meta.id'
+if ('${task.ext.prefix ?: ""}' != '') {
+    prefix = '${task.ext.prefix}'
+} else if ('${meta.id ?: ""}' != '') {
+    prefix = '${meta.id}'
 }
 
-# Save the SummarizedExperiment object
+    # Save the SummarizedExperiment object
 output_file <- paste0(prefix, ".SummarizedExperiment.rds")
 saveRDS(se, file = output_file)
 

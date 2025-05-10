@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript --vanilla
 
 # Script for importing and processing transcript-level quantifications.
-# Written by Lorena Pantano, later modified by Jonathan Manning, and released
-# under the MIT license.
+# Modified to accept direct files instead of directories
+# All property access methods standardized to [[]] notation for consistency
 
 # Loading required libraries
 library(SummarizedExperiment)
@@ -45,8 +45,8 @@ build_table <- function(se.obj, slot) {
 #' @return NULL The function is called for its side effect of writing a file and does not return anything.
 
 write_se_table <- function(params, prefix) {
-    file_name <- paste0(prefix, ".", params\$suffix)
-    write.table(build_table(params\$obj, params\$slot), file_name,
+    file_name <- paste0(prefix, ".", params[["suffix"]])
+    write.table(build_table(params[["obj"]], params[["slot"]]), file_name,
                 sep="\t", quote=FALSE, row.names = FALSE)
 }
 
@@ -54,21 +54,18 @@ write_se_table <- function(params, prefix) {
 #'
 #' This function reads transcript metadata from a specified file path. The file is expected to
 #' be a tab-separated values file without headers, containing transcript information. The function
-#' checks if the file is empty and stops execution with an error message if so. It reads the file
-#' into a data frame, expecting columns for transcript IDs, gene IDs, and gene names. Additional
-#' processing is done to ensure compatibility with a predefined data structure (e.g., `txi[[1]]`),
-#' including adding missing entries and reordering based on the transcript IDs found in `txi[[1]]`.
+#' checks if the file is empty and stops execution with an error message if so.
 #'
 #' @param tinfo_path The file path to the transcript information file.
 #'
 #' @return A list containing three elements:
-#' - `transcript`: A data frame with transcript IDs, gene IDs, and gene names, indexed by transcript IDs.
+#' - `tx_info`: A data frame with transcript IDs, gene IDs, and gene names, indexed by transcript IDs.
 #' - `gene`: A data frame with unique gene IDs and gene names.
 #' - `tx2gene`: A data frame mapping transcript IDs to gene IDs.
 
 read_transcript_info <- function(tinfo_path){
     info <- file.info(tinfo_path)
-    if (info\$size == 0) {
+    if (info[["size"]] == 0) {
         stop("tx2gene file is empty")
     }
 
@@ -80,7 +77,7 @@ read_transcript_info <- function(tinfo_path){
     transcript_info <- transcript_info[match(rownames(txi[[1]]), transcript_info[["tx"]]), ]
     rownames(transcript_info) <- transcript_info[["tx"]]
 
-    list(transcript = transcript_info,
+    list(tx_info = transcript_info,
         gene = unique(transcript_info[,2:3]),
         tx2gene = transcript_info[,1:2])
 }
@@ -88,20 +85,13 @@ read_transcript_info <- function(tinfo_path){
 #' Create a SummarizedExperiment Object
 #'
 #' Constructs a SummarizedExperiment object using provided matrices for counts, abundance, and length,
-#' along with metadata for columns and rows. This function facilitates the organization of experimental
-#' data (e.g., RNA-seq or other high-throughput data) in a structured format that is convenient for
-#' further analyses and visualization.
+#' along with metadata for columns and rows.
 #'
-#' @param counts A matrix or DataFrame containing counts data, with rows as features (e.g., genes) and
-#' columns as samples.
-#' @param abundance A matrix or DataFrame containing abundance data (e.g., TPM or FPKM) with the same
-#' dimensions and row/column names as the counts data.
-#' @param length A matrix or DataFrame containing feature lengths, matching the dimensions and row/column
-#' names of the counts data.
-#' @param col_data A DataFrame containing sample-level metadata, with rows corresponding to columns in the
-#' counts, abundance, and length matrices.
-#' @param row_data A DataFrame containing feature-level metadata, with rows corresponding to features in
-#' the counts, abundance, and length matrices.
+#' @param counts A matrix or DataFrame containing counts data
+#' @param abundance A matrix or DataFrame containing abundance data
+#' @param length A matrix or DataFrame containing feature lengths
+#' @param col_data A DataFrame containing sample-level metadata
+#' @param row_data A DataFrame containing feature-level metadata
 #'
 #' @return A SummarizedExperiment object containing the supplied data and metadata.
 
@@ -117,11 +107,17 @@ create_summarized_experiment <- function(counts, abundance, length, col_data, ro
 ################################################
 ################################################
 
-# Define pattern for file names based on quantification type
-pattern <- ifelse('$quant_type' == "kallisto", "abundance.tsv", "quant.sf")
-fns <- list.files('quants', pattern = pattern, recursive = T, full.names = T)
-names <- basename(dirname(fns))
-names(fns) <- names
+# Instead of searching for files, use the directly provided quant.sf file
+quant_file <- '$quant'
+sample_name <- basename(dirname(quant_file))
+if (sample_name == ".") {
+    # If the file is in the current directory, use the file basename without extension
+    sample_name <- tools::file_path_sans_ext(basename(quant_file))
+}
+
+# Create a named list with just one quantification file
+fns <- c(quant_file)
+names(fns) <- sample_name
 dropInfReps <- '$quant_type' == "kallisto"
 
 # Import transcript-level quantifications
@@ -131,12 +127,12 @@ txi <- tximport(fns, type = '$quant_type', txOut = TRUE, dropInfReps = dropInfRe
 transcript_info <- read_transcript_info('$tx2gene')
 
 # Make coldata just to appease the summarizedexperiment
-coldata <- data.frame(files = fns, names = names)
+coldata <- data.frame(files = fns, names = names(fns))
 rownames(coldata) <- coldata[["names"]]
 
 # Create initial SummarizedExperiment object
 se <- create_summarized_experiment(txi[["counts"]], txi[["abundance"]], txi[["length"]],
-    DataFrame(coldata), transcript_info\$transcript)
+    DataFrame(coldata), transcript_info[["tx_info"]])
 
 # Setting parameters for writing tables
 params <- list(
@@ -146,13 +142,13 @@ params <- list(
 )
 
 # Process gene-level data if tx2gene mapping is available
-if ("tx2gene" %in% names(transcript_info) && !is.null(transcript_info\$tx2gene)) {
-    tx2gene <- transcript_info\$tx2gene
+if ("tx2gene" %in% names(transcript_info) && !is.null(transcript_info[["tx2gene"]])) {
+    tx2gene <- transcript_info[["tx2gene"]]
     gi <- summarizeToGene(txi, tx2gene = tx2gene)
     gi.ls <- summarizeToGene(txi, tx2gene = tx2gene, countsFromAbundance = "lengthScaledTPM")
     gi.s <- summarizeToGene(txi, tx2gene = tx2gene, countsFromAbundance = "scaledTPM")
 
-    gene_info <- transcript_info\$gene[match(rownames(gi[[1]]), transcript_info\$gene[["gene_id"]]),]
+    gene_info <- transcript_info[["gene"]][match(rownames(gi[[1]]), transcript_info[["gene"]][["gene_id"]]),]
     rownames(gene_info) <- NULL
     col_data_frame <- DataFrame(coldata)
 
@@ -174,7 +170,6 @@ if ("tx2gene" %in% names(transcript_info) && !is.null(transcript_info\$tx2gene))
 }
 
 # Writing tables for each set of parameters
-
 prefix <- ''
 if ('$task.ext.prefix' != 'null'){
     prefix = '$task.ext.prefix'
@@ -182,7 +177,7 @@ if ('$task.ext.prefix' != 'null'){
     prefix = '$meta.id'
 }
 
-done <- lapply(params, write_se_table, prefix)
+done <- lapply(params, function(param) write_se_table(param, prefix))
 
 ################################################
 ################################################

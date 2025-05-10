@@ -8,8 +8,7 @@ process KALLISTO_TX2GENE {
         'biocontainers/python:3.9--1' }"
 
     input:
-    path(gtf)
-    tuple val(meta), path(abundance, stageAs: 'quants/abundance.tsv')
+    tuple val(meta), path (quant), path(gtf)
     val quant_type
     val id
     val extra
@@ -22,11 +21,13 @@ process KALLISTO_TX2GENE {
     task.ext.when == null || task.ext.when
 
     script:
+    prefix   = task.ext.prefix ?: "${meta.id}"
     template 'tx2gene.py'
 
     stub:
+    prefix   = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${meta.id}.tx2gene.tsv
+    touch ${prefix}.tx2gene.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

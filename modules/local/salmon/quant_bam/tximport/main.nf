@@ -7,8 +7,7 @@ process SALMON_BAM_TXIMPORT {
         'biocontainers/bioconductor-tximeta:1.20.1--r43hdfd78af_0' }"
 
     input:
-    tuple val(meta), path("quants/*")
-    tuple val(meta2), path(tx2gene)
+    tuple val(meta), path(quant), path(tx2gene)
     val quant_type
 
     output:
@@ -26,18 +25,20 @@ process SALMON_BAM_TXIMPORT {
     task.ext.when == null || task.ext.when
 
     script:
+    prefix = task.ext.prefix ?: "${meta.id}"
     template 'tximport.r'
 
     stub:
+    prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${meta.id}.gene_tpm.tsv
-    touch ${meta.id}.gene_counts.tsv
-    touch ${meta.id}.gene_counts_length_scaled.tsv
-    touch ${meta.id}.gene_counts_scaled.tsv
-    touch ${meta.id}.gene_lengths.tsv
-    touch ${meta.id}.transcript_tpm.tsv
-    touch ${meta.id}.transcript_counts.tsv
-    touch ${meta.id}.transcript_lengths.tsv
+    touch ${prefix}.gene_tpm.tsv
+    touch ${prefix}.gene_counts.tsv
+    touch ${prefix}.gene_counts_length_scaled.tsv
+    touch ${prefix}.gene_counts_scaled.tsv
+    touch ${prefix}.gene_lengths.tsv
+    touch ${prefix}.transcript_tpm.tsv
+    touch ${prefix}.transcript_counts.tsv
+    touch ${prefix}.transcript_lengths.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

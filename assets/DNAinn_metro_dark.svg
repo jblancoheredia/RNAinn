@@ -1,0 +1,8150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   version="1.1"
+   viewBox="0 0 1724 792"
+   sodipodi:docname="DNAinn_metro_dark.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs
+     id="defs189">
+    <style
+       id="style1">
+      .st0 {
+        stroke: url(#linear-gradient47);
+        stroke-dasharray: 4.1 4.1;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23, .st24, .st25, .st26, .st27, .st28, .st29, .st30, .st31, .st32, .st33, .st34, .st35, .st36, .st37, .st38, .st39, .st40, .st41, .st42, .st43, .st44, .st45, .st46, .st47, .st48, .st49, .st50, .st51, .st52, .st53, .st54, .st55, .st56, .st57, .st58, .st59, .st60, .st61, .st62, .st63 {
+        stroke-miterlimit: 10;
+      }
+
+      .st0, .st1, .st2, .st4, .st5, .st64, .st65, .st6, .st7, .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23, .st24, .st25, .st26, .st27, .st28, .st29, .st30, .st31, .st32, .st33, .st34, .st35, .st36, .st37, .st38, .st39, .st40, .st41, .st42, .st43, .st44, .st45, .st46, .st47, .st48, .st49, .st50, .st66, .st52, .st53, .st54, .st55, .st56, .st67, .st57, .st58, .st59, .st60, .st61, .st68, .st62, .st63 {
+        fill: none;
+      }
+
+      .st0, .st2, .st4, .st5, .st64, .st65, .st6, .st7, .st10, .st11, .st13, .st14, .st15, .st16, .st17, .st18, .st19, .st20, .st21, .st22, .st23, .st24, .st25, .st26, .st27, .st28, .st29, .st30, .st31, .st32, .st33, .st34, .st35, .st36, .st37, .st38, .st39, .st40, .st41, .st42, .st43, .st44, .st45, .st46, .st47, .st48, .st49, .st50, .st66, .st52, .st53, .st54, .st55, .st56, .st57, .st58, .st59, .st60, .st63 {
+        stroke-width: 6px;
+      }
+
+      .st1 {
+        stroke: #9bb1b7;
+        stroke-dasharray: 4.8 4.8;
+        stroke-width: 7.6px;
+      }
+
+      .st2 {
+        stroke: #3d0866;
+      }
+
+      .st69, .st70 {
+        font-family: MavenPro-Regular, 'Maven Pro';
+      }
+
+      .st69, .st70, .st71, .st72, .st73, .st74, .st75, .st76, .st77 {
+        isolation: isolate;
+      }
+
+      .st69, .st71, .st75, .st77 {
+        font-size: 12px;
+      }
+
+      .st78 {
+        fill: #0000ad;
+      }
+
+      .st79 {
+        fill: #626465;
+      }
+
+      .st79, .st80, .st81, .st82, .st83, .st84 {
+        stroke: #000;
+      }
+
+      .st85 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st86 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st87 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st88 {
+        fill: url(#linear-gradient6);
+      }
+
+      .st89 {
+        fill: url(#linear-gradient7);
+      }
+
+      .st90 {
+        fill: url(#linear-gradient5);
+      }
+
+      .st91 {
+        fill: url(#linear-gradient4);
+      }
+
+      .st3 {
+        fill: #d380b5;
+      }
+
+      .st3, .st9 {
+        stroke-width: .5px;
+      }
+
+      .st3, .st62 {
+        stroke: #d380b5;
+      }
+
+      .st4 {
+        stroke: #692d8c;
+      }
+
+      .st92 {
+        fill: #e6e6e6;
+      }
+
+      .st70, .st73 {
+        fill: #929497;
+        font-size: 19px;
+      }
+
+      .st93 {
+        fill: url(#linear-gradient32);
+      }
+
+      .st94 {
+        fill: url(#linear-gradient33);
+      }
+
+      .st95 {
+        fill: url(#linear-gradient48);
+      }
+
+      .st96 {
+        fill: url(#linear-gradient52);
+      }
+
+      .st97 {
+        fill: url(#linear-gradient20);
+      }
+
+      .st5 {
+        stroke: url(#linear-gradient46);
+      }
+
+      .st5, .st52 {
+        stroke-dasharray: 4 4;
+      }
+
+      .st64 {
+        stroke: url(#linear-gradient10);
+      }
+
+      .st64, .st65 {
+        stroke-dashoffset: .6px;
+      }
+
+      .st64, .st65, .st48 {
+        stroke-dasharray: 6 6;
+      }
+
+      .st64, .st65, .st66 {
+        stroke-miterlimit: 1;
+      }
+
+      .st65 {
+        stroke: url(#linear-gradient17);
+      }
+
+      .st6 {
+        stroke: #ec6633;
+      }
+
+      .st7 {
+        stroke: #a450d9;
+      }
+
+      .st71, .st72, .st76 {
+        font-family: MavenPro-Bold, 'Maven Pro';
+        font-weight: 700;
+      }
+
+      .st98 {
+        fill: #007f80;
+      }
+
+      .st8 {
+        stroke-width: .4px;
+      }
+
+      .st8, .st9 {
+        fill: #ed843d;
+        stroke: #ed843d;
+      }
+
+      .st72, .st76 {
+        font-size: 50px;
+      }
+
+      .st73 {
+        font-family: KGMissSpeechyIPA, 'KG Miss Speechy IPA';
+      }
+
+      .st10 {
+        stroke: #beaeff;
+      }
+
+      .st11, .st52 {
+        stroke: blue;
+      }
+
+      .st12 {
+        stroke: url(#linear-gradient53);
+      }
+
+      .st12, .st62 {
+        stroke-width: 6.1px;
+      }
+
+      .st13 {
+        stroke: url(#linear-gradient27);
+      }
+
+      .st14 {
+        stroke: url(#linear-gradient29);
+      }
+
+      .st15 {
+        stroke: url(#linear-gradient24);
+      }
+
+      .st16 {
+        stroke: url(#linear-gradient21);
+      }
+
+      .st17 {
+        stroke: url(#linear-gradient28);
+      }
+
+      .st18 {
+        stroke: url(#linear-gradient25);
+      }
+
+      .st19 {
+        stroke: url(#linear-gradient23);
+      }
+
+      .st20 {
+        stroke: url(#linear-gradient22);
+      }
+
+      .st21 {
+        stroke: url(#linear-gradient14);
+      }
+
+      .st22 {
+        stroke: url(#linear-gradient19);
+      }
+
+      .st23 {
+        stroke: url(#linear-gradient16);
+      }
+
+      .st24 {
+        stroke: url(#linear-gradient15);
+      }
+
+      .st25 {
+        stroke: url(#linear-gradient13);
+      }
+
+      .st26 {
+        stroke: url(#linear-gradient12);
+      }
+
+      .st27 {
+        stroke: url(#linear-gradient11);
+      }
+
+      .st28 {
+        stroke: url(#linear-gradient50);
+      }
+
+      .st29 {
+        stroke: url(#linear-gradient51);
+      }
+
+      .st30 {
+        stroke: url(#linear-gradient42);
+      }
+
+      .st31 {
+        stroke: url(#linear-gradient45);
+      }
+
+      .st32 {
+        stroke: url(#linear-gradient40);
+      }
+
+      .st33 {
+        stroke: url(#linear-gradient41);
+      }
+
+      .st34 {
+        stroke: url(#linear-gradient44);
+      }
+
+      .st35 {
+        stroke: url(#linear-gradient43);
+      }
+
+      .st36 {
+        stroke: url(#linear-gradient49);
+      }
+
+      .st37 {
+        stroke: url(#linear-gradient31);
+      }
+
+      .st38 {
+        stroke: url(#linear-gradient30);
+      }
+
+      .st39 {
+        stroke: url(#linear-gradient38);
+      }
+
+      .st40 {
+        stroke: url(#linear-gradient36);
+      }
+
+      .st41 {
+        stroke: url(#linear-gradient39);
+      }
+
+      .st42 {
+        stroke: url(#linear-gradient34);
+      }
+
+      .st43 {
+        stroke: url(#linear-gradient35);
+      }
+
+      .st44 {
+        stroke: url(#linear-gradient37);
+      }
+
+      .st80, .st51, .st75 {
+        fill: #fff;
+      }
+
+      .st45 {
+        stroke: #007f80;
+      }
+
+      .st99 {
+        fill: #ff6f00;
+      }
+
+      .st46 {
+        stroke: url(#linear-gradient8);
+      }
+
+      .st47 {
+        stroke: url(#linear-gradient9);
+      }
+
+      .st48 {
+        stroke: url(#linear-gradient26);
+        stroke-dashoffset: 2.4px;
+      }
+
+      .st49 {
+        stroke: #ff53c3;
+      }
+
+      .st81 {
+        fill: #39383a;
+      }
+
+      .st100 {
+        fill: #872db3;
+      }
+
+      .st101 {
+        fill: #282871;
+      }
+
+      .st50 {
+        stroke: #872db3;
+      }
+
+      .st66, .st68 {
+        stroke: #fff;
+      }
+
+      .st51 {
+        stroke: #1e1c1c;
+      }
+
+      .st75 {
+        font-family: Helvetica, Helvetica;
+      }
+
+      .st82 {
+        fill: #1e1c1c;
+      }
+
+      .st53 {
+        stroke: #2f663f;
+      }
+
+      .st54 {
+        stroke: #ceb3ff;
+      }
+
+      .st55 {
+        stroke: url(#linear-gradient18);
+        stroke-dasharray: 3 6;
+        stroke-dashoffset: 3px;
+      }
+
+      .st56 {
+        stroke: #e8347b;
+      }
+
+      .st76 {
+        fill: #21c863;
+      }
+
+      .st102 {
+        fill: #ff0065;
+      }
+
+      .st77 {
+        font-family: MavenPro-SemiBold, 'Maven Pro';
+        font-weight: 600;
+      }
+
+      .st67 {
+        stroke: #06ff32;
+      }
+
+      .st103 {
+        fill: #9ab0b6;
+      }
+
+      .st57 {
+        stroke-dasharray: 4 6;
+      }
+
+      .st57, .st58, .st60 {
+        stroke: #0000ad;
+      }
+
+      .st84 {
+        fill: #4f4f51;
+      }
+
+      .st58 {
+        stroke-dasharray: 2 6;
+      }
+
+      .st59 {
+        stroke: #a2f2d4;
+      }
+
+      .st104 {
+        fill: #217821;
+      }
+
+      .st60 {
+        stroke-dasharray: 5 6;
+      }
+
+      .st61 {
+        stroke: url(#linear-gradient);
+        stroke-dasharray: 3.6 3.6;
+        stroke-width: 5.6px;
+      }
+
+      .st63 {
+        stroke: #bc13fe;
+      }
+    </style>
+    <linearGradient
+       id="linear-gradient"
+       x1="771.8"
+       y1="-266.8"
+       x2="804.1"
+       y2="-266.8"
+       gradientTransform="translate(241.9 447.8) scale(1.2 1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#0000e8"
+         id="stop1" />
+      <stop
+         offset="0"
+         stop-color="#0012d1"
+         id="stop2" />
+      <stop
+         offset=".2"
+         stop-color="#0039a2"
+         id="stop3" />
+      <stop
+         offset=".3"
+         stop-color="#005b79"
+         id="stop4" />
+      <stop
+         offset=".4"
+         stop-color="#007657"
+         id="stop5" />
+      <stop
+         offset=".6"
+         stop-color="#008b3d"
+         id="stop6" />
+      <stop
+         offset=".7"
+         stop-color="#009b2b"
+         id="stop7" />
+      <stop
+         offset=".8"
+         stop-color="#00a420"
+         id="stop8" />
+      <stop
+         offset="1"
+         stop-color="#00a71d"
+         id="stop9" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient1"
+       x1="110.1"
+       y1="-124.1"
+       x2="125.1"
+       y2="-124.1"
+       gradientTransform="translate(-16.8 785.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#23652d"
+         id="stop10" />
+      <stop
+         offset=".4"
+         stop-color="#379e48"
+         id="stop11" />
+      <stop
+         offset=".7"
+         stop-color="#33be3a"
+         id="stop12" />
+      <stop
+         offset=".8"
+         stop-color="#3cc94e"
+         id="stop13" />
+      <stop
+         offset=".9"
+         stop-color="#59e889"
+         id="stop14" />
+      <stop
+         offset="1"
+         stop-color="#64f5a0"
+         id="stop15" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient2"
+       x1="110.1"
+       y1="-59.8"
+       x2="125.1"
+       y2="-59.8"
+       gradientTransform="translate(-16.3 785.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec6635"
+         id="stop16" />
+      <stop
+         offset=".6"
+         stop-color="#f2a346"
+         id="stop17" />
+      <stop
+         offset=".8"
+         stop-color="#f6ca63"
+         id="stop18" />
+      <stop
+         offset="1"
+         stop-color="#fbfc88"
+         id="stop19" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient3"
+       x1="110.1"
+       y1="-188.1"
+       x2="125.1"
+       y2="-188.1"
+       gradientTransform="translate(-16.8 785.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#000"
+         id="stop20" />
+      <stop
+         offset="1"
+         stop-color="#d1dedf"
+         id="stop21" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient4"
+       x1="117.6"
+       y1="-88.3"
+       x2="117.6"
+       y2="-73.3"
+       gradientTransform="translate(-16.8 785.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#692d8c"
+         id="stop22" />
+      <stop
+         offset=".6"
+         stop-color="#a450d9"
+         id="stop23" />
+      <stop
+         offset=".8"
+         stop-color="#b981ec"
+         id="stop24" />
+      <stop
+         offset="1"
+         stop-color="#ceb3ff"
+         id="stop25" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient5"
+       x1="110.1"
+       y1="-166.4"
+       x2="125.1"
+       y2="-166.4"
+       gradientTransform="translate(-16.8 784.8)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#282871"
+         id="stop26" />
+      <stop
+         offset="0"
+         stop-color="blue"
+         id="stop27" />
+      <stop
+         offset=".3"
+         stop-color="#2932fc"
+         id="stop28" />
+      <stop
+         offset=".7"
+         stop-color="#7590f6"
+         id="stop29" />
+      <stop
+         offset=".9"
+         stop-color="#a5cbf3"
+         id="stop30" />
+      <stop
+         offset="1"
+         stop-color="#b8e2f2"
+         id="stop31" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient6"
+       x1="110.1"
+       y1="-145.1"
+       x2="125.1"
+       y2="-145.1"
+       gradientTransform="translate(-16.8 785.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#efb6f5"
+         id="stop32" />
+      <stop
+         offset=".4"
+         stop-color="#e758a3"
+         id="stop33" />
+      <stop
+         offset=".6"
+         stop-color="#e74791"
+         id="stop34" />
+      <stop
+         offset="1"
+         stop-color="#e9327b"
+         id="stop35" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient7"
+       x1="110.1"
+       y1="-101.5"
+       x2="125.1"
+       y2="-101.5"
+       gradientTransform="translate(-16.8 785.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#a2f2d4"
+         id="stop36" />
+      <stop
+         offset=".6"
+         stop-color="#03fdfc"
+         id="stop37" />
+      <stop
+         offset=".8"
+         stop-color="#01b0b0"
+         id="stop38" />
+      <stop
+         offset="1"
+         stop-color="#007f80"
+         id="stop39" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient8"
+       x1="610.5"
+       y1="-106"
+       x2="610.5"
+       y2="50.1"
+       gradientTransform="translate(516.9 287.8)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset=".2"
+         stop-color="#00a8ff"
+         id="stop40" />
+      <stop
+         offset=".7"
+         stop-color="#27c4ff"
+         id="stop41" />
+      <stop
+         offset="1"
+         stop-color="#b8e2f2"
+         id="stop42" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient9"
+       x1="146"
+       y1="-281.1"
+       x2="356.5"
+       y2="-281.1"
+       gradientTransform="translate(83.4 465.1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#61647d"
+         id="stop43" />
+      <stop
+         offset=".6"
+         stop-color="#81919d"
+         id="stop44" />
+      <stop
+         offset=".6"
+         stop-color="#8596a1"
+         id="stop45" />
+      <stop
+         offset=".7"
+         stop-color="#96abb1"
+         id="stop46" />
+      <stop
+         offset=".9"
+         stop-color="#a1b7bb"
+         id="stop47" />
+      <stop
+         offset="1"
+         stop-color="#a5bcbf"
+         id="stop48" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient10"
+       x1="3033"
+       y1="-2836.7"
+       x2="3033"
+       y2="-2743"
+       gradientTransform="translate(2159.3 3217) rotate(-90) scale(1 .6)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#a5bcbe"
+         id="stop49" />
+      <stop
+         offset=".2"
+         stop-color="#b8e2f2"
+         id="stop50" />
+      <stop
+         offset="1"
+         stop-color="#282871"
+         id="stop51" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient11"
+       x1="36.3"
+       y1="-281.1"
+       x2="104.1"
+       y2="-281.1"
+       gradientTransform="translate(81.8 465.7)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#1f1f2a"
+         id="stop52" />
+      <stop
+         offset="0"
+         stop-color="#242431"
+         id="stop53" />
+      <stop
+         offset=".4"
+         stop-color="#333346"
+         id="stop54" />
+      <stop
+         offset=".7"
+         stop-color="#3c3c52"
+         id="stop55" />
+      <stop
+         offset="1"
+         stop-color="#3f4057"
+         id="stop56" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient12"
+       x1="101.1"
+       y1="-281.1"
+       x2="149.1"
+       y2="-281.1"
+       gradientTransform="translate(82.4 465.7)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#3f4057"
+         id="stop57" />
+      <stop
+         offset="0"
+         stop-color="#3f4057"
+         id="stop58" />
+      <stop
+         offset=".3"
+         stop-color="#52546c"
+         id="stop59" />
+      <stop
+         offset=".7"
+         stop-color="#5d6078"
+         id="stop60" />
+      <stop
+         offset="1"
+         stop-color="#61647d"
+         id="stop61" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient13"
+       x1="262.4"
+       y1="-292.9"
+       x2="310.4"
+       y2="-292.9"
+       gradientTransform="translate(82.1 465.6)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#81919d"
+         id="stop62" />
+      <stop
+         offset=".3"
+         stop-color="#8ea0a8"
+         id="stop63" />
+      <stop
+         offset=".7"
+         stop-color="#9aacb1"
+         id="stop64" />
+      <stop
+         offset="1"
+         stop-color="#9eb1b5"
+         id="stop65" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient14"
+       x1="477.8"
+       y1="-106"
+       x2="610.5"
+       y2="-106"
+       gradientTransform="translate(508.6 286.8)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#0000e8"
+         id="stop66" />
+      <stop
+         offset=".5"
+         stop-color="#00a8ff"
+         id="stop67" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient15"
+       x1="31"
+       y1="-105.9"
+       x2="414.8"
+       y2="-105.9"
+       gradientTransform="translate(516.9 286.7)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#00007d"
+         id="stop68" />
+      <stop
+         offset=".5"
+         stop-color="#0000ad"
+         id="stop69" />
+      <stop
+         offset="1"
+         stop-color="#0000d1"
+         id="stop70" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient16"
+       x1="344.5"
+       y1="-103.2"
+       x2="344.5"
+       y2="-9.5"
+       gradientTransform="translate(516.8 283.9)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#0000ad"
+         id="stop71" />
+      <stop
+         offset=".3"
+         stop-color="#0000e8"
+         id="stop72" />
+      <stop
+         offset=".7"
+         stop-color="#00a8ff"
+         id="stop73" />
+      <stop
+         offset="1"
+         stop-color="#b8e2f2"
+         id="stop74" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient17"
+       x1="374"
+       y1="-477"
+       x2="374"
+       y2="-383.4"
+       gradientTransform="translate(487.3 561.9) scale(1 .6)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#0000e8"
+         id="stop75" />
+      <stop
+         offset=".5"
+         stop-color="#b8e2f2"
+         id="stop76" />
+      <stop
+         offset="1"
+         stop-color="#007f80"
+         id="stop77" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient18"
+       x1="374"
+       y1="716.8"
+       x2="374"
+       y2="623.1"
+       gradientTransform="translate(629.1 2318.3) scale(1 -2.9)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#0000e8"
+         id="stop78" />
+      <stop
+         offset="1"
+         stop-color="#ff0065"
+         id="stop79" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient19"
+       x1="411.8"
+       y1="-106.8"
+       x2="459.8"
+       y2="-106.8"
+       gradientTransform="translate(516.8 286.8)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#0000ad"
+         id="stop80" />
+      <stop
+         offset=".4"
+         stop-color="#0000d1"
+         id="stop81" />
+      <stop
+         offset="1"
+         stop-color="#0000e8"
+         id="stop82" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient20"
+       x1="3063.4"
+       y1="2710.2"
+       x2="3063.4"
+       y2="2279.5"
+       gradientTransform="translate(3086.5 3465.5) rotate(-90) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#a2f2d4"
+         id="stop83" />
+      <stop
+         offset=".5"
+         stop-color="#03fdfc"
+         id="stop84" />
+      <stop
+         offset=".7"
+         stop-color="#03c0c1"
+         id="stop85" />
+      <stop
+         offset=".8"
+         stop-color="#009c9d"
+         id="stop86" />
+      <stop
+         offset="1"
+         stop-color="#007f80"
+         id="stop87" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient21"
+       x1="437"
+       y1="-170.2"
+       x2="521.2"
+       y2="-121.6"
+       gradientTransform="translate(191.3 484.6)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#03fdfc"
+         id="stop88" />
+      <stop
+         offset=".5"
+         stop-color="#03c0c1"
+         id="stop89" />
+      <stop
+         offset="1"
+         stop-color="#009c9d"
+         id="stop90" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient22"
+       x1="437"
+       y1="-170.2"
+       x2="521.2"
+       y2="-121.6"
+       gradientTransform="translate(191.4 525.8)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#03fdfc"
+         id="stop91" />
+      <stop
+         offset=".5"
+         stop-color="#03c0c1"
+         id="stop92" />
+      <stop
+         offset="1"
+         stop-color="#009c9d"
+         id="stop93" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient23"
+       x1="437"
+       y1="-170.2"
+       x2="521.2"
+       y2="-121.6"
+       gradientTransform="translate(191.2 568.2)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#03fdfc"
+         id="stop94" />
+      <stop
+         offset=".5"
+         stop-color="#03c0c1"
+         id="stop95" />
+      <stop
+         offset="1"
+         stop-color="#009c9d"
+         id="stop96" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient24"
+       x1="437"
+       y1="1065.8"
+       x2="521.2"
+       y2="1114.4"
+       gradientTransform="translate(191.4 1554.8) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#03fdfc"
+         id="stop97" />
+      <stop
+         offset=".5"
+         stop-color="#03c0c1"
+         id="stop98" />
+      <stop
+         offset="1"
+         stop-color="#009c9d"
+         id="stop99" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient25"
+       x1="437"
+       y1="-170.2"
+       x2="521.2"
+       y2="-121.6"
+       gradientTransform="translate(191.3 608.7)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#03fdfc"
+         id="stop100" />
+      <stop
+         offset=".5"
+         stop-color="#03c0c1"
+         id="stop101" />
+      <stop
+         offset="1"
+         stop-color="#009c9d"
+         id="stop102" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient26"
+       x1="490.6"
+       y1="9.5"
+       x2="699.3"
+       y2="9.5"
+       gradientTransform="translate(399.4 392.3) scale(1 1.1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#007f80"
+         id="stop103" />
+      <stop
+         offset=".3"
+         stop-color="#b8e2f2"
+         id="stop104" />
+      <stop
+         offset=".9"
+         stop-color="#0000e8"
+         id="stop105" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient27"
+       x1="319.3"
+       y1="-32.3"
+       x2="367.3"
+       y2="-32.3"
+       gradientTransform="translate(539.9 590.2)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#d82f51"
+         id="stop106" />
+      <stop
+         offset="1"
+         stop-color="#e8347b"
+         id="stop107" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient28"
+       x1="727"
+       y1="508.5"
+       x2="775"
+       y2="508.5"
+       gradientTransform="translate(0 196)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#e8a2c8"
+         id="stop108" />
+      <stop
+         offset="1"
+         stop-color="#d380b5"
+         id="stop109" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient29"
+       x1="294.1"
+       y1="-35.3"
+       x2="294.1"
+       y2="9.5"
+       gradientTransform="translate(539.4 590)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#d82f51"
+         id="stop110" />
+      <stop
+         offset="1"
+         stop-color="#e8347b"
+         id="stop111" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient30"
+       x1="344.1"
+       y1="5.5"
+       x2="344.1"
+       y2="47.7"
+       gradientTransform="translate(539.6 587.7)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#e8347b"
+         id="stop112" />
+      <stop
+         offset=".2"
+         stop-color="#e73581"
+         id="stop113" />
+      <stop
+         offset=".6"
+         stop-color="#e6388d"
+         id="stop114" />
+      <stop
+         offset="1"
+         stop-color="#e63992"
+         id="stop115" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient31"
+       x1="344.1"
+       y1="41.2"
+       x2="344.1"
+       y2="83.4"
+       gradientTransform="translate(539.6 588.1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#e63992"
+         id="stop116" />
+      <stop
+         offset=".6"
+         stop-color="#e54e9b"
+         id="stop117" />
+      <stop
+         offset="1"
+         stop-color="#e559a0"
+         id="stop118" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient32"
+       x1="478.9"
+       y1="112.1"
+       x2="478.9"
+       y2="-65.1"
+       gradientTransform="translate(760.7 543.1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#b593ff"
+         id="stop119" />
+      <stop
+         offset=".3"
+         stop-color="#a450d9"
+         id="stop120" />
+      <stop
+         offset=".5"
+         stop-color="#872db3"
+         id="stop121" />
+      <stop
+         offset=".8"
+         stop-color="#692d8c"
+         id="stop122" />
+      <stop
+         offset="1"
+         stop-color="#3e2164"
+         id="stop123" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient33"
+       x1="437.2"
+       y1="62.2"
+       x2="437.2"
+       y2="-96.7"
+       gradientTransform="translate(761.1 542.4)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#a450d9"
+         id="stop124" />
+      <stop
+         offset=".4"
+         stop-color="#872db3"
+         id="stop125" />
+      <stop
+         offset=".7"
+         stop-color="#692f8c"
+         id="stop126" />
+      <stop
+         offset=".9"
+         stop-color="#3e2164"
+         id="stop127" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient34"
+       x1="680.9"
+       y1="1056.1"
+       x2="725.9"
+       y2="1056.1"
+       gradientTransform="translate(795.2 1403.4) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#f5c14f"
+         id="stop128" />
+      <stop
+         offset=".3"
+         stop-color="#f7d153"
+         id="stop129" />
+      <stop
+         offset=".7"
+         stop-color="#f9dd57"
+         id="stop130" />
+      <stop
+         offset="1"
+         stop-color="#fae259"
+         id="stop131" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient35"
+       x1="680.9"
+       y1="-179.9"
+       x2="725.9"
+       y2="-179.9"
+       gradientTransform="translate(795.2 503.5)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#f5c14f"
+         id="stop132" />
+      <stop
+         offset=".3"
+         stop-color="#f7d153"
+         id="stop133" />
+      <stop
+         offset=".7"
+         stop-color="#f9dd57"
+         id="stop134" />
+      <stop
+         offset="1"
+         stop-color="#fae259"
+         id="stop135" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient36"
+       x1="442.7"
+       y1="-116.7"
+       x2="531.1"
+       y2="-116.7"
+       gradientTransform="translate(795.1 503.4)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec6633"
+         id="stop136" />
+      <stop
+         offset=".3"
+         stop-color="#ec7337"
+         id="stop137" />
+      <stop
+         offset=".6"
+         stop-color="#ec7f3b"
+         id="stop138" />
+      <stop
+         offset="1"
+         stop-color="#ed843d"
+         id="stop139" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient37"
+       x1="442.7"
+       y1="-116.7"
+       x2="531.1"
+       y2="-116.7"
+       gradientTransform="translate(795.2 461.5)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec6633"
+         id="stop140" />
+      <stop
+         offset=".3"
+         stop-color="#ec7337"
+         id="stop141" />
+      <stop
+         offset=".6"
+         stop-color="#ec7f3b"
+         id="stop142" />
+      <stop
+         offset="1"
+         stop-color="#ed843d"
+         id="stop143" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient38"
+       x1="442.7"
+       y1="1119.3"
+       x2="531.1"
+       y2="1119.3"
+       gradientTransform="translate(795.1 1486.2) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec6633"
+         id="stop144" />
+      <stop
+         offset=".3"
+         stop-color="#ec7337"
+         id="stop145" />
+      <stop
+         offset=".6"
+         stop-color="#ec7f3b"
+         id="stop146" />
+      <stop
+         offset="1"
+         stop-color="#ed843d"
+         id="stop147" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient39"
+       x1="442.7"
+       y1="1119.4"
+       x2="531.1"
+       y2="1119.4"
+       gradientTransform="translate(795.1 1444.6) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec6633"
+         id="stop148" />
+      <stop
+         offset=".3"
+         stop-color="#ec7337"
+         id="stop149" />
+      <stop
+         offset=".6"
+         stop-color="#ec7f3b"
+         id="stop150" />
+      <stop
+         offset="1"
+         stop-color="#ed843d"
+         id="stop151" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient40"
+       x1="442.2"
+       y1="881.9"
+       x2="530.7"
+       y2="881.9"
+       gradientTransform="translate(795.9 1703.1) scale(1 -1.6)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ec6633"
+         id="stop152" />
+      <stop
+         offset=".3"
+         stop-color="#ec7337"
+         id="stop153" />
+      <stop
+         offset=".6"
+         stop-color="#ec7f3b"
+         id="stop154" />
+      <stop
+         offset="1"
+         stop-color="#ed843d"
+         id="stop155" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient41"
+       x1="566.2"
+       y1="-168"
+       x2="610.5"
+       y2="-168"
+       gradientTransform="translate(795.3 503.4)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ed843d"
+         id="stop156" />
+      <stop
+         offset=".3"
+         stop-color="#ef9240"
+         id="stop157" />
+      <stop
+         offset=".6"
+         stop-color="#f19e43"
+         id="stop158" />
+      <stop
+         offset="1"
+         stop-color="#f2a345"
+         id="stop159" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient42"
+       x1="531"
+       y1="-167.8"
+       x2="566.3"
+       y2="-167.8"
+       gradientTransform="translate(795.5 503.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ed843d"
+         id="stop160" />
+      <stop
+         offset="1"
+         stop-color="#ed843d"
+         id="stop161" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient43"
+       x1="610.5"
+       y1="-146.8"
+       x2="680.9"
+       y2="-146.8"
+       gradientTransform="translate(795 461.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#f2a345"
+         id="stop162" />
+      <stop
+         offset=".7"
+         stop-color="#f5c14f"
+         id="stop163" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient44"
+       x1="610.5"
+       y1="-146.8"
+       x2="680.9"
+       y2="-146.8"
+       gradientTransform="translate(795.4 503)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#f2a345"
+         id="stop164" />
+      <stop
+         offset=".7"
+         stop-color="#f5c14f"
+         id="stop165" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient45"
+       x1="725.9"
+       y1="-167.9"
+       x2="797.8"
+       y2="-167.9"
+       gradientTransform="translate(792.2 503.4)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#fae259"
+         id="stop166" />
+      <stop
+         offset=".2"
+         stop-color="#f9e566"
+         id="stop167" />
+      <stop
+         offset=".4"
+         stop-color="#f8ec7b"
+         id="stop168" />
+      <stop
+         offset=".7"
+         stop-color="#f8ef87"
+         id="stop169" />
+      <stop
+         offset="1"
+         stop-color="#f8f18c"
+         id="stop170" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient46"
+       x1="475.3"
+       y1="-88.8"
+       x2="475.3"
+       y2="-218.7"
+       gradientTransform="translate(684.6 428.5)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ff9f00"
+         id="stop171" />
+      <stop
+         offset="1"
+         stop-color="blue"
+         id="stop172" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient47"
+       x1="453.2"
+       y1="21.1"
+       x2="453.2"
+       y2="-87.3"
+       gradientTransform="translate(706.6 428.8)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset=".5"
+         stop-color="#a450d9"
+         id="stop173" />
+      <stop
+         offset="1"
+         stop-color="blue"
+         id="stop174" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient48"
+       x1="2933.3"
+       y1="2360.5"
+       x2="2933.3"
+       y2="2609.6"
+       gradientTransform="translate(3811.2 3116.9) rotate(-90) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#379e48"
+         id="stop175" />
+      <stop
+         offset=".5"
+         stop-color="#23652d"
+         id="stop176" />
+      <stop
+         offset="1"
+         stop-color="#194921"
+         id="stop177" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient49"
+       x1="344.1"
+       y1="75"
+       x2="344.1"
+       y2="117.2"
+       gradientTransform="translate(539.6 590.3)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#e559a0"
+         id="stop178" />
+      <stop
+         offset="1"
+         stop-color="#d380b5"
+         id="stop179" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient50"
+       x1="442.8"
+       y1="-30.1"
+       x2="442.8"
+       y2="10.5"
+       gradientTransform="translate(540 591.6)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#d82f51"
+         id="stop180" />
+      <stop
+         offset="1"
+         stop-color="#e8347b"
+         id="stop181" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient51"
+       x1="1447.7"
+       y1="803.8"
+       x2="1487.3"
+       y2="803.8"
+       gradientTransform="translate(0 987.3) scale(1 -1)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#379e48"
+         id="stop182" />
+      <stop
+         offset=".5"
+         stop-color="#33be3a"
+         id="stop183" />
+      <stop
+         offset="1"
+         stop-color="#64f5a0"
+         id="stop184" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient52"
+       x1="1301.9"
+       y1="758.3"
+       x2="1308.8"
+       y2="758.3"
+       gradientTransform="translate(270 1092.8) scale(.9 -1.2)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#379e48"
+         id="stop185" />
+      <stop
+         offset="1"
+         stop-color="#38a745"
+         id="stop186" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient53"
+       x1="618.2"
+       y1="508.5"
+       x2="726.9"
+       y2="508.5"
+       gradientTransform="translate(0 196)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#ffdbec"
+         id="stop187" />
+      <stop
+         offset=".5"
+         stop-color="#f2bed0"
+         id="stop188" />
+      <stop
+         offset="1"
+         stop-color="#e8a2c8"
+         id="stop189" />
+    </linearGradient>
+  </defs>
+  <path
+     id="path46"
+     class="st67"
+     d="M808.5,704.5h-36.5v-21h-42.1v21.3l-116.3.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path461"
+     class="st67"
+     d="M808.5,704.7h-36.5v21h-42.1v-21.3l-117.5.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path341"
+     class="st66"
+     d="M1450.7,183.8v-21.4h50.4"
+     sodipodi:nodetypes="ccc" />
+  <path
+     id="path341-4"
+     class="st66"
+     d="M1450.7,183.1v21.4h50.4"
+     sodipodi:nodetypes="ccc" />
+  <path
+     id="path25"
+     class="st68"
+     d="M1004.1,180.8l145.8.2,7,2.2,89.9.3h204"
+     sodipodi:nodetypes="cccccc"
+     style="stroke:#000000" />
+  <sodipodi:namedview
+     id="namedview318"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:current-layer="text4"
+     inkscape:cx="499.73263"
+     inkscape:cy="426.58098"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:pagecheckerboard="0"
+     inkscape:pageopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:window-height="1285"
+     inkscape:window-maximized="0"
+     inkscape:window-width="2560"
+     inkscape:window-x="1997"
+     inkscape:window-y="25"
+     inkscape:zoom="1.2166506"
+     pagecolor="#ffffff" />
+  <polygon
+     id="polygon37-0"
+     class="st103"
+     points="358.3 142 358.3 150.6 368.4 160.8 378.6 150.6 378.6 142 368.4 152.2 358.3 142" />
+  <line
+     id="line37-6"
+     class="st1"
+     x1="368.4"
+     y1="122.6"
+     x2="368.4"
+     y2="155.8" />
+  <path
+     id="path45"
+     class="st68"
+     d="M1239.5,656.3h35.8v-20.7h64.7"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path45-3"
+     class="st68"
+     d="M1239.6,656.6h35.8v20.7h64.7"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path44"
+     class="st68"
+     d="M1324,335.6h40.2l.6,20.1,153.4.2v-20.5l86.7.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path43"
+     class="st68"
+     d="M1323.8,335.6h40.8v-21.1l153.4.2.2,20.7,85.7.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path42"
+     class="st68"
+     d="M1003.3,551.9l.2,47.2-44.5.2-.2,105.1-150.5-.2"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     id="path41"
+     class="st68"
+     d="M1003.5,552.5v46.5h-44.7v69.5l-149.8-.2-.2,36.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path40"
+     class="st68"
+     d="M1003.3,552.5l.4,46.5h-45l-.2,33.3-149.8-.4.2,72.2" />
+  <path
+     id="path39"
+     class="st68"
+     d="M1003.3,550.1l.2,49.1h-44.5v-40.8l-55.1-.7v20.8l-41.7-.4-.2-20.4-53.1.4-.2,145.6"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path38"
+     class="st68"
+     d="M1003.3,551.7v47.4h-44.5l.2-41h-54.8v-21.1l-42.1.2v20.6h-53.1v146.1"
+     sodipodi:nodetypes="cccccccccc" />
+  <path
+     id="path37"
+     class="st68"
+     d="M1198.3,445.5l.2,33.8,41.2-.2v177.7"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path36"
+     class="st68"
+     d="M1198.3,445.3l.4,76.1h40.8l.4,135.3"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path33"
+     class="st68"
+     d="M1198.7,445.3l-.4,118h41.2l.4,93.4" />
+  <path
+     id="path32"
+     class="st68"
+     d="M1198.5,445.5l.2,159.8h41l.2,50.9"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path31"
+     class="st68"
+     d="M1202.1,337h39c0-.1-.3,19.7-.3,19.7l82.5-.3.3-20.3"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     id="path30"
+     class="st68"
+     d="M1201.7,336.9h39c0,.1,0-22.5,0-22.5h82.7v21.3"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     id="path29-0"
+     class="st68"
+     d="M1202.1,336.8l38.9.2v60.8h82.4c0-.1.3-62.4.3-62.4"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     id="path29"
+     class="st68"
+     d="M1201.8,337h39.1v-63.7h82.4c0,.1.3,62.4.3,62.4"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     id="path28"
+     class="st68"
+     d="M1003.1,180.6l146.5.4v265.9l48.8-.3"
+     sodipodi:nodetypes="cccc"
+     style="fill:none;stroke:#000000" />
+  <path
+     id="path27"
+     class="st68"
+     d="M1003.4,180.6l146.4-.3-.3,156.8,51-.3"
+     sodipodi:nodetypes="cccc"
+     style="stroke:#000000" />
+  <path
+     id="path26"
+     class="st68"
+     d="M1003.4,180.9l-.3,367.9"
+     style="stroke:#000000" />
+  <path
+     id="path24"
+     class="st68"
+     d="M1003.5,180.8l134.3-.2v-109.1l-135,.2"
+     style="stroke:#000000" />
+  <path
+     id="path23"
+     class="st68"
+     d="M1003.2,180.9v-109.2"
+     style="fill:#000000;stroke:#000000" />
+  <path
+     id="path22"
+     class="st68"
+     d="M806.8,180.6h124.7c0,.1.2-21.2.2-21.2h41.6c0-.1.6,21.5.6,21.5h29.2" />
+  <path
+     id="path21"
+     class="st68"
+     d="M806.7,180.9h124.9l.4,20.2,20.5.2"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path20"
+     class="st68"
+     d="M592.4,401.9h-216v20.6l-59.6.2"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path19"
+     class="st68"
+     d="M592.2,402.3h-215.6l-.2-21.5-56.2-.2"
+     sodipodi:nodetypes="cccc" />
+  <path
+     id="path18"
+     class="st68"
+     d="M759,401.8h-47.7l.2,83.1-82.2-.3v-82.7l-36.8.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path17"
+     class="st68"
+     d="M759.6,401.9l-48.3.2.2,40.7h-82.4l-.2-40.8-35.9.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path16"
+     class="st68"
+     d="M759.4,402.1l-47.5.3-.3-83.9-82.4-.2-.2,83.9h-36.4"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path15"
+     class="st68"
+     d="M760.3,402.1l-48.8.5v-43.1h-82.5l-.2,42.8-36.5.2"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path12"
+     class="st68"
+     d="M759,402.2l-165.6-.3"
+     sodipodi:nodetypes="cc" />
+  <path
+     id="path10"
+     class="st68"
+     d="M807,180.8h54.3l.2,200-52.7.2.2,21.3-50.1.2"
+     sodipodi:nodetypes="cccccc"
+     style="stroke:#000000" />
+  <path
+     id="path11"
+     class="st68"
+     d="M807.2,181.1l124.5-.2.2-22.1,41.6.2.2,21.9h153.7v159.9l-16.4.4-.2,106.8-249.5-.2-13.9-24.3-38.7-.4-.2-20.8-49.3.4"
+     sodipodi:nodetypes="cccccccccccccc"
+     style="stroke:#000000" />
+  <path
+     id="path7"
+     class="st68"
+     d="M807.2,181.8l.2-109.9,195.6-.2"
+     sodipodi:nodetypes="ccc"
+     style="stroke:#000000" />
+  <path
+     id="path5"
+     class="st68"
+     d="M438.2,184.3h96.7l16.4-3.5,256.6-.2"
+     style="stroke:#000000" />
+  <path
+     id="path2"
+     class="st68"
+     d="M290.6,184.2h148.3"
+     sodipodi:nodetypes="cc" />
+  <path
+     id="path3"
+     class="st68"
+     d="M290.4,184.2h57.3v-20.5l41.9-.2.2,20.6h48.9"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path1"
+     class="st68"
+     d="M127,184.3l59.3.2v-21.4h41.9l.2,21.3h62.1"
+     sodipodi:nodetypes="cccccc" />
+  <path
+     id="path1-9"
+     class="st68"
+     d="M127,184.2l59.3.3v20.7h42v-20.6h61.6"
+     sodipodi:nodetypes="cccccc" />
+  <g
+     id="text1"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g191"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g190"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g189"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 688.1)"
+             id="text189"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan189"
+               style="fill:#e6e6e6">SVtorm (SV Calling)</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text2"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g193"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g192"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text190"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 708.4)"
+             id="text191"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan191"
+               style="fill:#e6e6e6">Copy Number Alterations</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text4"
+     class="st74">
+    <g
+       id="g195"
+       class="st74">
+      <g
+         id="g194"
+         class="st74">
+        <g
+           id="text192"
+           class="st74">
+          <text
+             class="st76"
+             transform="translate(77 572)"
+             id="text193"><tspan
+               x="0"
+               y="0"
+               id="tspan193">DNA</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g198"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g197"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g196"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st72"
+             transform="translate(183.3 572)"
+             id="text195"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan195"
+               style="fill:#e6e6e6">inn</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path4"
+     class="st61"
+     d="M1182.5,183.2h-33.2c-.4,0-.8,0-.8-.2v-7" />
+  <polygon
+     id="polygon5-1"
+     class="st104"
+     points="1176.7 193.1 1186.8 182.9 1176.7 172.8 1168 172.8 1178.2 182.9 1168 193.1 1176.7 193.1" />
+  <path
+     id="rect1-1"
+     class="st86"
+     d="M100.8,653.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <line
+     id="line6"
+     class="st11"
+     x1="983.7"
+     y1="71.9"
+     x2="981.7"
+     y2="71.9" />
+  <path
+     id="path6"
+     class="st60"
+     d="M977.7,71.9h-167.2c-1.9,0-3.4.9-3.4,2.1v108.3" />
+  <line
+     id="line7"
+     class="st11"
+     x1="807.1"
+     y1="184.4"
+     x2="807.1"
+     y2="186.4" />
+  <polygon
+     id="polygon7"
+     class="st78"
+     points="971.8 61.7 982 71.9 971.8 82.1 980.4 82.1 990.6 71.9 980.4 61.7 971.8 61.7" />
+  <path
+     id="rect308-7"
+     class="st85"
+     d="M101.3,718h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect301-3"
+     class="st87"
+     d="M100.8,589.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect305-8"
+     class="st91"
+     d="M100.8,697h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect306-4"
+     class="st90"
+     d="M100.8,610.9h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect307-8"
+     class="st88"
+     d="M100.8,632.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect3081"
+     class="st89"
+     d="M100.8,676.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <line
+     id="line8"
+     class="st11"
+     x1="1022.6"
+     y1="71.9"
+     x2="1024.6"
+     y2="71.9" />
+  <path
+     id="path8"
+     class="st57"
+     d="M1028.5,71.9h106.8c1.2,0,2.3.9,2.3,2.1v108.4" />
+  <line
+     id="line9"
+     class="st11"
+     x1="1137.6"
+     y1="184.4"
+     x2="1137.6"
+     y2="186.4" />
+  <polygon
+     id="polygon9"
+     class="st78"
+     points="1034.5 82.1 1024.3 71.9 1034.5 61.7 1025.9 61.7 1015.7 71.9 1025.9 82.1 1034.5 82.1" />
+  <path
+     id="path9-0"
+     class="st46"
+     d="M1127.4,337.9v-156.1,156.1Z" />
+  <path
+     id="path13-7"
+     class="st47"
+     d="M439.9,184h-210.5,210.5Z" />
+  <path
+     id="path51-9"
+     class="st64"
+     d="M442.6,184h57.2-57.2Z" />
+  <polygon
+     id="polygon88-0"
+     class="st101"
+     points="486.8 194.2 495.5 194.2 505.6 184 495.5 173.8 486.8 173.8 497 184 486.8 194.2" />
+  <path
+     id="path14-3"
+     class="st27"
+     d="M185.9,184.6h-67.8,67.8Z" />
+  <g
+     id="text30"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g201"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g200"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g199"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(198.4 133.1)"
+             id="text198"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan198"
+               style="fill:#e6e6e6">cat</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text194"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g202"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text197"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(191.4 147.5)"
+             id="text201"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan201"
+               style="fill:#e6e6e6">FastQ</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text34"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g205"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g204"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g203"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(187 228.3)"
+             id="text202"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan202"
+               style="fill:#e6e6e6">FastQC</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text196"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g206"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text200"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(186.2 242.7)"
+             id="text205"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan205"
+               style="fill:#e6e6e6">Original</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path34-2"
+     class="st26"
+     d="M187.2,163.6h40.5c.4,0,.8.3.8.8v40.5c0,.4-.3.8-.8.8h-40.5c-.4,0-.8-.3-.8-.8v-40.5c0-.4.3-.8.8-.8h0Z" />
+  <path
+     id="path35-8"
+     class="st25"
+     d="M347.5,184.5v-20.2c0-.2.3-.4.8-.4h40.5c.4,0,.8.2.8.4v20.2" />
+  <g
+     id="text40"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g209"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g208"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g207"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(337.8 103.9)"
+             id="text206"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan206"
+               style="fill:#e6e6e6">NumReads</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g211"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g210"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text203"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(338.3 118.3)"
+             id="text209"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan209"
+               style="fill:#e6e6e6">PreDefined</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text44"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text199"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g213"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g212"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(326.7 205.2)"
+             id="text211"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan211"
+               style="fill:#e6e6e6">Downsampling</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g216"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g215"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g214"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(349.6 219.6)"
+             id="text213"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan213"
+               style="fill:#e6e6e6">Counts</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text48"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g218"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g217"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text208"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(396.9 155.7)"
+             id="text216"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan216"
+               style="fill:#e6e6e6">Downsampling</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g220"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g219"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text210"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(423.4 170.1)"
+             id="text218"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan218"
+               style="fill:#e6e6e6">Seqtk</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <polyline
+     id="polyline48"
+     class="st11"
+     points="1003.4 94 1003.4 92 1003.4 94" />
+  <line
+     id="line48"
+     class="st52"
+     x1="1003.4"
+     y1="98"
+     x2="1003.4"
+     y2="175.9" />
+  <polyline
+     id="polyline49"
+     class="st11"
+     points="1003.4 177.9 1003.4 179.9 1003.4 177.9" />
+  <line
+     id="line49"
+     class="st58"
+     x1="1003.4"
+     y1="173.9"
+     x2="1003.4"
+     y2="96" />
+  <polygon
+     id="polygon49"
+     class="st78"
+     points="993.2 103.6 1003.4 93.4 1013.5 103.6 1013.5 94.9 1003.4 84.8 993.2 94.9 993.2 103.6" />
+  <path
+     id="path49-8"
+     class="st21"
+     d="M1119.1,180.8h-132.7,132.7Z" />
+  <path
+     id="path50-0"
+     class="st24"
+     d="M931.7,180.8h-383.8,383.8Z" />
+  <path
+     id="path51-3"
+     class="st23"
+     d="M861.3,180.7v93.7-93.7Z" />
+  <g
+     id="text60"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g223"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g222"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g221"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(885.2 205.5)"
+             id="text220"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan220"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text204"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g225"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g224"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(883.3 219.9)"
+             id="text223"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan223"
+               style="fill:#e6e6e6">Group</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g227"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g226"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text214"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(882.7 234.3)"
+             id="text225"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan225"
+               style="fill:#e6e6e6">ByUMI</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g230"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g229"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g228"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(896.7 248.7)"
+             id="text227"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan227"
+               style="fill:#e6e6e6">+</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text207"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g232"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g231"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(884.4 263.1)"
+             id="text230"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan230"
+               style="fill:#e6e6e6">MDup</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text66"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g234"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g233"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text219"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(937.9 226.3)"
+             id="text232"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan232"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g236"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g235"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text221"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(933.9 240.7)"
+             id="text234"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan234"
+               style="fill:#e6e6e6">Duplex</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g238"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g237"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text222"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(933.1 255.1)"
+             id="text236"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan236"
+               style="fill:#e6e6e6">Metrics</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text67"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g240"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g239"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text224"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(828.6 164.4)"
+             id="text238"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan238"
+               style="fill:#e6e6e6">SAMblaster</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text73"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text212"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g241"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text226"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1064.2 226)"
+             id="text240"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan240"
+               style="fill:#e6e6e6">Samtools</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g244"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g243"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g242"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1072.8 240.4)"
+             id="text241"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan241"
+               style="fill:#e6e6e6">collate</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g246"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g245"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text229"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1069.5 254.8)"
+             id="text244"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan244"
+               style="fill:#e6e6e6">bam2fq</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text79"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text215"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g247"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text231"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(937.9 113.2)"
+             id="text246"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan246"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g250"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g249"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g248"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(933.9 127.6)"
+             id="text247"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan247"
+               style="fill:#e6e6e6">Duplex</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text217"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g252"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g251"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(939.3 142)"
+             id="text250"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan250"
+               style="fill:#e6e6e6">Cons</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text81"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g254"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g253"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text235"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(954 336.9)"
+             id="text252"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan252"
+               style="fill:#e6e6e6">Du</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g256"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g255"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text237"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(969.5 336.9)"
+             id="text254"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan254"
+               style="fill:#e6e6e6">plex</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text85"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g258"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g257"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text239"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1074.6 278.4)"
+             id="text256"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan256"
+               style="fill:#e6e6e6">FastQC</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g261"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g260"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g259"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1082.2 292.8)"
+             id="text258"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan258"
+               style="fill:#e6e6e6">Final</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text86"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g263"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g262"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text242"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(804.6 231.9)"
+             id="text261"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan261"
+               style="fill:#e6e6e6">Spades</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text87"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g266"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g265"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g264"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(756 279.7)"
+             id="text263"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan263"
+               style="fill:#e6e6e6">FilterContigs.py</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g88">
+    <polyline
+       id="polyline87"
+       class="st11"
+       points="861.3 322.1 861.3 324.1 861.3 322.1" />
+    <polyline
+       id="polyline88"
+       class="st11"
+       points="861.3 284.3 861.3 282.3 861.3 284.3" />
+    <path
+       id="path51"
+       class="st65"
+       d="M861.3,268.2v57.2-57.2Z" />
+    <polygon
+       id="polygon88"
+       class="st98"
+       points="871.5 312.5 861.3 322.7 851.2 312.5 851.2 321.1 861.3 331.3 871.5 321.1 871.5 312.5" />
+  </g>
+  <polyline
+     id="polyline87-5"
+     class="st11"
+     points="1003.2 509.2 1003.2 511.2 1003.2 509.2" />
+  <polygon
+     id="polygon88-2"
+     class="st102"
+     points="1003.2 518.4 1013.3 508.2 1013.3 499.6 1003.2 509.8 993 499.6 993 508.2 1003.2 518.4" />
+  <path
+     id="path51-4"
+     class="st55"
+     d="M1003.1,237.7v269.1V237.7Z" />
+  <g
+     id="text91"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g268"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g267"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text245"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(566.5 150)"
+             id="text266"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan266"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g271"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g270"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g269"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(557.9 164.4)"
+             id="text268"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan268"
+               style="fill:#e6e6e6">FQ2BAM</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text97"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g273"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g272"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text248"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(703.1 135.6)"
+             id="text271"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan271"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g276"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g275"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g274"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(697.8 150)"
+             id="text273"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan273"
+               style="fill:#e6e6e6">Correct</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text228"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g278"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g277"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(704.8 164.4)"
+             id="text276"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan276"
+               style="fill:#e6e6e6">UMIs</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect104"
+     class="st51"
+     d="M861.3,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="text108"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g280"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g279"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text253"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(652.3 205.5)"
+             id="text278"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan278"
+               style="fill:#e6e6e6">AlignBAM</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g282"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g281"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text255"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(668.4 219.9)"
+             id="text280"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan280"
+               style="fill:#e6e6e6">Raw</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect108"
+     class="st51"
+     d="M900,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="path108-0"
+     class="st22"
+     d="M952.6,201.1h-20.2c-.4,0-.8-.3-.8-.8v-40.5c0-.4.3-.8.8-.8h40.5c.4,0,.8.3.8.8v7.5" />
+  <path
+     id="rect110"
+     class="st51"
+     d="M952.6,152.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="text120"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g285"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g284"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g283"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(728.7 205.5)"
+             id="text282"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan282"
+               style="fill:#e6e6e6">SAMtools</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g288"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g287"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g286"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(744.9 219.9)"
+             id="text285"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan285"
+               style="fill:#e6e6e6">sort</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text233"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g289"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text260"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(740.8 234.3)"
+             id="text288"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan288"
+               style="fill:#e6e6e6">index</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text124"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g292"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g291"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g290"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1022 203.5) scale(.9 1)"
+             id="text289"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan289"
+               style="fill:#e6e6e6">AlignBAM</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g295"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g294"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g293"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1035.8 217.9) scale(.9 1)"
+             id="text292"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan292"
+               style="fill:#e6e6e6">Final</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g131">
+    <rect
+       id="rect130"
+       class="st80"
+       x="954"
+       y="269.8"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect131"
+       class="st83"
+       x="951.6"
+       y="288.8"
+       width="42.9"
+       height="19" />
+    <g
+       id="text131"
+       class="st74">
+      <g
+         id="g297"
+         class="st74">
+        <g
+           id="g296"
+           class="st74">
+          <g
+             id="text265"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(961.4 302)"
+               id="text295"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan295">bam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g133">
+    <rect
+       id="rect132"
+       class="st80"
+       x="1014.7"
+       y="269.8"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect133"
+       class="st83"
+       x="1012.3"
+       y="288.8"
+       width="42.9"
+       height="19" />
+    <g
+       id="text133"
+       class="st74">
+      <g
+         id="g300"
+         class="st74">
+        <g
+           id="g299"
+           class="st74">
+          <g
+             id="g298"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1022 302)"
+               id="text297"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan297">bam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text135"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g303"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g302"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g301"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1011.9 336.9)"
+             id="text300"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan300"
+               style="fill:#e6e6e6">Sim</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g305"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g304"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text269"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1032.9 336.9)"
+             id="text303"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan303"
+               style="fill:#e6e6e6">plex</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text137"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g308"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g307"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g306"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(983.5 38.6)"
+             id="text305"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan305"
+               style="fill:#e6e6e6">Collect</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g311"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g310"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g309"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(982 53)"
+             id="text308"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan308"
+               style="fill:#e6e6e6">Metrics</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path138"
+     class="st11"
+     d="M994.6,180.8h-20.2c-.4,0-.8-.1-.8-.2v-13.2" />
+  <path
+     id="path144"
+     class="st59"
+     d="M335.3,422.7h40.5c.4,0,.8-.3.8-.8v-40.5c0-.4-.3-.8-.8-.8h-40.5" />
+  <rect
+     id="rect4-5"
+     class="st97"
+     x="376.3"
+     y="399.1"
+     width="430.7"
+     height="6" />
+  <path
+     id="path186-6-3"
+     class="st16"
+     d="M711.4,359.8v-40.5c0-.4-.7-.8-1.5-.8h-79.5c-.8,0-1.5.3-1.5.8v40.5" />
+  <path
+     id="path151"
+     class="st45"
+     d="M850,381.1h-40.5c-.4,0-.8.3-.8.8v40.5c0,.4.3.8.8.8h40.5" />
+  <g
+     id="text155"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g313"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g312"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text274"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(524.9 371.9)"
+             id="text311"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan311"
+               style="fill:#e6e6e6">Survivor</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text243"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g315"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g314"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(532.3 386.3)"
+             id="text313"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan313"
+               style="fill:#e6e6e6">Merge</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text167"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g317"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g316"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text277"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(745.6 350.8)"
+             id="text315"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan315"
+               style="fill:#e6e6e6">BWA</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g319"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g318"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text279"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(742.2 365.1)"
+             id="text317"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan317"
+               style="fill:#e6e6e6">mem2</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text172"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g321"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g320"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text281"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(653.8 342.5)"
+             id="text319"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan319"
+               style="fill:#e6e6e6">Tiddit</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text173"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g324"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g323"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g322"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(656 300.9)"
+             id="text321"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan321"
+               style="fill:#e6e6e6">Delly</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text174"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g326"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g325"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text284"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(652.5 384.1)"
+             id="text324"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan324"
+               style="fill:#e6e6e6">Gridss</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text175"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text249"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g327"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text286"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(652.9 467.3)"
+             id="text326"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan326"
+               style="fill:#e6e6e6">Svaba</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text176"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g329"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g328"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text287"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(652.4 425.7)"
+             id="text327"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan327"
+               style="fill:#e6e6e6">Manta</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text180"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text251"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g331"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g330"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(488.3 430.2)"
+             id="text329"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan329"
+               style="fill:#e6e6e6">ReCall</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g333"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g332"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text290"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(489.4 444.6)"
+             id="text331"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan331"
+               style="fill:#e6e6e6">Gridss</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text184"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g336"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g335"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g334"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(438.7 371.9)"
+             id="text333"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan333"
+               style="fill:#e6e6e6">Survivor</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g338"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g337"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text294"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(441 386.3)"
+             id="text336"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan336"
+               style="fill:#e6e6e6">Filtering</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text185"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g341"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g340"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g339"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(350.6 364.3)"
+             id="text338"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan338"
+               style="fill:#e6e6e6">DrawSVs</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path186-6-4"
+     class="st20"
+     d="M711.5,401v-40.5c0-.4-.7-.8-1.5-.8h-79.5c-.8,0-1.5.3-1.5.8v40.5" />
+  <path
+     id="path186-6"
+     class="st19"
+     d="M711.3,443.4v-40.5c0-.4-.7-.8-1.5-.8h-79.5c-.8,0-1.5.3-1.5.8v40.5"
+     inkscape:label="path186-6" />
+  <path
+     id="path186-6-9"
+     class="st15"
+     d="M711.5,443.6v40.5c0,.4-.7.8-1.5.8h-79.5c-.8,0-1.5-.3-1.5-.8v-40.5" />
+  <path
+     id="path186-6-8"
+     class="st18"
+     d="M711.4,483.9v-40.5c0-.4-.7-.8-1.5-.8h-79.5c-.8,0-1.5.3-1.5.8v40.5" />
+  <g
+     id="g346"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g344"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g343"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g342"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(562.3 430.2)"
+             id="text341"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan341"
+               style="fill:#e6e6e6">Standarize</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text257"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g345"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text299"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(579.9 444.6)"
+             id="text344"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan344"
+               style="fill:#e6e6e6">Calls</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g351"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g348"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g347"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text301"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(393.5 430.2)"
+             id="text346"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan346"
+               style="fill:#e6e6e6">Annotate</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text259"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g350"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g349"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(416.8 444.6)"
+             id="text348"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan348"
+               style="fill:#e6e6e6">?</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path201-5"
+     class="st48"
+     d="M900.4,446.9h205.8c2.3,0,4.1-.8,4.1-1.8v-89.8" />
+  <polygon
+     id="polygon202-7"
+     class="st98"
+     points="908.6 457 898.4 446.9 908.6 436.7 900 436.7 889.8 446.9 900 457 908.6 457" />
+  <path
+     id="path202-4"
+     class="st49"
+     d="M808.8,668.4v-39,39Z" />
+  <path
+     id="path203-0"
+     class="st56"
+     d="M904.2,557.8h53.4c.7,0,1.2.3,1.2.7v38.1" />
+  <path
+     id="path204"
+     class="st53"
+     d="M753.6,652.5" />
+  <g
+     id="g355"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g354"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g353"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g352"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(853.6 690.9)"
+             id="text351"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan351"
+               style="fill:#e6e6e6">FreeBayes</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g359"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g358"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g357"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g356"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(931 540.8)"
+             id="text355"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan355"
+               style="fill:#e6e6e6">Mutect2</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path205-3"
+     class="st13"
+     d="M903.5,536.9h-40.5c-.4,0-.8.3-.8.8v40.5c0,.4.3.8.8.8h40.5c.4,0,.8-.3.8-.8v-40.5c0-.4-.3-.8-.8-.8h0Z" />
+  <path
+     id="path205-3-3"
+     class="st17"
+     d="M771.2,683.5h-40.5c-.4,0-.8.3-.8.8v40.5c0,.4.3.8.8.8h40.5c.4,0,.8-.3.8-.8v-40.5c0-.4-.3-.8-.8-.8Z"
+     inkscape:transform-center-x="0.24256996"
+     inkscape:transform-center-y="0.72770987" />
+  <g
+     id="g364"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text262"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g361"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g360"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(863.3 602.8)"
+             id="text359"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan359"
+               style="fill:#e6e6e6">GATK4</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g363"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g362"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text312"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(867.4 617.1)"
+             id="text361"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan361"
+               style="fill:#e6e6e6">GPUS</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g369"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text264"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g366"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g365"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(863.3 500.7)"
+             id="text364"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan364"
+               style="fill:#e6e6e6">GATK4</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g368"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g367"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text316"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(866.7 515.1)"
+             id="text366"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan366"
+               style="fill:#e6e6e6">LROM</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g375"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g372"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g371"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g370"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(788.9 529.4)"
+             id="text369"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan369"
+               style="fill:#e6e6e6">GATK4</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text267"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g374"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g373"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(778.5 543.8)"
+             id="text372"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan372"
+               style="fill:#e6e6e6">CalContam</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path2032"
+     class="st14"
+     d="M861.6,557.7h-51.9c-.6,0-1.2.3-1.2.7v38.1" />
+  <g
+     id="g380"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g377"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g376"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text323"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(736 599)"
+             id="text375"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan375"
+               style="fill:#e6e6e6">GATK4</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g379"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g378"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text325"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(719.3 613.4)"
+             id="text377"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan377"
+               style="fill:#e6e6e6">FilterMutect2</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path2702"
+     class="st38"
+     d="M808.7,593.2v38.5c0,.4,1.2.7,2.7.7h144.6c1.5,0,2.7-.3,2.7-.7v-38.5" />
+  <g
+     id="g385"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text270"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g381"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text328"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(724.9 649.8)"
+             id="text380"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan380"
+               style="fill:#e6e6e6">VCF2TSV</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g384"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g383"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g382"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(713.1 664.2)"
+             id="text381"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan381"
+               style="fill:#e6e6e6">Merge/Report</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g387"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text272"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g386"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text332"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(863.2 726.2)"
+             id="text385"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan385"
+               style="fill:#e6e6e6">LoFreq</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g393"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g389"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g388"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text334"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(988.7 625.1)"
+             id="text387"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan387"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g392"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g391"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g390"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(980.9 639.5)"
+             id="text389"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan389"
+               style="fill:#e6e6e6">ClipBAM</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g395"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text275"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g394"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text339"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(848.2 654.2)"
+             id="text393"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan393"
+               style="fill:#e6e6e6">VarDictJava</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path2703"
+     class="st37"
+     d="M808.7,629.2v38.5c0,.4,1.2.7,2.7.7h144.6c1.5,0,2.7-.3,2.7-.7v-38.5" />
+  <path
+     id="path236-7"
+     class="st10"
+     d="M1239,656.4h35.8-35.8Z" />
+  <rect
+     id="rect9-9"
+     class="st93"
+     x="1236.6"
+     y="478"
+     width="6"
+     height="177.2" />
+  <g
+     id="g399"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g398"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g397"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g396"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1251.3 607.8)"
+             id="text395"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan395"
+               style="fill:#e6e6e6">Sequenza</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g403"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g402"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g401"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g400"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1251 481.6)"
+             id="text399"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan399"
+               style="fill:#e6e6e6">Controlfreec</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g409"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g405"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g404"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text347"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1175.6 413.8)"
+             id="text403"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan403"
+               style="fill:#e6e6e6">bcftools</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g408"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g407"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g406"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1176.6 428.2)"
+             id="text405"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan405"
+               style="fill:#e6e6e6">mpileup</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g413"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g412"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g411"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g410"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1251.3 523.7)"
+             id="text409"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan409"
+               style="fill:#e6e6e6">CNVkit</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path244"
+     class="st2"
+     d="M1198.3,480.1c0-.4.3-.8.8-.8h40.5" />
+  <line
+     id="line244"
+     class="st63"
+     x1="1239.6"
+     y1="521.4"
+     x2="1199.1"
+     y2="521.4" />
+  <line
+     id="line245"
+     class="st4"
+     x1="1199.1"
+     y1="521.4"
+     x2="1239.6"
+     y2="521.4" />
+  <line
+     id="line246"
+     class="st63"
+     x1="1239.6"
+     y1="563.4"
+     x2="1199.1"
+     y2="563.4" />
+  <line
+     id="line247"
+     class="st50"
+     x1="1199.1"
+     y1="563.4"
+     x2="1239.6"
+     y2="563.4" />
+  <path
+     id="path247"
+     class="st7"
+     d="M1239.6,605.4h-40.5c-.4,0-.8-.3-.8-.8" />
+  <rect
+     id="rect10-8"
+     class="st94"
+     x="1195.3"
+     y="445.7"
+     width="6"
+     height="158.9" />
+  <path
+     id="path252-6"
+     class="st54"
+     d="M1324.7,677.6h-48.1c-.5,0-.9-.3-.9-.8v-40.1c0-.4.4-.8.9-.8h48.1" />
+  <g
+     id="g416"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g415"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g414"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text353"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1250.8 565.8)"
+             id="text413"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan413"
+               style="fill:#e6e6e6">FACETS</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g420"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g418"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g417"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text356"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1214.6 681.3)"
+             id="text416"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan416"
+               style="fill:#e6e6e6">BCFtools</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text283"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g419"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text358"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(1222.6 695.7)"
+             id="text418"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan418"
+               style="fill:#e6e6e6">Merge</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path265-9"
+     class="st6"
+     d="M1241.1,337h-42.5,42.5Z" />
+  <path
+     id="path267-6-4"
+     class="st42"
+     d="M1476.1,356.3h41.2c.4,0,.8-.2.8-.4v-20.6" />
+  <g
+     id="g423"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g422"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g421"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text360"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1259.4 296.6)"
+             id="text420"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan420"
+               style="fill:#e6e6e6">HLA-HD</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path267-6"
+     class="st43"
+     d="M1476.1,314.6h41.2c.4,0,.8.2.8.4v20.6" />
+  <g
+     id="g426"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g425"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g424"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text363"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1381.7 296.6)"
+             id="text423"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan423"
+               style="fill:#e6e6e6">LOHHLA</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g429"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g428"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g427"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text365"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1458.7 296.6)"
+             id="text426"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan426"
+               style="fill:#e6e6e6">MHC-I</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g432"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g431"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g430"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text368"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1456.9 382.8)"
+             id="text429"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan429"
+               style="fill:#e6e6e6">MHC-II</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path270-7"
+     class="st40"
+     d="M1240.8,372.8v24.4c0,.2.7.5,1.5.5h79.5c.8,0,1.5-.2,1.5-.5v-24.4" />
+  <path
+     id="path270-7-3"
+     class="st44"
+     d="M1240.8,330.9v24.4c0,.2.7.5,1.5.5h79.5c.8,0,1.5-.2,1.5-.5v-24.4" />
+  <path
+     id="path270-7-8"
+     class="st39"
+     d="M1240.8,380.8v-24.4c0-.2.7-.5,1.5-.5h79.5c.8,0,1.5.2,1.5.5v24.4" />
+  <path
+     id="path270-7-8-5"
+     class="st41"
+     d="M1240.8,339.1v-24.4c0-.2.7-.5,1.5-.5h79.5c.8,0,1.5.2,1.5.5v24.4" />
+  <path
+     id="path270-7-8-5-7"
+     class="st32"
+     d="M1240.8,314.9v-40.1c0-.4.7-.8,1.5-.8h79.4c.8,0,1.5.3,1.5.8v40.1" />
+  <path
+     id="path274-1"
+     class="st33"
+     d="M1405.8,356.5h-40.5c-.4,0-.8-.3-.8-.8v-40.5c0-.4.3-.8.8-.8h40.5" />
+  <path
+     id="path275-7"
+     class="st30"
+     d="M1361.8,335.5h-35.3,35.3Z" />
+  <path
+     id="path283-7"
+     class="st35"
+     d="M1476,314.5h-70.4,70.4Z" />
+  <path
+     id="path283-7-4"
+     class="st34"
+     d="M1476.3,356.2h-70.4,70.4Z" />
+  <g
+     id="g435"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g434"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g433"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text371"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1256.9 380.3)"
+             id="text432"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan432"
+               style="fill:#e6e6e6">Optitype</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g438"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g437"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g436"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text373"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1260.4 338.4)"
+             id="text435"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan435"
+               style="fill:#e6e6e6">HLA*LA</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g441"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g440"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g439"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text376"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1251.9 422.2)"
+             id="text438"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan438"
+               style="fill:#e6e6e6">Polysolver</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g443"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text291"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g442"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text379"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1372.9 382.8)"
+             id="text441"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan441"
+               style="fill:#e6e6e6">LOH-HLA-II</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g448"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g446"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g445"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g444"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1187.5 305.2)"
+             id="text443"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan443"
+               style="fill:#e6e6e6">Chr6</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text293"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g447"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text383"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1185.4 319.6)"
+             id="text446"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan446"
+               style="fill:#e6e6e6">Fastq</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path268-2"
+     class="st31"
+     d="M1590,335.5h-71.9,71.9Z" />
+  <g
+     id="g452"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g451"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g450"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g449"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(1535.4 320.4)"
+             id="text448"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan448"
+               style="fill:#e6e6e6">Noah</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path291-3"
+     class="st5"
+     d="M1173.2,336.7h-22.8c-.4,0-.7-1.1-.7-2.4v-124.5" />
+  <polygon
+     id="polygon292"
+     class="st99"
+     points="1167 326.7 1177.2 336.9 1167 347 1175.7 347 1185.8 336.9 1175.7 326.7 1167 326.7" />
+  <g
+     id="g453">
+    <path
+       id="path293-0"
+       class="st0"
+       d="M1173.1,446.9h-22.8c-.4,0-.7-.9-.7-2v-103.4" />
+    <polygon
+       id="polygon294"
+       class="st100"
+       points="1167 436.6 1177.2 446.8 1167 456.9 1175.7 456.9 1185.8 446.8 1175.7 436.6 1167 436.6" />
+  </g>
+  <rect
+     id="rect4"
+     class="st95"
+     x="1201.6"
+     y="180.6"
+     width="249.1"
+     height="6" />
+  <g
+     id="g457"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g456"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g455"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g454"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1174.2 157)"
+             id="text453"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan453"
+               style="fill:#e6e6e6">TelHunter</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g459"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text296"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g458"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text392"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1221.4 214.4)"
+             id="text457"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan457"
+               style="fill:#e6e6e6">TelFusDect</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g462"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g461"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g460"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text394"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1275.6 157)"
+             id="text459"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan459"
+               style="fill:#e6e6e6">TelReport</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g464"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text298"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g463"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text397"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 622.5)"
+             id="text462"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan462"
+               style="fill:#e6e6e6">UMI Processing</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text302"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g467"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g466"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g465"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 600.6)"
+             id="text464"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan464"
+               style="fill:#e6e6e6">Preprocessing</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g470"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g469"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g468"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text401"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 729.9)"
+             id="text467"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan467"
+               style="fill:#e6e6e6">HLAinn (ImmunOncology)</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g473"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text304"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g472"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g471"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 665.6)"
+             id="text470"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan470"
+               style="fill:#e6e6e6">Tempus (Telomers)</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g477"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g476"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g475"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g474"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(120.8 644.2)"
+             id="text473"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan473"
+               style="fill:#e6e6e6">Mutation Calling</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path2701"
+     class="st36"
+     d="M808.7,665.3v38.5c0,.4,1.2.7,2.7.7h144.6c1.5,0,2.7-.3,2.7-.7v-38.5" />
+  <path
+     id="path312-0"
+     class="st62"
+     d="M775,704.4h35.4-35.4Z" />
+  <path
+     id="path2031"
+     class="st28"
+     d="M959,599.1h43.5c.5,0,1-.3,1-.7v-36.9" />
+  <g
+     id="text318"
+     class="st74">
+    <g
+       id="text306"
+       class="st74">
+      <g
+         id="g478"
+         class="st74">
+        <g
+           id="text408"
+           class="st74">
+          <text
+             class="st70"
+             transform="translate(267 570.2)"
+             id="text477"><tspan
+               x="0"
+               y="0"
+               id="tspan477">[de</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text307"
+       class="st74">
+      <g
+         id="g480"
+         class="st74">
+        <g
+           id="g479"
+           class="st74">
+          <text
+             class="st73"
+             transform="translate(295.5 570.2)"
+             id="text478"><tspan
+               x="0"
+               y="0"
+               id="tspan478">ɪ</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g482"
+       class="st74">
+      <g
+         id="g481"
+         class="st74">
+        <g
+           id="text410"
+           class="st74">
+          <text
+             class="st70"
+             transform="translate(303.1 570.2)"
+             id="text480"><tspan
+               x="0"
+               y="0"
+               id="tspan480">n]</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle
+     id="circle1"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="0s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1"
+       keyTimes="0;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path1" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle1-9"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="0s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1"
+       keyTimes="0;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path1-9" />
+    </animateMotion>
+  </circle>
+  <g
+     id="g23">
+    <rect
+       id="rect14"
+       class="st80"
+       x="97.9"
+       y="155.7"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect15"
+       class="st79"
+       x="96.4"
+       y="172.1"
+       width="42.9"
+       height="19.1" />
+    <rect
+       id="rect16"
+       class="st80"
+       x="100.6"
+       y="158.6"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect17"
+       class="st84"
+       x="98.9"
+       y="174.6"
+       width="42.9"
+       height="19.1" />
+    <rect
+       id="rect18"
+       class="st80"
+       x="103.2"
+       y="161.9"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect19"
+       class="st81"
+       x="101.5"
+       y="177"
+       width="42.9"
+       height="19.1" />
+    <g
+       id="g22">
+      <rect
+         id="rect20"
+         class="st80"
+         x="106.3"
+         y="165.2"
+         width="38.1"
+         height="47.6" />
+      <g
+         id="g21">
+        <rect
+           id="rect21"
+           class="st82"
+           x="104"
+           y="179.5"
+           width="42.9"
+           height="19.1" />
+        <g
+           id="text21"
+           class="st74">
+          <g
+             id="text309"
+             class="st74">
+            <g
+               id="g483"
+               class="st74">
+              <g
+                 id="text412"
+                 class="st74">
+                <text
+                   class="st75"
+                   transform="translate(113.9 192.5)"
+                   id="text482"><tspan
+                     x="0"
+                     y="0"
+                     id="tspan482">fastq</tspan></text>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect35"
+     class="st51"
+     d="M207.2,155.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect34"
+     class="st51"
+     d="M207.2,197.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <circle
+     id="circle2"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="3s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1"
+       keyTimes="0;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path2" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle3"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="3s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1"
+       keyTimes="0;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path3" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle5"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="6s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1"
+       keyTimes="0;0.75;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path5" />
+    </animateMotion>
+  </circle>
+  <g
+     id="g27">
+    <g
+       id="g26">
+      <rect
+         id="rect23"
+         class="st80"
+         x="267.9"
+         y="159.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect24"
+         class="st81"
+         x="265.5"
+         y="178.3"
+         width="42.9"
+         height="19.1" />
+      <rect
+         id="rect25"
+         class="st80"
+         x="270.3"
+         y="161.6"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect26"
+         class="st82"
+         x="267.9"
+         y="180.7"
+         width="42.9"
+         height="19.1" />
+    </g>
+    <g
+       id="text26"
+       class="st74">
+      <g
+         id="text310"
+         class="st74">
+        <g
+           id="g485"
+           class="st74">
+          <g
+             id="g484"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(277.8 193.7)"
+               id="text483"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan483">fastq</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect36"
+     class="st51"
+     d="M368.5,176.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect44"
+     class="st51"
+     d="M438.7,176.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="g103">
+    <g
+       id="g102">
+      <rect
+         id="rect99"
+         class="st80"
+         x="512.4"
+         y="155.8"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect100"
+         class="st81"
+         x="510"
+         y="174.8"
+         width="42.9"
+         height="19.1" />
+      <rect
+         id="rect101"
+         class="st80"
+         x="514.8"
+         y="158.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect102"
+         class="st82"
+         x="512.4"
+         y="177.2"
+         width="42.9"
+         height="19.1" />
+    </g>
+    <g
+       id="text102"
+       class="st74">
+      <g
+         id="g487"
+         class="st74">
+        <g
+           id="g486"
+           class="st74">
+          <g
+             id="text414"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(522.3 190.3)"
+               id="text485"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan485">fastq</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect111"
+     class="st51"
+     d="M581.3,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="g98">
+    <rect
+       id="rect97"
+       class="st80"
+       x="609.7"
+       y="157"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect98"
+       class="st83"
+       x="607.3"
+       y="176"
+       width="42.9"
+       height="19.1" />
+    <g
+       id="text98"
+       class="st74">
+      <g
+         id="g490"
+         class="st74">
+        <g
+           id="g489"
+           class="st74">
+          <g
+             id="g488"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(613.7 189.2)"
+               id="text487"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan487">ubam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect105"
+     class="st51"
+     d="M680.3,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect112"
+     class="st51"
+     d="M717.9,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect103"
+     class="st51"
+     d="M755.5,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <circle
+     id="circle7"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="11s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path7" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle10"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="11s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.75;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path10" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle11"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="11s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.75;0.75;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path11" />
+    </animateMotion>
+  </circle>
+  <g
+     id="g160">
+    <g
+       id="g159">
+      <rect
+         id="rect156"
+         class="st80"
+         x="841.2"
+         y="337.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect157"
+         class="st81"
+         x="838.8"
+         y="356.3"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect158"
+         class="st80"
+         x="843.6"
+         y="339.6"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect159"
+         class="st82"
+         x="841.2"
+         y="358.7"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="text159"
+       class="st74">
+      <g
+         id="g493"
+         class="st74">
+        <g
+           id="g492"
+           class="st74">
+          <g
+             id="g491"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(851.1 371.7)"
+               id="text490"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan490">fastq</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect88"
+     class="st51"
+     d="M853.8,275.2h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5Z" />
+  <path
+     id="rect86"
+     class="st51"
+     d="M861.3,220.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect201"
+     class="st51"
+     d="M1134.8,236.6h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5Z" />
+  <path
+     id="rect200"
+     class="st51"
+     d="M1134.8,275.9h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5Z" />
+  <g
+     id="g13">
+    <g
+       id="g12">
+      <rect
+         id="rect9"
+         class="st80"
+         x="1096.1"
+         y="305.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect10"
+         class="st81"
+         x="1093.7"
+         y="324.3"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect11"
+         class="st80"
+         x="1098.4"
+         y="307.6"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect12"
+         class="st82"
+         x="1096.1"
+         y="326.7"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="text12"
+       class="st74">
+      <g
+         id="text314"
+         class="st74">
+        <g
+           id="g494"
+           class="st74">
+          <g
+             id="text419"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1105.9 339.7)"
+               id="text493"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan493">fastq</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g164">
+    <g
+       id="g163">
+      <rect
+         id="rect160"
+         class="st80"
+         x="841.2"
+         y="416.7"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect161"
+         class="st81"
+         x="838.8"
+         y="435.7"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect162"
+         class="st80"
+         x="843.6"
+         y="419.1"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect163"
+         class="st82"
+         x="841.2"
+         y="438.1"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="text163"
+       class="st74">
+      <g
+         id="g497"
+         class="st74">
+        <g
+           id="g496"
+           class="st74">
+          <g
+             id="g495"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(851.1 451.2)"
+               id="text494"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan494">fastq</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle
+     id="circle12"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15.2s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path12" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle15"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15.2s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path15" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle16"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15.2s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path16" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle17"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15.2s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path17" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle18"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15.2s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path18" />
+    </animateMotion>
+  </circle>
+  <g
+     id="g171">
+    <g
+       id="g170">
+      <rect
+         id="rect167"
+         class="st80"
+         x="738.2"
+         y="377.1"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect168"
+         class="st81"
+         x="735.8"
+         y="396.2"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect169"
+         class="st80"
+         x="740.5"
+         y="379.5"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect170"
+         class="st82"
+         x="738.2"
+         y="398.5"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="text170"
+       class="st74">
+      <g
+         id="g499"
+         class="st74">
+        <g
+           id="g498"
+           class="st74">
+          <g
+             id="text422"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(748 411.6)"
+               id="text497"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan497">bam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect172"
+     class="st51"
+     d="M670.2,492.2h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect187"
+     class="st51"
+     d="M670.2,450.2h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect186"
+     class="st51"
+     d="M670.2,409.6h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect185"
+     class="st51"
+     d="M670.2,368h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect171"
+     class="st51"
+     d="M670.2,326.1h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <circle
+     id="circle19"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="18s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path19" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle20"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="18s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.5;0.5;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path20" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect193"
+     class="st51"
+     d="M592.5,409.8h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect155"
+     class="st51"
+     d="M549.3,409.8h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect151"
+     class="st51"
+     d="M506.1,409.8h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0Z" />
+  <path
+     id="rect152"
+     class="st51"
+     d="M462.9,409.8h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect196"
+     class="st51"
+     d="M419.7,409.1h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect188"
+     class="st51"
+     d="M376.1,389.9h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <g
+     id="g504">
+    <g
+       id="g500">
+      <rect
+         id="rect189"
+         class="st80"
+         x="295.7"
+         y="337.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect190"
+         class="st81"
+         x="293.3"
+         y="356.3"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect191"
+         class="st80"
+         x="298.1"
+         y="339.6"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect192"
+         class="st82"
+         x="295.7"
+         y="358.7"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="g503"
+       class="st74">
+      <g
+         id="g502"
+         class="st74">
+        <g
+           id="g501"
+           class="st74">
+          <g
+             id="text425"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(310.6 371.7)"
+               id="text500"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan500">pdf</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g148">
+    <g
+       id="g147">
+      <rect
+         id="rect144"
+         class="st80"
+         x="295.7"
+         y="416.7"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect145"
+         class="st81"
+         x="293.3"
+         y="435.7"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect146"
+         class="st80"
+         x="298.1"
+         y="419.1"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect147"
+         class="st82"
+         x="295.7"
+         y="438.1"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="text147"
+       class="st74">
+      <g
+         id="g506"
+         class="st74">
+        <g
+           id="g505"
+           class="st74">
+          <g
+             id="text428"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(310.6 451.2)"
+               id="text504"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan504">vcf</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle
+     id="circle21"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="11s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path21" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle22"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="11s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;0.5;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path22" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle23"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="20s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.25;1;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path23" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect109"
+     class="st51"
+     d="M952.6,194.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <circle
+     id="circle24"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="12s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.25;1;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path24" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle25"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="12s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.5;1;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path25" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle26"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="12s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.25;1;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path26" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle27"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="12s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.25;1;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path27" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle28"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="12s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1;1"
+       keyTimes="0;0.25;1;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path28" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect124"
+     class="st51"
+     d="M1047.5,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="g144"
+     style="fill:#e6e6e6">
+    <g
+       id="text144"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="text320"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g507"
+           class="st74"
+           style="fill:#e6e6e6">
+          <g
+             id="text430"
+             class="st74"
+             style="fill:#e6e6e6">
+            <text
+               class="st71"
+               transform="translate(1061.9 135.6)"
+               id="text506"
+               style="fill:#e6e6e6"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan506"
+                 style="fill:#e6e6e6">SAMtools</tspan></text>
+          </g>
+        </g>
+      </g>
+      <g
+         id="g509"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g508"
+           class="st74"
+           style="fill:#e6e6e6">
+          <g
+             id="text431"
+             class="st74"
+             style="fill:#e6e6e6">
+            <text
+               class="st69"
+               transform="translate(1078.2 150)"
+               id="text507"
+               style="fill:#e6e6e6"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan507"
+                 style="fill:#e6e6e6">sort</tspan></text>
+          </g>
+        </g>
+      </g>
+      <g
+         id="text322"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g510"
+           class="st74"
+           style="fill:#e6e6e6">
+          <g
+             id="text433"
+             class="st74"
+             style="fill:#e6e6e6">
+            <text
+               class="st69"
+               transform="translate(1074 164.4)"
+               id="text509"
+               style="fill:#e6e6e6"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan509"
+                 style="fill:#e6e6e6">index</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <path
+       id="rect139"
+       class="st51"
+       d="M1088.7,172.4h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z"
+       style="fill:#e6e6e6" />
+  </g>
+  <path
+     id="rect294"
+     class="st51"
+     d="M1201.3,176.1h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect295"
+     class="st51"
+     d="M1252.2,176.1h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="g516">
+    <g
+       id="g511">
+      <rect
+         id="rect297"
+         class="st80"
+         x="1282.1"
+         y="87"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect298"
+         class="st81"
+         x="1279.8"
+         y="106"
+         width="42.9"
+         height="19.1" />
+      <rect
+         id="rect299"
+         class="st80"
+         x="1284.5"
+         y="89.3"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect300"
+         class="st82"
+         x="1282.1"
+         y="108.4"
+         width="42.9"
+         height="19.1" />
+    </g>
+    <g
+       id="g515"
+       class="st74">
+      <g
+         id="g514"
+         class="st74">
+        <g
+           id="g513"
+           class="st74">
+          <g
+             id="g512"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1297 121.5)"
+               id="text511"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan511">tsv</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect125"
+     class="st51"
+     d="M1003.4,173.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="text130"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g518"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g517"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text439"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st71"
+             transform="translate(986.6 202.6)"
+             id="text516"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan516"
+               style="fill:#e6e6e6">fgbio</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g520"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g519"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text440"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(977 217)"
+             id="text518"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan518"
+               style="fill:#e6e6e6">FilterCon</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g522"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g521"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text442"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(984.8 231.4)"
+             id="text520"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan520"
+               style="fill:#e6e6e6">Reads</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g138">
+    <rect
+       id="rect137"
+       class="st80"
+       x="1119.5"
+       y="157"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect138"
+       class="st83"
+       x="1117.1"
+       y="176"
+       width="42.9"
+       height="19.1" />
+    <g
+       id="text138"
+       class="st74">
+      <g
+         id="g525"
+         class="st74">
+        <g
+           id="g524"
+           class="st74">
+          <g
+             id="g523"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1126.9 189.2)"
+               id="text522"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan522">bam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect291"
+     class="st51"
+     d="M1003.1,64.4h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <circle
+     id="circle29"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path29" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle29-0"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path29-0" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle30"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path30" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle31"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path31" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle32"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path32" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle33"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path33" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle36"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path36" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle37"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path37" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle38"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path38" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle39"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path39" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle40"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path40" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle41"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path41" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle42"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="13.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1"
+       keyTimes="0;0.5;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path42" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect285"
+     class="st51"
+     d="M1201.3,329.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect278"
+     class="st51"
+     d="M1282.1,266h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect281"
+     class="st51"
+     d="M1282.8,306.9h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect280"
+     class="st51"
+     d="M1282.8,348.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect279"
+     class="st51"
+     d="M1282.8,390.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect243"
+     class="st51"
+     d="M1205.9,445.7h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5Z" />
+  <g
+     id="g529">
+    <rect
+       id="rect314"
+       class="st80"
+       x="984.3"
+       y="523.7"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect315"
+       class="st83"
+       x="982"
+       y="542.8"
+       width="42.9"
+       height="19" />
+    <g
+       id="g528"
+       class="st74">
+      <g
+         id="g527"
+         class="st74">
+        <g
+           id="g526"
+           class="st74">
+          <g
+             id="text444"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(991.7 556)"
+               id="text525"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan525">bam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect313"
+     class="st51"
+     d="M1003.3,606.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect236"
+     class="st51"
+     d="M958.8,565.7h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect205"
+     class="st51"
+     d="M882.7,544.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect206"
+     class="st51"
+     d="M882.7,586.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect226"
+     class="st51"
+     d="M808.3,565.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect235"
+     class="st51"
+     d="M808.8,606.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect234"
+     class="st51"
+     d="M882.7,640.1h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect310"
+     class="st51"
+     d="M882.7,676h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="rect311"
+     class="st51"
+     d="M882.7,711.8h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <circle
+     id="circle43"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="16.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path43" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle44"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="16.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path44" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect280-4"
+     class="st9"
+     d="M1323.9,331.8h0c1.9,0,3.4,1.7,3.4,3.7h0c0,2-1.5,3.7-3.4,3.7h0c-1.9,0-3.4-1.7-3.4-3.7h0c0-2,1.5-3.7,3.4-3.7Z" />
+  <path
+     id="rect280-4-2"
+     class="st8"
+     d="M1323.7,331.4h0c1.8,0,3.2,1.6,3.2,3.5h0c0,1.9-1.4,3.5-3.2,3.5h0c-1.8,0-3.2-1.6-3.2-3.5h0c0-1.9,1.4-3.5,3.2-3.5Z" />
+  <path
+     id="rect277"
+     class="st51"
+     d="M1405.1,306.8h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect284"
+     class="st51"
+     d="M1405.3,348.6h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect276"
+     class="st51"
+     d="M1476.1,306.9h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect283"
+     class="st51"
+     d="M1476.1,348.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect290"
+     class="st51"
+     d="M1551.7,328.7h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="g534">
+    <g
+       id="g530">
+      <rect
+         id="rect286"
+         class="st80"
+         x="1584.7"
+         y="308.8"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect287"
+         class="st81"
+         x="1582.3"
+         y="327.8"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect288"
+         class="st80"
+         x="1587.1"
+         y="311.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect289"
+         class="st82"
+         x="1584.7"
+         y="330.2"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="g533"
+       class="st74">
+      <g
+         id="g532"
+         class="st74">
+        <g
+           id="g531"
+           class="st74">
+          <g
+             id="text449"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1599.6 343.3)"
+               id="text530"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan530">tsv</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle
+     id="circle45"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="16.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path45" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle45-3"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="16.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path45-3" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect312"
+     class="st51"
+     d="M751,691.8h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <g
+     id="g539">
+    <g
+       id="g535">
+      <rect
+         id="rect253"
+         class="st80"
+         x="1317.6"
+         y="604.7"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect254"
+         class="st81"
+         x="1315.2"
+         y="623.8"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect255"
+         class="st80"
+         x="1320"
+         y="607.1"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect256"
+         class="st82"
+         x="1317.6"
+         y="626.1"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="g538"
+       class="st74">
+      <g
+         id="g537"
+         class="st74">
+        <g
+           id="g536"
+           class="st74">
+          <g
+             id="text454"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1331.5 639.2)"
+               id="text535"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan535">pdf</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="g544">
+    <g
+       id="g540">
+      <rect
+         id="rect257"
+         class="st80"
+         x="1317.6"
+         y="664.8"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect258"
+         class="st81"
+         x="1315.2"
+         y="683.8"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect259"
+         class="st80"
+         x="1320"
+         y="667.1"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect260"
+         class="st82"
+         x="1317.6"
+         y="686.2"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="g543"
+       class="st74">
+      <g
+         id="text335"
+         class="st74">
+        <g
+           id="g542"
+           class="st74">
+          <g
+             id="g541"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1331.5 699.2)"
+               id="text540"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan540">vcf</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect261"
+     class="st51"
+     d="M1239.6,648.9h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect252"
+     class="st51"
+     d="M1239.6,597.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect251"
+     class="st51"
+     d="M1239.6,555.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect250"
+     class="st51"
+     d="M1239.6,513.3h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect249"
+     class="st51"
+     d="M1239.6,471.6h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <g
+     id="g114">
+    <rect
+       id="rect113"
+       class="st80"
+       x="788"
+       y="157"
+       width="38.1"
+       height="47.6" />
+    <rect
+       id="rect114"
+       class="st83"
+       x="785.6"
+       y="176"
+       width="42.9"
+       height="19.1" />
+    <g
+       id="text114"
+       class="st74">
+      <g
+         id="text337"
+         class="st74">
+        <g
+           id="g546"
+           class="st74">
+          <g
+             id="g545"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(795.4 189.2)"
+               id="text544"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan544">bam</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text2971"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g548"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g547"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text463"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1331.1 214.4)"
+             id="text546"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan546"
+               style="fill:#e6e6e6">ALTpred</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="text2972"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="g551"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g550"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g549"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(1389.1 157)"
+             id="text548"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan548"
+               style="fill:#e6e6e6">SHAP</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="path1511"
+     class="st29"
+     d="M1487.3,162.4h-35.9c-.4,0-.7.3-.7.8v40.5c0,.4.3.8.7.8h35.9" />
+  <path
+     id="rect2951"
+     class="st51"
+     d="M1303.2,176.1h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect2952"
+     class="st51"
+     d="M1354.1,176.1h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <path
+     id="rect2953"
+     class="st51"
+     d="M1405.1,176.1h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5Z" />
+  <circle
+     id="circle341"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.15;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path341" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle341-4"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="15s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.15;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path341-4" />
+    </animateMotion>
+  </circle>
+  <g
+     id="g3011">
+    <g
+       id="g3001">
+      <rect
+         id="rect2971"
+         class="st80"
+         x="1487.3"
+         y="197.2"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect2981"
+         class="st81"
+         x="1484.9"
+         y="216.3"
+         width="42.9"
+         height="19.1" />
+      <rect
+         id="rect2991"
+         class="st80"
+         x="1489.7"
+         y="199.6"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect3001"
+         class="st82"
+         x="1487.3"
+         y="218.7"
+         width="42.9"
+         height="19.1" />
+    </g>
+    <g
+       id="text3001"
+       class="st74">
+      <g
+         id="text340"
+         class="st74">
+        <g
+           id="g552"
+           class="st74">
+          <g
+             id="text466"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1502.2 231.7)"
+               id="text551"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan551">tsv</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect2954"
+     class="st96"
+     d="M1450.6,178.8h0c1.7,0,3.1,1.8,3.1,4.1h0c0,2.3-1.4,4.1-3.1,4.1h0c-1.7,0-3.1-1.8-3.1-4.1h0c0-2.3,1.4-4.1,3.1-4.1Z" />
+  <g
+     id="g2711"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text2701"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g556"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text469"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(726.1 751.3)"
+             id="text555"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan555"
+               style="fill:#e6e6e6">BCFtools</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text2711"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g558"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="g557"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(730.3 765.7)"
+             id="text556"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan556"
+               style="fill:#e6e6e6">Merge</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect3121"
+     class="st51"
+     d="M751,733h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <path
+     id="path312-01"
+     class="st12"
+     d="M618.2,704.5h108.7-108.7Z" />
+  <g
+     id="g2712"
+     class="st74"
+     style="fill:#e6e6e6">
+    <g
+       id="text2702"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g559"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text471"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st77"
+             transform="translate(635.5 730.6)"
+             id="text558"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan558"
+               style="fill:#e6e6e6">GetBaseCounts</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="text2712"
+       class="st74"
+       style="fill:#e6e6e6">
+      <g
+         id="g560"
+         class="st74"
+         style="fill:#e6e6e6">
+        <g
+           id="text472"
+           class="st74"
+           style="fill:#e6e6e6">
+          <text
+             class="st69"
+             transform="translate(641.6 745)"
+             id="text559"
+             style="fill:#e6e6e6"><tspan
+               x="0"
+               y="0"
+               id="tspan559"
+               style="fill:#e6e6e6">MultiSample</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle
+     id="circle461"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="16.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path461" />
+    </animateMotion>
+  </circle>
+  <circle
+     id="circle46"
+     class="st92"
+     cy="-.6"
+     r="3.1">
+    <animateMotion
+       accumulate="none"
+       additive="replace"
+       begin="16.5s"
+       calcMode="paced"
+       dur="6s"
+       fill="remove"
+       keyPoints="0;1;1;1;1"
+       keyTimes="0;0.5;1;1;1"
+       repeatCount="indefinite"
+       restart="always">
+      <mpath
+         href="#path46" />
+    </animateMotion>
+  </circle>
+  <path
+     id="rect3122"
+     class="st51"
+     d="M676.7,712.3h0c-4.1,0-7.5-3.4-7.5-7.5h0c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5h0c0,4.1-3.4,7.5-7.5,7.5Z" />
+  <g
+     id="g565">
+    <g
+       id="g561">
+      <rect
+         id="rect227"
+         class="st80"
+         x="589.6"
+         y="679.5"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect228"
+         class="st81"
+         x="587.2"
+         y="698.5"
+         width="42.9"
+         height="19" />
+      <rect
+         id="rect229"
+         class="st80"
+         x="592"
+         y="681.9"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect230"
+         class="st82"
+         x="589.6"
+         y="700.9"
+         width="42.9"
+         height="19" />
+    </g>
+    <g
+       id="g564"
+       class="st74">
+      <g
+         id="g563"
+         class="st74">
+        <g
+           id="g562"
+           class="st74">
+          <g
+             id="text474"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(603.5 714)"
+               id="text561"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan561">vcf</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     id="rect280-4-9-9"
+     class="st3"
+     d="M808.6,700.2h0c1.9,0,3.4,1.6,3.4,3.5h0c0,1.9-1.5,3.5-3.4,3.5h0c-1.9,0-3.4-1.6-3.4-3.5h0c0-1.9,1.5-3.5,3.4-3.5Z" />
+  <g
+     id="g3012">
+    <g
+       id="g3002">
+      <rect
+         id="rect2972"
+         class="st80"
+         x="1487.3"
+         y="119.6"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect2982"
+         class="st81"
+         x="1484.9"
+         y="138.7"
+         width="42.9"
+         height="19.1" />
+      <rect
+         id="rect2992"
+         class="st80"
+         x="1489.7"
+         y="122"
+         width="38.1"
+         height="47.6" />
+      <rect
+         id="rect3002"
+         class="st82"
+         x="1487.3"
+         y="141.1"
+         width="42.9"
+         height="19.1" />
+    </g>
+    <g
+       id="text3002"
+       class="st74">
+      <g
+         id="g555"
+         class="st74">
+        <g
+           id="g554"
+           class="st74">
+          <g
+             id="g553"
+             class="st74">
+            <text
+               class="st75"
+               transform="translate(1502.2 154.1)"
+               id="text552"><tspan
+                 x="0"
+                 y="0"
+                 id="tspan552">pdf</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

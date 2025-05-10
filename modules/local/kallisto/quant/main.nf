@@ -16,7 +16,7 @@ process KALLISTO_QUANT {
     val fragment_length_sd
 
     output:
-    tuple val(meta), path("abundance.tsv")    , emit: results
+    tuple val(meta), path("*_abundance.tsv")  , emit: results
     tuple val(meta), path("*.run_info.json")  , emit: json_info
     tuple val(meta), path("*.log")            , emit: log
     path "versions.yml"                       , emit: versions
@@ -45,7 +45,7 @@ process KALLISTO_QUANT {
             -o $prefix \\
             ${reads} 2> >(tee -a ${prefix}/kallisto_quant.log >&2)
 
-    cp ${prefix}/abundance.tsv .
+    cp ${prefix}/abundance.tsv ${prefix}_abundance.tsv
     cp ${prefix}/kallisto_quant.log ${prefix}.log
     cp ${prefix}/run_info.json ${prefix}.run_info.json
 
@@ -57,11 +57,11 @@ process KALLISTO_QUANT {
 
     stub:
     prefix = task.ext.prefix ?: "${meta.id}"
-
     """
     mkdir -p $prefix
     touch ${prefix}.log
     touch ${prefix}.run_info.json
+    touch ${prefix}_abundance.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

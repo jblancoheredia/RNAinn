@@ -7,8 +7,7 @@ process KALLISTO_TXIMPORT {
         'biocontainers/bioconductor-tximeta:1.20.1--r43hdfd78af_0' }"
 
     input:
-    tuple val(meta), path("quants/*")
-    tuple val(meta2), path(tx2gene)
+    tuple val(meta), path(quant), path(tx2gene)
     val(quant_type)
 
     output:

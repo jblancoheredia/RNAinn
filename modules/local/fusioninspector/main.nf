@@ -25,14 +25,33 @@ process FUSIONINSPECTOR {
     def args = task.ext.args ?: ''
     def args2 = task.ext.args2 ?: ''
     """
-    FusionInspector \\
-        --fusions $fusion_list \\
-        --genome_lib ${reference} \\
-        $fasta \\
-        --CPU ${task.cpus} \\
-        -O . \\
-        --out_prefix $prefix \\
-        --vis $args $args2
+    cp ${reads[0]} rnaseq_1.fq.gz
+    cp ${reads[1]} rnaseq_2.fq.gz
+
+    gunzip rnaseq_1.fq.gz
+    gunzip rnaseq_2.fq.gz
+
+    cut -f1 ${fusion_list} | grep -v '^#' | awk -F '--' '\$1 != \$2' > valid_fusions.txt
+
+    if [[ ! -s valid_fusions.txt ]]; then
+        echo "No valid fusions. Skipping."
+        touch ${prefix}_FusionInspector.fusions.tsv
+        cat <<-END_VERSIONS > versions.yml
+        "${task.process}":
+            STAR-Fusion: \$(STAR-Fusion --version 2>&1 | grep -i 'version' | sed 's/STAR-Fusion version: //')
+        END_VERSIONS
+        exit 0
+    fi
+
+    FusionInspector -O . \\
+                    --vis \\
+                    --CPU 12 \\
+                    --annotate \\
+                    --out_prefix ${prefix} \\
+                    --examine_coding_effect \\
+                    --fusions valid_fusions.txt \\
+                    --genome_lib ctat_genome_lib \\
+                    --left_fq rnaseq_1.fq --right_fq rnaseq_2.fq
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

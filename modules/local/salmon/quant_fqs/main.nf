@@ -13,7 +13,7 @@ process SALMON_QUANT_FQS {
     val   lib_type
 
     output:
-    tuple val(meta), path("${prefix}")              , emit: results
+    tuple val(meta), path("*_quant.sf")             , emit: quant
     tuple val(meta), path("*info.json")             , emit: json_info, optional: true
     tuple val(meta), path("*lib_format_counts.json"), emit: lib_format_counts, optional: true
     path  "versions.yml"                            , emit: versions
@@ -40,6 +40,9 @@ process SALMON_QUANT_FQS {
     fi
     if [ -f $prefix/lib_format_counts.json ]; then
         cp $prefix/lib_format_counts.json "${prefix}_lib_format_counts.json"
+    fi
+    if [ -f $prefix/quant.sf ]; then
+        cp $prefix/quant.sf "${prefix}_quant.sf"
     fi
 
     cat <<-END_VERSIONS > versions.yml
