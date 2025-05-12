@@ -1,4 +1,4 @@
-process KALLISTO_SE_TRANSCRIPT {
+process KALLISTO_SE_GENE {
     tag "$meta.id"
     label 'process_medium'
 
@@ -8,7 +8,7 @@ process KALLISTO_SE_TRANSCRIPT {
         'biocontainers/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0' }"
 
     input:
-    tuple val(meta) , path(counts_transcript), path(tpm_transcript), path(rowdata)
+    tuple val(meta) , path(quant), path(tx2gene), path(rowdata)
 
     output:
     tuple val(meta), path("*.rds")              , emit: rds
@@ -20,7 +20,7 @@ process KALLISTO_SE_TRANSCRIPT {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def matrix_files = "${counts_transcript} ${tpm_transcript}" 
+    def matrix_files = "${quant} ${tx2gene}" 
     def coldata = ""
     def rowdata_path = rowdata ? "${rowdata}" : ''
     """

@@ -8,7 +8,7 @@ process KALLISTO_SE_GENE {
         'biocontainers/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0' }"
 
     input:
-    tuple val(meta) , path(quant), path(tx2gene), path(rowdata)
+    tuple val(meta) , path(counts_gene), path(tpm_gene), path(tx2gene)
 
     output:
     tuple val(meta), path("*.rds")              , emit: rds
@@ -20,9 +20,9 @@ process KALLISTO_SE_GENE {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def matrix_files = "${quant} ${tx2gene}" 
+    def matrix_files = "${counts_gene} ${tpm_gene}" 
     def coldata = ""
-    def rowdata_path = rowdata ? "${rowdata}" : ''
+    def rowdata_path = tx2gene ? "${tx2gene}" : ''
     """
     #!/usr/bin/env Rscript
 
@@ -98,23 +98,50 @@ process KALLISTO_SE_GENE {
     #' This function searches through each column of a given data frame to find the
     #' first column that contains all of the specified entries in a vector. If such
     #' a column is found, the name of the column is returned. If no column matches,
-    #' the function throws an error.
+    #' the function will try a more flexible matching approach before giving up.
     #'
     #' @param namesVector A character vector containing the names to be matched.
     #' @param df A data frame within which to search for the column containing all
     #'   names specified in `namesVector`.
     #'
     #' @return The name of the first column in `df` that contains all entries from
-    #'   `namesVector`. If no such column exists, the function will throw an error.
+    #'   `namesVector`. If no such column exists, the function will try flexible matching.
 
     findColumnWithAllEntries <- function(namesVector, df) {
+        # Try exact matching first
         for (colName in names(df)) {
             if (all(namesVector %in% df[[colName]])) {
                 return(colName)
             }
         }
-        cat(capture.output(print(df)), sep="\n", file=stderr())
-        stop(paste("No column contains all vector entries ", paste(namesVector, collapse = ', ')))
+        
+        # If exact matching fails, try matching without version numbers (for transcript IDs)
+        # Extract base IDs without version numbers (e.g., ENST00000000233 from ENST00000000233.10)
+        baseIds <- sub("\\.[0-9]+\$", "", namesVector)
+        
+        for (colName in names(df)) {
+            # Extract base IDs from the column as well
+            columnBaseIds <- sub("\\.[0-9]+\$", "", df[[colName]])
+            
+            # Check if all base IDs are in the column's base IDs
+            if (all(baseIds %in% columnBaseIds)) {
+                message("Using flexible matching (ignoring version numbers) for column: ", colName)
+                return(colName)
+            }
+        }
+        
+        # If we get here, try to print some diagnostic info
+        cat("First few entries in namesVector: ", paste(head(namesVector), collapse=", "), "\n", file=stderr())
+        cat("Available columns in metadata: ", paste(names(df), collapse=", "), "\n", file=stderr())
+        
+        # If first column in df has values, show a sample
+        if (ncol(df) > 0 && length(df[[1]]) > 0) {
+            cat("Sample values from first column (", names(df)[1], "): ", 
+                paste(head(df[[1]]), collapse=", "), "\n", file=stderr())
+        }
+        
+        stop(paste("No column contains all vector entries (even with flexible matching). First few entries: ", 
+                   paste(head(namesVector, 5), collapse=', ')))
     }
 
     #' Check Matrix Name Uniformity in List
@@ -163,22 +190,87 @@ process KALLISTO_SE_GENE {
 
         metadata <- read_delim_flexible(metadata_path, stringsAsFactors = FALSE, header = TRUE)
         if (is.null(metadata_id_col)){
-            metadata_id_col <- findColumnWithAllEntries(ids, metadata)
+            tryCatch({
+                metadata_id_col <- findColumnWithAllEntries(ids, metadata)
+            }, error = function(e) {
+                cat("Error finding matching column:", conditionMessage(e), "\n", file=stderr())
+                # Try using the first column as a fallback if it has a reasonable overlap with ids
+                if (ncol(metadata) > 0) {
+                    first_col <- names(metadata)[1]
+                    overlap <- sum(ids %in% metadata[[first_col]])
+                    overlap_pct <- overlap / length(ids) * 100
+                    
+                    if (overlap_pct > 50) {  # If more than 50% match, use it
+                        cat("Using first column as fallback with", overlap_pct, "% overlap\n", file=stderr())
+                        return(first_col)
+                    }
+                }
+                # If we get here, re-throw the error
+                stop(e)
+            })
         }
 
         # Remove any all-NA columns
-        metadata <-  metadata[, colSums(is.na(metadata)) != nrow(metadata)]
+        metadata <- metadata[, colSums(is.na(metadata)) != nrow(metadata)]
 
+        # Map IDs to the metadata IDs (handle version differences)
+        baseMetadataIds <- sub("\\.[0-9]+\$", "", metadata[[metadata_id_col]])
+        baseIds <- sub("\\.[0-9]+\$", "", ids)
+        
+        # Create a mapping from baseIds to original ids
+        id_mapping <- setNames(ids, baseIds)
+        
+        # Find which metadata rows match our ids (either directly or by base id)
+        matching_rows <- metadata[[metadata_id_col]] %in% ids | 
+                         baseMetadataIds %in% baseIds
+        
+        if (sum(matching_rows) == 0) {
+            warning("No matching rows found in metadata")
+            # Return empty data frame with same columns
+            empty_df <- data.frame(matrix(nrow=length(ids), ncol=ncol(metadata)))
+            colnames(empty_df) <- colnames(metadata)
+            rownames(empty_df) <- ids
+            return(empty_df)
+        }
+        
+        # Subset to only matching rows
+        metadata_subset <- metadata[matching_rows,, drop=FALSE]
+        
         # Allow for duplicate rows by the id column
-        metadata <- aggregate(
-            . ~ metadata[[metadata_id_col]],
-            data = metadata,
+        metadata_agg <- aggregate(
+            . ~ metadata_subset[[metadata_id_col]],
+            data = metadata_subset,
             FUN = function(x) paste(unique(x), collapse = ",")
         )[,-1]
-
-        rownames(metadata) <- metadata[[metadata_id_col]]
-
-        metadata[ids,, drop=FALSE]
+        
+        # Set rownames based on original IDs or mapped IDs
+        original_ids <- metadata_subset[[metadata_id_col]]
+        rownames(metadata_agg) <- original_ids
+        
+        # Create a result frame with all requested ids
+        result <- data.frame(matrix(nrow=length(ids), ncol=ncol(metadata)))
+        colnames(result) <- colnames(metadata)
+        rownames(result) <- ids
+        
+        # Fill in the values for matching rows
+        for (id in rownames(metadata_agg)) {
+            if (id %in% ids) {
+                # Direct match
+                result[id,] <- metadata_agg[id,]
+            } else {
+                # Try matching by base id
+                base_id <- sub("\\.[0-9]+\$", "", id)
+                matching_base_ids <- names(id_mapping)[names(id_mapping) == base_id]
+                
+                if (length(matching_base_ids) > 0) {
+                    for (matching_id in id_mapping[matching_base_ids]) {
+                        result[matching_id,] <- metadata_agg[id,]
+                    }
+                }
+            }
+        }
+        
+        return(result)
     }
 
     ################################################
@@ -201,7 +293,7 @@ process KALLISTO_SE_GENE {
     # Build and verify the main assays list for the summarisedexperiment
 
     assay_list <- lapply(matrix_files, function(m){
-        cat("Processing matrix file:", m, "\\n")
+        cat("Processing matrix file:", m, "\n")
         mat <- read_delim_flexible(m, row.names = 1, stringsAsFactors = FALSE)
         mat[,sapply(mat, is.numeric), drop = FALSE]
     })
@@ -217,7 +309,7 @@ process KALLISTO_SE_GENE {
 
     coldata_file <- '${coldata}'
     if (coldata_file != '' && file.exists(coldata_file)) {
-        cat("Processing column metadata file:", coldata_file, "\\n")
+        cat("Processing column metadata file:", coldata_file, "\n")
         coldata <- parse_metadata(
             metadata_path = coldata_file,
             ids = colnames(assay_list[[1]]),
@@ -226,23 +318,36 @@ process KALLISTO_SE_GENE {
 
         colData(se) <- DataFrame(coldata)
     } else {
-        cat("No column metadata file provided or file not found.\\n")
+        cat("No column metadata file provided or file not found.\n")
     }
 
     # Add row (feature) metadata if provided
 
     rowdata_file <- '${rowdata_path}'
     if (rowdata_file != '' && file.exists(rowdata_file)) {
-        cat("Processing row metadata file:", rowdata_file, "\\n")
-        rowdata <- parse_metadata(
-            metadata_path = rowdata_file,
-            ids = rownames(assay_list[[1]]),
-            metadata_id_col = args_opt\$rowdata_id_col
-        )
-
-        rowData(se) <- DataFrame(rowdata)
+        cat("Processing row metadata file:", rowdata_file, "\n")
+        
+        # Try to parse row metadata with more debugging
+        tryCatch({
+            rowdata <- parse_metadata(
+                metadata_path = rowdata_file,
+                ids = rownames(assay_list[[1]]),
+                metadata_id_col = args_opt\$rowdata_id_col
+            )
+            
+            # Only set rowData if we actually got results
+            if (nrow(rowdata) > 0) {
+                rowData(se) <- DataFrame(rowdata)
+                cat("Successfully added row metadata\n")
+            } else {
+                cat("Warning: Row metadata parsing returned empty results\n", file=stderr())
+            }
+        }, error = function(e) {
+            cat("Warning: Error in row metadata processing - ", conditionMessage(e), "\n", file=stderr())
+            cat("Continuing without row metadata\n", file=stderr())
+        })
     } else {
-        cat("No row metadata file provided or file not found.\\n")
+        cat("No row metadata file provided or file not found.\n")
     }
 
     # Write outputs as RDS files

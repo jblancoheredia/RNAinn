@@ -8,7 +8,7 @@ process GATK4_BASERECALIBRATOR {
         'biocontainers/gatk4:4.5.0.0--py36hdfd78af_0' }"
 
     input:
-    tuple val(meta), path(input), path(input_index), path(intervals)
+    tuple val(meta), path(bam), path(bai), path(intervals)
     path  fasta
     path  fai
     path  dict
@@ -37,7 +37,7 @@ process GATK4_BASERECALIBRATOR {
     """
     gatk --java-options "-Xmx${avail_mem}M -XX:-UsePerfData" \\
         BaseRecalibrator  \\
-        --input $input \\
+        --input $bam \\
         --output ${prefix}.table \\
         --reference $fasta \\
         $interval_command \\

@@ -14,9 +14,9 @@ process GATK4_APPLYBQSR {
     path  dict
 
     output:
-    tuple val(meta), path("*.bam") , emit: bam,  optional: true
-    tuple val(meta), path("*.cram"), emit: cram, optional: true
-    path "versions.yml"            , emit: versions
+    tuple val(meta), path("*_recalibrated.bam") , path("*_recalibrated.bai") , emit: bam,  optional: true
+    tuple val(meta), path("*_recalibrated.cram"), path("*_recalibrated.crai"), emit: cram, optional: true
+    path "versions.yml"                                                      , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -36,7 +36,7 @@ process GATK4_APPLYBQSR {
     gatk --java-options "-Xmx${avail_mem}M -XX:-UsePerfData" \\
         ApplyBQSR \\
         --input $input \\
-        --output ${prefix}.${input.getExtension()} \\
+        --output ${prefix}_recalibrated.${input.getExtension()} \\
         --reference $fasta \\
         --bqsr-recal-file $bqsr_table \\
         $interval_command \\

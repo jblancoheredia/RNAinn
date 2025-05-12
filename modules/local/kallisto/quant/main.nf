@@ -16,7 +16,7 @@ process KALLISTO_QUANT {
     val fragment_length_sd
 
     output:
-    tuple val(meta), path("*_abundance.tsv")  , emit: results
+    tuple val(meta), path("*_abundance.tsv")  , emit: quant
     tuple val(meta), path("*.run_info.json")  , emit: json_info
     tuple val(meta), path("*.log")            , emit: log
     path "versions.yml"                       , emit: versions

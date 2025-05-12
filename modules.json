@@ -103,13 +103,6 @@
                             "fastq_subsample_fq_salmon"
                         ]
                     },
-                    "gatk4/applybqsr": {
-                        "branch": "master",
-                        "git_sha": "6b3bf38285d94cc1ea3cd9fa93310d54b04c3819",
-                        "installed_by": [
-                            "modules"
-                        ]
-                    },
                     "gatk4/baserecalibrator": {
                         "branch": "master",
                         "git_sha": "666652151335353eef2fcd58880bcef5bc2928e1",

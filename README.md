@@ -1,3 +1,8 @@
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/RNAinn_logo_dark.svg">
+    <img alt="mskcc/dnainn" src="assets/RNAinn_logo_light.svg" width="400">
+  </picture>
+
 [![GitHub Actions CI Status](https://github.com/CMOinn/rnainn/actions/workflows/ci.yml/badge.svg)](https://github.com/CMOinn/rnainn/actions/workflows/ci.yml)
 [![GitHub Actions Linting Status](https://github.com/CMOinn/rnainn/actions/workflows/linting.yml/badge.svg)](https://github.com/CMOinn/rnainn/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.XXXXXXX-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
@@ -10,7 +15,14 @@
 
 ## Introduction
 
-**CMOinn/rnainn** is a bioinformatics pipeline that ...
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/RNAinn_metro_dark.svg">
+  <img alt="Metro" src="assets/RNAinn_metro_light.svg" width="1500">
+</picture>
+
+**RNAinn** is a comprehensive bioinformatics pipeline RNA sequencing data processing.
+
+**mskcc/rnainn** is a bioinformatics pipeline that ...
 
 <!-- TODO nf-core:
    Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the

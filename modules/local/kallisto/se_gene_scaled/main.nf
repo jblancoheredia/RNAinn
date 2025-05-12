@@ -8,7 +8,7 @@ process KALLISTO_SE_GENE_SCALED {
         'biocontainers/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0' }"
 
     input:
-    tuple val(meta) , path(quant), path(tx2gene), path(rowdata)
+    tuple val(meta) , path(quant), path(tpm_gene), path(rowdata)
 
     output:
     tuple val(meta), path("*.rds")              , emit: rds
@@ -20,7 +20,7 @@ process KALLISTO_SE_GENE_SCALED {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def matrix_files = "${quant} ${tx2gene}" 
+    def matrix_files = "${quant} ${tpm_gene}" 
     def coldata = ""
     def rowdata_path = rowdata ? "${rowdata}" : ''
     """

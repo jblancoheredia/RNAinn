@@ -12,23 +12,24 @@ process RSEM_CALCULATEEXPRESSION {
     path  index
 
     output:
-    path("versions.yml")                                        , emit: versions
-    tuple val(meta), path("*.stat")                             , emit: stat
-    tuple val(meta), path("*.genes.results")                    , emit: counts_gene
-    tuple val(meta), path("*.isoforms.results")                 , emit: counts_transcript
-    tuple val(meta), path("*.transcript.sorted.bam")            , emit: bam_transcript_sorted
-    tuple val(meta), path("*.transcript.sorted.bam.bai")        , emit: bai_transcript_sorted
-
-    tuple val(meta), path("*.genome.bam")       , optional:true , emit: bam_genome
-    tuple val(meta), path("*.transcript.bam")   , optional:true , emit: bam_transcript
-    tuple val(meta), path("*.STAR.genome.bam")  , optional:true , emit: bam_star
+    path  "versions.yml"                             , emit: versions
+    tuple val(meta), path("*.log")                   , optional:true, emit: logs
+    tuple val(meta), path("*.stat")                  , emit: stat
+    tuple val(meta), path("*.genes.results")         , emit: counts_gene
+    tuple val(meta), path("*.STAR.genome.bam")       , optional:true, emit: bam_star
+    tuple val(meta), path("*.isoforms.results")      , emit: counts_transcript
+    tuple val(meta), path("${prefix}.genome.bam")    , optional:true, emit: bam_genome
+    tuple val(meta), path("*.transcript.sorted.bam") , emit: bam_transcript_sorted
+    tuple val(meta), path("*.transcript.sorted.bai") , emit: bai_transcript_sorted
+    tuple val(meta), path("${prefix}.transcript.bam"), optional:true, emit: bam_transcript
+    tuple val(meta), path("${prefix}.transcript.bai"), optional:true, emit: bai_transcript
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
-    def args    = task.ext.args   ?: ''
-    def prefix  = task.ext.prefix ?: "${meta.id}"
+    def args = task.ext.args   ?: ''
+    prefix   = task.ext.prefix ?: "${meta.id}"
 
     def strandedness = ''
     if (meta.strandedness == 'forward') {
@@ -38,11 +39,11 @@ process RSEM_CALCULATEEXPRESSION {
     }
     def paired_end = meta.single_end ? "" : "--paired-end"
     """
-    mkdir tmpdir
+    mkdir tmp/
     INDEX=`find -L ./ -name "*.grp" | sed 's/\\.grp\$//'`
     rsem-calculate-expression \\
         --num-threads $task.cpus \\
-        --temporary-folder tmpdir \\
+        --temporary-folder ./tmp/ \\
         $strandedness \\
         $paired_end \\
         $args \\
@@ -50,15 +51,17 @@ process RSEM_CALCULATEEXPRESSION {
         \$INDEX \\
         $prefix
 
+    samtools sort -@ ${task.cpus} -o ${prefix}.transcript.sorted.bam ${prefix}.transcript.bam
+    samtools index -@ ${task.cpus} ${prefix}.transcript.sorted.bam ${prefix}.transcript.sorted.bai
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         rsem: \$(rsem-calculate-expression --version | sed -e "s/Current version: RSEM v//g")
         star: \$(STAR --version | sed -e "s/STAR_//g")
     END_VERSIONS
     """
-
     stub:
-    def prefix  = task.ext.prefix ?: "${meta.id}"
+    prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.genes.results
     touch ${prefix}.isoforms.results
@@ -66,7 +69,7 @@ process RSEM_CALCULATEEXPRESSION {
     touch ${prefix}.log
     touch ${prefix}.STAR.genome.bam
     touch ${prefix}.genome.bam
-    touch ${prefix}.transcript.bam
+    touch ${prefix}..transcript.sorted.bam
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

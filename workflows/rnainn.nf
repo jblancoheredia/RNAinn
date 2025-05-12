@@ -25,8 +25,8 @@ include { DOWNSAMPLING_SEQTK                                                    
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { CALL_VARIANTS                                                                 } from '../subworkflows/local/call_variants'
-include { GENE_EXPRESSN                                                                 } from '../subworkflows/local/gene_expressn'
+include { VARIANTDSCVRY                                                                 } from '../subworkflows/local/variantdscvry'
+include { GENEXPRESSION                                                                 } from '../subworkflows/local/genexpression'
 include { FUSION_SPLICE                                                                 } from '../subworkflows/local/fusion_splice'
 include { UMIPROCESSING                                                                 } from '../subworkflows/local/umiprocessing'
 include { DEDUPANDRECAL                                                                 } from '../subworkflows/local/dedupandrecal'
@@ -131,6 +131,8 @@ workflow RNAINN {
     ch_fastq_single     = ch_fastq.single.map   {meta, fastqs -> addReadgroupToMeta(meta, fastqs)}
     ch_fastq_multiple   = ch_fastq.multiple.map {meta, fastqs -> addReadgroupToMeta(meta, fastqs)}
 
+    // PREPROCESSING starts here...
+
     //
     // MODULE: Run FastQC
     //
@@ -147,14 +149,16 @@ workflow RNAINN {
     .set { ch_cat_fastq }
     ch_versions = ch_versions.mix(CAT_FASTQ.out.versions)
 
+    // DOWNSAMPLINGS starts here...
+
     if (params.run_downsamplings) {
 
-        if (params.downsampling_total_reads) {
+        if (params.ds_totalreads_aim) {
 
             //
             // MODULE: Run Downsampling with seqtk
             //
-            DOWNSAMPLING_SEQTK(ch_cat_fastq, params.downsampling_total_reads)
+            DOWNSAMPLING_SEQTK(ch_cat_fastq, params.ds_totalreads_aim)
             ch_versions = ch_versions.mix(DOWNSAMPLING_SEQTK.out.versions)
             ch_downsampled_reads = DOWNSAMPLING_SEQTK.out.downsampled_reads
 
@@ -194,6 +198,8 @@ workflow RNAINN {
         ch_fastqs = ch_cat_fastq
 
     }
+
+    // UMIPROCESSING starts here...
 
     // Subworkflow Channels
     ch_umiprocessing_output = Channel.empty()
@@ -267,12 +273,12 @@ workflow RNAINN {
         ch_multiqc_files                            = ch_multiqc_files
     }
 
-    if (params.run_gene_expressn) {
+    if (params.run_genexpression) {
 
         //
         // SUBWORKFLOW: Run Gene Expression / Counts
         //
-        GENE_EXPRESSN(
+        GENEXPRESSION(
             ch_gtf,
             ch_fasta,
             ch_rsem_ref,
@@ -287,19 +293,19 @@ workflow RNAINN {
             ch_biotypes_header_multiqc,
             ch_clustering_header_multiqc
         )
-        ch_versions                                 = ch_versions.mix(GENE_EXPRESSN.out.versions)
-        ch_multiqc_files                            = ch_multiqc_files.mix(GENE_EXPRESSN.out.multiqc_files)
+        ch_versions                                 = ch_versions.mix(GENEXPRESSION.out.versions)
+        ch_multiqc_files                            = ch_multiqc_files.mix(GENEXPRESSION.out.multiqc_files)
     } else {
         ch_versions                                 = ch_versions
         ch_multiqc_files                            = ch_multiqc_files
     }
 
-    if (params.run_call_variants) {
+    if (params.run_variantdscvry) {
 
         //
         // SUBWORKFLOW: Run Variant Calling
         //
-        CALL_VARIANTS(
+        VARIANTDSCVRY(
             ch_bed,
             ch_fai,
             ch_gtf,
@@ -314,12 +320,51 @@ workflow RNAINN {
             ch_known_indels_tbi,
             ch_gatk_interval_list
         )
-        ch_versions                                 = ch_versions.mix(CALL_VARIANTS.out.versions)
-        ch_multiqc_files                            = ch_multiqc_files.mix(CALL_VARIANTS.out.multiqc_files)
+        ch_versions                                 = ch_versions.mix(VARIANTDSCVRY.out.versions)
+        ch_multiqc_files                            = ch_multiqc_files.mix(VARIANTDSCVRY.out.multiqc_files)
     } else {
         ch_versions                                 = ch_versions
         ch_multiqc_files                            = ch_multiqc_files
     }
+
+//    if (params.run_copynumberalt) {
+//
+//        //
+//        // SUBWORKFLOW: Run Copy Number Alterations
+//        //
+//        COPUNUMBERALT()
+//        ch_versions                                 = ch_versions.mix(COPUNUMBERALT.out.versions)
+//        ch_multiqc_files                            = ch_multiqc_files.mix(COPUNUMBERALT.out.multiqc_files)
+//    } else {
+//        ch_versions                                 = ch_versions
+//        ch_multiqc_files                            = ch_multiqc_files
+//    }
+//
+//    if (params.run_immunoncology) {
+//
+//        //
+//        // SUBWORKFLOW: Run HLAinn
+//        //
+//        IMMUNONCOLOGY()
+//        ch_versions                                 = ch_versions.mix(IMMUNONCOLOGY.out.versions)
+//        ch_multiqc_files                            = ch_multiqc_files.mix(IMMUNONCOLOGY.out.multiqc_files)
+//    } else {
+//        ch_versions                                 = ch_versions
+//        ch_multiqc_files                            = ch_multiqc_files
+//    }
+//
+//    if (params.run_telomerefeats) {
+//
+//        //
+//        // SUBWORKFLOW: Run TEMPUS
+//        //
+//        TELOMEREFEATS()
+//        ch_versions                                 = ch_versions.mix(TELOMEREFEATS.out.versions)
+//        ch_multiqc_files                            = ch_multiqc_files.mix(TELOMEREFEATS.out.multiqc_files)
+//    } else {
+//        ch_versions                                 = ch_versions
+//        ch_multiqc_files                            = ch_multiqc_files
+//    }
 
     //
     // Collate and save software versions
