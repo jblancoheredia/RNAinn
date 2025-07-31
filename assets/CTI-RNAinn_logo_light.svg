@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 2016 900">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: #091459;
+      }
+
+      .st0, .st2, .st3 {
+        font-family: MavenPro-Bold, 'Maven Pro';
+        font-size: 410px;
+        font-weight: 700;
+      }
+
+      .st4 {
+        fill: url(#linear-gradient);
+      }
+
+      .st2 {
+        fill: #f26623;
+      }
+
+      .st3 {
+        fill: #6f7072;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1352.7" y1="401.6" x2="1352.7" y2="51.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f26623"/>
+      <stop offset=".5" stop-color="#6f7072"/>
+      <stop offset="1" stop-color="#091459"/>
+    </linearGradient>
+  </defs>
+  <path class="st1" d="M207.5,176v216H60.9v65.6h146.6v57.9H60.9v65.6h146.6v54H60.9v61.7h146.6v154.3h65.6v-148.5c0-.4,5.4-5.8,5.8-5.8h144.6v-61.7h-144.6c-9.7,0-4.6-45.7-5.8-54h150.4v-65.6h-144.6c-9.9,0-4.5-48.4-5.8-57.9h150.4v-65.6h-150.4v-216l129.2,123.4,44.1-47.7L240.9,49,38.2,251.7c-1.1,6.2,38.1,41.5,45.9,47.6l123.5-123.4h-.1Z"/>
+  <g>
+    <text class="st3" transform="translate(1361.1 848.5)"><tspan x="0" y="0">inn</tspan></text>
+    <text class="st2" transform="translate(487 848.5)"><tspan x="0" y="0">RNA</tspan></text>
+    <text class="st0" transform="translate(503.6 361.4)"><tspan x="0" y="0">CTI</tspan></text>
+    <polygon class="st4" points="1406 51.5 1449.9 51.5 1299 401.6 1255.6 401.6 1406 51.5"/>
+  </g>
+</svg>

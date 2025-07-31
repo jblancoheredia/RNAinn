@@ -9,9 +9,10 @@
 
 include { FASTP                                                                         } from '../../modules/local/fastp/main'
 include { ARRIBA                                                                        } from '../../modules/nf-core/arriba/main'
+include { FUSVIZ                                                                        } from '../../modules/local/fusviz/main'
 include { CAT_CAT                                                                       } from '../../modules/nf-core/cat/cat/main'
+include { IGVREPORTS                                                                    } from '../../modules/nf-core/igvreports/main' 
 include { STARFUSION                                                                    } from '../../modules/local/starfusion/detect/main'
-include { PORTCULLIS                                                                    } from '../../modules/local/portcullis/main'
 include { VCF_COLLECT                                                                   } from '../../modules/local/vcf_collect/main'
 include { STAR_ARRIBA                                                                   } from '../../modules/local/arriba/star/main'
 include { STAR_FUSION                                                                   } from '../../modules/local/starfusion/star/main'
@@ -19,6 +20,7 @@ include { ARRIBA_INDEX                                                          
 include { FUSIONREPORT                                                                  } from '../../modules/local/fusionreport/detect/main'
 include { FUSIONCATCHER                                                                 } from '../../modules/local/fusioncatcher/detect/main'
 include { FUSIONINSPECTOR                                                               } from '../../modules/local/fusioninspector/main'
+include { PORTCULLIS_FULL                                                               } from '../../modules/nf-core/portcullis/full/main'
 include { STARFUSION_INDEX                                                              } from '../../modules/local/starfusion/index/main'
 include { ARRIBA_VISUALISATION                                                          } from '../../modules/local/arriba/visualisation/main'
 include { AGAT_CONVERTSPGFF2TSV                                                         } from '../../modules/nf-core/agat/convertspgff2tsv/main'
@@ -43,9 +45,11 @@ workflow FUSION_SPLICE {
 
     take:
 
+    ch_fai
     ch_gtf
     ch_fasta
     ch_chrgtf
+    ch_refflat
     ch_versions
     ch_hgnc_ref
     ch_hgnc_date
@@ -53,6 +57,7 @@ workflow FUSION_SPLICE {
     ch_star_index
     ch_samplesheet
     ch_multiqc_files
+    ch_rrna_intervals
     ch_fusionreport_ref
     ch_arriba_ref_blocklist
     ch_arriba_ref_known_fusions
@@ -98,12 +103,11 @@ workflow FUSION_SPLICE {
     //
     // MODULE: Run Portcullis
     //
-    PORTCULLIS (ch_bam_star_arriba, params.bed, params.fasta)
-    ch_versions = ch_versions.mix(PORTCULLIS.out.versions)
-    ch_portcullis_log = PORTCULLIS.out.log
-    ch_portcullis_bed = PORTCULLIS.out.bed
-    ch_portcullis_tab = PORTCULLIS.out.tab
-    ch_portcullis_txt = PORTCULLIS.out.txt
+    PORTCULLIS_FULL (ch_bam_star_arriba, params.bed, params.fai, params.fasta)
+    ch_versions = ch_versions.mix(PORTCULLIS_FULL.out.versions)
+    ch_portcullis_log = PORTCULLIS_FULL.out.log
+    ch_portcullis_bed = PORTCULLIS_FULL.out.pass_junctions_bed
+    ch_portcullis_tab = PORTCULLIS_FULL.out.pass_junctions_tab
 
     //
     // WORKFLOW: Run STAR for STARfusion
@@ -148,52 +152,38 @@ workflow FUSION_SPLICE {
     //
     // WORKFLOW: Run FusionReport
     //
-    reads_fusions = ch_reads_all
-        .join(ch_arriba_fusions, remainder: true)
-        .join(ch_starfusion_fusions, remainder: true)
-        .join(ch_fusioncatcher_fusions, remainder: true)
-    FUSIONREPORT(reads_fusions, ch_fusionreport_ref, params.tools_cutoff)
-    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
-    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
-    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
-    ch_fusionreport_report = FUSIONREPORT.out.report
-    ch_fusionreport_csv = FUSIONREPORT.out.csv
+    FUSIONREPORT_WORKFLOW (ch_reads_all, ch_fusionreport_ref, ch_arriba_fusions, ch_starfusion_fusions, ch_fusioncatcher_fusions)
+    ch_versions = ch_versions.mix(FUSIONREPORT_WORKFLOW.out.versions)
+
+    //
+    // WORKFLOW: Run FusionInspector
+    //
+    FUSIONINSPECTOR_WORKFLOW (
+        ch_reads_all,
+        FUSIONREPORT_WORKFLOW.out.fusion_list,
+        FUSIONREPORT_WORKFLOW.out.fusion_list_filtered,
+        FUSIONREPORT_WORKFLOW.out.report,
+        FUSIONREPORT_WORKFLOW.out.csv,
+        ch_bam_star_fusion_indexed,
+        ch_hgnc_ref,
+        ch_hgnc_date
+    )
+    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
+    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
 
 //    //
-//    // WORKFLOW: FusionInspector
+//    // MODULE: Run IGV Reports
 //    //
-//    index ="${params.starfusion_ref}"
-//    ch_fusion_list = ( params.tools_cutoff > 1 ? ch_fusionreport_list_filtered : ch_fusionreport_list )
-//    .branch{
-//        no_fusions: it[1].size() == 0
-//        fusions: it[1].size() > 0
-//    }
-//    ch_reads_fusion = ch_reads_all.join(ch_fusion_list.fusions )
-//    FUSIONINSPECTOR( ch_reads_fusion, index)
-//    ch_versions = ch_versions.mix(FUSIONINSPECTOR.out.versions)
-//    ch_fusioninspector_tsv = FUSIONINSPECTOR.out.tsv_coding_effect
+//    IGVREPORTS()
+//    ch_versions = ch_versions.mix(IGVREPORTS.out.versions)
 //
 //    //
-//    // WORKFLOW: Run AGAT script
+//    // MODULE: Run FusViz
 //    //
-//    AGAT_CONVERTSPGFF2TSV(FUSIONINSPECTOR.out.out_gtf)
-//    ch_versions = ch_versions.mix(AGAT_CONVERTSPGFF2TSV.out.versions)
-//    ch_fusioninspector_gtf_tsv = AGAT_CONVERTSPGFF2TSV.out.tsv
-//    fusion_data = FUSIONINSPECTOR.out.tsv_coding_effect.join(AGAT_CONVERTSPGFF2TSV.out.tsv).join(ch_fusionreport_report).join(ch_fusionreport_csv)
-//
-//    //
-//    // WORKFLOW: VCF_Collect Script
-//    //
-//    VCF_COLLECT(ch_fusioninspector_tsv, ch_fusionreport_report, ch_fusioninspector_gtf_tsv, ch_fusionreport_csv, ch_hgnc_ref, ch_hgnc_date)
-//    ch_versions = ch_versions.mix(VCF_COLLECT.out.versions)
-//
-//    //
-//    // MODULE: Run DrawSVs
-//    //
-//    DRAWFUS(ch_bam_star_arriba_indexed, FUSIONINSPECTOR.out.tsv, params.gtf, params.arriba_ref_protein_domains, params.arriba_ref_cytobands)
-//    ch_drawfus = DRAWFUS.out.pdf
-//    ch_versions = ch_versions.mix(DRAWFUS.out.versions)
-//    ch_multiqc_files = ch_multiqc_files.mix(ch_drawfus.collect{it[1]}.ifEmpty([]))
+//    FUSVIZ(ch_bam_star_fusion_indexed, ch_fusioninspectortsv, params.gtf, params.genome, params.arriba_ref_cytobands, params.arriba_ref_protein_domains)
+//    ch_fusviz = FUSVIZ.out.pdf
+//    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
+//    ch_multiqc_files = ch_multiqc_files.mix(ch_fusviz.collect{it[1]}.ifEmpty([]))
 
     emit:
 

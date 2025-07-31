@@ -240,7 +240,7 @@
                     "fa_icon": "fas fa-book",
                     "help_text": "STAR ignore sjdbgtf to use for alignment."
                 },
-                "groupreadsbyumi_strategy": {
+                "group_strategy": {
                     "type": "string",
                     "description": "Group reads by UMI strategy",
                     "fa_icon": "fas fa-book",
@@ -264,7 +264,7 @@
                     "fa_icon": "fas fa-book",
                     "help_text": "Filter min reads to use for alignment."
                 },
-                "filter_min_baseq": {
+                "filter_min_base_quality": {
                     "type": "string",
                     "description": "Filter min baseq",
                     "fa_icon": "fas fa-book",
@@ -288,17 +288,23 @@
                     "fa_icon": "fas fa-book",
                     "help_text": "CDNA transcript file to use for alignment."
                 },
-                "downsampling": {
+                "run_downsamplings": {
                     "type": "boolean",
                     "description": "To run or not samples downsampling",
                     "fa_icon": "fas fa-book",
                     "help_text": "Automatic sample downsampling."
                 },
-                "downsampling_total_reads": {
+                "ds_totalreads_aim": {
                     "type": "string",
                     "description": "Number of Total Reads to downsample overwrites the automatic processing",
                     "fa_icon": "fas fa-book",
                     "help_text": "Number of total reads for sample downsampling."
+                },
+                "blocklist_bed": {
+                    "type": "string",
+                    "description": "Block list file",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Selfdescriptive."
                 },
                 "splicesites": {
                     "type": "string",
@@ -506,6 +512,120 @@
                     "fa_icon": "fas fa-book",
                     "help_text": "Skip visualization for the pipeline."
                 },
+                "save_unaligned": {
+                    "type": "boolean",
+                    "description": "Save unaligned reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Save unaligned reads for the pipeline."
+                },
+                "star_bins_bamsort": {
+                    "type": "integer",
+                    "description": "STAR bins bamsort",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR bins bamsort for the pipeline."
+                },
+                "save_align_intermeds": {
+                    "type": "boolean",
+                    "description": "Save alignment intermediates",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Save alignment intermediates for the pipeline."
+                },
+                "star_max_intron_size": {
+                    "type": "integer",
+                    "description": "STAR max intron size",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR max intron size for the pipeline."
+                },
+                "star_max_collapsed_junc": {
+                    "type": "integer",
+                    "description": "STAR max collapsed junctions",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR max collapsed junctions for the pipeline."
+                },
+                "star_max_memory_bamsort": {
+                    "type": "integer",
+                    "description": "STAR max memory bamsort",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "STAR max memory bamsort for the pipeline."
+                },
+                "f2b_umi_qual_tag": {
+                    "type": "string",
+                    "description": "fgbio Fastq2BAM UMI quality tag",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio Fastq2BAM UMI quality tag for the pipeline."
+                },
+                "f2b_umi_tag": {
+                    "type": "string",
+                    "description": "fgbio Fastq2BAM UMI tag",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio Fastq2BAM UMI tag for the pipeline."
+                },
+                "f2b_read_structure": {
+                    "type": "string",
+                    "description": "fgbio Fastq2BAM read structure",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio Fastq2BAM read structure for the pipeline."
+                },
+                "correct_max_mismatch": {
+                    "type": "integer",
+                    "description": "fgbio CorrectUMI max mismatch",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI max mismatch for the pipeline."
+                },
+                "group_edits": {
+                    "type": "integer",
+                    "description": "fgbio GroupReadsByUMI nember of edits",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio GroupReadsByUMI number of edits for the pipeline."
+                },
+                "correct_min_corrected": {
+                    "type": "number",
+                    "description": "fgbio CorrectUMI min fraction corrected",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI min fraction corrected for the pipeline."
+                },
+                "correct_min_distance": {
+                    "type": "integer",
+                    "description": "fgbio CorrectUMI min distance",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI min distance for the pipeline."
+                },
+                "group_min_map_q": {
+                    "type": "integer",
+                    "description": "fgbio GroupReadsByUMI min mapping quality",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio GroupReadsByUMI min mapping quality for the pipeline."
+                },
+                "group_mark_duplicates": {
+                    "type": "boolean",
+                    "description": "fgbio GroupReadsByUMI mark duplicates",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio GroupReadsByUMI mark duplicates for the pipeline."
+                },
+                "group_include_secondary": {
+                    "type": "boolean",
+                    "description": "fgbio CorrectUMI include secondary reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI include secondary reads for the pipeline."
+                },
+                "group_allow_inter_contig": {
+                    "type": "boolean",
+                    "description": "fgbio CorrectUMI allow inter-contig reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI allow inter-contig reads for the pipeline."
+                },
+                "group_include_non_pf_reads": {
+                    "type": "boolean",
+                    "description": "fgbio CorrectUMI include non-PF reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI include non-PF reads for the pipeline."
+                },
+                "group_include_supplementary": {
+                    "type": "boolean",
+                    "description": "fgbio CorrectUMI include supplementary reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "fgbio CorrectUMI include supplementary reads for the pipeline."
+                },
                 "tools_cutoff": {
                     "type": "string",
                     "description": "Tools cutoff",
@@ -517,12 +637,6 @@
                     "description": "FusionInspector limitSjdbInsertNsj",
                     "fa_icon": "fas fa-book",
                     "help_text": "FusionInspector limitSjdbInsertNsj for the pipeline."
-                },
-                "fusioninspector_limit-sjdb-insert-nsj": {
-                    "type": "string",
-                    "description": "FusionInspector limit-sjdb-insert-nsj",
-                    "fa_icon": "fas fa-book",
-                    "help_text": "FusionInspector limit-sjdb-insert-nsj for the pipeline."
                 },
                 "allowlist": {
                     "type": "string",
@@ -574,9 +688,27 @@
                 },
                 "fusioninspector": {
                     "type": "boolean",
-                    "description": "FusionInspector",
-                    "fa_icon": "fas fa-book",
-                    "help_text": "FusionInspector for the pipeline."
+                    "description": "Enable FusionInspector analysis",
+                    "fa_icon": "fas fa-search",
+                    "help_text": "Run FusionInspector to validate and annotate fusion predictions."
+                },
+                "cpus": {
+                    "type": "integer",
+                    "description": "Number of CPUs to allocate",
+                    "fa_icon": "fas fa-microchip",
+                    "help_text": "Minimum requirement expected to be changed based on your system."
+                },
+                "memory": {
+                    "type": "string",
+                    "description": "Memory to allocate in GB",
+                    "fa_icon": "fas fa-memory",
+                    "help_text": "Minimum requirement expected to be changed based on your system (e.g., '8.GB')."
+                },
+                "skip_variantannotation": {
+                    "type": "boolean",
+                    "description": "Skip variant annotation step",
+                    "fa_icon": "fas fa-forward",
+                    "help_text": "Skip the variant annotation process in the pipeline."
                 }
             }
         },

@@ -8,12 +8,9 @@ process VCF_COLLECT {
         'quay.io/biocontainers/pandas:1.5.2' }"
 
     input:
-    tuple val(meta),  path(fusioninspector_tsv)
-    tuple val(meta2), path(fusionreport_report)
-    tuple val(meta3), path(fusioninspector_gtf_tsv)
-    tuple val(meta4), path(fusionreport_csv)
-    tuple val(meta5), path(hgnc_ref)
-    tuple val(meta6), path(hgnc_date)
+    tuple val(meta), path(fusioninspector_tsv), path(fusioninspector_gtf_tsv), path(fusionreport_report), path(fusionreport_csv)
+    tuple val(meta2),  path(hgnc_ref)
+    tuple val(meta3),  path(hgnc_date)
 
     output:
     path "versions.yml"              , emit: versions
@@ -25,15 +22,7 @@ process VCF_COLLECT {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    vcf_collect.py \
-        --fusioninspector $fusioninspector_tsv \
-        --fusionreport $fusionreport_report \
-        --fusioninspector_gtf $fusioninspector_gtf_tsv \
-        --fusionreport_csv $fusionreport_csv \
-        --hgnc $hgnc_ref \
-        --sample ${prefix} \
-        --out ${prefix}_fusion_data.vcf
-    
+    vcf_collect.py --fusioninspector $fusioninspector_tsv --fusionreport $fusionreport_report --fusioninspector_gtf $fusioninspector_gtf_tsv --fusionreport_csv $fusionreport_csv --hgnc $hgnc_ref --sample ${prefix} --out ${prefix}_fusion_data.vcf
     gzip ${prefix}_fusion_data.vcf
 
     cat <<-END_VERSIONS > versions.yml

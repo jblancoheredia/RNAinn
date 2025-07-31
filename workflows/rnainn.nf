@@ -49,6 +49,7 @@ ch_dict                                         = Channel.fromPath(params.dict).
 ch_dbsnp                                        = Channel.fromPath(params.dbsnp).map                            { it -> [[id:it.Name], it] }.collect()
 ch_fasta                                        = Channel.fromPath(params.fasta).map                            { it -> [[id:it.Name], it] }.collect()
 ch_chrgtf                                       = Channel.fromPath(params.chrgtf).map                           { it -> [[id:it.Name], it] }.collect()
+ch_refflat                                      = Channel.fromPath(params.refflat).map                          { it -> [[id:it.Name], it] }.collect()
 ch_targets                                      = Channel.fromPath(params.targets).map                          { it -> [[id:it.Name], it] }.collect()
 ch_rsem_ref                                     = Channel.fromPath(params.rsem_ref).map                         { it -> [[id:it.Name], it] }.collect()
 ch_hgnc_ref                                     = Channel.fromPath(params.hgnc_ref).map                         { it -> [[id:it.Name], it] }.collect()
@@ -216,7 +217,9 @@ workflow RNAINN {
             ch_dict,
             ch_fasta,
             ch_fastqs,
+            ch_refflat,
             ch_star_index,
+            ch_rrna_intervals
         )
         ch_ubam                                     = UMIPROCESSING.out.ubam
         ch_raw_bam					                = UMIPROCESSING.out.raw_bam
@@ -251,9 +254,11 @@ workflow RNAINN {
         // SUBWORKFLOW: Run Fusion/Junction/Splicing discovery
         //
         FUSION_SPLICE(
+            ch_fai,
             ch_gtf,
             ch_fasta,
             ch_chrgtf,
+            ch_refflat,
             ch_versions,
             ch_hgnc_ref,
             ch_hgnc_date,
@@ -261,6 +266,7 @@ workflow RNAINN {
             ch_star_index,
             ch_samplesheet,
             ch_multiqc_files,
+            ch_rrna_intervals,
             ch_fusionreport_ref,
             ch_arriba_ref_blocklist,
             ch_arriba_ref_known_fusions,
@@ -283,12 +289,12 @@ workflow RNAINN {
             ch_fasta,
             ch_rsem_ref,
             ch_versions,
-            ch_reads_finalized,
             ch_star_index,
             ch_samplesheet,
             ch_salmon_index,
             ch_multiqc_files,
             ch_kallisto_index,
+            ch_reads_finalized,
             ch_pca_header_multiqc,
             ch_biotypes_header_multiqc,
             ch_clustering_header_multiqc

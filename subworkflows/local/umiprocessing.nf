@@ -8,32 +8,35 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { SAMBLASTER                                                                                                                } from '../../modules/local/samblaster/main' // <- In use
+include { SAMBLASTER                                                                                                                } from '../../modules/local/samblaster/main'
 include { STAR_FILBAM                                                                                                               } from '../../modules/local/align_fil_bam/star/main'
 include { STAR_RAWBAM                                                                                                               } from '../../modules/local/align_raw_bam/star/main'
-include { ALIGN_BAM_FIN                                                                                                             } from '../../modules/local/umi_align_bam/main' // <- In use
-include { ALIGN_BAM_ORI                                                                                                             } from '../../modules/local/umi_align_bam/main' // <- In use
-include { FASTQ_CONSENSUS                                                                                                           } from '../../modules/local/fastqc_consensus/main' // <- In use
+include { ALIGN_BAM_CON                                                                                                             } from '../../modules/local/umi_align_bam/main'
+include { ALIGN_BAM_RAW                                                                                                             } from '../../modules/local/umi_align_bam/main'
+include { PRESEQ_CCURVE                                                                                                             } from '../../modules/local/preseq/ccurve/main'
+include { PRESEQ_LCEXTRAP                                                                                                           } from '../../modules/local/preseq/lcextrap/main'
+include { UMI_READ_COUNTS                                                                                                           } from '../../modules/local/umi_read_counts/main'
+include { FASTQC_CONSENSUS                                                                                                          } from '../../modules/local/fastqc_consensus/main'
 include { FGBIO_FASTQTOBAM                                                                                                          } from '../../modules/nf-core/fgbio/fastqtobam/main'
-include { FGBIO_SORTCONBAM                                                                                                          } from '../../modules/local/fgbio/sortconbam/main.nf' // <- In use
-include { FGBIO_CORRECTUMIS                                                                                                         } from '../../modules/local/fgbio/correctumis/main' // <- New in use
+include { FGBIO_SORTCONBAM                                                                                                          } from '../../modules/local/fgbio/sortconbam/main.nf'
+include { FGBIO_CORRECTUMIS                                                                                                         } from '../../modules/local/fgbio/correctumis/main'
 include { SAMTOOLS_FASTQ_FIL                                                                                                        } from '../../modules/local/samtools/fastq_fil/main'
 include { SAMTOOLS_FASTQ_RAW                                                                                                        } from '../../modules/local/samtools/fastq_raw/main'
-include { COLLECTHSMETRICS_DUP                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main' // <- In use
-include { COLLECTHSMETRICS_FIN                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main' // <- In use
-include { COLLECTHSMETRICS_ORI                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main' // <- In use
-include { COLLECTHSMETRICS_SIM                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main' // <- In use
+include { COLLECT_UMI_METRICS                                                                                                       } from '../../modules/local/collect_umi_metrics/main'
+include { COLLECTHSMETRICS_CON                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main'
+include { COLLECTHSMETRICS_RAW                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main'
 include { SAMTOOLS_COLLATEFASTQ                                                                                                     } from '../../modules/local/samtools/collatefastq/main'
 include { FGBIO_GROUPREADSBYUMI                                                                                                     } from '../../modules/local/fgbio/groupreadsbyumi/main'
-include { SAMTOOLS_SORT_INDEX_FIN                                                                                                   } from '../../modules/local/samtools/sort_index/main' // <- In use
-include { SAMTOOLS_SORT_INDEX_ORI                                                                                                   } from '../../modules/local/samtools/sort_index/main' // <- In use
+include { SAMTOOLS_SORT_INDEX_FIN                                                                                                   } from '../../modules/local/samtools/sort_index/main'
+include { SAMTOOLS_SORT_INDEX_ORI                                                                                                   } from '../../modules/local/samtools/sort_index/main'
 include { FGBIO_FILTERCONSENSUSREADS                                                                                                } from '../../modules/local/fgbio/filterconsensusreads/main'
-include { PICARD_COLLECTRNASEQMETRICS                                                                                               } from '../../modules/local/picard/collectrnaseqmetrics/main' // <- In Beta
-include { FGBIO_COLLECTDUPLEXSEQMETRICS                                                                                             } from '../../modules/nf-core/fgbio/collectduplexseqmetrics/main'
-include { PICARD_COLLECTMULTIPLEMETRICS                                                                                             } from '../../modules/local/picard/collectmultiplemetrics/main' // <- In use
+include { FGBIO_COLLECTDUPLEXSEQMETRICS                                                                                             } from '../../modules/local/fgbio/collectduplexseqmetrics/main'
+include { PICARD_COLLECTMULTIPLEMETRICS                                                                                             } from '../../modules/local/picard/collectmultiplemetrics/main'
+include { PICARD_COLLECTRNASEQMETRICS_CON                                                                                           } from '../../modules/local/picard/collectrnaseqmetrics/main'
+include { PICARD_COLLECTRNASEQMETRICS_RAW                                                                                           } from '../../modules/local/picard/collectrnaseqmetrics/main'
 include { FGBIO_CALLMOLECULARCONSENSUSREADS                                                                                         } from '../../modules/nf-core/fgbio/callmolecularconsensusreads/main'
-include { FGBIO_ERRORRATEBYREADPOSITION_FIN                                                                                         } from '../../modules/local/fgbio/errorratebyreadposition/main' // <- In use
-include { FGBIO_ERRORRATEBYREADPOSITION_ORI                                                                                         } from '../../modules/local/fgbio/errorratebyreadposition/main' // <- In use
+include { FGBIO_ERRORRATEBYREADPOSITION_CON                                                                                         } from '../../modules/local/fgbio/errorratebyreadposition/main'
+include { FGBIO_ERRORRATEBYREADPOSITION_RAW                                                                                         } from '../../modules/local/fgbio/errorratebyreadposition/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,7 +61,9 @@ workflow UMIPROCESSING {
     ch_dict
     ch_fasta
     ch_fastqs
+    ch_refflat
     ch_star_index
+    ch_rrna_intervals
 
     main:
     ch_versions = Channel.empty()
@@ -75,9 +80,9 @@ workflow UMIPROCESSING {
     // MODULE: Align with bwa mem but avoid sort
     //
     sort = false
-    ALIGN_BAM_ORI(ch_ubam, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
-    ch_versions = ch_versions.mix(ALIGN_BAM_ORI.out.versions.first())
-    ch_raw_bam = ALIGN_BAM_ORI.out.bam
+    ALIGN_BAM_RAW(ch_ubam, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
+    ch_versions = ch_versions.mix(ALIGN_BAM_RAW.out.versions.first())
+    ch_raw_bam = ALIGN_BAM_RAW.out.bam
 
     //
     // MODULE: Run fgbio correctumis
@@ -103,25 +108,22 @@ workflow UMIPROCESSING {
     ch_versions = ch_versions.mix(PICARD_COLLECTMULTIPLEMETRICS.out.versions.first())
 
     //
-    // MODULE: Collect RNAseq metrics
+    // MODULE: Run Picard's Collect RNAseq Metrics for raw BAM files
     //
-    PICARD_COLLECTRNASEQMETRICS(ch_bam_fcu_stix, params.rrna_refflat, params.rrna_intervals)
-    ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS.out.versions)
-    ch_rnaseq_metrics = Channel.empty().mix(PICARD_COLLECTRNASEQMETRICS.out.metrics)
-
-    //
-    // MODULE: Run ErrorRateByReadPosition 
-    //
-    FGBIO_ERRORRATEBYREADPOSITION_ORI(ch_bam_fcu_sort, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
-    ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_ORI.out.versions.first())
+    PICARD_COLLECTRNASEQMETRICS_RAW(ch_bam_fcu_sort, ch_bam_fcu_indx, ch_refflat, ch_rrna_intervals)
+    ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_RAW.out.versions.first())
 
     //
     // MODULE: Run Picard's Collect HS Metrics for raw BAM files
     //
-    COLLECTHSMETRICS_ORI(ch_bam_fcu_sort, ch_bam_fcu_indx, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts)
-    ch_versions = ch_versions.mix(COLLECTHSMETRICS_ORI.out.versions.first())
-    ch_coverage_raw  = COLLECTHSMETRICS_ORI.out.coverage
-    ch_hsmetrics_raw = COLLECTHSMETRICS_ORI.out.hsmetrics
+    COLLECTHSMETRICS_RAW(ch_bam_fcu_stix, ch_fasta, ch_fai, ch_dict, params.optional_bait_intervals, params.optional_target_intervals, params.seq_library)
+    ch_versions = ch_versions.mix(COLLECTHSMETRICS_RAW.out.versions.first())
+
+    //
+    // MODULE: Run ErrorRateByReadPosition 
+    //
+    FGBIO_ERRORRATEBYREADPOSITION_RAW(ch_bam_fcu_sort, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
+    ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_RAW.out.versions.first())
 
     //
     // MODULE: Run SamBlaster
@@ -135,12 +137,13 @@ workflow UMIPROCESSING {
     FGBIO_GROUPREADSBYUMI(SAMBLASTER.out.bam, params.group_strategy, params.group_edits, params.group_include_secondary, params.group_allow_inter_contig, params.group_include_supplementary, params.group_min_map_q, params.group_include_non_pf_reads, params.group_mark_duplicates)
     ch_multiqc_files = ch_multiqc_files.mix(FGBIO_GROUPREADSBYUMI.out.histogram.map{it[1]}.collect())
     ch_versions = ch_versions.mix(FGBIO_GROUPREADSBYUMI.out.versions.first())
+    ch_grouped_family_sizes = FGBIO_GROUPREADSBYUMI.out.histogram
     ch_bam_grouped = FGBIO_GROUPREADSBYUMI.out.bam
 
     //
     // MODULE: Run fgbio CollectDuplexSeqMetrics
     //
-    FGBIO_COLLECTDUPLEXSEQMETRICS(ch_bam_grouped, params.rrna_intervals)
+    FGBIO_COLLECTDUPLEXSEQMETRICS(ch_bam_grouped)
     ch_multiqc_files = ch_multiqc_files.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.metrics.map{it[1]}.collect())
     ch_multiqc_files = ch_multiqc_files.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.pdf.map{it[1]}.collect())   
     ch_versions = ch_versions.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.versions.first())
@@ -150,96 +153,85 @@ workflow UMIPROCESSING {
     //
     FGBIO_CALLMOLECULARCONSENSUSREADS(ch_bam_grouped, params.call_min_reads, params.call_min_baseq)
     ch_versions = ch_versions.mix(FGBIO_CALLMOLECULARCONSENSUSREADS.out.versions.first())
-    ch_consensus_bam = FGBIO_CALLMOLECULARCONSENSUSREADS.out.bam
+    ch_called_bam = FGBIO_CALLMOLECULARCONSENSUSREADS.out.bam
 
     //
     // MODULE: Run fgbio SortBam
     //
-    FGBIO_SORTCONBAM(ch_consensus_bam)
+    FGBIO_SORTCONBAM(ch_called_bam)
     ch_versions = ch_versions.mix(FGBIO_SORTCONBAM.out.versions.first())
-    ch_consensus_bam_sorted = FGBIO_SORTCONBAM.out.bam
+    ch_called_bam_sorted = FGBIO_SORTCONBAM.out.bam
 
     //
     // MODULE: Run FgBIO FilterConsensusReads to produce the "Final", "Duplex Consensus" & "Simplex Consensus" BAM files
     //
-    FGBIO_FILTERCONSENSUSREADS(ch_consensus_bam_sorted, params.fasta, params.fai, params.filter_min_reads, params.filter_min_base_quality, params.filter_max_base_error_rate, params.filter_max_read_error_rate, params.filter_max_no_call_fraction)
+    FGBIO_FILTERCONSENSUSREADS(ch_called_bam_sorted, params.fasta, params.fai, params.filter_min_reads, params.filter_min_base_quality, params.filter_max_base_error_rate, params.filter_max_read_error_rate, params.filter_max_no_call_fraction)
     ch_versions = ch_versions.mix(FGBIO_FILTERCONSENSUSREADS.out.versions.first())
-    ch_bam_bai_final_fil = FGBIO_FILTERCONSENSUSREADS.out.suplex_bam_bai
-    ch_bam_bai_duplex_fil = FGBIO_FILTERCONSENSUSREADS.out.duplex_bam_bai
-    ch_bam_bai_simplex_fil = FGBIO_FILTERCONSENSUSREADS.out.simplex_bam_bai
-
-//    //
-//    // MODULE: Align with BWA mem
-//    //
-//    ALIGN_BAM_FIN(ch_bam_bai_final_fil, ch_bam_bai_simplex_fil, ch_bam_bai_duplex_fil, ch_star_index, ch_fai, ch_fasta, ch_dict, ch_gtf, params.star_seq_platform, params.star_seq_center)
-//    ch_versions = ch_versions.mix(ALIGN_BAM_FIN.out.versions.first())
-//    ch_bam_fin = ALIGN_BAM_FIN.out.bam
-//    ch_bam_duplex = ALIGN_BAM_FIN.out.duplex_bam
-//    ch_bam_simplex = ALIGN_BAM_FIN.out.simplex_bam
+    ch_filtered_bam = FGBIO_FILTERCONSENSUSREADS.out.bam_bai
 
     //
-    // MODULE: Align with BWA mem
+    // MODULE: Align with STAR, Zipp with FGbio and Sort & Index with Samtools
     //
-    ALIGN_BAM_FIN(ch_bam_bai_final_fil, ch_bam_bai_duplex_fil, ch_bam_bai_simplex_fil, ch_fasta, ch_fai, ch_dict, ch_bwa2)
-    ch_versions = ch_versions.mix(ALIGN_BAM_FIN.out.versions.first())
-    ch_bam_fin = ALIGN_BAM_FIN.out.bam
-    ch_bam_duplex = ALIGN_BAM_FIN.out.duplex_bam
-    ch_bam_simplex = ALIGN_BAM_FIN.out.simplex_bam
+    ALIGN_BAM_CON(ch_filtered_bam, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
+    ch_versions = ch_versions.mix(ALIGN_BAM_CON.out.versions.first())
+    ch_bam_consensus = ALIGN_BAM_CON.out.bam_bai
 
     //
-    // MODULE: Run SamToools Sort & Index
+    // MODULE: Run SamTools View to count reads accross the BAM files
     //
-    SAMTOOLS_SORT_INDEX_FIN(ch_bam_fin, ch_fai, ch_fasta, ch_bam_duplex, ch_bam_simplex)
-    ch_versions = ch_versions.mix(SAMTOOLS_SORT_INDEX_FIN.out.versions)
-    ch_bam_fin_sort = SAMTOOLS_SORT_INDEX_FIN.out.bam
-    ch_bam_fin_indx = SAMTOOLS_SORT_INDEX_FIN.out.bai
-    ch_bam_fin_stix = SAMTOOLS_SORT_INDEX_FIN.out.bam_bai
-    ch_bam_dup_stix = SAMTOOLS_SORT_INDEX_FIN.out.bam_duplex
-    ch_bam_sim_stix = SAMTOOLS_SORT_INDEX_FIN.out.bam_simplex
+    UMI_READ_COUNTS(ch_ubam, ch_bam_fcu, ch_bam_grouped, ch_called_bam, ch_filtered_bam, ch_bam_consensus)
+    ch_versions = ch_versions.mix(UMI_READ_COUNTS.out.versions.first())
+
+    //
+    // MODULE: Run SamTools View to count reads accross the BAM files
+    //
+    COLLECT_UMI_METRICS(ch_bam_consensus)
+    ch_versions = ch_versions.mix(COLLECT_UMI_METRICS.out.versions.first())
+    ch_cons_family_sizes = COLLECT_UMI_METRICS.out.cons_family_sizes
+
+    //
+    // MODULE: Run Preseq CCurve
+    //
+    PRESEQ_CCURVE(ch_cons_family_sizes)
+    ch_versions = ch_versions.mix(PRESEQ_CCURVE.out.versions.first())
+
+    //
+    // MODULE: Run Preseq LCExtrap
+    //
+    PRESEQ_LCEXTRAP(ch_grouped_family_sizes)
+    ch_versions = ch_versions.mix(PRESEQ_LCEXTRAP.out.versions.first())
 
     //
     // MODULE: Run ErrorRateByReadPosition in Final BAM
     //
-    FGBIO_ERRORRATEBYREADPOSITION_FIN(ch_bam_fin_sort, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.interval_list)
-    ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_FIN.out.versions)
+    FGBIO_ERRORRATEBYREADPOSITION_CON(ch_bam_consensus, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.interval_list)
+    ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_CON.out.versions)
+
+    //
+    // MODULE: Run Picard's Collect RNAseq Metrics for consensus BAM files
+    //
+    PICARD_COLLECTRNASEQMETRICS_CON(ch_bam_consensus, ch_refflat, ch_rrna_intervals)
+    ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_CON.out.versions.first())
 
     //
     // MODULE: Run Picard's Collect HS Metrics for consensus BAM files
     //
-    COLLECTHSMETRICS_FIN(ch_bam_fin_stix, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts)
-    ch_versions = ch_versions.mix(COLLECTHSMETRICS_FIN.out.versions.first())
-    ch_coverage_con  = COLLECTHSMETRICS_FIN.out.coverage
-    ch_hsmetrics_con = COLLECTHSMETRICS_FIN.out.hsmetrics
-
-    //
-    // MODULE: Run Picard's Collect HS Metrics for consensus BAM files
-    //
-    COLLECTHSMETRICS_DUP(ch_bam_dup_stix, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts)
-    ch_versions = ch_versions.mix(COLLECTHSMETRICS_DUP.out.versions.first())
-    ch_coverage_con  = COLLECTHSMETRICS_DUP.out.coverage
-    ch_hsmetrics_con = COLLECTHSMETRICS_DUP.out.hsmetrics
-
-    //
-    // MODULE: Run Picard's Collect HS Metrics for consensus BAM files
-    //
-    COLLECTHSMETRICS_SIM(ch_bam_sim_stix, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts)
-    ch_versions = ch_versions.mix(COLLECTHSMETRICS_DUP.out.versions.first())
-    ch_coverage_con  = COLLECTHSMETRICS_SIM.out.coverage
-    ch_hsmetrics_con = COLLECTHSMETRICS_SIM.out.hsmetrics
+    COLLECTHSMETRICS_CON(ch_bam_consensus, ch_fasta, ch_fai, ch_dict, params.optional_bait_intervals, params.optional_target_intervals, params.seq_library)
+    ch_versions = ch_versions.mix(COLLECTHSMETRICS_CON.out.versions.first())
 
     //
     // MODULE: Extract FastQ reads from BAM
     //
-    SAMTOOLS_COLLATEFASTQ(ch_bam_fin_stix, ch_fasta)
+    SAMTOOLS_COLLATEFASTQ(ch_bam_consensus, ch_fasta)
     ch_versions = ch_versions.mix(SAMTOOLS_COLLATEFASTQ.out.versions)
     ch_consensus_reads = SAMTOOLS_COLLATEFASTQ.out.fastq
 
     //
     // MODULE: Run FastQC
     //
-    FASTQ_CONSENSUS(ch_consensus_reads)
-    ch_multiqc_files = ch_multiqc_files.mix(FASTQ_CONSENSUS.out.zip.collect{it[1]})
-    ch_versions = ch_versions.mix(FASTQ_CONSENSUS.out.versions)
+    FASTQC_CONSENSUS(ch_consensus_reads)
+    ch_multiqc_files = ch_multiqc_files.mix(FASTQC_CONSENSUS.out.zip.collect{it[1]})
+    ch_versions = ch_versions.mix(FASTQC_CONSENSUS.out.versions)
 
     //
     // Collate and save software versions
@@ -250,16 +242,16 @@ workflow UMIPROCESSING {
             name: 'nf_core_pipeline_software_mqc_versions.yml',
             sort: true,
             newLine: true
-        ).set { ch_collated_versions }
+        ).set { ch_cversions }
 
     emit:
 
     ubam            = ch_ubam
     raw_bam         = ch_raw_bam
-    versions        = ch_collated_versions
+    versions        = ch_cversions
     group_bam       = ch_bam_grouped
     multiqc_files   = ch_multiqc_files
-    finalized_bam   = ch_bam_fin_stix
+    finalized_bam   = ch_bam_consensus
     reads_finalized = ch_consensus_reads
 
 }

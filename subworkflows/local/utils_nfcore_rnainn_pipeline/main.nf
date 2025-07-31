@@ -8,17 +8,17 @@ import groovy.json.JsonSlurper
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { UTILS_NFVALIDATION_PLUGIN } from '../../nf-core/utils_nfvalidation_plugin'
-include { paramsSummaryMap          } from 'plugin/nf-validation'
-include { fromSamplesheet           } from 'plugin/nf-validation'
-include { UTILS_NEXTFLOW_PIPELINE   } from '../../nf-core/utils_nextflow_pipeline'
-include { completionEmail           } from '../../nf-core/utils_nfcore_pipeline'
-include { completionSummary         } from '../../nf-core/utils_nfcore_pipeline'
-include { dashedLine                } from '../../nf-core/utils_nfcore_pipeline'
-include { nfCoreLogo                } from '../../nf-core/utils_nfcore_pipeline'
-include { imNotification            } from '../../nf-core/utils_nfcore_pipeline'
-include { UTILS_NFCORE_PIPELINE     } from '../../nf-core/utils_nfcore_pipeline'
-include { workflowCitation          } from '../../nf-core/utils_nfcore_pipeline'
+include { dashedLine                            } from '../../nf-core/utils_nfcore_pipeline'
+include { nfCoreLogo                            } from '../../nf-core/utils_nfcore_pipeline'
+include { imNotification                        } from '../../nf-core/utils_nfcore_pipeline'
+include { completionEmail                       } from '../../nf-core/utils_nfcore_pipeline'
+include { fromSamplesheet                       } from 'plugin/nf-validation'
+include { paramsSummaryMap                      } from 'plugin/nf-validation'
+include { workflowCitation                      } from '../../nf-core/utils_nfcore_pipeline'
+include { completionSummary                     } from '../../nf-core/utils_nfcore_pipeline'
+include { UTILS_NFCORE_PIPELINE                 } from '../../nf-core/utils_nfcore_pipeline'
+include { UTILS_NEXTFLOW_PIPELINE               } from '../../nf-core/utils_nextflow_pipeline'
+include { UTILS_NFVALIDATION_PLUGIN             } from '../../nf-core/utils_nfvalidation_plugin'
 
 /*
 ===================================================================================================
@@ -29,13 +29,13 @@ include { workflowCitation          } from '../../nf-core/utils_nfcore_pipeline'
 workflow PIPELINE_INITIALISATION {
 
     take:
-    version           // boolean: Display version and exit
-    help              // boolean: Display help text
-    validate_params   // boolean: Boolean whether to validate parameters against the schema at runtime
-    monochrome_logs   // boolean: Do not use coloured log outputs
-    nextflow_cli_args //   array: List of positional nextflow CLI args
-    outdir            //  string: The output directory where the results will be saved
-    input             //  string: Path to input samplesheet
+    help                    // boolean: Display help text
+    input                   //  string: Path to input samplesheet
+    outdir                  //  string: The output directory where the results will be saved
+    version                 // boolean: Display version and exit
+    monochrome_logs         // boolean: Do not use coloured log outputs
+    validate_params         // boolean: Boolean whether to validate parameters against the schema
+    nextflow_cli_args       //   array: List of positional nextflow CLI args
 
     main:
 
@@ -110,13 +110,13 @@ workflow PIPELINE_INITIALISATION {
 workflow PIPELINE_COMPLETION {
 
     take:
-    email           //  string: email address
-    email_on_fail   //  string: email address sent on pipeline failure
-    plaintext_email //  boolean: Send plain-text email instead of HTML
-    outdir          //  path: Path to output directory where results will be published
-    monochrome_logs //  boolean: Disable ANSI colour codes in log output
-    hook_url        //  string: hook URL for notifications
-    multiqc_report  //  string: Path to MultiQC report
+    email                   //  string: email address
+    outdir                  //  path: Path to output directory where results will be published
+    hook_url                //  string: hook URL for notifications
+    email_on_fail           //  string: email address sent on pipeline failure
+    multiqc_report          //  string: Path to MultiQC report
+    monochrome_logs         //  boolean: Disable ANSI colour codes in log output
+    plaintext_email         //  boolean: Send plain-text email instead of HTML
 
     main:
 

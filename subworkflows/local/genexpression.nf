@@ -66,12 +66,12 @@ workflow GENEXPRESSION {
     ch_fasta
     ch_rsem_ref
     ch_versions
-    ch_reads_all
     ch_star_index
     ch_samplesheet
     ch_salmon_index
     ch_multiqc_files
     ch_kallisto_index
+    ch_reads_finalized
     ch_pca_header_multiqc
     ch_biotypes_header_multiqc
     ch_clustering_header_multiqc
@@ -84,7 +84,7 @@ workflow GENEXPRESSION {
     //
     // MODULE: Run Kallisto pseudoalignment
     //
-    KALLISTO_QUANT (ch_reads_all, ch_kallisto_index, params.gtf, params.chromosomes, [], [])
+    KALLISTO_QUANT (ch_reads_finalized, ch_kallisto_index, params.gtf, params.chromosomes, [], [])
     ch_versions = ch_versions.mix(KALLISTO_QUANT.out.versions)
     ch_kallisto_quant = KALLISTO_QUANT.out.quant
     ch_kallisto_multiqc = KALLISTO_QUANT.out.log
@@ -160,7 +160,7 @@ workflow GENEXPRESSION {
     //
     // MODULE: Run Salmon pseudoalignment
     //
-    SALMON_QUANT_FQS(ch_reads_all, params.salmon_index, params.lib_type)
+    SALMON_QUANT_FQS(ch_reads_finalized, params.salmon_index, params.lib_type)
     ch_versions = ch_versions.mix(SALMON_QUANT_FQS.out.versions)
     ch_salmon_fqs_multiqc = SALMON_QUANT_FQS.out.log
     ch_salmon_fqs_quant = SALMON_QUANT_FQS.out.quant
@@ -236,7 +236,7 @@ workflow GENEXPRESSION {
     //
     // MODULE: Run STAR
     //
-    STAR_ALIGNX(ch_reads_all, ch_star_index, ch__gtf, params.star_seq_platform, params.star_seq_center)
+    STAR_ALIGNX(ch_reads_finalized, ch_star_index, ch__gtf, params.star_seq_platform, params.star_seq_center)
     ch_star_sam = STAR_ALIGNX.out.sam
     ch_star_wig = STAR_ALIGNX.out.wig
     ch_star_bam = STAR_ALIGNX.out.bam

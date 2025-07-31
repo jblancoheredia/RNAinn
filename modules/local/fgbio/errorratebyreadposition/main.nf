@@ -8,7 +8,7 @@ process FGBIO_ERRORRATEBYREADPOSITION {
         'quay.io/biocontainers/fgbio:2.2.1--hdfd78af_0' }"
 
     input:
-    tuple val(meta),  path(bam)
+    tuple val(meta),  path(bam), path(bai)
     tuple val(meta1), path(fasta)
     tuple val(meta2), path(fasta_fai)
     tuple val(meta3), path(fasta_dict)
@@ -17,8 +17,8 @@ process FGBIO_ERRORRATEBYREADPOSITION {
     path(intervals)
 
     output:
-    tuple val(meta), path("*.error_rate_by_read_position.txt"), emit: bam
-    tuple val(meta), path("*.error_rate_by_read_position.pdf"), emit: metrics
+    tuple val(meta), path("*.error_rate_by_read_position.txt"), emit: txt
+    tuple val(meta), path("*.error_rate_by_read_position.pdf"), emit: pdf
     path "versions.yml",                                        emit: versions
 
     script:
@@ -64,7 +64,7 @@ process FGBIO_ERRORRATEBYREADPOSITION {
     """
 }
 
-process FGBIO_ERRORRATEBYREADPOSITION_ORI {
+process FGBIO_ERRORRATEBYREADPOSITION_RAW {
     tag "$meta.id"
     label 'process_high'
 
@@ -83,8 +83,8 @@ process FGBIO_ERRORRATEBYREADPOSITION_ORI {
     path(intervals)
 
     output:
-    tuple val(meta), path("*.error_rate_by_read_position.txt"), emit: bam
-    tuple val(meta), path("*.error_rate_by_read_position.pdf"), emit: metrics
+    tuple val(meta), path("*.error_rate_by_read_position.txt"), emit: txt
+    tuple val(meta), path("*.error_rate_by_read_position.pdf"), emit: pdf
     path "versions.yml",                                        emit: versions
 
     script:
@@ -130,7 +130,7 @@ process FGBIO_ERRORRATEBYREADPOSITION_ORI {
     """
 }
 
-process FGBIO_ERRORRATEBYREADPOSITION_FIN {
+process FGBIO_ERRORRATEBYREADPOSITION_CON {
     tag "$meta.id"
     label 'process_high'
 
@@ -140,7 +140,7 @@ process FGBIO_ERRORRATEBYREADPOSITION_FIN {
         'quay.io/biocontainers/fgbio:2.2.1--hdfd78af_0' }"
 
     input:
-    tuple val(meta),  path(bam)
+    tuple val(meta),  path(bam), path(bai)
     tuple val(meta1), path(fasta)
     tuple val(meta2), path(fasta_fai)
     tuple val(meta3), path(fasta_dict)
@@ -149,8 +149,8 @@ process FGBIO_ERRORRATEBYREADPOSITION_FIN {
     path(intervals)
 
     output:
-    tuple val(meta), path("*.error_rate_by_read_position.txt"), emit: bam
-    tuple val(meta), path("*.error_rate_by_read_position.pdf"), emit: metrics
+    tuple val(meta), path("*.error_rate_by_read_position.txt"), emit: txt
+    tuple val(meta), path("*.error_rate_by_read_position.pdf"), emit: pdf
     path "versions.yml",                                        emit: versions
 
     script:

@@ -1,4 +1,4 @@
-process ARRIBA_VISUALISATION {
+process FUSIONINSPECTOR_VISUALISATION {
     tag "$meta.id"
     label 'process_medium'
 
@@ -8,10 +8,11 @@ process ARRIBA_VISUALISATION {
         'biocontainers/arriba:2.4.0--h0033a41_2' }"
 
     input:
-    tuple val(meta), path(bam), path(bai), path(fusions)
-    tuple val(meta2), path(gtf)
-    tuple val(meta3), path(protein_domains)
-    tuple val(meta4), path(cytobands)
+    tuple val(meta), path(bam), path(bai)
+    tuple val(meta2), path(fusions)
+    path(gtf)
+    path(protein_domains)
+    path(cytobands)
 
     output:
     tuple val(meta), path("*.pdf")          , emit: pdf

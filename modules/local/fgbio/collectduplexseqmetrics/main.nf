@@ -9,7 +9,6 @@ process FGBIO_COLLECTDUPLEXSEQMETRICS {
 
     input:
     tuple val(meta), path(grouped_bam)
-    path intervals
 
     output:
     tuple val(meta), path("*duplex_seq_metrics*.txt"), emit: metrics
@@ -32,10 +31,10 @@ process FGBIO_COLLECTDUPLEXSEQMETRICS {
         --async-io=true \\
         --compression=1 \\
         CollectDuplexSeqMetrics \\
-        --input ${grouped_bam} \\
         --output ${prefix}.duplex_seq_metrics \\
-        --duplex-umi-counts=true \\
-        --intervals ${intervals} \\
+        --input ${grouped_bam} \\
+        --umi-tag RX \\
+        --mi-tag MI \\
         $args;
 
     cat <<-END_VERSIONS > versions.yml
