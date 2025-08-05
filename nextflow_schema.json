@@ -129,11 +129,93 @@
                 }
             }
         },
+        "pipeline_execution_options": {
+            "title": "Pipeline execution options",
+            "type": "object",
+            "fa_icon": "fas fa-cogs",
+            "description": "Options to control which pipeline modules to run",
+            "properties": {
+                "run_dedupandrecal": {
+                    "type": "boolean",
+                    "description": "Run deduplication and recalibration",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable deduplication and base quality score recalibration steps"
+                },
+                "run_umiprocessing": {
+                    "type": "boolean",
+                    "description": "Run UMI processing",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable UMI-based processing of reads"
+                },
+                "run_fusion_splice": {
+                    "type": "boolean",
+                    "description": "Run fusion and splice detection",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable fusion gene and splice junction detection"
+                },
+                "run_genexpression": {
+                    "type": "boolean",
+                    "description": "Run gene expression analysis",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable gene expression quantification"
+                },
+                "run_variantdscvry": {
+                    "type": "boolean",
+                    "description": "Run variant discovery",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable variant calling and discovery"
+                },
+                "run_copynumberalt": {
+                    "type": "boolean",
+                    "description": "Run copy number alteration analysis",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable copy number variation detection"
+                },
+                "run_immunoncology": {
+                    "type": "boolean",
+                    "description": "Run immuno-oncology analysis",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable immune-related analysis modules"
+                },
+                "run_telomerefeats": {
+                    "type": "boolean",
+                    "description": "Run telomere features analysis",
+                    "fa_icon": "fas fa-cog",
+                    "help_text": "Enable telomere length and features analysis"
+                }
+            }
+        },
+        "sequencing_metadata": {
+            "title": "Sequencing metadata",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Metadata about the sequencing experiment",
+            "properties": {
+                "seq_center": {
+                    "type": "string",
+                    "description": "Sequencing center name",
+                    "fa_icon": "fas fa-building",
+                    "help_text": "Name of the sequencing center (e.g., MSKCC_IGO)"
+                },
+                "seq_library": {
+                    "type": "string",
+                    "description": "Library preparation protocol",
+                    "fa_icon": "fas fa-vial",
+                    "help_text": "Library preparation protocol used (e.g., Av1)"
+                },
+                "seq_platform": {
+                    "type": "string",
+                    "description": "Sequencing platform",
+                    "fa_icon": "fas fa-microscope",
+                    "help_text": "Sequencing platform used (e.g., ILLUMINA)"
+                }
+            }
+        },
         "rnainn_preprocess": {
             "title": "RNAinn pipeline custom options (preprocess)",
             "type": "object",
             "fa_icon": "fas fa-dna",
-            "description": "Options for when preprocess  reads by UMI",
+            "description": "Options for when preprocess reads by UMI",
             "properties": {
                 "genome": {
                     "type": "string",
@@ -162,6 +244,12 @@
                     "fa_icon": "fas fa-book",
                     "help_text": " ENSEMBL Human genome version to use for alignment."
                 },
+                "ensembl_genome_version": {
+                    "type": "string",
+                    "description": "ENSEMBL genome version",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "ENSEMBL genome version to use (e.g., p14)"
+                },
                 "read_length": {
                     "type": "string",
                     "description": "Library size",
@@ -177,7 +265,7 @@
                 "fasta": {
                     "type": "string",
                     "description": "Fasta file",
-                    "fa_icon": "fas fa-book",
+                    "fa_icon": "fas fa-book", 
                     "help_text": "Fasta file to use for alignment."
                 },
                 "fai": {
@@ -222,6 +310,12 @@
                     "fa_icon": "fas fa-book",
                     "help_text": "BWA index to use for alignment."
                 },
+                "bwa2": {
+                    "type": "string",
+                    "description": "BWA2 index directory",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "BWA2 index directory to use for alignment."
+                },
                 "star_seq_center": {
                     "type": "string",
                     "description": "STAR sequence center",
@@ -240,6 +334,12 @@
                     "fa_icon": "fas fa-book",
                     "help_text": "STAR ignore sjdbgtf to use for alignment."
                 },
+                "star_twopass": {
+                    "type": "boolean",
+                    "description": "Enable STAR two-pass mode",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Enable STAR two-pass mapping mode for improved alignment accuracy."
+                },
                 "group_strategy": {
                     "type": "string",
                     "description": "Group reads by UMI strategy",
@@ -257,6 +357,24 @@
                     "description": "Call min baseq",
                     "fa_icon": "fas fa-book",
                     "help_text": "Call min baseq to use for alignment."
+                },
+                "call_error_rate_pre_umi": {
+                    "type": "integer",
+                    "description": "Call error rate pre-UMI",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Error rate threshold for calling pre-UMI processing."
+                },
+                "call_error_rate_post_umi": {
+                    "type": "integer",
+                    "description": "Call error rate post-UMI",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Error rate threshold for calling post-UMI processing."
+                },
+                "call_produce_per_base_tags": {
+                    "type": "boolean",
+                    "description": "Produce per-base tags",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Enable production of per-base quality tags."
                 },
                 "filter_min_reads": {
                     "type": "string",
@@ -281,6 +399,12 @@
                     "description": "Filter max base error rate",
                     "fa_icon": "fas fa-book",
                     "help_text": "Filter max base error rate to use for alignment."
+                },
+                "filter_max_no_call_fraction": {
+                    "type": "number",
+                    "description": "Filter max no-call fraction",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Maximum fraction of no-calls allowed in reads."
                 },
                 "transcripts": {
                     "type": "string",
@@ -311,6 +435,230 @@
                     "description": "CDNA splicesites file",
                     "fa_icon": "fas fa-book",
                     "help_text": "CDNA splicesites file to use for alignment."
+                },
+                "remove_duplicates": {
+                    "type": "boolean",
+                    "description": "Remove duplicate reads",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Enable removal of duplicate reads during processing."
+                },
+                "bam_csi_index": {
+                    "type": "boolean",
+                    "description": "Use CSI index for BAM files",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "Enable CSI indexing instead of BAI for large BAM files."
+                }
+            }
+        },
+        "genomic_intervals": {
+            "title": "Genomic intervals and target regions",
+            "type": "object",
+            "fa_icon": "fas fa-crosshairs",
+            "description": "Options for defining target regions and genomic intervals",
+            "properties": {
+                "targets": {
+                    "type": "string",
+                    "description": "Target intervals BED file",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "BED file containing target intervals for analysis."
+                },
+                "intervals": {
+                    "type": "string",
+                    "description": "Analysis intervals BED file",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "BED file containing intervals for analysis."
+                },
+                "targets_bed": {
+                    "type": "string",
+                    "description": "Target regions BED file",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "BED file containing target regions."
+                },
+                "interval_list": {
+                    "type": "string",
+                    "description": "Interval list file",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Picard-style interval list file."
+                },
+                "intervals_gunzip": {
+                    "type": "string",
+                    "description": "Compressed intervals file",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Gzipped BED file containing intervals."
+                },
+                "intervals_gunzip_index": {
+                    "type": "string",
+                    "description": "Compressed intervals index file",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Index file for compressed intervals BED file."
+                },
+                "optional_bait_intervals": {
+                    "type": ["string", "null"],
+                    "description": "Optional bait intervals",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Optional bait intervals for targeted sequencing."
+                },
+                "optional_target_intervals": {
+                    "type": ["string", "null"],
+                    "description": "Optional target intervals",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Optional target intervals for analysis."
+                },
+                "hsmetrics_baits": {
+                    "type": "string",
+                    "description": "Hybrid selection metrics bait intervals",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Bait interval list for hybrid selection metrics."
+                },
+                "hsmetrics_trgts": {
+                    "type": "string",
+                    "description": "Hybrid selection metrics target intervals",
+                    "fa_icon": "fas fa-crosshairs",
+                    "help_text": "Target interval list for hybrid selection metrics."
+                }
+            }
+        },
+        "variant_calling": {
+            "title": "Variant calling options",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Options for variant calling and annotation",
+            "properties": {
+                "known_sites": {
+                    "type": "string",
+                    "description": "Known variant sites VCF",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "VCF file containing known variant sites for recalibration."
+                },
+                "known_sites_tbi": {
+                    "type": "string",
+                    "description": "Known variant sites VCF index",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "Index file for known variant sites VCF."
+                },
+                "known_indels": {
+                    "type": "string",
+                    "description": "Known indels VCF",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "VCF file containing known indels."
+                },
+                "known_indels_tbi": {
+                    "type": "string",
+                    "description": "Known indels VCF index",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "Index file for known indels VCF."
+                },
+                "dbsnp": {
+                    "type": "string",
+                    "description": "dbSNP VCF file",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "dbSNP VCF file for variant annotation."
+                },
+                "dbsnp_tbi": {
+                    "type": "string",
+                    "description": "dbSNP VCF index",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "Index file for dbSNP VCF."
+                },
+                "gatk_interval_list": {
+                    "type": "string",
+                    "description": "GATK interval list",
+                    "fa_icon": "fas fa-list",
+                    "help_text": "GATK-format interval list for variant calling."
+                },
+                "gatk_interval_scatter_count": {
+                    "type": "integer",
+                    "description": "GATK interval scatter count",
+                    "fa_icon": "fas fa-list",
+                    "help_text": "Number of intervals to scatter for parallel processing."
+                },
+                "gatk_hc_call_conf": {
+                    "type": "integer",
+                    "description": "GATK HaplotypeCaller call confidence",
+                    "fa_icon": "fas fa-phone",
+                    "help_text": "Minimum confidence threshold for variant calling."
+                },
+                "gatk_vf_fs_filter": {
+                    "type": "number",
+                    "description": "GATK VariantFiltration FS filter",
+                    "fa_icon": "fas fa-filter",
+                    "help_text": "FisherStrand filter threshold for variant filtering."
+                },
+                "gatk_vf_qd_filter": {
+                    "type": "number",
+                    "description": "GATK VariantFiltration QD filter",
+                    "fa_icon": "fas fa-filter",
+                    "help_text": "QualByDepth filter threshold for variant filtering."
+                },
+                "gatk_vf_window_size": {
+                    "type": "integer",
+                    "description": "GATK VariantFiltration window size",
+                    "fa_icon": "fas fa-filter",
+                    "help_text": "Window size for variant filtering."
+                },
+                "gatk_vf_cluster_size": {
+                    "type": "integer",
+                    "description": "GATK VariantFiltration cluster size",
+                    "fa_icon": "fas fa-filter",
+                    "help_text": "Cluster size threshold for variant filtering."
+                }
+            }
+        },
+        "variant_annotation": {
+            "title": "Variant annotation options",
+            "type": "object",
+            "fa_icon": "fas fa-tags",
+            "description": "Options for variant annotation and effect prediction",
+            "properties": {
+                "snpeff_db": {
+                    "type": "string",
+                    "description": "SnpEff database",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "SnpEff database for variant annotation."
+                },
+                "snpeff_cache": {
+                    "type": "string",
+                    "description": "SnpEff cache directory",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "Directory containing SnpEff cache files."
+                },
+                "vep_cache": {
+                    "type": ["string", "null"],
+                    "description": "VEP cache directory",
+                    "fa_icon": "fas fa-database",
+                    "help_text": "Directory containing VEP cache files."
+                },
+                "vep_genome": {
+                    "type": ["string", "null"],
+                    "description": "VEP genome version",
+                    "fa_icon": "fas fa-dna",
+                    "help_text": "Genome version for VEP annotation."
+                },
+                "vep_cache_version": {
+                    "type": ["string", "null"],
+                    "description": "VEP cache version",
+                    "fa_icon": "fas fa-tag",
+                    "help_text": "Version of VEP cache to use."
+                }
+            }
+        },
+        "copy_number_analysis": {
+            "title": "Copy number analysis options",
+            "type": "object",
+            "fa_icon": "fas fa-copy",
+            "description": "Options for copy number variation analysis",
+            "properties": {
+                "cnvkit_reference": {
+                    "type": "string",
+                    "description": "CNVkit reference file",
+                    "fa_icon": "fas fa-copy",
+                    "help_text": "CNVkit reference file for copy number analysis."
+                },
+                "cnvkit_antitarget": {
+                    "type": "string",
+                    "description": "CNVkit antitarget BED file",
+                    "fa_icon": "fas fa-copy",
+                    "help_text": "CNVkit antitarget BED file for copy number analysis."
                 }
             }
         },
@@ -453,9 +801,9 @@
                     "help_text": "FusionReport reference directory to use for alignment."
                 },
                 "cram": {
-                    "type": "list",
-                    "description": "Tools to CRAM",
-                    "fa_icon": "fas fa-book",
+                    "type": "string",
+                    "description": "List of tools for which to compress BAM file to CRAM,default: [], options: arriba, starfusion. Leave no space between options",
+                    "fa_icon": "fas fa-cut",
                     "help_text": "Tools to use CRAM for alignment outputs."
                 },
                 "trim_tail": {
@@ -909,6 +1257,33 @@
         },
         {
             "$ref": "#/definitions/max_job_request_options"
+        },
+        {
+            "$ref": "#/definitions/pipeline_execution_options"
+        },
+        {
+            "$ref": "#/definitions/sequencing_metadata"
+        },
+        {
+            "$ref": "#/definitions/rnainn_preprocess"
+        },
+        {
+            "$ref": "#/definitions/genomic_intervals"
+        },
+        {
+            "$ref": "#/definitions/variant_calling"
+        },
+        {
+            "$ref": "#/definitions/variant_annotation"
+        },
+        {
+            "$ref": "#/definitions/copy_number_analysis"
+        },
+        {
+            "$ref": "#/definitions/rnainn_fusions"
+        },
+        {
+            "$ref": "#/definitions/rnainn_expression"
         },
         {
             "$ref": "#/definitions/generic_options"
