@@ -224,25 +224,24 @@
                     "help_text": "Human genome version to use for alignment. Options are: GRCh37 & GRCh38."
                 },
                 "refs_dir": {
-                    "type": "integer",
-                    "format": "file-path",
+                    "type": "string",
+                    "format": "directory-path",
                     "description": "Directory containing reference files",
                     "fa_icon": "fas fa-book",
                     "help_text": "Directory containing reference files for the pipeline. This directory should contain the following subdirectories: `ensembl`, `star`, etc..."
                 },
                 "genome_base": {
                     "type": "string",
-                    "format": "file-path",
+                    "format": "directory-path",
                     "description": "Directory containing Human genome files",
                     "fa_icon": "fas fa-book",
                     "help_text": "Directory containing reference files for the pipeline. This directory should contain the following subdirectories: `ensembl`, `star`, etc..."
                 },
                 "ensembl_version": {
-                    "type": "string",
-                    "format": "file-path",
-                    "description": "ENSEMBL directory",
+                    "type": "integer",
+                    "description": "ENSEMBL version number",
                     "fa_icon": "fas fa-book",
-                    "help_text": " ENSEMBL Human genome version to use for alignment."
+                    "help_text": "ENSEMBL version number to use for alignment."
                 },
                 "ensembl_genome_version": {
                     "type": "string",
@@ -251,7 +250,7 @@
                     "help_text": "ENSEMBL genome version to use (e.g., p14)"
                 },
                 "read_length": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Library size",
                     "fa_icon": "fas fa-book",
                     "help_text": "Library size of the reads."
@@ -347,13 +346,13 @@
                     "help_text": "Group reads by UMI strategy to use for alignment."
                 },
                 "call_min_reads": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Call min reads",
                     "fa_icon": "fas fa-book",
                     "help_text": "Call min reads to use for alignment."
                 },
                 "call_min_baseq": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Call min baseq",
                     "fa_icon": "fas fa-book",
                     "help_text": "Call min baseq to use for alignment."
@@ -377,25 +376,25 @@
                     "help_text": "Enable production of per-base quality tags."
                 },
                 "filter_min_reads": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Filter min reads",
                     "fa_icon": "fas fa-book",
                     "help_text": "Filter min reads to use for alignment."
                 },
                 "filter_min_base_quality": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Filter min baseq",
                     "fa_icon": "fas fa-book",
                     "help_text": "Filter min baseq to use for alignment."
                 },
                 "filter_max_read_error_rate": {
-                    "type": "string",
+                    "type": "number",
                     "description": "Filter max read error rate",
                     "fa_icon": "fas fa-book",
                     "help_text": "Filter max read error rate to use for alignment."
                 },
                 "filter_max_base_error_rate": {
-                    "type": "string",
+                    "type": "number",
                     "description": "Filter max base error rate",
                     "fa_icon": "fas fa-book",
                     "help_text": "Filter max base error rate to use for alignment."
@@ -802,8 +801,8 @@
                 },
                 "cram": {
                     "type": "string",
-                    "description": "List of tools for which to compress BAM file to CRAM,default: [], options: arriba, starfusion. Leave no space between options",
-                    "fa_icon": "fas fa-cut",
+                    "description": "Tools to CRAM",
+                    "fa_icon": "fas fa-book",
                     "help_text": "Tools to use CRAM for alignment outputs."
                 },
                 "trim_tail": {
@@ -819,7 +818,7 @@
                     "help_text": "Adapter fasta sequence to trim before alignment."
                 },
                 "fusioncatcher_limitSjdbInsertNsj": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "FusionCatcher limitSjdbInsertNsj",
                     "fa_icon": "fas fa-book",
                     "help_text": "FusionCatcher limitSjdbInsertNsj to use for alignment."
@@ -927,7 +926,7 @@
                     "help_text": "fgbio GroupReadsByUMI number of edits for the pipeline."
                 },
                 "correct_min_corrected": {
-                    "type": "number",
+                    "type": "string",
                     "description": "fgbio CorrectUMI min fraction corrected",
                     "fa_icon": "fas fa-book",
                     "help_text": "fgbio CorrectUMI min fraction corrected for the pipeline."
@@ -975,13 +974,13 @@
                     "help_text": "fgbio CorrectUMI include supplementary reads for the pipeline."
                 },
                 "tools_cutoff": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "Tools cutoff",
                     "fa_icon": "fas fa-book",
                     "help_text": "Tools cutoff for the pipeline."
                 },
                 "fusioninspector_limitSjdbInsertNsj": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "FusionInspector limitSjdbInsertNsj",
                     "fa_icon": "fas fa-book",
                     "help_text": "FusionInspector limitSjdbInsertNsj for the pipeline."
@@ -1091,10 +1090,10 @@
                     "help_text": "Set to true to perform quants"
                 },
                 "chromosomes": {
-                    "type": "object",
-                    "description": "Chromosomes info",
+                    "type": "string",
+                    "description": "Chromosomes info file",
                     "fa_icon": "fas fa-book",
-                    "help_text": "File with chromosomes names and lenght"
+                    "help_text": "File with chromosomes names and length"
                 },
                 "kallisto_index": {
                     "type": "string",
