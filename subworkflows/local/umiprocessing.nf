@@ -116,7 +116,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run Picard's Collect HS Metrics for raw BAM files
     //
-    COLLECTHSMETRICS_RAW(ch_bam_fcu_stix, ch_fasta, ch_fai, ch_dict, params.optional_bait_intervals, params.optional_target_intervals, params.seq_library)
+    COLLECTHSMETRICS_RAW(ch_bam_fcu_stix, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts, params.seq_library)
     ch_versions = ch_versions.mix(COLLECTHSMETRICS_RAW.out.versions.first())
 
     //
@@ -216,7 +216,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run Picard's Collect HS Metrics for consensus BAM files
     //
-    COLLECTHSMETRICS_CON(ch_bam_consensus, ch_fasta, ch_fai, ch_dict, params.optional_bait_intervals, params.optional_target_intervals, params.seq_library)
+    COLLECTHSMETRICS_CON(ch_bam_consensus, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts, params.seq_library)
     ch_versions = ch_versions.mix(COLLECTHSMETRICS_CON.out.versions.first())
 
     //
