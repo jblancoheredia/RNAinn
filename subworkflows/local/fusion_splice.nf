@@ -93,9 +93,22 @@ workflow FUSION_SPLICE {
     ch_bam_star_arriba_indexed = STAR_ARRIBA.out.bam_sorted.join(ARRIBA_INDEX.out.bai)
 
     //
+    // Combine the BAM & Arriba's Output By ID
+    //
+    ch_arribaviz_input = ch_bam_star_arriba_indexed
+        .join(ch_arriba_fusions)
+        .map { id, meta_bam, bam, bai, meta_tsv, tsv ->
+            tuple(
+                meta_bam, 
+                meta_bam,  bam, bai,
+                meta_tsv, tsv
+            )
+        }
+
+    //
     // MODULE: Run Arriba visualisation tool
     //
-    ARRIBA_VISUALISATION (ch_bam_star_arriba_indexed, ARRIBA.out.fusions, params.gtf, params.arriba_ref_protein_domains, params.arriba_ref_cytobands)
+    ARRIBA_VISUALISATION (ch_arribaviz_input, params.gtf, params.arriba_ref_protein_domains, params.arriba_ref_cytobands)
     ch_arriba_visualisation = ARRIBA_VISUALISATION.out.pdf
     ch_versions = ch_versions.mix(ARRIBA_VISUALISATION.out.versions)
     ch_multiqc_files = ch_multiqc_files.mix(ch_arriba_visualisation.collect{it[1]}.ifEmpty([]))
@@ -177,13 +190,26 @@ workflow FUSION_SPLICE {
 //    IGVREPORTS()
 //    ch_versions = ch_versions.mix(IGVREPORTS.out.versions)
 //
-//    //
-//    // MODULE: Run FusViz
-//    //
-//    FUSVIZ(ch_bam_star_fusion_indexed, ch_fusioninspectortsv, params.gtf, params.genome, params.arriba_ref_cytobands, params.arriba_ref_protein_domains)
-//    ch_fusviz = FUSVIZ.out.pdf
-//    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
-//    ch_multiqc_files = ch_multiqc_files.mix(ch_fusviz.collect{it[1]}.ifEmpty([]))
+
+    //
+    // Join annotated SVs with BAM pairs based on patient
+    //
+    ch_fusviz_input = ch_bam_star_fusion_indexed
+        .join(ch_fusioninspectortsv)
+        .map { id, meta_bam, bam, bai, meta_tsv, tsv ->
+            tuple(
+                meta_bam, 
+                meta_bam,  bam, bai,
+                meta_tsv, tsv
+            )
+        }
+
+    //
+    // MODULE: Run FusViz
+    //
+    FUSVIZ(ch_fusviz_input, params.annotations, params.cytobands, params.fusviz_chr, params.protein_domains)
+    ch_fusviz_pdf = FUSVIZ.out.pdf
+    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
 
     emit:
 

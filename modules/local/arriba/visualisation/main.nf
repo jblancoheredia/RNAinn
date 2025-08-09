@@ -8,15 +8,16 @@ process ARRIBA_VISUALISATION {
         'biocontainers/arriba:2.4.0--h0033a41_2' }"
 
     input:
-    tuple val(meta), path(bam), path(bai)
-    tuple val(meta2), path(fusions)
+    tuple val(meta), 
+          val(meta_bam), path(bam), path(bai),
+          val(meta_tsv), path(fusions)
     path(gtf)
     path(protein_domains)
     path(cytobands)
 
     output:
-    tuple val(meta), path("*.pdf")          , emit: pdf
-    path "versions.yml"                     , emit: versions
+    tuple val(meta), path("*.pdf"), emit: pdf
+    path "versions.yml"           , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -41,11 +42,11 @@ process ARRIBA_VISUALISATION {
         arriba: \$(arriba -h | grep 'Version:' 2>&1 |  sed 's/Version:\s//')
     END_VERSIONS
     """
-
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.pdf
+    
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         arriba: \$(arriba -h | grep 'Version:' 2>&1 |  sed 's/Version:\s//')
