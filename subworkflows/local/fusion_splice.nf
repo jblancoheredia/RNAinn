@@ -11,7 +11,6 @@ include { FASTP                                                                 
 include { ARRIBA                                                                        } from '../../modules/nf-core/arriba/main'
 include { FUSVIZ                                                                        } from '../../modules/local/fusviz/main'
 include { CAT_CAT                                                                       } from '../../modules/nf-core/cat/cat/main'
-include { IGVREPORTS                                                                    } from '../../modules/nf-core/igvreports/main' 
 include { STARFUSION                                                                    } from '../../modules/local/starfusion/detect/main'
 include { VCF_COLLECT                                                                   } from '../../modules/local/vcf_collect/main'
 include { STAR_ARRIBA                                                                   } from '../../modules/local/arriba/star/main'
@@ -31,7 +30,6 @@ include { AGAT_CONVERTSPGFF2TSV                                                 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { FUSIONREPORT_WORKFLOW                                                         } from '../local/fusionreport_workflow'
 include { softwareVersionsToYAML                                                        } from '../nf-core/utils_nfcore_pipeline'
 include { FUSIONINSPECTOR_WORKFLOW                                                      } from '../local/fusioninspector_workflow'
 
@@ -163,10 +161,22 @@ workflow FUSION_SPLICE {
     ch_fusioncatcher_fusions = FUSIONCATCHER.out.fusions
 
     //
-    // WORKFLOW: Run FusionReport
+    // Combine the Fusion Callers Output By ID
     //
-    FUSIONREPORT_WORKFLOW (ch_reads_all, ch_fusionreport_ref, ch_arriba_fusions, ch_starfusion_fusions, ch_fusioncatcher_fusions)
-    ch_versions = ch_versions.mix(FUSIONREPORT_WORKFLOW.out.versions)
+    ch_fusionreport_input = ch_reads_all
+    .join(ch_arriba_fusions, remainder: true)
+    .join(ch_starfusion_fusions, remainder: true)
+    .join(ch_fusioncatcher_fusions, remainder: true)
+
+    //
+    // MODULE: Run FusionReport
+    //
+    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
+    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
+    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
+    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
+    ch_fusionreport_csv = FUSIONREPORT.out.csv
+    ch_fusionreport = FUSIONREPORT.out.report
 
     //
     // WORKFLOW: Run FusionInspector
@@ -183,13 +193,6 @@ workflow FUSION_SPLICE {
     )
     ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
     ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
-
-//    //
-//    // MODULE: Run IGV Reports
-//    //
-//    IGVREPORTS()
-//    ch_versions = ch_versions.mix(IGVREPORTS.out.versions)
-//
 
     //
     // Join annotated SVs with BAM pairs based on patient
