@@ -7,18 +7,18 @@ process FUSIONREPORT {
 
 
     input:
-    tuple val(meta), path(reads), path(arriba_fusions), path(starfusion_fusions),  path(fusioncatcher_fusions)
+    tuple val(meta), path(reads), path(arriba_fusions), path(starfusion_fusions), path(fusioncatcher_fusions)
     tuple val(meta2), path(fusionreport_ref)
     val(tools_cutoff)
 
     output:
-    path "versions.yml"                                                 , emit: versions
-    tuple val(meta), path("*fusionreport.tsv")                          , emit: fusion_list
     tuple val(meta), path("*fusionreport_filtered.tsv")                 , emit: fusion_list_filtered
+    tuple val(meta), path("*fusionreport.tsv")                          , emit: fusion_list
     tuple val(meta), path("*index.html")                                , emit: report
     tuple val(meta), path("*_*.html")                    , optional:true, emit: html
-    tuple val(meta), path("*.csv")                       , optional:true, emit: csv
     tuple val(meta), path("*.json")                      , optional:true, emit: json
+    tuple val(meta), path("*.csv")                       , optional:true, emit: csv
+    path "versions.yml"                                                 , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
