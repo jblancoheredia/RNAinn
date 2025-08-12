@@ -53,7 +53,7 @@ workflow FUSIONINSPECTOR_WORKFLOW {
             ch_reads_fusion = reads.join(ch_fusion_list.fusions )
         }
 
-        FUSIONINSPECTOR( ch_reads_fusion, index)
+        FUSIONINSPECTOR(ch_reads_fusion, index)
         ch_versions = ch_versions.mix(FUSIONINSPECTOR.out.versions)
 
         AGAT_CONVERTSPGFF2TSV(FUSIONINSPECTOR.out.out_gtf)
