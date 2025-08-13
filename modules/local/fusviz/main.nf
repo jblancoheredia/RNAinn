@@ -1,5 +1,5 @@
 process FUSVIZ {
-    tag "$meta.patient_id"
+    tag "$meta.patient"
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
@@ -8,8 +8,9 @@ process FUSVIZ {
         'blancojmskcc/fusviz:1.0.2' }"
 
     input:
-    tuple val(meta) , path(bam), path(bai)
-    tuple val(meta2), path(tsv)
+    tuple val(meta) , 
+          val(meta1), path(bam), path(bai),
+          val(meta2), path(tsv)
     path(gtf)
     val(genome)
     path(cytobands)
@@ -24,7 +25,7 @@ process FUSVIZ {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.patient_id}"
+    def prefix = task.ext.prefix ?: "${meta.patient}"
     """
     preFusViz \\
         --sample ${prefix} \\
@@ -49,7 +50,7 @@ process FUSVIZ {
     END_VERSIONS
     """
     stub:
-    def prefix = task.ext.prefix ?: "${meta.patient_id}"
+    def prefix = task.ext.prefix ?: "${meta.patient}"
     """
     touch ${prefix}_FusViz.pdf
 
