@@ -8,10 +8,9 @@ process GATK4_MARKDUPLICATES {
         'biocontainers/mulled-v2-d9e7bad0f7fbc8f4458d5c3ab7ffaaf0235b59fb:7cc3d06cbf42e28c5e2ebfc7c858654c7340a9d5-0' }"
 
     input:
-    tuple val(meta) , path(bam)
-    tuple val(meta2), path(bai)
+    tuple val(meta) , path(bam), path(bai)
+    tuple val(meta2), path(fasta)
     tuple val(meta3), path(fai)
-    tuple val(meta4), path(fasta)
 
     output:
     tuple val(meta), path("*cram"),     emit: cram,  optional: true
