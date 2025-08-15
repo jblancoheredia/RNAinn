@@ -8,7 +8,7 @@ process STAR_ALIGNV {
         'biocontainers/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:ded3841da0194af2701c780e9b3d653a85d27489-0' }"
 
     input:
-    tuple val(meta), path(reads, stageAs: "input*/*")
+    tuple val(meta),  path(reads, stageAs: "input*/*")
     tuple val(meta2), path(index)
     tuple val(meta3), path(gtf)
     val seq_platform
