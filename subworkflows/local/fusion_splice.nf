@@ -160,59 +160,59 @@ workflow FUSION_SPLICE {
     ch_versions = ch_versions.mix(FUSIONCATCHER.out.versions)
     ch_fusioncatcher_fusions = FUSIONCATCHER.out.fusions
 
-    //
-    // Combine the Fusion Callers Output By ID
-    //
-    ch_fusionreport_input = ch_reads_all
-    .join(ch_arriba_fusions, remainder: true)
-    .join(ch_starfusion_fusions, remainder: true)
-    .join(ch_fusioncatcher_fusions, remainder: true)
-
-    //
-    // MODULE: Run FusionReport
-    //
-    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
-    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
-    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
-    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
-    ch_fusionreport_csv = FUSIONREPORT.out.csv
-    ch_fusionreport = FUSIONREPORT.out.report
-
-    //
-    // WORKFLOW: Run FusionInspector
-    //
-    FUSIONINSPECTOR_WORKFLOW (
-        ch_reads_all,
-        ch_fusionreport_list,
-        ch_fusionreport_list_filtered,
-        ch_fusionreport,
-        ch_fusionreport_csv,
-        ch_bam_star_fusion_indexed,
-        ch_hgnc_ref,
-        ch_hgnc_date
-    )
-    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
-    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
-
-    //
-    // Join annotated SVs with BAM pairs based on patient
-    //
-    ch_fusviz_input = ch_bam_star_fusion_indexed
-        .join(ch_fusioninspectortsv)
-        .map { id, meta_bam, bam, bai, meta_tsv, tsv ->
-            tuple(
-                meta_bam, 
-                meta_bam,  bam, bai,
-                meta_tsv, tsv
-            )
-        }
-
-    //
-    // MODULE: Run FusViz
-    //
-    FUSVIZ(ch_fusviz_input, params.annotations, params.cytobands, params.fusviz_chr, params.protein_domains)
-    ch_fusviz_pdf = FUSVIZ.out.pdf
-    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
+//    //
+//    // Combine the Fusion Callers Output By ID
+//    //
+//    ch_fusionreport_input = ch_reads_all
+//    .join(ch_arriba_fusions, remainder: true)
+//    .join(ch_starfusion_fusions, remainder: true)
+//    .join(ch_fusioncatcher_fusions, remainder: true)
+//
+//    //
+//    // MODULE: Run FusionReport
+//    //
+//    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
+//    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
+//    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
+//    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
+//    ch_fusionreport_csv = FUSIONREPORT.out.csv
+//    ch_fusionreport = FUSIONREPORT.out.report
+//
+//    //
+//    // WORKFLOW: Run FusionInspector
+//    //
+//    FUSIONINSPECTOR_WORKFLOW (
+//        ch_reads_all,
+//        ch_fusionreport_list,
+//        ch_fusionreport_list_filtered,
+//        ch_fusionreport,
+//        ch_fusionreport_csv,
+//        ch_bam_star_fusion_indexed,
+//        ch_hgnc_ref,
+//        ch_hgnc_date
+//    )
+//    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
+//    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
+//
+//    //
+//    // Join annotated SVs with BAM pairs based on patient
+//    //
+//    ch_fusviz_input = ch_bam_star_fusion_indexed
+//        .join(ch_fusioninspectortsv)
+//        .map { id, meta_bam, bam, bai, meta_tsv, tsv ->
+//            tuple(
+//                meta_bam, 
+//                meta_bam,  bam, bai,
+//                meta_tsv, tsv
+//            )
+//        }
+//
+//    //
+//    // MODULE: Run FusViz
+//    //
+//    FUSVIZ(ch_fusviz_input, params.annotations, params.cytobands, params.fusviz_chr, params.protein_domains)
+//    ch_fusviz_pdf = FUSVIZ.out.pdf
+//    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
 
     emit:
 
