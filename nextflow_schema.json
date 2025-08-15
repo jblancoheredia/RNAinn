@@ -1039,6 +1039,30 @@
                     "fa_icon": "fas fa-search",
                     "help_text": "Run FusionInspector to validate and annotate fusion predictions."
                 },
+                "cytobands": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to cytobands file",
+                    "help_text": "Part of the FusViz references bundle"     
+                },
+                "fusviz_chr": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to chromosomes file",
+                    "help_text": "Part of the FusViz references bundle"     
+                },
+                "annotations": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to annotations file",
+                    "help_text": "Part of the FusViz references bundle"     
+                },
+                "protein_domains": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to protein domains file",
+                    "help_text": "Part of the FusViz references bundle"     
+                },
                 "cpus": {
                     "type": "integer",
                     "description": "Number of CPUs to allocate",
