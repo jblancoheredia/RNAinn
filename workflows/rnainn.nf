@@ -29,7 +29,7 @@ include { VARIANTDSCVRY                                                         
 include { GENEXPRESSION                                                                 } from '../subworkflows/local/genexpression'
 include { FUSION_SPLICE                                                                 } from '../subworkflows/local/fusion_splice'
 include { UMIPROCESSING                                                                 } from '../subworkflows/local/umiprocessing'
-include { DEDUPANDRECAL                                                                 } from '../subworkflows/local/dedupandrecal'
+include { DEDUPONLY4RNA                                                                 } from '../subworkflows/local/deduponly4rna'
 include { paramsSummaryMultiqc                                                          } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML                                                        } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText                                                        } from '../subworkflows/local/utils_nfcore_rnainn_pipeline'
@@ -233,18 +233,19 @@ workflow RNAINN {
         //
         // SUBWORKFLOW: Deduplication & Recalibration
         //
-        DEDUPANDRECAL(
+        DEDUPONLY4RNA(
             ch_fai,
-            ch_bwa2,
+            ch_gtf,
             ch_dict,
             ch_fasta,
-            ch_fastqs
+            ch_fastqs,
+            ch_star_index
         )
-        ch_versions					                = ch_versions.mix(DEDUPANDRECAL.out.versions)
+        ch_versions					                = ch_versions.mix(DEDUPONLY4RNA.out.versions)
         ch_split_reads                              = Channel.empty()
-        ch_multiqc_files			                = ch_multiqc_files.mix(DEDUPANDRECAL.out.multiqc_files)
-        ch_bam_finalized			                = DEDUPANDRECAL.out.bam_final
-        ch_reads_finalized			                = DEDUPANDRECAL.out.reads_final
+        ch_multiqc_files			                = ch_multiqc_files.mix(DEDUPONLY4RNA.out.multiqc_files)
+        ch_bam_finalized			                = DEDUPONLY4RNA.out.bam_final
+        ch_reads_finalized			                = DEDUPONLY4RNA.out.reads_final
 
     }
 
