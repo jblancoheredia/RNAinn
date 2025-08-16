@@ -7,7 +7,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { FASTP                                                                 } from '../../modules/local/fastp/main'
+include { FASTP                                                                 } from '../../modules/nf-core/fastp/main'
 include { MULTIQC                                                               } from '../../modules/nf-core/multiqc/main'
 include { STAR_ALIGNV                                                           } from '../../modules/local/star/align/alignv/main'
 include { GATK4_MARKDUPLICATES                                                  } from '../../modules/local/gatk4/markduplicates/main'
