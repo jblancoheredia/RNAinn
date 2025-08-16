@@ -65,7 +65,7 @@ workflow DEDUPONLY4RNA {
     //
     // MODULE: Run fastp
     //
-    FASTP(ch_consensus_reads_filtered, params.adapter_fasta, false, false, false)
+    FASTP(ch_reads_final, params.adapter_fasta, false, false, false)
     ch_reads_all = FASTP.out.reads
     ch_fastp_html = FASTP.out.html
     ch_fastp_json = FASTP.out.json
@@ -88,7 +88,7 @@ workflow DEDUPONLY4RNA {
 
     versions      = ch_versions
     bam_final     = ch_dedup_bam
-    reads_final   = ch_reads_final
+    reads_final   = ch_reads_all
     multiqc_files = ch_multiqc_files 
 
 }
