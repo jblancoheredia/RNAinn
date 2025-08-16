@@ -9,7 +9,7 @@
 
 include { FASTP                                                                 } from '../../modules/nf-core/fastp/main'
 include { MULTIQC                                                               } from '../../modules/nf-core/multiqc/main'
-include { STAR_ALIGNV                                                           } from '../../modules/local/star/align/alignv/main'
+include { STAR_ALIGND                                                           } from '../../modules/local/star/align/alignd/main'
 include { GATK4_MARKDUPLICATES                                                  } from '../../modules/local/gatk4/markduplicates/main'
 include { SAMTOOLS_COLLATEFASTQ                                                 } from '../../modules/nf-core/samtools/collatefastq/main'
 
@@ -45,9 +45,9 @@ workflow DEDUPONLY4RNA {
     //
     // MODULE: Run STAR 
     //
-    STAR_ALIGNV(ch_fastqs, ch_star_index, ch_gtf, params.star_seq_platform, params.star_seq_center)
-    ch_versions = ch_versions.mix(STAR_ALIGNV.out.versions.first())
-    ch_raw_bam = STAR_ALIGNV.out.bam_sorted
+    STAR_ALIGND(ch_fastqs, ch_star_index, ch_gtf, params.star_seq_platform, params.star_seq_center)
+    ch_versions = ch_versions.mix(STAR_ALIGND.out.versions.first())
+    ch_raw_bam = STAR_ALIGND.out.bam_sorted
 
     //
     // MODULE: Run fgbio ZipperBAMs
