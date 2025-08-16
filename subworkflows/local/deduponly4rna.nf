@@ -47,7 +47,7 @@ workflow DEDUPONLY4RNA {
     //
     STAR_ALIGNV(ch_fastqs, ch_star_index, ch_gtf, params.star_seq_platform, params.star_seq_center)
     ch_versions = ch_versions.mix(STAR_ALIGNV.out.versions.first())
-    ch_raw_bam = STAR_ALIGNV.out.bam
+    ch_raw_bam = STAR_ALIGNV.out.bam_sorted
 
     //
     // MODULE: Run fgbio ZipperBAMs
