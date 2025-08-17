@@ -23,12 +23,14 @@ process FASTP {
     task.ext.when == null || task.ext.when
 
     script:
+    def fastq1 = "${reads[0]}"
+    def fastq2 = "${reads[1]}"
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """ 
     fastp \\
-        -i ${prefix}_R1.fastq.gz \\
-        -I ${prefix}_R2.fastq.gz \\
+        -i ${fastq1} \\
+        -I ${fastq2} \\
         -o ${prefix}_R1_filtered.fastq.gz \\
         -O ${prefix}_R2_filtered.fastq.gz \\
         -l 30
