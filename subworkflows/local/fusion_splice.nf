@@ -95,13 +95,6 @@ workflow FUSION_SPLICE {
     //
     ch_arribaviz_input = ch_bam_star_arriba_indexed
         .join(ch_arriba_fusions)
-        .map { id, meta_bam, bam, bai, meta_tsv, tsv ->
-            tuple(
-                meta_bam, 
-                meta_bam,  bam, bai,
-                meta_tsv, tsv
-            )
-        }
 
     //
     // MODULE: Run Arriba visualisation tool
