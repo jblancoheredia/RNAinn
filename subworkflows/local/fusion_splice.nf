@@ -147,7 +147,7 @@ workflow FUSION_SPLICE {
     ch_starfusion_fusions = STARFUSION.out.fusions
 
     //
-    // MODULE: Run FastP to filter by min lenght since FusionCatcher can handle much
+    // MODULE: Run FastP to filter by min lenght since FusionCatcher can't handle much
     //
     FASTP(ch_reads_all)
     ch_versions = ch_versions.mix(FASTP.out.versions)
