@@ -8,9 +8,7 @@ process ARRIBA_VISUALISATION {
         'biocontainers/arriba:2.4.0--h0033a41_2' }"
 
     input:
-    tuple val(meta), 
-          val(meta_bam), path(bam), path(bai),
-          val(meta_tsv), path(fusions)
+    tuple val(meta), path(bam), path(bai), path(fusions)
     path(gtf)
     path(protein_domains)
     path(cytobands)
