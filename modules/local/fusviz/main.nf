@@ -8,13 +8,11 @@ process FUSVIZ {
         'blancojmskcc/fusviz:1.0.2' }"
 
     input:
-    tuple val(meta) , 
-          val(meta1), path(bam), path(bai),
-          val(meta2), path(tsv)
-    path(gtf)
-    val(genome)
-    path(cytobands)
+    tuple val(meta) ,path(bam), path(bai), path(tsv)
     path(protein_domains)
+    path(cytobands)
+    val(genome)
+    path(gtf)
 
     output:
     tuple val(meta), path("*.pdf"), emit: pdf
