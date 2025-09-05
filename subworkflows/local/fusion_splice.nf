@@ -170,22 +170,22 @@ workflow FUSION_SPLICE {
     ch_fusionreport_list = FUSIONREPORT.out.fusion_list
     ch_fusionreport_csv = FUSIONREPORT.out.csv
     ch_fusionreport = FUSIONREPORT.out.report
-//
-//    //
-//    // WORKFLOW: Run FusionInspector
-//    //
-//    FUSIONINSPECTOR_WORKFLOW (
-//        ch_reads_all,
-//        ch_fusionreport_list,
-//        ch_fusionreport_list_filtered,
-//        ch_fusionreport,
-//        ch_fusionreport_csv,
-//        ch_bam_star_fusion_indexed,
-//        ch_hgnc_ref,
-//        ch_hgnc_date
-//    )
-//    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
-//    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
+
+    //
+    // WORKFLOW: Run FusionInspector
+    //
+    FUSIONINSPECTOR_WORKFLOW (
+        ch_fusionreport_list_filtered,
+        ch_bam_star_fusion_indexed,
+        ch_fusionreport_list,
+        ch_fusionreport_csv,
+        ch_fusionreport,
+        ch_hgnc_date,
+        ch_hgnc_ref,
+        ch_reads_all
+    )
+    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
+    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
 //
 //    //
 //    // Join annotated SVs with BAM pairs based on patient
