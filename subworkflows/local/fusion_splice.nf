@@ -186,7 +186,13 @@ workflow FUSION_SPLICE {
     )
     ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
     ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
-//
+
+    //
+    // Combine the FusionInspector Output & BAMs By ID
+    //
+    ch_fusviz_input = ch_bam_star_fusion_indexed
+    .join(ch_fusioninspectortsv, remainder: true)
+
 //    //
 //    // Join annotated SVs with BAM pairs based on patient
 //    //
@@ -203,9 +209,9 @@ workflow FUSION_SPLICE {
 //    //
 //    // MODULE: Run FusViz
 //    //
-//    FUSVIZ(ch_fusviz_input, params.annotations, params.cytobands, params.fusviz_chr, params.protein_domains)
-//    ch_fusviz_pdf = FUSVIZ.out.pdf
+//    FUSVIZ(ch_fusviz_input, params.protein_domains, params.cytobands, params.genome, params.annotations)
 //    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
+//    ch_fusviz_pdf = FUSVIZ.out.pdf
 
     emit:
 
