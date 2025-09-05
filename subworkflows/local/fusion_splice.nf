@@ -153,14 +153,14 @@ workflow FUSION_SPLICE {
     ch_versions = ch_versions.mix(FUSIONCATCHER.out.versions)
     ch_fusioncatcher_fusions = FUSIONCATCHER.out.fusions
 
-//    //
-//    // Combine the Fusion Callers Output By ID
-//    //
-//    ch_fusionreport_input = ch_reads_all
-//    .join(ch_arriba_fusions, remainder: true)
-//    .join(ch_starfusion_fusions, remainder: true)
-//    .join(ch_fusioncatcher_fusions, remainder: true)
-//
+    //
+    // Combine the Fusion Callers Output By ID
+    //
+    ch_fusionreport_input = ch_reads_all
+    .join(ch_arriba_fusions, remainder: true)
+    .join(ch_starfusion_fusions, remainder: true)
+    .join(ch_fusioncatcher_fusions, remainder: true)
+
 //    //
 //    // MODULE: Run FusionReport
 //    //
