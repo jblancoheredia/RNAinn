@@ -161,15 +161,15 @@ workflow FUSION_SPLICE {
     .join(ch_starfusion_fusions, remainder: true)
     .join(ch_fusioncatcher_fusions, remainder: true)
 
-//    //
-//    // MODULE: Run FusionReport
-//    //
-//    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
-//    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
-//    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
-//    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
-//    ch_fusionreport_csv = FUSIONREPORT.out.csv
-//    ch_fusionreport = FUSIONREPORT.out.report
+    //
+    // MODULE: Run FusionReport
+    //
+    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
+    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
+    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
+    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
+    ch_fusionreport_csv = FUSIONREPORT.out.csv
+    ch_fusionreport = FUSIONREPORT.out.report
 //
 //    //
 //    // WORKFLOW: Run FusionInspector
