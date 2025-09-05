@@ -21,21 +21,21 @@ include { FUSIONINSPECTOR_VISUALISATION                                         
 
 workflow FUSIONINSPECTOR_WORKFLOW {
     take:
-        reads
-        fusion_list
-        fusion_list_filtered
-        fusionreport_out
-        fusionreport_csv
+        fusionreport_list_filtered
         bam_sorted_indexed
-        ch_hgnc_ref
+        fusionreport_list
+        fusionreport_csv
+        fusionreport_out
         ch_hgnc_date
+        ch_hgnc_ref
+        reads_all
 
     main:
         ch_versions = Channel.empty()
         ch_fusioninspector_visualisation = Channel.empty()
         index ="${params.starfusion_ref}"
 
-        ch_fusion_list = ( params.tools_cutoff > 1 ? fusion_list_filtered : fusion_list )
+        ch_fusion_list = ( params.tools_cutoff > 1 ? fusionreport_list_filtered : fusionreport_list )
         .branch{
             no_fusions: it[1].size() == 0
             fusions: it[1].size() > 0
@@ -47,10 +47,10 @@ workflow FUSIONINSPECTOR_WORKFLOW {
 
             CAT_CAT(ch_allowlist)
             ch_versions = ch_versions.mix(CAT_CAT.out.versions)
-            ch_reads_fusion = reads.join(CAT_CAT.out.file_out )
+            ch_reads_fusion = reads_all.join(CAT_CAT.out.file_out )
         }
         else {
-            ch_reads_fusion = reads.join(ch_fusion_list.fusions )
+            ch_reads_fusion = reads_all.join(ch_fusion_list.fusions )
         }
 
         FUSIONINSPECTOR(ch_reads_fusion, index)
