@@ -1,5 +1,5 @@
 process FUSIONINSPECTOR {
-    tag "$meta.id"
+    tag "$meta.patient"
     label 'process_high'
 
     conda "bioconda::dfam=3.3 bioconda::hmmer=3.3.2 bioconda::star-fusion=1.12.0 bioconda::samtools=1.9 bioconda::star=2.7.8a"
@@ -22,7 +22,7 @@ process FUSIONINSPECTOR {
     task.ext.when == null || task.ext.when
 
     script:
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.patient}"
     def fasta = meta.single_end ? "--left_fq ${reads[0]}" : "--left_fq ${reads[0]} --right_fq ${reads[1]}"
     def args = task.ext.args ?: ''
     """
@@ -55,13 +55,12 @@ END_VERSIONS
                     ${args}
 
     cat <<-END_VERSIONS > versions.yml
-"${task.process}":
-    fusioninspector: \$(echo \$(FusionInspector --version 2>&1) | sed 's/^.*FusionInspector //; s/version:.*\$//')
-END_VERSIONS
+    "${task.process}":
+        fusioninspector: \$(echo \$(FusionInspector --version 2>&1) | sed 's/^.*FusionInspector //; s/version:.*\$//')
+    END_VERSIONS
     """
-
     stub:
-    def prefix = task.ext.prefix ?: "${meta.id}"
+    def prefix = task.ext.prefix ?: "${meta.patient}"
     """
     touch ${prefix}.FusionInspector.log
     touch ${prefix}.FusionInspector.fusions.tsv
@@ -69,8 +68,8 @@ END_VERSIONS
     touch ${prefix}.gtf
 
     cat <<-END_VERSIONS > versions.yml
-"${task.process}":
-    fusioninspector: \$(echo \$(FusionInspector --version 2>&1) | sed 's/^.*FusionInspector //; s/version:.*\$//')
-END_VERSIONS
+    "${task.process}":
+        fusioninspector: \$(echo \$(FusionInspector --version 2>&1) | sed 's/^.*FusionInspector //; s/version:.*\$//')
+    END_VERSIONS
     """
 }
