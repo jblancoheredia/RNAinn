@@ -8,8 +8,9 @@ process FUSVIZ {
         'blancojmskcc/fusviz:1.0.2' }"
 
     input:
-    tuple val(meta) ,path(bam), path(bai), path(tsv)
+    tuple val(meta) ,path(bam), path(bai), path(fusions)
     path(protein_domains)
+    path(chromosomes)
     path(cytobands)
     val(genome)
     path(gtf)
@@ -25,22 +26,15 @@ process FUSVIZ {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.patient}"
     """
-    preFusViz \\
-        --sample ${prefix} \\
-        --input ${tsv} \\
-        --genome ${genome} \\
-        --annotations ${gtf} \\
-        ${args}
-
     FusViz \\
-        --fusions=${prefix}_FusViz.tsv \\
-        --alignments=${bam} \\
-        --annotation=${gtf}   \\
-        --cytobands=${cytobands} \\
-        --output=${prefix}_FusViz.pdf \\
-        --transcriptSelection=canonical \\
-        --minConfidenceForCircosPlot=High \\
-        --proteinDomains=${protein_domains} \\
+        --alignments ${bam} \\
+        --annotation ${gtf}   \\
+        --fusions ${fusions}    \\
+        --cytobands ${cytobands}  \\
+        --chromosomes ${chromosomes} \\
+        --output ${prefix}_FusViz.pdf  \\
+        --proteinDomains ${protein_domains} \\
+        ${args}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
