@@ -71,7 +71,7 @@ workflow FUSIONINSPECTOR_WORKFLOW {
     emit:
         ch_fusioninspector_visualisation
         versions                = ch_versions
-        fusioninspectortsv      = FUSIONINSPECTOR.out.tsv
+        fusioninspectortsv      = FUSIONINSPECTOR.out.tsv_coding_effect
 }
 
 /*
