@@ -4,8 +4,8 @@ process FUSVIZ {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://blancojmskcc/fusviz:1.0.2':
-        'blancojmskcc/fusviz:1.0.2' }"
+        'docker://blancojmskcc/fusviz:3.0.0':
+        'blancojmskcc/fusviz:3.0.0' }"
 
     input:
     tuple val(meta) ,path(bam), path(bai), path(fusions)
