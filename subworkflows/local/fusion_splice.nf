@@ -193,19 +193,6 @@ workflow FUSION_SPLICE {
     ch_fusviz_input = ch_bam_star_fusion_indexed
     .join(ch_fusioninspectortsv, remainder: true)
 
-//    //
-//    // Join annotated SVs with BAM pairs based on patient
-//    //
-//    ch_fusviz_input = ch_bam_star_fusion_indexed
-//        .join(ch_fusioninspectortsv)
-//        .map { id, meta_bam, bam, bai, meta_tsv, tsv ->
-//            tuple(
-//                meta_bam, 
-//                meta_bam,  bam, bai,
-//                meta_tsv, tsv
-//            )
-//        }
-//
     //
     // MODULE: Run FusViz
     //
