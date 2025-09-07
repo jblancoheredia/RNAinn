@@ -12,7 +12,7 @@ process FUSIONINSPECTOR {
     output:
     tuple val(meta), path("*.fusions.abridged.tsv.annotated")     , emit: tsv_annotated
     tuple val(meta), path("*.fusions.abridged.tsv")               , emit: tsv
-    tuple val(meta), path("*.coding_effect")       , optional:true, emit: tsv_coding_effect
+    tuple val(meta), path("*.coding_effect")                      , emit: tsv_coding_effect
     tuple val(meta), path("*.igv.*")               , optional:true, emit: igv
     tuple val(meta), path("*.gtf")                 , optional:true, emit: out_gtf
     path "*"                                                      , emit: output
