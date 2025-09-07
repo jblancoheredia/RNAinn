@@ -37,9 +37,9 @@ process FUSIONINSPECTOR {
     if [[ ! -s valid_fusions.txt ]]; then
         echo "No valid fusions. Skipping." > ${prefix}_FusionInspector.fusions.abridged.tsv
         cat <<-END_VERSIONS > versions.yml
-"${task.process}":
-    fusioninspector: \$(echo \$(FusionInspector --version 2>&1) | sed 's/^.*FusionInspector //; s/version:.*\$//')
-END_VERSIONS
+        "${task.process}":
+            fusioninspector: \$(echo \$(FusionInspector --version 2>&1) | sed 's/^.*FusionInspector //; s/version:.*\$//')
+        END_VERSIONS
         exit 0
     fi
 
