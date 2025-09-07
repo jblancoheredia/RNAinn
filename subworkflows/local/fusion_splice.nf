@@ -171,28 +171,28 @@ workflow FUSION_SPLICE {
     ch_fusionreport_csv = FUSIONREPORT.out.csv
     ch_fusionreport = FUSIONREPORT.out.report
 
-    //
-    // WORKFLOW: Run FusionInspector
-    //
-    FUSIONINSPECTOR_WORKFLOW (
-        ch_fusionreport_list_filtered,
-        ch_bam_star_fusion_indexed,
-        ch_fusionreport_list,
-        ch_fusionreport_csv,
-        ch_fusionreport,
-        ch_hgnc_date,
-        ch_hgnc_ref,
-        ch_reads_all
-    )
-    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
-    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
-
-    //
-    // Combine the FusionInspector Output & BAMs By ID
-    //
-    ch_fusviz_input = ch_bam_star_fusion_indexed
-    .join(ch_fusioninspectortsv, remainder: true)
-
+//    //
+//    // WORKFLOW: Run FusionInspector
+//    //
+//    FUSIONINSPECTOR_WORKFLOW (
+//        ch_fusionreport_list_filtered,
+//        ch_bam_star_fusion_indexed,
+//        ch_fusionreport_list,
+//        ch_fusionreport_csv,
+//        ch_fusionreport,
+//        ch_hgnc_date,
+//        ch_hgnc_ref,
+//        ch_reads_all
+//    )
+//    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
+//    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
+//
+//    //
+//    // Combine the FusionInspector Output & BAMs By ID
+//    //
+//    ch_fusviz_input = ch_bam_star_fusion_indexed
+//    .join(ch_fusioninspectortsv, remainder: true)
+//
 //    //
 //    // MODULE: Run FusViz
 //    //
