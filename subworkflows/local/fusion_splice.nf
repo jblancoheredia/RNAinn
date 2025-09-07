@@ -193,12 +193,12 @@ workflow FUSION_SPLICE {
     ch_fusviz_input = ch_bam_star_fusion_indexed
     .join(ch_fusioninspectortsv, remainder: true)
 
-    //
-    // MODULE: Run FusViz
-    //
-    FUSVIZ(ch_fusviz_input, params.protein_domains, params.fusviz_chr, params.cytobands, params.genome, params.annotations)
-    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
-    ch_fusviz_pdf = FUSVIZ.out.pdf
+//    //
+//    // MODULE: Run FusViz
+//    //
+//    FUSVIZ(ch_fusviz_input, params.protein_domains, params.fusviz_chr, params.cytobands, params.genome, params.annotations)
+//    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
+//    ch_fusviz_pdf = FUSVIZ.out.pdf
 
     emit:
 
