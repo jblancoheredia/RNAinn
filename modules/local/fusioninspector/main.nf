@@ -43,15 +43,15 @@ process FUSIONINSPECTOR {
         exit 0
     fi
 
-    FusionInspector -O . \\
-                    --vis \\
-                    --CPU ${task.cpus} \\
-                    --annotate \\
-                    --out_prefix ${prefix} \\
-                    --examine_coding_effect \\
-                    --fusions valid_fusions.txt \\
-                    --genome_lib ctat_genome_lib \\
-                    --left_fq rnaseq_1.fq --right_fq rnaseq_2.fq \\
+    FusionInspector -O . \
+                    --vis \
+                    --CPU ${task.cpus} \
+                    --annotate \
+                    --out_prefix ${prefix} \
+                    --examine_coding_effect \
+                    --fusions valid_fusions.txt \
+                    --genome_lib ctat_genome_lib \
+                    --left_fq rnaseq_1.fq --right_fq rnaseq_2.fq \
                     ${args}
 
     cat <<-END_VERSIONS > versions.yml
