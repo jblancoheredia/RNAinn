@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://raw.githubusercontent.com/giovianco/rnainn/master/assets/schema_input.json",
-    "title": "giovianco/rnainn pipeline - params.input schema",
+    "$id": "https://raw.githubusercontent.com/jblancoheredia/rnainn/master/assets/schema_input.json",
+    "title": "jblancoheredia/rnainn pipeline - params.input schema",
     "description": "Schema for the file provided with params.input",
     "type": "array",
     "items": {
