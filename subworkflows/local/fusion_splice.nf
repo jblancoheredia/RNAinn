@@ -190,7 +190,8 @@ workflow FUSION_SPLICE {
     //
     // Combine the FusionInspector Output & BAMs By ID
     //
-    ch_fusviz_input = ch_bam_star_fusion_indexed
+//  ch_fusviz_input = ch_bam_star_fusion_indexed
+    ch_fusviz_input = ch_bam_star_arriba_indexed
     .join(ch_fusioninspectortsv, remainder: true)
 
     //
