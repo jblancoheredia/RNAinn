@@ -42,15 +42,6 @@ process FUSVIZ {
         echo \"No fusions detected. Creating empty report.\" > ${prefix}_FusViz_no_fusions.txt
         touch ${prefix}_FusViz.pdf
     fi
-    FusViz \\
-        --alignments ${bam} \\
-        --annotation ${gtf}   \\
-        --fusions ${fusions}    \\
-        --cytobands ${cytobands}  \\
-        --chromosomes ${chromosomes} \\
-        --output ${prefix}_FusViz.pdf  \\
-        --proteinDomains ${protein_domains} \\
-        ${args}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
