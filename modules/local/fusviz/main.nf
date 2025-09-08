@@ -1,5 +1,5 @@
 process FUSVIZ {
-    tag "$meta.patient"
+    tag "$meta.id"
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
@@ -24,8 +24,24 @@ process FUSVIZ {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.patient}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    export MPLCONFIGDIR=\$(mktemp -d)
+
+    if [ \$(wc -l < ${fusions}) -gt 1 ]; then
+        FusViz \\
+            --alignments ${bam} \\
+            --annotation ${gtf}   \\
+            --fusions ${fusions}    \\
+            --cytobands ${cytobands}  \\
+            --chromosomes ${chromosomes} \\
+            --output ${prefix}_FusViz.pdf  \\
+            --proteinDomains ${protein_domains} \\
+            ${args}
+    else
+        echo \"No fusions detected. Creating empty report.\" > ${prefix}_FusViz_no_fusions.txt
+        touch ${prefix}_FusViz.pdf
+    fi
     FusViz \\
         --alignments ${bam} \\
         --annotation ${gtf}   \\
@@ -42,7 +58,7 @@ process FUSVIZ {
     END_VERSIONS
     """
     stub:
-    def prefix = task.ext.prefix ?: "${meta.patient}"
+    def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}_FusViz.pdf
 
