@@ -28,6 +28,8 @@ process FUSVIZ {
     """
     export MPLCONFIGDIR=\$(mktemp -d)
 
+    export MPLBACKEND=Agg
+
     if [ \$(wc -l < ${fusions}) -gt 1 ]; then
         FusViz \\
             --alignments ${bam} \\
