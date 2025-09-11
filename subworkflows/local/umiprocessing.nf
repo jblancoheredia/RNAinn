@@ -179,15 +179,15 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run SamTools View to count reads accross the BAM files
     //
-    UMI_READ_COUNTS(ch_ubam, ch_bam_fcu, ch_bam_grouped, ch_called_bam, ch_filtered_bam, ch_bam_consensus)
-    ch_versions = ch_versions.mix(UMI_READ_COUNTS.out.versions.first())
+    COLLECT_UMI_METRICS(ch_bam_consensus)
+    ch_versions = ch_versions.mix(COLLECT_UMI_METRICS.out.versions.first())
+    ch_cons_family_sizes = COLLECT_UMI_METRICS.out.cons_family_sizes
 
     //
     // MODULE: Run SamTools View to count reads accross the BAM files
     //
-    COLLECT_UMI_METRICS(ch_bam_consensus)
-    ch_versions = ch_versions.mix(COLLECT_UMI_METRICS.out.versions.first())
-    ch_cons_family_sizes = COLLECT_UMI_METRICS.out.cons_family_sizes
+    UMI_READ_COUNTS(ch_ubam, ch_bam_fcu, ch_bam_grouped, ch_called_bam, ch_filtered_bam, ch_bam_consensus)
+    ch_versions = ch_versions.mix(UMI_READ_COUNTS.out.versions.first())
 
     //
     // MODULE: Run Preseq CCurve
