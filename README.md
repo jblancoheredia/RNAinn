@@ -1,6 +1,6 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/RNAinn_logo_dark.svg">
-    <img alt="mskcc/dnainn" src="assets/RNAinn_logo_light.svg" width="400">
+    <img alt="mskcc/cti/rnainn" src="assets/RNAinn_logo_light.svg" width="400">
   </picture>
 
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
@@ -17,19 +17,48 @@
   <img alt="Metro" src="assets/RNAinn_metro_light.svg" width="1500">
 </picture>
 
-**RNAinn** is a comprehensive bioinformatics pipeline RNA sequencing data processing.
+**MSKCC/CTI/RNAinn** is an nf-core borne, production-ready and comprehensive bioinformatics pipeline for RNA sequencing data processing developed by the Technology Innovation group at the Marie-Josée and Henry R. Kravis Center for Molecular Oncology (CMO), Memorial Sloan Kettering Cancer Center (MSKCC).
 
-**mskcc/rnainn** is a bioinformatics pipeline that ...
+The pipeline processes paired-end RNA-seq data through multiple analysis modules including UMI processing, quality control, alignment, gene expression quantification, fusion detection and variant calling. RNAinn is designed to handle both standard RNA-seq workflows and specialized analyses for cancer genomics research.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+The pipeline includes five main analysis tracks:
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/contributing/design_guidelines#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
+**Preprocessing**: Quality control, read trimming, and initial metrics collection
+- Read QC with FastQC and MultiQC reporting
+- Adapter trimming with FastP
+- Read counting and sampling with Seqtk
+
+**UMI Processing**: Molecular barcoding analysis with fgbio toolkit
+- UMI correction and grouping
+- Consensus read calling
+- Error rate analysis and quality filtering
+
+**Deduplication**: Molecular barcoding analysis with fgbio toolkit
+- UMI correction and grouping
+- Consensus read calling
+- Error rate analysis and quality filtering
+
+**Gene Expression**: Multiple quantification methods for comprehensive expression analysis
+- STAR alignment with two-pass mode
+- Transcript quantification with Kallisto, Salmon, StringTie, and RSEM
+- Gene-level counting with FeatureCounts
+- DESeq2-based quality control metrics
+
+**Fusion Calling**: Multi-tool fusion detection and reporting
+- Arriba fusion detection
+- STAR-Fusion analysis
+- FusionCatcher identification
+- Integration of the calls with FusionReport
+- FusionInspector validation
+- Visualization with FusViz
+
+**Variant Calling**: GATK-based somatic variant detection
+- Duplicate marking and base quality score recalibration
+- HaplotypeCaller for variant discovery
+- Variant filtering and annotation with SNPeff and VEP
+- Support for targeted sequencing intervals
+
+The first track is mandatory but highly configurable e.g. the parameter --run_downsamplings set as True, will cap all your samples in the run to the lowest of them, usefull to comparative experiments, or you can set the number of downsampled reads with --ds_totalreads_aim. The rest are optional, you can enable those by setting to True the parameters --run_umiprocessing, --run_fusion_splice, --run_genexpression true, and run_variantdscvry the defaults are set to False so you can compose the run you need.
 
 1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
 2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
@@ -60,7 +89,7 @@ Now, you can run the pipeline using:
 <!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
-nextflow run CMOinn/rnainn \
+nextflow run /path/to/rnainn \
    -profile <docker/singularity/.../institute> \
    --input samplesheet.csv \
    --outdir <OUTDIR>
