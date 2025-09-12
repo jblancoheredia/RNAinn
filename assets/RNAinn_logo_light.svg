@@ -4,11 +4,21 @@
   <defs>
     <style>
       .st0 {
-        fill: url(#linear-gradient);
+        fill: #f26724;
       }
 
-      .st1, .st2, .st3, .st4 {
+      .st0, .st1, .st2, .st3 {
         isolation: isolate;
+      }
+
+      .st0, .st3 {
+        font-family: MavenPro-Bold, 'Maven Pro';
+        font-size: 61.8px;
+        font-weight: 700;
+      }
+
+      .st4 {
+        fill: url(#linear-gradient);
       }
 
       .st2 {
@@ -19,17 +29,7 @@
       }
 
       .st3 {
-        fill: #f26724;
-      }
-
-      .st3, .st4 {
-        font-family: MavenPro-Bold, 'Maven Pro';
-        font-size: 61.8px;
-        font-weight: 700;
-      }
-
-      .st4 {
-        fill: #fafafa;
+        fill: #001b78;
       }
     </style>
     <linearGradient id="linear-gradient" x1="95.1" y1="-974.7" x2="125.3" y2="-974.7" gradientTransform="translate(0 1022)" gradientUnits="userSpaceOnUse">
@@ -50,13 +50,13 @@
     <text class="st2" transform="translate(363.9 68.9)"><tspan x="0" y="0">[ɹeɪn]</tspan></text>
   </g>
   <g id="text117" class="st1">
-    <text class="st4" transform="translate(265.4 68.9)"><tspan x="0" y="0">inn</tspan></text>
+    <text class="st3" transform="translate(265.4 68.9)"><tspan x="0" y="0">inn</tspan></text>
   </g>
-  <polygon id="polygon1240" class="st0" points="125.3 20.4 101.8 74.2 95.1 74.2 118.4 20.4 125.3 20.4"/>
+  <polygon id="polygon1240" class="st4" points="125.3 20.4 101.8 74.2 95.1 74.2 118.3 20.4 125.3 20.4"/>
   <g id="text121" class="st1">
-    <text class="st4" transform="translate(-.7 68.9)"><tspan x="0" y="0">CTI</tspan></text>
+    <text class="st3" transform="translate(-.7 68.9)"><tspan x="0" y="0">CTI</tspan></text>
   </g>
   <g id="text122" class="st1">
-    <text class="st3" transform="translate(130.1 68.9)"><tspan x="0" y="0">RNA</tspan></text>
+    <text class="st0" transform="translate(130.1 68.9)"><tspan x="0" y="0">RNA</tspan></text>
   </g>
 </svg>
