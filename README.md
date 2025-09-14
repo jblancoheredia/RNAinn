@@ -17,14 +17,14 @@
   <img alt="Metro" src="assets/RNAinn_metro_light.svg" width="1500">
 </picture>
 
-**MSKCC/CTI/RNAinn** is an nf-core borne, production-ready and comprehensive bioinformatics pipeline for RNA sequencing data processing developed by the Technology Innovation group at the Marie-Josée and Henry R. Kravis Center for Molecular Oncology (CMO), Memorial Sloan Kettering Cancer Center (MSKCC).
+**MSKCC/CTI/RNAinn** is an nf-core borne, production-ready and comprehensive bioinformatics pipeline for RNA sequencing data processing.
 
 The pipeline processes paired-end RNA-seq data through multiple analysis modules including UMI processing, quality control, alignment, gene expression quantification, fusion detection and variant calling. RNAinn is designed to handle both standard RNA-seq workflows and specialized analyses for cancer genomics research.
 
-The pipeline includes five main analysis tracks:
+The pipeline includes six main analysis tracks:
 
 **Preprocessing**: Quality control, read trimming, and initial metrics collection
-- Read QC with FastQC and MultiQC reporting
+- Read QC with ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) and ([`MultiQC`](http://multiqc.info/)) reporting
 - Adapter trimming with FastP
 - Read counting and sampling with Seqtk
 
@@ -60,70 +60,250 @@ The pipeline includes five main analysis tracks:
 
 The first track is mandatory but highly configurable e.g. the parameter --run_downsamplings set as True, will cap all your samples in the run to the lowest of them, usefull to comparative experiments, or you can set the number of downsampled reads with --ds_totalreads_aim. The rest are optional, you can enable those by setting to True the parameters --run_umiprocessing, --run_fusion_splice, --run_genexpression true, and run_variantdscvry the defaults are set to False so you can compose the run you need.
 
-1. Read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Present QC for raw reads ([`MultiQC`](http://multiqc.info/))
+## Quick Start
+
+Create a samplesheet with your input data:
+
+`samplesheet.csv`:
+```csv
+sample,fastq_1,fastq_2,strandedness
+SAMPLE_1,sample1_R1.fastq.gz,sample1_R2.fastq.gz,reverse
+SAMPLE_2,sample2_R1.fastq.gz,sample2_R2.fastq.gz,reverse
+```
+
+Run the pipeline:
+
+```bash
+nextflow run CMOinn/rnainn \
+   -profile <crater/juno/iris/singularity/docker> \
+   --input samplesheet.csv \
+   --outdir results \
+   --genome GRCh38
+```
 
 ## Usage
 
-> [!NOTE]
-> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
+### Input Requirements
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
+The pipeline requires a CSV samplesheet with the following columns:
+- `sample`: Unique sample identifier
+- `fastq_1`: Path to first read file (R1)
+- `fastq_2`: Path to second read file (R2) 
+- `strandedness`: Library strandedness (`forward`, `reverse`, or `unstranded`)
 
-First, prepare a samplesheet with your input data that looks as follows:
-
-`samplesheet.csv`:
-
-```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-```
-
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
-
--->
-
-Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
+### Core Parameters
 
 ```bash
-nextflow run /path/to/rnainn \
-   -profile <docker/singularity/.../institute> \
-   --input samplesheet.csv \
-   --outdir <OUTDIR>
+--input                 # Input samplesheet (required)
+--outdir                # Output directory (required)
+--genome                # Reference genome [default: GRCh38]
+--seq_library           # Sequencing library type [default: Av1]
+--seq_center            # Sequencing center [default: MSKCC_IGO]
 ```
 
-> [!WARNING]
-> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_;
-> see [docs](https://nf-co.re/usage/configuration#custom-configuration-files).
+### Analysis Modules
 
-## Credits
+Enable specific analysis modules:
 
-CMOinn/rnainn was originally written by blancoj@mskcc.org.
+```bash
+--run_genexpression     # Gene expression analysis [default: false]
+--run_fusion_splice     # Fusion detection [default: false]
+--run_variantdscvry     # Variant calling [default: false]
+--run_umiprocessing     # UMI processing [default: false]
+--run_copynumberalt     # Copy number analysis [default: false]
+```
 
-We thank the following people for their extensive assistance in the development of this pipeline:
+### Tool Selection
 
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+Control which tools to run:
 
-## Contributions and Support
+```bash
+--arriba                # Enable Arriba fusion caller [default: true]
+--starfusion            # Enable STAR-Fusion [default: true]
+--fusioncatcher         # Enable FusionCatcher [default: true]
+--stringtie             # Enable StringTie [default: true]
+--portcullis            # Enable Portcullis [default: true]
+```
 
-If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
+### Advanced Options
 
-## Citations
+```bash
+--star_twopass          # Enable STAR two-pass mode [default: true]
+--fastp_trim            # Enable FastP trimming [default: true]
+--remove_duplicates     # Remove duplicate reads [default: false]
+--tools_cutoff          # Minimum tools for fusion filtering [default: 1]
+--read_length           # Expected read length [default: 100]
+```
 
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use CMOinn/rnainn for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
+### UMI Processing Options
 
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
+```bash
+--f2b_read_structure    # UMI read structure [default: '3M2S+T 3M2S+T']
+--group_strategy        # UMI grouping strategy [default: 'edit']
+--call_min_reads        # Minimum reads for consensus [default: 1]
+--filter_min_reads      # Minimum reads for filtering [default: 2]
+```
 
-An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
+### Profiles
 
-This pipeline uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/master/LICENSE).
+The pipeline includes several pre-configured profiles:
+
+- `crater`: LSF cluster configuration for MSKCC Crater
+- `juno`: LSF cluster configuration for MSKCC Juno
+- `iris`: SLURM cluster configuration for MSKCC Iris
+- `singularity`: Generic Singularity configuration
+- `docker`: Docker container execution
+- `conda`: Conda environment management
+
+## Output
+
+The pipeline generates comprehensive outputs organized by analysis module:
+
+```
+results/
+├── preprocessing/
+│   ├── fastqc/
+│   ├── multiqc/
+│   └── sampling/
+├── alignment/
+│   ├── star/
+│   ├── samtools/
+│   └── markduplicates/
+├── quantification/
+│   ├── kallisto/
+│   ├── salmon/
+│   ├── rsem/
+│   ├── stringtie/
+│   └── featurecounts/
+├── fusion_analysis/
+│   ├── arriba/
+│   ├── starfusion/
+│   ├── fusioncatcher/
+│   ├── fusioninspector/
+│   └── fusionreport/
+├── variant_calling/
+│   ├── gatk_haplotypecaller/
+│   ├── variant_filtering/
+│   └── variant_annotation/
+├── umi_processing/
+│   ├── fgbio_consensus/
+│   ├── error_correction/
+│   └── quality_filtering/
+└── pipeline_info/
+    ├── execution_report.html
+    ├── execution_timeline.html
+    └── execution_trace.txt
+```
+
+## System Requirements
+
+### Computational Resources
+
+Default resource limits (can be increased via parameters):
+- Memory: 64 GB
+- CPUs: 12 cores  
+- Time: 24 hours
+
+### Reference Data
+
+The pipeline requires pre-built reference datasets including:
+- STAR genome indices
+- Kallisto/Salmon transcript indices
+- GATK reference files (FASTA, VCF, intervals)
+- Fusion detection databases (Arriba, STAR-Fusion, FusionCatcher)
+- Annotation files (GTF, BED, RefFlat)
+
+Reference paths are configured per-cluster in the profile configurations.
+
+## Configuration
+
+### Custom Configuration
+
+Create a custom configuration file:
+
+```groovy
+params {
+    // Override default parameters
+    max_memory = '128.GB'
+    max_cpus = 32
+    max_time = '48.h'
+    
+    // Custom tool parameters
+    star_max_intron_size = 1000000
+    gatk_hc_call_conf = 30
+}
+
+process {
+    // Process-specific overrides
+    withName: 'STAR_ALIGN' {
+        cpus = 16
+        memory = '64.GB'
+    }
+}
+```
+
+Run with custom config:
+```bash
+nextflow run CMOinn/rnainn -c custom.config [other options]
+```
+
+### Cluster Profiles
+
+The pipeline includes optimized configurations for MSKCC compute clusters. Each profile sets appropriate:
+- Job scheduler settings (LSF/SLURM)
+- Container configurations  
+- Reference data paths
+- Resource allocations
+
+## Troubleshooting
+
+### Common Issues
+
+**Memory errors**: Increase `--max_memory` parameter or use cluster profile
+**Timeout errors**: Increase `--max_time` parameter  
+**Missing references**: Ensure correct profile is selected for your cluster
+**Tool failures**: Check individual tool logs in work directories
+
+### Getting Help
+
+For issues specific to RNAinn:
+1. Check the pipeline documentation
+2. Review error logs in the work directory
+3. Contact the development team
+
+For Nextflow-related issues:
+- [Nextflow documentation](https://www.nextflow.io/docs/latest/)
+- [nf-core help](https://nf-co.re/help)
+
+## Credits and Citations
+
+RNAinn was developed by the Technology Innovation lab at the Marie-Josée and Henry R. Kravis Center for Molecular Oncology (CMO), Memorial Sloan Kettering Cancer Center (MSKCC).
+
+**Lead Developer**: blancoj@mskcc.org
+
+### Tools and References
+
+This pipeline integrates numerous bioinformatics tools. Key citations include:
+
+- **STAR**: Dobin et al. Bioinformatics 2013
+- **Kallisto**: Bray et al. Nature Biotechnology 2016  
+- **Salmon**: Patro et al. Nature Methods 2017
+- **Arriba**: Uhrig et al. Genome Biology 2021
+- **GATK**: McKenna et al. Genome Research 2010
+- **fgbio**: Fulcrum Genomics toolkit
+
+A complete list of references can be found in [`CITATIONS.md`](CITATIONS.md).
+
+### Framework
+
+This pipeline uses code and infrastructure developed by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/master/LICENSE).
 
 > **The nf-core framework for community-curated bioinformatics pipelines.**
 >
 > Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
 >
 > _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
