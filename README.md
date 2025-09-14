@@ -1,8 +1,3 @@
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/RNAinn_logo_dark.svg">
-    <img alt="mskcc/cti/rnainn" src="assets/RNAinn_logo_light.svg" width="400">
-  </picture>
-
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A523.04.0-23aa62.svg)](https://www.nextflow.io/)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
@@ -10,12 +5,17 @@
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
 [![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/CMOinn/rnainn)
 
-## Introduction
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/RNAinn_logo_dark.svg">
+  <img alt="mskcc/cti/rnainn" src="assets/RNAinn_logo_light.svg" width="400">
+</picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/RNAinn_metro_dark.svg">
   <img alt="Metro" src="assets/RNAinn_metro_light.svg" width="1500">
 </picture>
+
+## Introduction
 
 **MSKCC/CTI/RNAinn** is an nf-core borne, production-ready and comprehensive bioinformatics pipeline for RNA sequencing data processing.
 
