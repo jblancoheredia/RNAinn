@@ -83,6 +83,33 @@ nextflow run CMOinn/rnainn \
 
 ## Usage
 
+> [!NOTE]
+> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
+
+### Project Structure
+
+The ideal structure would be like follows:
+
+```
+PROJECT/
+├── 01_data/
+│   ├── samples.csv
+│   ├── SAMPLE1_TUMOUR_R1.fastq.gz
+│   ├── SAMPLE1_TUMOUR_R2.fastq.gz
+│   ├── SAMPLE1_NORMAL_R1.fastq.gz
+│   ├── SAMPLE1_NORMAL_R2.fastq.gz
+│   ├── SAMPLE2_TUMOUR_R1.fastq.gz
+│   └── SAMPLE2_TUMOUR_R2.fastq.gz
+├── 02_code/
+│   └── run_DNAinn.sh
+├── 03_outs/
+├── 04_logs/
+├── 05_work/
+└── 06_cach/
+```
+
+Note: Any other structure is also possible, just adjust the launching script accordingly.
+
 ### Input Requirements
 
 The pipeline requires a CSV samplesheet with the following columns:
@@ -148,51 +175,70 @@ Control which tools to run:
 
 The pipeline includes several pre-configured profiles:
 
-- `crater`: LSF cluster configuration for MSKCC Crater
-- `juno`: LSF cluster configuration for MSKCC Juno
-- `iris`: SLURM cluster configuration for MSKCC Iris
-- `singularity`: Generic Singularity configuration
-- `docker`: Docker container execution
-- `conda`: Conda environment management
+- `crater`: LSF cluster configuration for MSKCC Clinical Server (Crater)
+- `juno`: LSF cluster configuration for MSKCC Research Server (Juno)
+- `iris`: SLURM cluster configuration for MSKCC Research Server (Iris)
+- `singularity`: Generic Singularity configuration ideal for most LSF HPC architectures 
+- `docker`: Docker container execution ideal for local executions
+- `conda`: Conda environment management not recomended unless extrictly necessary
 
 ## Output
 
 The pipeline generates comprehensive outputs organized by analysis module:
 
 ```
-results/
-├── preprocessing/
-│   ├── fastqc/
-│   ├── multiqc/
-│   └── sampling/
-├── alignment/
-│   ├── star/
-│   ├── samtools/
-│   └── markduplicates/
-├── quantification/
-│   ├── kallisto/
-│   ├── salmon/
-│   ├── rsem/
-│   ├── stringtie/
-│   └── featurecounts/
-├── fusion_analysis/
+03_outs/
+├── fusion_splice/
 │   ├── arriba/
-│   ├── starfusion/
 │   ├── fusioncatcher/
 │   ├── fusioninspector/
-│   └── fusionreport/
-├── variant_calling/
-│   ├── gatk_haplotypecaller/
-│   ├── variant_filtering/
-│   └── variant_annotation/
+│   ├── fusionreport/
+│   ├── fusviz/
+│   ├── portcullis/
+│   ├── starfusion/
+│   └── vcf_collect/
+├── genexpression/
+│   ├── kallisto/
+│   ├── rsem/
+│   ├── salmon/
+│   ├── star/
+│   ├── stringtie/
+│   └── subread/
+├── pipeline_info/
+│   ├── execution_report.html
+│   ├── execution_timeline.html
+│   ├── execution_trace.txt
+│   ├── params.html
+│   ├── pipeline_dag.html
+│   ├── pipeline_report.html
+│   └── pipeline_report.txt
+├── preprocessing/
+│   ├── align_con_bam/
+│   ├── align_raw_bam/
+│   ├── bamfiles/
+│   ├── cat_fastq/
+│   ├── collatefastq/
+│   ├── downsampling/
+│   ├── errorprofile/
+│   ├── fastp/
+│   ├── fastqc/
+│   ├── fgbio/
+│   ├── picard/
+│   ├── preseq/
+│   ├── splitreads/
+│   └── umi_stats/
 ├── umi_processing/
 │   ├── fgbio_consensus/
 │   ├── error_correction/
 │   └── quality_filtering/
-└── pipeline_info/
-    ├── execution_report.html
-    ├── execution_timeline.html
-    └── execution_trace.txt
+├── statsnquality/
+│   ├── dseq2/
+│   ├── fastqc/
+│   ├── multiqc/
+│   ├── rsem/
+│   └── variants/
+└── variantdscvry/
+    └── gatk4/
 ```
 
 ## System Requirements
@@ -213,39 +259,35 @@ The pipeline requires pre-built reference datasets including:
 - Fusion detection databases (Arriba, STAR-Fusion, FusionCatcher)
 - Annotation files (GTF, BED, RefFlat)
 
-Reference paths are configured per-cluster in the profile configurations.
+References are set and paths configured per-cluster in the profile configurations.
 
-## Configuration
+## Runnin the pipeline
 
-### Custom Configuration
+RNAinn can be run by using this script as a template:
 
-Create a custom configuration file:
-
-```groovy
-params {
-    // Override default parameters
-    max_memory = '128.GB'
-    max_cpus = 32
-    max_time = '48.h'
-    
-    // Custom tool parameters
-    star_max_intron_size = 1000000
-    gatk_hc_call_conf = 30
-}
-
-process {
-    // Process-specific overrides
-    withName: 'STAR_ALIGN' {
-        cpus = 16
-        memory = '64.GB'
-    }
-}
-```
-
-Run with custom config:
 ```bash
-nextflow run CMOinn/rnainn -c custom.config [other options]
+#!/bin/bash
+
+source activate <conda env for nf-core>
+
+export NXF_LOG_FILE="../04_logs/nextflow.log"
+export NXF_CACHE_DIR="../06_cach/nextflow-cache"
+
+nextflow run \
+    /path/to/RNAinn/main.nf \
+    --input ../01_data/samples.csv \
+    --outdir ../03_outs/ \
+    --email <user_name>@mskcc.org \
+    -profile <crater/iris/juno/singularity/docker> \
+    -work-dir ../05_work \
+    --seq_library Av2 \
+    --genome HG19VS \
+    -resume
 ```
+
+> [!WARNING]
+> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_;
+> see [docs](https://nf-co.re/usage/configuration#custom-configuration-files).
 
 ### Cluster Profiles
 
@@ -277,22 +319,18 @@ For Nextflow-related issues:
 
 ## Credits and Citations
 
-RNAinn was developed by the Technology Innovation lab at the Marie-Josée and Henry R. Kravis Center for Molecular Oncology (CMO), Memorial Sloan Kettering Cancer Center (MSKCC).
+RNAinn was originally developed by the Technology Innovation Lab at the Marie-Josée and Henry R. Kravis Center for Molecular Oncology (CMO), Memorial Sloan Kettering Cancer Center (MSKCC).
 
-**Lead Developer**: blancoj@mskcc.org
+**Lead Developer**: [Juan Blanco-Heredia](blancoj@mskcc.org)
 
-### Tools and References
+We thank the following people for their extensive assistance in the development of this pipeline:
 
-This pipeline integrates numerous bioinformatics tools. Key citations include:
+- [Caryn Hale](halec@mskcc.org)
+- [Brian Loomis](loomisb@mskcc.org)
 
-- **STAR**: Dobin et al. Bioinformatics 2013
-- **Kallisto**: Bray et al. Nature Biotechnology 2016  
-- **Salmon**: Patro et al. Nature Methods 2017
-- **Arriba**: Uhrig et al. Genome Biology 2021
-- **GATK**: McKenna et al. Genome Research 2010
-- **fgbio**: Fulcrum Genomics toolkit
+## Citations
 
-A complete list of references can be found in [`CITATIONS.md`](CITATIONS.md).
+An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
 ### Framework
 
