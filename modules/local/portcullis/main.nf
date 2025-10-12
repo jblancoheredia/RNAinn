@@ -13,11 +13,10 @@ process PORTCULLIS {
     path(fasta)
 
     output:
-    tuple val(meta), path("*.log")                  , emit: log
-    tuple val(meta), path("${meta.id}/3-filt/*.bed"), emit: bed
-    tuple val(meta), path("${meta.id}/3-filt/*.tab"), emit: tab
-    tuple val(meta), path("${meta.id}/3-filt/*.txt"), emit: txt
-    path "versions.yml"                             , emit: versions
+    tuple val(meta), path("*.bed"), emit: bed
+    tuple val(meta), path("*.log"), emit: log
+    tuple val(meta), path("*.tab"), emit: tab
+    path "versions.yml"           , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -35,6 +34,9 @@ process PORTCULLIS {
         -r $bed \\
         $fasta \\
         $bam > $log_file
+
+    mv ${meta.id}/3-filt/portcullis_filtered.pass.junctions.bed ${meta.id}_portcullis_junctions.bed
+    mv ${meta.id}/3-filt/portcullis_filtered.pass.junctions.tab ${meta.id}_portcullis_junctions.tab
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
