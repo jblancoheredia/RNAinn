@@ -218,7 +218,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run Picard's Collect RNAseq Metrics for consensus BAM files
     //
-    PICARD_COLLECTRNASEQMETRICS_CON(ch_bam_consensus, ch_refflat, ch_rrna_intervals)
+    PICARD_COLLECTRNASEQMETRICS_CON(ch_bam_consensus, ch_rrna_intervals, ch_refflat)
     ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_CON.out.versions.first())
 
     //
