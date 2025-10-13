@@ -63,6 +63,7 @@ ch_multiqc_logo                                 = Channel.fromPath(params.multiq
 ch_salmon_index                                 = Channel.fromPath(params.salmon_index).map                     { it -> [[id:it.Name], it] }.collect()
 ch_kallisto_index                               = Channel.fromPath(params.kallisto_index).map                   { it -> [[id:it.Name], it] }.collect()
 ch_rrna_intervals                               = Channel.fromPath(params.rrna_intervals).map                   { it -> [[id:it.Name], it] }.collect()
+ch_hsmetrics_trgts                              = Channel.fromPath(params.hsmetrics_trgts).map                  { it -> [[id:it.Name], it] }.collect()
 ch_cnvkit_reference                             = Channel.fromPath(params.cnvkit_reference).map                 { it -> [[id:it.Name], it] }.collect()
 ch_fusionreport_ref                             = Channel.fromPath(params.fusionreport_ref).map                 { it -> [[id:it.Name], it] }.collect()
 ch_intervals_gunzip                             = Channel.fromPath(params.intervals_gunzip).map                 { it -> [[id:it.Name], it] }.collect()
@@ -320,12 +321,14 @@ workflow RNAINN {
             ch_dbsnp,
             ch_fasta,
             ch_dbsnp_tbi,
-            ch_reads_finalized,
             ch_star_index,
             ch_known_indels,
             ch_rrna_intervals,
+            ch_hsmetrics_trgts,
+            ch_reads_finalized,
             ch_known_indels_tbi,
             ch_gatk_interval_list
+            
         )
         ch_versions                                 = ch_versions.mix(VARIANTDSCVRY.out.versions)
         ch_multiqc_files                            = ch_multiqc_files.mix(VARIANTDSCVRY.out.multiqc_files)

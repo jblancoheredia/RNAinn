@@ -8,12 +8,13 @@ process GATK4_HAPLOTYPECALLER {
         'biocontainers/gatk4:4.5.0.0--py36hdfd78af_0' }"
 
     input:
-    tuple val(meta),  path(input), path(input_index), path(intervals), path(dragstr_model)
-    tuple val(meta2), path(fasta)
-    tuple val(meta3), path(fai)
-    tuple val(meta4), path(dict)
-    tuple val(meta5), path(dbsnp)
-    tuple val(meta6), path(dbsnp_tbi)
+    tuple val(meta1), path(fai)
+    tuple val(meta2), path(dict)
+    tuple val(meta3), path(dbsnp)
+    tuple val(meta4), path(fasta)
+    tuple val(meta5), path(dbsnp_tbi)
+    tuple val(meta6), path(intervals)
+    tuple val(meta),  path(input), path(input_index)
 
     output:
     tuple val(meta), path("*.vcf.gz")       , emit: vcf
@@ -29,7 +30,6 @@ process GATK4_HAPLOTYPECALLER {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def dbsnp_command = dbsnp ? "--dbsnp $dbsnp" : ""
     def interval_command = intervals ? "--intervals $intervals" : ""
-    def dragstr_command = dragstr_model ? "--dragstr-params-path $dragstr_model" : ""
     def bamout_command = args.contains("--bam-writer-type") ? "--bam-output ${prefix.replaceAll('.g\\s*$', '')}.realigned.bam" : ""
 
     def avail_mem = 3072
@@ -41,14 +41,13 @@ process GATK4_HAPLOTYPECALLER {
     """
     gatk --java-options "-Xmx${avail_mem}M -XX:-UsePerfData" \\
         HaplotypeCaller \\
-        --input $input \\
+        --input ${input} \\
+        --reference ${fasta} \\
         --output ${prefix}.vcf.gz \\
-        --reference $fasta \\
         --native-pair-hmm-threads ${task.cpus} \\
-        $dbsnp_command \\
         $interval_command \\
-        $dragstr_command \\
         $bamout_command \\
+        $dbsnp_command \\
         --tmp-dir . \\
         $args
 
@@ -57,12 +56,10 @@ process GATK4_HAPLOTYPECALLER {
         gatk4: \$(echo \$(gatk --version 2>&1) | sed 's/^.*(GATK) v//; s/ .*\$//')
     END_VERSIONS
     """
-
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def bamout_command = args.contains("--bam-writer-type") ? "--bam-output ${prefix.replaceAll('.g\\s*$', '')}.realigned.bam" : ""
-
     def stub_realigned_bam = bamout_command ? "touch ${prefix.replaceAll('.g\\s*$', '')}.realigned.bam" : ""
     """
     touch ${prefix}.vcf.gz

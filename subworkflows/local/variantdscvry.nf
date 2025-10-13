@@ -26,7 +26,7 @@ include { SAMTOOLS_IDXSTATS as SAMTOOLS_IDXSTATS_VC2                            
 include { SAMTOOLS_FLAGSTAT as SAMTOOLS_FLAGSTAT_VC1                                } from '../../modules/nf-core/samtools/flagstat/main'
 include { SAMTOOLS_FLAGSTAT as SAMTOOLS_FLAGSTAT_VC2                                } from '../../modules/nf-core/samtools/flagstat/main'
 include { GATK4_MARKDUPLICATES                                                      } from '../../modules/nf-core/gatk4/markduplicates/main'
-include { GATK4_HAPLOTYPECALLER                                                     } from '../../modules/nf-core/gatk4/haplotypecaller/main'
+include { GATK4_HAPLOTYPECALLER                                                     } from '../../modules/local/gatk4/haplotypecaller/main'
 include { GATK4_SPLITNCIGARREADS                                                    } from '../../modules/local/gatk4/splitncigarreads/main'
 include { GATK4_BASERECALIBRATOR                                                    } from '../../modules/nf-core/gatk4/baserecalibrator/main'
 include { GATK4_VARIANTFILTRATION                                                   } from '../../modules/nf-core/gatk4/variantfiltration/main'
@@ -72,10 +72,11 @@ workflow VARIANTDSCVRY {
     ch_dbsnp
     ch_fasta
     ch_dbsnp_tbi
-    ch_reads_all
     ch_star_index
     ch_known_indels
     ch_rrna_intervals
+    ch_hsmetrics_trgts
+    ch_reads_finalized
     ch_known_indels_tbi
     ch_gatk_interval_list
 
@@ -84,7 +85,7 @@ workflow VARIANTDSCVRY {
     //
     // MODULE: Run STAR
     //
-    STAR_ALIGNV(ch_reads_all, ch_star_index, ch_gft, params.star_seq_platform, params.star_seq_center)
+    STAR_ALIGNV(ch_reads_finalized, ch_star_index, ch_gft, params.star_seq_platform, params.star_seq_center)
     ch_versions = ch_versions.mix(STAR_ALIGNV.out.versions)
     ch_star_bam = STAR_ALIGNV.out.bam
 
@@ -227,11 +228,8 @@ workflow VARIANTDSCVRY {
         ch_dbsnp = []
         ch_dbsnp_tbi = []
     }
-    ch_bam_recalibrated.combine(ch_interval_list_flat)
-        .map{ meta, bam, bai, interval -> [ meta, bam, bai, interval, []]
-    }.set{ch_haplotypecaller_interval_bam}
 
-    GATK4_HAPLOTYPECALLER(ch_haplotypecaller_interval_bam, ch_fasta, ch_fai, ch_dict, ch_dbsnp, ch_dbsnp_tbi)
+    GATK4_HAPLOTYPECALLER(ch_fai, ch_dict, ch_dbsnp, ch_fasta, ch_dbsnp_tbi, ch_hsmetrics_trgts, ch_bam_recalibrated)
     ch_versions  = ch_versions.mix(GATK4_HAPLOTYPECALLER.out.versions.ifEmpty(null))
     ch_haplotypecaller_raw = GATK4_HAPLOTYPECALLER.out.vcf
     ch_haplotypecaller_tbi = GATK4_HAPLOTYPECALLER.out.tbi
