@@ -76,7 +76,7 @@ process SAMTOOLS_SORT_INDEX {
     """
 }
 
-process SAMTOOLS_SORT_INDEX_ORI {
+process SAMTOOLS_SORT_INDEX_RAW {
     tag "$meta.id"
     label 'process_medium'
 
@@ -154,7 +154,7 @@ process SAMTOOLS_SORT_INDEX_ORI {
     """
 }
 
-process SAMTOOLS_SORT_INDEX_FIN {
+process SAMTOOLS_SORT_INDEX_CON {
     tag "$meta.id"
     label 'process_medium'
 
