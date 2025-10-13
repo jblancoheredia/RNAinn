@@ -8,12 +8,12 @@ process UMI_READ_COUNTS {
         'quay.io/biocontainers/samtools:1.21--h50ea8bc_0' }"
 
     input:
-    tuple val(meta) , path(unmap_bam)
-    tuple val(meta2), path(umifx_bam)
-    tuple val(meta3), path(group_bam)
-    tuple val(meta4), path(calls_bam)
-    tuple val(meta5), path(filtr_bam), path{filtr_bai}
-    tuple val(meta6), path(cnsns_bam), path{cnsns_bai}
+    tuple val(meta), path(unmap_bam), 
+                     path(umifx_bam), 
+                     path(group_bam), 
+                     path(calls_bam), 
+                     path(filtr_bam), path(filtr_bai), 
+                     path(cnsns_bam), path(cnsns_bai)
 
     output:
     tuple val(meta), path("*.total_umi_counts.tsv"), emit: tsv

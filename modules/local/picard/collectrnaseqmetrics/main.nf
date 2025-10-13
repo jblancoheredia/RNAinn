@@ -8,10 +8,9 @@ process PICARD_COLLECTRNASEQMETRICS {
         'quay.io/biocontainers/picard:3.1.0--hdfd78af_0' }"
 
     input:
-    tuple val(meta) , path(bam)
-    tuple val(meta2), path(bai)
+    tuple val(meta) , path(bam), path(bai)
+    tuple val(meta2), path(rrna_intervals)
     tuple val(meta3), path(refflat)
-    tuple val(meta4), path(rrna_intervals)
 
     output:
     tuple val(meta), path("*rna_metrics.txt")   , emit: metrics

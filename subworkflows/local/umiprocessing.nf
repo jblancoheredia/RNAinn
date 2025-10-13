@@ -110,7 +110,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run Picard's Collect RNAseq Metrics for raw BAM files
     //
-    PICARD_COLLECTRNASEQMETRICS_RAW(ch_bam_fcu_sort, ch_bam_fcu_indx, ch_refflat, ch_rrna_intervals)
+    PICARD_COLLECTRNASEQMETRICS_RAW(ch_bam_fcu_stix, ch_rrna_intervals, ch_refflat)
     ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_RAW.out.versions.first())
 
     //
@@ -183,10 +183,18 @@ workflow UMIPROCESSING {
     ch_versions = ch_versions.mix(COLLECT_UMI_METRICS.out.versions.first())
     ch_cons_family_sizes = COLLECT_UMI_METRICS.out.cons_family_sizes
 
+    // Combine BAM fils by meta data
+	ch_umi_read_counts_in = ch_ubam
+	    .join(ch_bam_fcu)
+	    .join(ch_called_bam)
+	    .join(ch_bam_grouped)
+	    .join(ch_filtered_bam)
+	    .join(ch_bam_consensus)
+
     //
     // MODULE: Run SamTools View to count reads accross the BAM files
     //
-    UMI_READ_COUNTS(ch_ubam, ch_bam_fcu, ch_bam_grouped, ch_called_bam, ch_filtered_bam, ch_bam_consensus)
+    UMI_READ_COUNTS(ch_umi_read_counts_in)
     ch_versions = ch_versions.mix(UMI_READ_COUNTS.out.versions.first())
 
     //
