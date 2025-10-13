@@ -27,8 +27,8 @@ include { COLLECTHSMETRICS_CON                                                  
 include { COLLECTHSMETRICS_RAW                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main'
 include { SAMTOOLS_COLLATEFASTQ                                                                                                     } from '../../modules/local/samtools/collatefastq/main'
 include { FGBIO_GROUPREADSBYUMI                                                                                                     } from '../../modules/local/fgbio/groupreadsbyumi/main'
-include { SAMTOOLS_SORT_INDEX_FIN                                                                                                   } from '../../modules/local/samtools/sort_index/main'
-include { SAMTOOLS_SORT_INDEX_ORI                                                                                                   } from '../../modules/local/samtools/sort_index/main'
+include { SAMTOOLS_SORT_INDEX_CON                                                                                                   } from '../../modules/local/samtools/sort_index/main'
+include { SAMTOOLS_SORT_INDEX_RAW                                                                                                   } from '../../modules/local/samtools/sort_index/main'
 include { FGBIO_FILTERCONSENSUSREADS                                                                                                } from '../../modules/local/fgbio/filterconsensusreads/main'
 include { FGBIO_COLLECTDUPLEXSEQMETRICS                                                                                             } from '../../modules/local/fgbio/collectduplexseqmetrics/main'
 include { PICARD_COLLECTMULTIPLEMETRICS                                                                                             } from '../../modules/local/picard/collectmultiplemetrics/main'
@@ -95,17 +95,23 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run SamToools Sort & Index
     //
-    SAMTOOLS_SORT_INDEX_ORI(ch_bam_fcu, ch_fasta, params.fai)
-    ch_versions = ch_versions.mix(SAMTOOLS_SORT_INDEX_ORI.out.versions.first())
-    ch_bam_fcu_sort = SAMTOOLS_SORT_INDEX_ORI.out.bam
-    ch_bam_fcu_indx = SAMTOOLS_SORT_INDEX_ORI.out.bai
-    ch_bam_fcu_stix = SAMTOOLS_SORT_INDEX_ORI.out.bam_bai
+    SAMTOOLS_SORT_INDEX_RAW(ch_bam_fcu, ch_fasta, params.fai)
+    ch_versions = ch_versions.mix(SAMTOOLS_SORT_INDEX_RAW.out.versions.first())
+    ch_bam_fcu_sort = SAMTOOLS_SORT_INDEX_RAW.out.bam
+    ch_bam_fcu_indx = SAMTOOLS_SORT_INDEX_RAW.out.bai
+    ch_bam_fcu_stix = SAMTOOLS_SORT_INDEX_RAW.out.bam_bai
 
     //
     // MODULE: Run Picard Tool CollectMultipleMetrics
     //
     PICARD_COLLECTMULTIPLEMETRICS(ch_bam_fcu_stix, ch_fasta, ch_fai)
     ch_versions = ch_versions.mix(PICARD_COLLECTMULTIPLEMETRICS.out.versions.first())
+
+    //
+    // MODULE: Run ErrorRateByReadPosition 
+    //
+    FGBIO_ERRORRATEBYREADPOSITION_RAW(ch_bam_fcu_sort, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
+    ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_RAW.out.versions.first())
 
     //
     // MODULE: Run Picard's Collect RNAseq Metrics for raw BAM files
@@ -118,12 +124,6 @@ workflow UMIPROCESSING {
     //
     COLLECTHSMETRICS_RAW(ch_bam_fcu_stix, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts, params.seq_library)
     ch_versions = ch_versions.mix(COLLECTHSMETRICS_RAW.out.versions.first())
-
-    //
-    // MODULE: Run ErrorRateByReadPosition 
-    //
-    FGBIO_ERRORRATEBYREADPOSITION_RAW(ch_bam_fcu_sort, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
-    ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_RAW.out.versions.first())
 
     //
     // MODULE: Run SamBlaster
