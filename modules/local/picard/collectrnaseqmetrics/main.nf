@@ -79,10 +79,9 @@ process PICARD_COLLECTRNASEQMETRICS_RAW {
         'quay.io/biocontainers/picard:3.1.0--hdfd78af_0' }"
 
     input:
-    tuple val(meta) , path(bam)
-    tuple val(meta2), path(bai)
+    tuple val(meta) , path(bam), path(bai)
+    tuple val(meta2), path(rrna_intervals)
     tuple val(meta3), path(refflat)
-    tuple val(meta4), path(rrna_intervals)
 
     output:
     tuple val(meta), path("*.raw.rna_metrics.txt"), emit: metrics
@@ -153,8 +152,8 @@ process PICARD_COLLECTRNASEQMETRICS_CON {
 
     input:
     tuple val(meta) , path(bam), path(bai)
-    tuple val(meta2), path(refflat)
-    tuple val(meta3), path(rrna_intervals)
+    tuple val(meta2), path(rrna_intervals)
+    tuple val(meta3), path(refflat)
 
     output:
     tuple val(meta), path("*.con.rna_metrics.txt"), emit: metrics
