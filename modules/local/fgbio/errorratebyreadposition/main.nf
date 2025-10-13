@@ -171,7 +171,7 @@ process FGBIO_ERRORRATEBYREADPOSITION_CON {
         --compression=1 \\
         ErrorRateByReadPosition \\
         -i ${bam} \\
-        -o ${prefix}_fin \\
+        -o ${prefix}_con \\
         -r ${fasta} \\
         -v ${dbSNP} \\
         -l ${intervals} \\
