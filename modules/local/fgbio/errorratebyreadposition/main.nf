@@ -50,7 +50,6 @@ process FGBIO_ERRORRATEBYREADPOSITION {
         fgbio: \$( echo \$(fgbio --version 2>&1 | tr -d '[:cntrl:]' ) | sed -e 's/^.*Version: //;s/\\[.*\$//')
     END_VERSIONS
     """
-
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
@@ -116,7 +115,6 @@ process FGBIO_ERRORRATEBYREADPOSITION_RAW {
         fgbio: \$( echo \$(fgbio --version 2>&1 | tr -d '[:cntrl:]' ) | sed -e 's/^.*Version: //;s/\\[.*\$//')
     END_VERSIONS
     """
-
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
@@ -182,12 +180,11 @@ process FGBIO_ERRORRATEBYREADPOSITION_CON {
         fgbio: \$( echo \$(fgbio --version 2>&1 | tr -d '[:cntrl:]' ) | sed -e 's/^.*Version: //;s/\\[.*\$//')
     END_VERSIONS
     """
-
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch  ${prefix}_fin.error_rate_by_read_position.txt
-    touch  ${prefix}_fin.error_rate_by_read_position.pdf
+    touch  ${prefix}_con.error_rate_by_read_position.txt
+    touch  ${prefix}_con.error_rate_by_read_position.pdf
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
