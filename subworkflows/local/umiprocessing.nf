@@ -212,7 +212,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run ErrorRateByReadPosition in Final BAM
     //
-    FGBIO_ERRORRATEBYREADPOSITION_CON(ch_bam_consensus, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
+    FGBIO_ERRORRATEBYREADPOSITION_CON(ch_called_bam_sorted, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
     ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_CON.out.versions)
 
     //
