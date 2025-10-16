@@ -138,7 +138,7 @@ process FGBIO_ERRORRATEBYREADPOSITION_CON {
         'quay.io/biocontainers/fgbio:2.2.1--hdfd78af_0' }"
 
     input:
-    tuple val(meta),  path(bam), path(bai)
+    tuple val(meta),  path(bam)
     tuple val(meta1), path(fasta)
     tuple val(meta2), path(fasta_fai)
     tuple val(meta3), path(fasta_dict)
