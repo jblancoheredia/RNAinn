@@ -11,7 +11,6 @@ include { TABIX_TABIX                                                           
 include { SNPEFF_SNPEFF                                                             } from '../../modules/local/snpeff/snpeff/main'    
 include { SAMTOOLS_SORT                                                             } from '../../modules/nf-core/samtools/sort/main'
 include { STAR_ALIGNV                                                               } from '../../modules/local/star/align/alignv/main'
-include { ENSEMBLVEP_VEP                                                            } from '../../modules/nf-core/ensemblvep/vep/main'
 include { SAMTOOLS_INDEX as SAMTOOLS_INDEX_VC1                                      } from '../../modules/nf-core/samtools/index/main'
 include { SAMTOOLS_INDEX as SAMTOOLS_INDEX_VC2                                      } from '../../modules/nf-core/samtools/index/main'
 include { SAMTOOLS_STATS as SAMTOOLS_STATS_VC1                                      } from '../../modules/nf-core/samtools/stats/main'
@@ -47,13 +46,9 @@ include { softwareVersionsToYAML                                                
 
 ch_reports                              =                                           Channel.empty()
 ch_versions                             =                                           Channel.empty()
-ch_vep_cache                            = params.vep_cache         ?                Channel.fromPath(params.vep_cache).collect()     : []
 ch_snpeff_db                            = params.snpeff_db         ?:               Channel.empty()
-ch_vep_genome                           = params.vep_genome        ?:               Channel.empty()
-ch_vep_species                          = params.vep_species       ?:               Channel.empty()
 ch_snpeff_cache                         = params.snpeff_cache      ?                Channel.fromPath(params.snpeff_cache).collect()  : []
 ch_multiqc_files                        =                                           Channel.empty()
-ch_vep_cache_version                    = params.vep_cache_version ?:               Channel.empty()
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
