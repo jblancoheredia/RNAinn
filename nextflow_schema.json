@@ -620,24 +620,6 @@
                     "description": "SnpEff cache directory",
                     "fa_icon": "fas fa-database",
                     "help_text": "Directory containing SnpEff cache files."
-                },
-                "vep_cache": {
-                    "type": ["string", "null"],
-                    "description": "VEP cache directory",
-                    "fa_icon": "fas fa-database",
-                    "help_text": "Directory containing VEP cache files."
-                },
-                "vep_genome": {
-                    "type": ["string", "null"],
-                    "description": "VEP genome version",
-                    "fa_icon": "fas fa-dna",
-                    "help_text": "Genome version for VEP annotation."
-                },
-                "vep_cache_version": {
-                    "type": ["string", "null"],
-                    "description": "VEP cache version",
-                    "fa_icon": "fas fa-tag",
-                    "help_text": "Version of VEP cache to use."
                 }
             }
         },
