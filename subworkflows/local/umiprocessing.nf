@@ -197,7 +197,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Align with BWA mem
     //
-    ALIGN_BAM_CON(ch_align_bam_con_in, ch_fasta, ch_fai, ch_dict, ch_bwa2)
+    ALIGN_BAM_CON(ch_align_bam_con_in, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
     ch_versions = ch_versions.mix(ALIGN_BAM_CON.out.versions.first())
     ch_con_bam_bai = ALIGN_BAM_CON.out.con_bam_bai
     ch_dup_bam_bai = ALIGN_BAM_CON.out.dup_bam_bai
