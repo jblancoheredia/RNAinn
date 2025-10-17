@@ -479,13 +479,13 @@
                     "fa_icon": "fas fa-crosshairs",
                     "help_text": "Picard-style interval list file."
                 },
-                "intervals_gunzip": {
+                "intervals_bed_gunzip": {
                     "type": "string",
                     "description": "Compressed intervals file",
                     "fa_icon": "fas fa-crosshairs",
                     "help_text": "Gzipped BED file containing intervals."
                 },
-                "intervals_gunzip_index": {
+                "intervals_bed_gunzip_index": {
                     "type": "string",
                     "description": "Compressed intervals index file",
                     "fa_icon": "fas fa-crosshairs",
