@@ -318,7 +318,6 @@ workflow UMIPROCESSING {
     versions        = ch_cversions
     group_bam       = ch_bam_grouped
     multiqc_files   = ch_multiqc_files
-    finalized_bam   = ch_bam_consensus
     reads_finalized = ch_consensus_reads
 
 }
