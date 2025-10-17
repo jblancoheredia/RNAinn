@@ -66,13 +66,11 @@ ch_rrna_intervals                               = Channel.fromPath(params.rrna_i
 ch_hsmetrics_trgts                              = Channel.fromPath(params.hsmetrics_trgts).map                  { it -> [[id:it.Name], it] }.collect()
 ch_cnvkit_reference                             = Channel.fromPath(params.cnvkit_reference).map                 { it -> [[id:it.Name], it] }.collect()
 ch_fusionreport_ref                             = Channel.fromPath(params.fusionreport_ref).map                 { it -> [[id:it.Name], it] }.collect()
-ch_intervals_gunzip                             = Channel.fromPath(params.intervals_gunzip).map                 { it -> [[id:it.Name], it] }.collect()
 ch_known_indels_tbi                             = Channel.fromPath(params.known_indels_tbi).map                 { it -> [[id:it.Name], it] }.collect()
 ch_cnvkit_antitarget                            = Channel.fromPath(params.cnvkit_antitarget).map                { it -> [[id:it.Name], it] }.collect()
 ch_gatk_interval_list                           = Channel.fromPath(params.gatk_interval_list).map               { it -> [[id:it.Name], it] }.collect()
 ch_arriba_ref_blocklist                         = Channel.fromPath(params.arriba_ref_blocklist).map             { it -> [[id:it.Name], it] }.collect()
 ch_arriba_ref_cytobands                         = Channel.fromPath(params.arriba_ref_cytobands).map             { it -> [[id:it.Name], it] }.collect()
-ch_intervals_gunzip_index                       = Channel.fromPath(params.intervals_gunzip_index).map           { it -> [[id:it.Name], it] }.collect()
 ch_arriba_ref_known_fusions                     = Channel.fromPath(params.arriba_ref_known_fusions).map         { it -> [[id:it.Name], it] }.collect()
 ch_arriba_ref_protein_domains                   = Channel.fromPath(params.arriba_ref_protein_domains).map       { it -> [[id:it.Name], it] }.collect()
 
