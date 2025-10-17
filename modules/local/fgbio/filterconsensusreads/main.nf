@@ -18,8 +18,10 @@ process FGBIO_FILTERCONSENSUSREADS {
     val(max_no_call_fraction)
 
     output:
-    tuple val(meta), path("*.cons.filtered.bam"), path("*.cons.filtered.bam.bai"), emit: bam_bai
-    path "versions.yml"                                                          , emit: versions
+    tuple val(meta), path("*.cons.filtered.bam"), path("*.cons.filtered.bam.bai")                   , emit: bam_bai
+    tuple val(meta), path("*.cons.duplex.filtered.bam"),  path("*.cons.duplex.filtered.bam.bai")    , emit: duplex_bam_bai
+    tuple val(meta), path("*.cons.simplex.filtered.bam"), path("*.cons.simplex.filtered.bam.bai")   , emit: simplex_bam_bai
+    path "versions.yml"                                                                             , emit: versions
 
     script:
     def fgbio_args = task.ext.fgbio_args ?: ''
@@ -49,7 +51,37 @@ process FGBIO_FILTERCONSENSUSREADS {
         --reverse-per-base-tags true \\
         | samtools sort \\
         -@ ${task.cpus} \\
-        -o ${prefix}.cons.filtered.bam
+        -o ${prefix}.cons.duplex.filtered.bam
+
+    samtools index ${prefix}.cons.duplex.filtered.bam
+
+    samtools view -h ${consensus_bam} | egrep \"(^@|bD:i:0)\" | samtools sort -n > ${prefix}.tmp.bam
+
+    samtools fixmate -u ${prefix}.tmp.bam - | samtools view -e 'flag.paired' -Sb - > ${prefix}.cons.simplex.unfiltered.bam
+
+    rm ${prefix}.tmp.bam
+
+    fgbio \\
+        -Xmx${mem_gb}g \\
+        --tmp-dir=. \\
+        --compression=0 \\
+        FilterConsensusReads \\
+        --input ${prefix}.cons.simplex.unfiltered.bam \\
+        --output /dev/stdout \\
+        --ref ${fasta} \\
+        --min-reads 3 3 0 \\
+        --min-base-quality ${min_baseq} \\
+        --max-base-error-rate ${max_base_error_rate} \\
+        --max-read-error-rate ${max_read_error_rate} \\
+        --max-no-call-fraction ${max_no_call_fraction} \\
+        --reverse-per-base-tags true \\
+        | samtools sort \\
+        -@ ${task.cpus} \\
+        -o ${prefix}.cons.simplex.filtered.bam    
+
+    samtools index ${prefix}.cons.simplex.filtered.bam
+
+    samtools merge -o ${prefix}.cons.filtered.bam ${prefix}.cons.duplex.filtered.bam ${prefix}.cons.simplex.filtered.bam
 
     samtools index ${prefix}.cons.filtered.bam
 
@@ -63,7 +95,11 @@ process FGBIO_FILTERCONSENSUSREADS {
     """
     touch ${prefix}.cons.filtered.bam
     touch ${prefix}.cons.filtered.bam.bai
-
+    touch ${prefix}.cons.duplex.filtered.bam
+    touch ${prefix}.cons.duplex.filtered.bam.bai
+    touch ${prefix}.cons.simplex.filtered.bam
+    touch ${prefix}.cons.simplex.filtered.bam.bai
+    
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         fgbio: \$( echo \$(fgbio --version 2>&1 | tr -d '[:cntrl:]' ) | sed -e 's/^.*Version: //;s/\\[.*\$//')

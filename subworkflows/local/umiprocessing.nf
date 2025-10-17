@@ -11,6 +11,10 @@
 include { SAMBLASTER                                                                                                                } from '../../modules/local/samblaster/main'
 include { STAR_FILBAM                                                                                                               } from '../../modules/local/align_fil_bam/star/main'
 include { STAR_RAWBAM                                                                                                               } from '../../modules/local/align_raw_bam/star/main'
+include { MOSDEPTH_DUP                                                                                                              } from '../../modules/local/mosdepth/main' // <- In use
+include { MOSDEPTH_CON                                                                                                              } from '../../modules/local/mosdepth/main' // <- In use
+include { MOSDEPTH_RAW                                                                                                              } from '../../modules/local/mosdepth/main' // <- In use
+include { MOSDEPTH_SIM                                                                                                              } from '../../modules/local/mosdepth/main' // <- In use
 include { ALIGN_BAM_CON                                                                                                             } from '../../modules/local/umi_align_bam/main'
 include { ALIGN_BAM_RAW                                                                                                             } from '../../modules/local/umi_align_bam/main'
 include { PRESEQ_CCURVE                                                                                                             } from '../../modules/local/preseq/ccurve/main'
@@ -27,8 +31,9 @@ include { COLLECTHSMETRICS_CON                                                  
 include { COLLECTHSMETRICS_RAW                                                                                                      } from '../../modules/local/picard/collecthsmetrics/main'
 include { SAMTOOLS_COLLATEFASTQ                                                                                                     } from '../../modules/local/samtools/collatefastq/main'
 include { FGBIO_GROUPREADSBYUMI                                                                                                     } from '../../modules/local/fgbio/groupreadsbyumi/main'
-include { SAMTOOLS_SORT_INDEX_CON                                                                                                   } from '../../modules/local/samtools/sort_index/main'
 include { SAMTOOLS_SORT_INDEX_RAW                                                                                                   } from '../../modules/local/samtools/sort_index/main'
+include { SURVIVOR_SCAN_READS_CON                                                                                                   } from '../../modules/local/survivor/scanreads/main'
+include { SURVIVOR_SCAN_READS_RAW                                                                                                   } from '../../modules/local/survivor/scanreads/main'
 include { FGBIO_FILTERCONSENSUSREADS                                                                                                } from '../../modules/local/fgbio/filterconsensusreads/main'
 include { FGBIO_COLLECTDUPLEXSEQMETRICS                                                                                             } from '../../modules/local/fgbio/collectduplexseqmetrics/main'
 include { PICARD_COLLECTMULTIPLEMETRICS                                                                                             } from '../../modules/local/picard/collectmultiplemetrics/main'
@@ -108,16 +113,29 @@ workflow UMIPROCESSING {
     ch_versions = ch_versions.mix(PICARD_COLLECTMULTIPLEMETRICS.out.versions.first())
 
     //
+    // MODULE: Run Picard's Collect RNAseq Metrics for raw BAM files
+    //
+    PICARD_COLLECTRNASEQMETRICS_RAW(ch_bam_fcu_stix, ch_rrna_intervals, ch_refflat)
+    ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_RAW.out.versions.first())
+
+    //
     // MODULE: Run ErrorRateByReadPosition 
     //
     FGBIO_ERRORRATEBYREADPOSITION_RAW(ch_bam_fcu_sort, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
     ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_RAW.out.versions.first())
 
     //
-    // MODULE: Run Picard's Collect RNAseq Metrics for raw BAM files
+    // MODULE: Run MosDepth
     //
-    PICARD_COLLECTRNASEQMETRICS_RAW(ch_bam_fcu_stix, ch_rrna_intervals, ch_refflat)
-    ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_RAW.out.versions.first())
+    MOSDEPTH_RAW(ch_bam_fcu_stix, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
+    ch_versions = ch_versions.mix(MOSDEPTH_RAW.out.versions.first())
+    ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_RAW.out.summary_txt)
+
+    //
+    // MODULE: Run Survivor ScanReads to get Error Profiles
+    //
+    SURVIVOR_SCAN_READS_RAW(ch_bam_fcu_stix, params.read_length)
+    ch_versions = ch_versions.mix(SURVIVOR_SCAN_READS_RAW.out.versions.first())
 
     //
     // MODULE: Run Picard's Collect HS Metrics for raw BAM files
@@ -167,29 +185,49 @@ workflow UMIPROCESSING {
     //
     FGBIO_FILTERCONSENSUSREADS(ch_called_bam_sorted, params.fasta, params.fai, params.filter_min_reads, params.filter_min_base_quality, params.filter_max_base_error_rate, params.filter_max_read_error_rate, params.filter_max_no_call_fraction)
     ch_versions = ch_versions.mix(FGBIO_FILTERCONSENSUSREADS.out.versions.first())
-    ch_filtered_bam = FGBIO_FILTERCONSENSUSREADS.out.bam_bai
+    ch_bam_bai_con_fil = FGBIO_FILTERCONSENSUSREADS.out.suplex_bam_bai
+    ch_bam_bai_duplex_fil = FGBIO_FILTERCONSENSUSREADS.out.duplex_bam_bai
+    ch_bam_bai_simplex_fil = FGBIO_FILTERCONSENSUSREADS.out.simplex_bam_bai
+
+    // Combine BAM fils by meta data
+	ch_align_bam_con_in = ch_bam_bai_con_fil
+	    .join(ch_bam_bai_duplex_fil)
+	    .join(ch_bam_bai_simplex_fil)
 
     //
-    // MODULE: Align with STAR, Zipp with FGbio and Sort & Index with Samtools
+    // MODULE: Align with BWA mem
     //
-    ALIGN_BAM_CON(ch_filtered_bam, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
+    ALIGN_BAM_CON(ch_align_bam_con_in, ch_fasta, ch_fai, ch_dict, ch_bwa2)
     ch_versions = ch_versions.mix(ALIGN_BAM_CON.out.versions.first())
-    ch_bam_consensus = ALIGN_BAM_CON.out.bam_bai
+    ch_con_bam_bai = ALIGN_BAM_CON.out.con_bam_bai
+    ch_dup_bam_bai = ALIGN_BAM_CON.out.dup_bam_bai
+    ch_sim_bam_bai = ALIGN_BAM_CON.out.sim_bam_bai
+
+    //
+    // MODULE: Run Survivor ScanReads to get Error Profiles
+    //
+    SURVIVOR_SCAN_READS_CON(ch_con_bam_bai, params.read_length)
+    ch_versions = ch_versions.mix(SURVIVOR_SCAN_READS_CON.out.versions.first())
+
+    // Combine BAM fils by meta data
+	ch_umi_metrics_in = ch_con_bam_bai
+	    .join(ch_dup_bam_bai)
+	    .join(ch_sim_bam_bai)
 
     //
     // MODULE: Run SamTools View to count reads accross the BAM files
     //
-    COLLECT_UMI_METRICS(ch_bam_consensus)
+    COLLECT_UMI_METRICS(ch_umi_metrics_in)
     ch_versions = ch_versions.mix(COLLECT_UMI_METRICS.out.versions.first())
-    ch_cons_family_sizes = COLLECT_UMI_METRICS.out.cons_family_sizes
+    ch_con_family_sizes = COLLECT_UMI_METRICS.out.con_family_sizes
 
     // Combine BAM fils by meta data
 	ch_umi_read_counts_in = ch_ubam
 	    .join(ch_bam_fcu)
 	    .join(ch_called_bam)
 	    .join(ch_bam_grouped)
-	    .join(ch_filtered_bam)
-	    .join(ch_bam_consensus)
+	    .join(ch_con_bam_bai)
+	    .join(ch_bam_bai_con_fil)
 
     //
     // MODULE: Run SamTools View to count reads accross the BAM files
@@ -200,37 +238,58 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run Preseq CCurve
     //
-    PRESEQ_CCURVE(ch_cons_family_sizes)
+    PRESEQ_CCURVE(ch_con_family_sizes)
     ch_versions = ch_versions.mix(PRESEQ_CCURVE.out.versions.first())
 
     //
     // MODULE: Run Preseq LCExtrap
     //
-    PRESEQ_LCEXTRAP(ch_grouped_family_sizes)
+    PRESEQ_LCEXTRAP(ch_con_family_sizes)
     ch_versions = ch_versions.mix(PRESEQ_LCEXTRAP.out.versions.first())
+
+    //
+    // MODULE: Run MosDepth
+    //
+    MOSDEPTH_CON(ch_con_bam_bai, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
+    ch_versions = ch_versions.mix(MOSDEPTH_CON.out.versions.first())
+    ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_CON.out.summary_txt)
+
+    //
+    // MODULE: Run MosDepth
+    //
+    MOSDEPTH_DUP(ch_dup_bam_bai, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
+    ch_versions = ch_versions.mix(MOSDEPTH_DUP.out.versions.first())
+    ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_DUP.out.summary_txt)
+
+    //
+    // MODULE: Run MosDepth
+    //
+    MOSDEPTH_SIM(ch_sim_bam_bai, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
+    ch_versions = ch_versions.mix(MOSDEPTH_SIM.out.versions.first())
+    ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_SIM.out.summary_txt)
 
     //
     // MODULE: Run ErrorRateByReadPosition in Final BAM
     //
-    FGBIO_ERRORRATEBYREADPOSITION_CON(ch_called_bam_sorted, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
+    FGBIO_ERRORRATEBYREADPOSITION_CON(ch_con_bam_bai, ch_fasta, ch_fai, ch_dict, params.known_sites, params.known_sites_tbi, params.rrna_intervals)
     ch_versions = ch_versions.mix(FGBIO_ERRORRATEBYREADPOSITION_CON.out.versions)
 
     //
     // MODULE: Run Picard's Collect RNAseq Metrics for consensus BAM files
     //
-    PICARD_COLLECTRNASEQMETRICS_CON(ch_bam_consensus, ch_rrna_intervals, ch_refflat)
+    PICARD_COLLECTRNASEQMETRICS_CON(ch_con_bam_bai, ch_rrna_intervals, ch_refflat)
     ch_versions = ch_versions.mix(PICARD_COLLECTRNASEQMETRICS_CON.out.versions.first())
 
     //
     // MODULE: Run Picard's Collect HS Metrics for consensus BAM files
     //
-    COLLECTHSMETRICS_CON(ch_bam_consensus, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts, params.seq_library)
+    COLLECTHSMETRICS_CON(ch_con_bam_bai, ch_fasta, ch_fai, ch_dict, params.hsmetrics_baits, params.hsmetrics_trgts, params.seq_library)
     ch_versions = ch_versions.mix(COLLECTHSMETRICS_CON.out.versions.first())
 
     //
     // MODULE: Extract FastQ reads from BAM
     //
-    SAMTOOLS_COLLATEFASTQ(ch_bam_consensus, ch_fasta)
+    SAMTOOLS_COLLATEFASTQ(ch_con_bam_bai, ch_fasta)
     ch_versions = ch_versions.mix(SAMTOOLS_COLLATEFASTQ.out.versions)
     ch_consensus_reads = SAMTOOLS_COLLATEFASTQ.out.fastq
 

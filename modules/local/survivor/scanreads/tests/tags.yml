@@ -1,0 +1,2 @@
+survivor/scanreads:
+  - "modules/nf-core/survivor/scanreads/**"

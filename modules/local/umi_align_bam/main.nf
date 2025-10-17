@@ -119,7 +119,7 @@ process ALIGN_BAM_CON {
         'blancojmskcc/umi_aligner:2.0.0' }"
 
     input:
-    tuple val(meta) , path(consensus_bam), path(consensus_bai)
+    tuple val(meta) , path(bam), path(bai), path(duplex_bam), path(duplex_bai), path(simplex_bam), path(simplex_bai)
     tuple val(meta2), path(fasta)
     tuple val(meta3), path(fasta_fai)
     tuple val(meta4), path(dict)
@@ -130,8 +130,11 @@ process ALIGN_BAM_CON {
     val sort_type
 
     output:
-    tuple val(meta), path("*.consensus.bam"), path("*.consensus.bai"), emit: bam_bai
-    path "versions.yml"                                              , emit: versions
+
+    tuple val(meta), path("*.mapped.bam")        , path("*.mapped.bai")        , emit: con_bam_bai
+    tuple val(meta), path("*.mapped_duplex.bam") , path("*.mapped_duplex.bai") , emit: dup_bam_bai
+    tuple val(meta), path("*.mapped_simplex.bam"), path("*.mapped_simplex.bam"), emit: sim_bam_bai
+    path "versions.yml"                                                        , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -142,10 +145,8 @@ process ALIGN_BAM_CON {
     def star_args = task.ext.star_args ?: "--readFilesCommand zcat --peOverlapNbasesMin 10 --peOverlapMMp 0.01 --outSAMunmapped Within KeepPairs --outBAMcompression 0 --outFilterMultimapNmax 50 --alignEndsType Local --chimOutType WithinBAM SoftClip --outSAMattributes All --sjdbGTFfile $gtf"
     def fgbio_args = task.ext.fgbio_args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def suffix = "consensus" 
     def fgbio_mem_gb = 4
     def extra_command = ""
-
     if (!task.memory) {
         log.info '[fgbio ZipperBams] Available memory not known - defaulting to 4GB. Specify process memory requirements to change this.'
     } else if (fgbio_mem_gb > task.memory.giga) {
@@ -172,13 +173,13 @@ process ALIGN_BAM_CON {
         -0 ${prefix}_other.fastq.gz \\
         -1 ${prefix}_con_1.fastq.gz \\
         -2 ${prefix}_con_2.fastq.gz \\
-        ${consensus_bam}
+        ${bam}
 
     STAR \\
         --genomeDir ${index} \\
         --readFilesIn ${prefix}_con_1.fastq.gz ${prefix}_con_2.fastq.gz \\
         --runThreadN 1 \\
-        --outFileNamePrefix ${prefix}_${suffix}_ \\
+        --outFileNamePrefix ${prefix}_mapped_ \\
         --outSAMtype BAM Unsorted \\
         --outSAMmultNmax 1 \\
         ${attrRG} \\
@@ -188,23 +189,23 @@ process ALIGN_BAM_CON {
         sort \\
         -n \\
         --threads ${task.cpus-1} \\
-        -o ${prefix}_${suffix}_querysort0.bam \\
-        ${consensus_bam}
+        -o ${prefix}_mapped_querysort0.bam \\
+        ${bam}
 
     samtools \\
         sort \\
         -n \\
         --threads ${task.cpus-1} \\
-        -o ${prefix}_${suffix}_querysort1.bam \\
-        ${prefix}_${suffix}_Aligned.out.bam
+        -o ${prefix}_mapped_querysort1.bam \\
+        ${prefix}_mapped_Aligned.out.bam
 
     fgbio \\
         -Xmx${fgbio_mem_gb}g \\
         --compression ${fgbio_zipper_bams_compression} \\
         --async-io=true \\
         ZipperBams \\
-        --unmapped ${prefix}_${suffix}_querysort0.bam \\
-        --input ${prefix}_${suffix}_querysort1.bam \\
+        --unmapped ${prefix}_mapped_querysort0.bam \\
+        --input ${prefix}_mapped_querysort1.bam \\
         --ref ${fasta} \\
         --output ${fgbio_zipper_bams_output} \\
         --tags-to-reverse Consensus \\
@@ -214,8 +215,110 @@ process ALIGN_BAM_CON {
     samtools \\
         index \\
         -@ ${task.cpus} \\
-        ${prefix}.${suffix}.bam \\
-        ${prefix}.${suffix}.bai
+        ${prefix}.mapped.bam \\
+        ${prefix}.mapped.bai
+
+    samtools \\
+        fastq \\
+        --threads ${task.cpus-1}    \\
+        -0 ${prefix}_other.fastq.gz \\
+        -1 ${prefix}_con_1.fastq.gz \\
+        -2 ${prefix}_con_2.fastq.gz \\
+        ${duplex_bam}
+
+    STAR \\
+        --genomeDir ${index} \\
+        --readFilesIn ${prefix}_con_1.fastq.gz ${prefix}_con_2.fastq.gz \\
+        --runThreadN 1 \\
+        --outFileNamePrefix ${prefix}_mapped_duplex_ \\
+        --outSAMtype BAM Unsorted \\
+        --outSAMmultNmax 1 \\
+        ${attrRG} \\
+        ${star_args}
+
+    samtools \\
+        sort \\
+        -n \\
+        --threads ${task.cpus-1} \\
+        -o ${prefix}_mapped_duplex_querysort0.bam \\
+        ${duplex_bam}
+
+    samtools \\
+        sort \\
+        -n \\
+        --threads ${task.cpus-1} \\
+        -o ${prefix}_mapped_duplex_querysort1.bam \\
+        ${prefix}_mapped_duplex_Aligned.out.bam
+
+    fgbio \\
+        -Xmx${fgbio_mem_gb}g \\
+        --compression ${fgbio_zipper_bams_compression} \\
+        --async-io=true \\
+        ZipperBams \\
+        --unmapped_duplex ${prefix}_mapped_duplex_querysort0.bam \\
+        --input ${prefix}_mapped_duplex_querysort1.bam \\
+        --ref ${fasta} \\
+        --output ${fgbio_zipper_bams_output} \\
+        --tags-to-reverse Consensus \\
+        --tags-to-revcomp Consensus \\
+        ${extra_command};
+
+    samtools \\
+        index \\
+        -@ ${task.cpus} \\
+        ${prefix}.mapped_duplex.bam \\
+        ${prefix}.mapped_duplex.bai
+
+    samtools \\
+        fastq \\
+        --threads ${task.cpus-1}    \\
+        -0 ${prefix}_other.fastq.gz \\
+        -1 ${prefix}_con_1.fastq.gz \\
+        -2 ${prefix}_con_2.fastq.gz \\
+        ${simplex_bam}
+
+    STAR \\
+        --genomeDir ${index} \\
+        --readFilesIn ${prefix}_con_1.fastq.gz ${prefix}_con_2.fastq.gz \\
+        --runThreadN 1 \\
+        --outFileNamePrefix ${prefix}_mapped_simplex_ \\
+        --outSAMtype BAM Unsorted \\
+        --outSAMmultNmax 1 \\
+        ${attrRG} \\
+        ${star_args}
+
+    samtools \\
+        sort \\
+        -n \\
+        --threads ${task.cpus-1} \\
+        -o ${prefix}_mapped_simplex_querysort0.bam \\
+        ${simplex_bam}
+
+    samtools \\
+        sort \\
+        -n \\
+        --threads ${task.cpus-1} \\
+        -o ${prefix}_mapped_simplex_querysort1.bam \\
+        ${prefix}_mapped_simplex_Aligned.out.bam
+
+    fgbio \\
+        -Xmx${fgbio_mem_gb}g \\
+        --compression ${fgbio_zipper_bams_compression} \\
+        --async-io=true \\
+        ZipperBams \\
+        --unmapped_simplex ${prefix}_mapped_simplex_querysort0.bam \\
+        --input ${prefix}_mapped_simplex_querysort1.bam \\
+        --ref ${fasta} \\
+        --output ${fgbio_zipper_bams_output} \\
+        --tags-to-reverse Consensus \\
+        --tags-to-revcomp Consensus \\
+        ${extra_command};
+
+    samtools \\
+        index \\
+        -@ ${task.cpus} \\
+        ${prefix}.mapped_simplex.bam \\
+        ${prefix}.mapped_simplex.bai
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

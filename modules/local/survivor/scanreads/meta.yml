@@ -1,0 +1,54 @@
+name: "survivor_scanreads"
+description: Report multipe stats over a VCF file
+keywords:
+  - survivor
+  - error profile
+  - vcf
+  - structural variants
+  - reads
+tools:
+  - "survivor":
+      description: "Toolset for SV simulation, comparison and filtering"
+      homepage: "https://github.com/fritzsedlazeck/SURVIVOR/wiki"
+      documentation: "https://github.com/fritzsedlazeck/SURVIVOR/wiki"
+      tool_dev_url: "https://github.com/fritzsedlazeck/SURVIVOR"
+      doi: "10.1038/NCOMMS14061"
+      licence: ["MIT"]
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - bam:
+        type: file
+        description: BAM file to annalyze (or CRAM)
+        pattern: "*{am}"
+    - bai:
+        type: file
+        description: Index of the BAM file to annalyze (or CRAM)
+        pattern: "*{ai}"        
+  - - minrl:
+        type: integer
+        description: Min read lengt (-1 to disable)
+output:
+  - error_profile:
+      - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.error_profile.tsv":
+          type: file
+          description: File containing the estimated error profile by event and position from the given input BAM file
+          pattern: "*.{error_profile.tsv}"
+  - versions:
+      - versions.yml:
+          type: file
+          description: File containing software versions
+          pattern: "versions.yml"
+authors:
+  - "@blancoheredia"
+maintainers:
+  - "@blancoheredia"

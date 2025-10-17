@@ -10,10 +10,10 @@ process UMI_READ_COUNTS {
     input:
     tuple val(meta), path(unmap_bam), 
                      path(umifx_bam), 
-                     path(group_bam), 
                      path(calls_bam), 
-                     path(filtr_bam), path(filtr_bai), 
-                     path(cnsns_bam), path(cnsns_bai)
+                     path(group_bam), 
+                     path(cnsns_bam), path(cnsns_bai),
+                     path(filtr_bam), path(filtr_bai) 
 
     output:
     tuple val(meta), path("*.total_umi_counts.tsv"), emit: tsv
