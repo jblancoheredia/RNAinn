@@ -240,45 +240,6 @@ workflow VARIANTDSCVRY {
     ch_versions  = ch_versions.mix(GATK4_VARIANTFILTRATION.out.versions.ifEmpty(null))
     ch_final_vcf = GATK4_VARIANTFILTRATION.out.vcf
 
-//    //
-//    // MODULE: Run SNPEFF
-//    //
-//    SNPEFF_SNPEFF(ch_final_vcf, params.snpeff_db, params.snpeff_cache)
-//    ch_snpeff_vcf_annotated = SNPEFF_SNPEFF.out.vcf
-//    ch_versions = ch_versions.mix(SNPEFF_SNPEFF.out.versions)
-//    ch_multiqc_files = ch_multiqc_files.mix(SNPEFF_SNPEFF.out.summary_html.map{it[1]}.collect())
-//
-//    //
-//    // MODULES: Run Tabix in bgzip mode
-//    //
-//    TABIX_BGZIPTABIX_VC1(ch_snpeff_vcf_annotated)
-//    ch_snpeff_gz_tbi = TABIX_BGZIPTABIX_VC1.out.gz_tbi
-//    ch_versions = ch_versions.mix(TABIX_BGZIPTABIX_VC1.out.versions)
-//
-//    //
-//    // MODULE: Run anotator EnsemblVEP
-//    //
-//    ENSEMBLVEP_VEP(ch_final_vcf, vep_genome, vep_species, vep_cache_version, vep_cache)
-//    ch_versions = ch_versions.mix(ENSEMBLVEP.out.versions)
-//    ch_multiqc_files = ch_multiqc_files.mix(ENSEMBLVEP_VEP.out.report.map{it[1]}.collect())
-//
-//    //
-//    // MODULES: Run Tabix in bgzip mode
-//    //
-//    TABIX_BGZIPTABIX_VC2(ENSEMBLVEP_VEP.out.vcf)
-//    ch_vep_gz_tbi = TABIX_BGZIPTABIX_VC1.out.gz_tbi
-//    ch_versions = ch_versions.mix(TABIX_BGZIPTABIX_VC2.out.versions)
-//
-//    //
-//    // MODULE: Run GATK MergeVCFs
-//    //
-//    ch_ssnpeff_vep_combined = ch_snpeff_gz_tbi.join(ch_vep_gz_tbi)
-//    ch_vcf_2_merge = ch_ssnpeff_vep_combined.map { meta, snpeff_vcf, vep_vcf ->
-//        [meta, snpeff_vcf, vep_vcf]
-//    }
-//    GATK4_MERGEVCFS(ch_vcf_2_merge)
-//    ch_versions = ch_versions.mix(GATK4_MERGEVCFS.out.versions)
-
     emit:
 
     versions        = ch_versions
