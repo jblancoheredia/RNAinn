@@ -153,7 +153,7 @@ workflow RNAINN {
 
     if (params.run_downsamplings) {
 
-        if (params.ds_totalreads_aim) {
+        if (params.ds_totalreads_aim > 0) {
 
             //
             // MODULE: Run Downsampling with seqtk
