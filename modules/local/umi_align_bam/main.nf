@@ -119,7 +119,7 @@ process ALIGN_BAM_CON {
         'blancojmskcc/umi_aligner:2.0.0' }"
 
     input:
-    tuple val(meta) , path(bam), path(bai), path(duplex_bam), path(duplex_bai), path(simplex_bam), path(simplex_bai)
+    tuple val(meta) , path(bam), path(bai)
     tuple val(meta2), path(fasta)
     tuple val(meta3), path(fasta_fai)
     tuple val(meta4), path(dict)
@@ -132,8 +132,6 @@ process ALIGN_BAM_CON {
     output:
 
     tuple val(meta), path("*.mapped.bam")        , path("*.mapped.bai")        , emit: con_bam_bai
-    tuple val(meta), path("*.mapped_duplex.bam") , path("*.mapped_duplex.bai") , emit: dup_bam_bai
-    tuple val(meta), path("*.mapped_simplex.bam"), path("*.mapped_simplex.bam"), emit: sim_bam_bai
     path "versions.yml"                                                        , emit: versions
 
     when:
@@ -214,112 +212,6 @@ process ALIGN_BAM_CON {
         ${prefix}.mapped.bam \\
         ${prefix}.mapped.bai
 
-    samtools \\
-        fastq \\
-        --threads ${task.cpus-1}    \\
-        -0 ${prefix}_other.fastq.gz \\
-        -1 ${prefix}_dup_1.fastq.gz \\
-        -2 ${prefix}_dup_2.fastq.gz \\
-        ${duplex_bam}
-
-    STAR \\
-        --genomeDir ${index} \\
-        --readFilesIn ${prefix}_dup_1.fastq.gz ${prefix}_dup_2.fastq.gz \\
-        --runThreadN 1 \\
-        --outFileNamePrefix ${prefix}_mapped_duplex_ \\
-        --outSAMtype BAM Unsorted \\
-        --outSAMmultNmax 1 \\
-        ${attrRG} \\
-        ${star_args}
-
-    samtools \\
-        sort \\
-        -n \\
-        --threads ${task.cpus-1} \\
-        -o ${prefix}_mapped_duplex_querysort0.bam \\
-        ${duplex_bam}
-
-    samtools \\
-        sort \\
-        -n \\
-        --threads ${task.cpus-1} \\
-        -o ${prefix}_mapped_duplex_querysort1.bam \\
-        ${prefix}_mapped_duplex_Aligned.out.bam
-
-    fgbio \\
-        -Xmx${fgbio_mem_gb}g \\
-        --compression ${fgbio_zipper_bams_compression} \\
-        --async-io=true \\
-        ZipperBams \\
-        --unmapped ${prefix}_mapped_duplex_querysort0.bam \\
-        --input ${prefix}_mapped_duplex_querysort1.bam \\
-        --ref ${fasta} \\
-        --output ${fgbio_zipper_bams_output} \\
-        --tags-to-reverse Consensus \\
-        --tags-to-revcomp Consensus \\
-        | samtools sort \\
-        -@ ${task.cpus} \\
-        -o ${prefix}.mapped_duplex.bam -
-
-    samtools \\
-        index \\
-        -@ ${task.cpus} \\
-        ${prefix}.mapped_duplex.bam \\
-        ${prefix}.mapped_duplex.bai
-
-    samtools \\
-        fastq \\
-        --threads ${task.cpus-1}    \\
-        -0 ${prefix}_other.fastq.gz \\
-        -1 ${prefix}_sim_1.fastq.gz \\
-        -2 ${prefix}_sim_2.fastq.gz \\
-        ${simplex_bam}
-
-    STAR \\
-        --genomeDir ${index} \\
-        --readFilesIn ${prefix}_sim_1.fastq.gz ${prefix}_sim_2.fastq.gz \\
-        --runThreadN 1 \\
-        --outFileNamePrefix ${prefix}_mapped_simplex_ \\
-        --outSAMtype BAM Unsorted \\
-        --outSAMmultNmax 1 \\
-        ${attrRG} \\
-        ${star_args}
-
-    samtools \\
-        sort \\
-        -n \\
-        --threads ${task.cpus-1} \\
-        -o ${prefix}_mapped_simplex_querysort0.bam \\
-        ${simplex_bam}
-
-    samtools \\
-        sort \\
-        -n \\
-        --threads ${task.cpus-1} \\
-        -o ${prefix}_mapped_simplex_querysort1.bam \\
-        ${prefix}_mapped_simplex_Aligned.out.bam
-
-    fgbio \\
-        -Xmx${fgbio_mem_gb}g \\
-        --compression ${fgbio_zipper_bams_compression} \\
-        --async-io=true \\
-        ZipperBams \\
-        --unmapped ${prefix}_mapped_simplex_querysort0.bam \\
-        --input ${prefix}_mapped_simplex_querysort1.bam \\
-        --ref ${fasta} \\
-        --output ${fgbio_zipper_bams_output} \\
-        --tags-to-reverse Consensus \\
-        --tags-to-revcomp Consensus \\
-        | samtools sort \\
-        -@ ${task.cpus} \\
-        -o ${prefix}.mapped_simplex.bam -
-
-    samtools \\
-        index \\
-        -@ ${task.cpus} \\
-        ${prefix}.mapped_simplex.bam \\
-        ${prefix}.mapped_simplex.bai
-
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         bwa-mem2: \$(bwa-mem2 version 2>&1 | tail -n 1)
@@ -332,10 +224,6 @@ process ALIGN_BAM_CON {
     """
     touch ${prefix}.mapped.bam
     touch ${prefix}.mapped.bai
-    touch ${prefix}.mapped_duplex.bam
-    touch ${prefix}.mapped_duplex.bai
-    touch ${prefix}.mapped_simplex.bam
-    touch ${prefix}.mapped_simplex.bai
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
