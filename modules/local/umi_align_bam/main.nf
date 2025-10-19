@@ -251,7 +251,7 @@ process ALIGN_BAM_CON {
         --compression ${fgbio_zipper_bams_compression} \\
         --async-io=true \\
         ZipperBams \\
-        --unmapped_duplex ${prefix}_mapped_duplex_querysort0.bam \\
+        --unmapped ${prefix}_mapped_duplex_querysort0.bam \\
         --input ${prefix}_mapped_duplex_querysort1.bam \\
         --ref ${fasta} \\
         --output ${fgbio_zipper_bams_output} \\
@@ -304,7 +304,7 @@ process ALIGN_BAM_CON {
         --compression ${fgbio_zipper_bams_compression} \\
         --async-io=true \\
         ZipperBams \\
-        --unmapped_simplex ${prefix}_mapped_simplex_querysort0.bam \\
+        --unmapped ${prefix}_mapped_simplex_querysort0.bam \\
         --input ${prefix}_mapped_simplex_querysort1.bam \\
         --ref ${fasta} \\
         --output ${fgbio_zipper_bams_output} \\
