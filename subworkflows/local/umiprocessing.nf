@@ -186,22 +186,13 @@ workflow UMIPROCESSING {
     FGBIO_FILTERCONSENSUSREADS(ch_called_bam_sorted, params.fasta, params.fai, params.filter_min_reads, params.filter_min_base_quality, params.filter_max_base_error_rate, params.filter_max_read_error_rate, params.filter_max_no_call_fraction)
     ch_versions = ch_versions.mix(FGBIO_FILTERCONSENSUSREADS.out.versions.first())
     ch_bam_bai_con_fil = FGBIO_FILTERCONSENSUSREADS.out.bam_bai
-    ch_bam_bai_duplex_fil = FGBIO_FILTERCONSENSUSREADS.out.duplex_bam_bai
-    ch_bam_bai_simplex_fil = FGBIO_FILTERCONSENSUSREADS.out.simplex_bam_bai
-
-    // Combine BAM fils by meta data
-	ch_align_bam_con_in = ch_bam_bai_con_fil
-	    .join(ch_bam_bai_duplex_fil)
-	    .join(ch_bam_bai_simplex_fil)
 
     //
     // MODULE: Align with BWA mem
     //
-    ALIGN_BAM_CON(ch_align_bam_con_in, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
+    ALIGN_BAM_CON(ch_bam_bai_con_fil, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
     ch_versions = ch_versions.mix(ALIGN_BAM_CON.out.versions.first())
     ch_con_bam_bai = ALIGN_BAM_CON.out.con_bam_bai
-    ch_dup_bam_bai = ALIGN_BAM_CON.out.dup_bam_bai
-    ch_sim_bam_bai = ALIGN_BAM_CON.out.sim_bam_bai
 
     //
     // MODULE: Run Survivor ScanReads to get Error Profiles
@@ -209,15 +200,10 @@ workflow UMIPROCESSING {
     SURVIVOR_SCAN_READS_CON(ch_con_bam_bai, params.read_length)
     ch_versions = ch_versions.mix(SURVIVOR_SCAN_READS_CON.out.versions.first())
 
-    // Combine BAM fils by meta data
-	ch_umi_metrics_in = ch_con_bam_bai
-	    .join(ch_dup_bam_bai)
-	    .join(ch_sim_bam_bai)
-
     //
     // MODULE: Run SamTools View to count reads accross the BAM files
     //
-    COLLECT_UMI_METRICS(ch_umi_metrics_in)
+    COLLECT_UMI_METRICS(ch_con_bam_bai)
     ch_versions = ch_versions.mix(COLLECT_UMI_METRICS.out.versions.first())
     ch_con_family_sizes = COLLECT_UMI_METRICS.out.con_family_sizes
 
@@ -253,20 +239,6 @@ workflow UMIPROCESSING {
     MOSDEPTH_CON(ch_con_bam_bai, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
     ch_versions = ch_versions.mix(MOSDEPTH_CON.out.versions.first())
     ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_CON.out.summary_txt)
-
-    //
-    // MODULE: Run MosDepth
-    //
-    MOSDEPTH_DUP(ch_dup_bam_bai, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
-    ch_versions = ch_versions.mix(MOSDEPTH_DUP.out.versions.first())
-    ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_DUP.out.summary_txt)
-
-    //
-    // MODULE: Run MosDepth
-    //
-    MOSDEPTH_SIM(ch_sim_bam_bai, ch_fasta, params.fai, params.intervals_bed_gunzip, params.intervals_bed_gunzip_index)
-    ch_versions = ch_versions.mix(MOSDEPTH_SIM.out.versions.first())
-    ch_multiqc_files = ch_multiqc_files.mix(MOSDEPTH_SIM.out.summary_txt)
 
     //
     // MODULE: Run ErrorRateByReadPosition in Final BAM
