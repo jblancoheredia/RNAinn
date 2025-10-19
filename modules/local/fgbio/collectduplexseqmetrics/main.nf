@@ -11,7 +11,7 @@ process FGBIO_COLLECTDUPLEXSEQMETRICS {
     tuple val(meta), path(grouped_bam)
 
     output:
-    tuple val(meta), path("*duplex_seq_metrics.family_sizes.txt"), emit: family_size
+    tuple val(meta), path("*duplex_seq_metrics.family_sizes.txt"), emit: family_sizes
     tuple val(meta), path("*duplex_seq_metrics*.txt")            , emit: metrics
     tuple val(meta), path("*duplex_seq_metrics*.pdf")            , emit: pdf
     path "versions.yml"                                          , emit: versions
