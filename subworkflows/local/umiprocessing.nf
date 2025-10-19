@@ -163,7 +163,8 @@ workflow UMIPROCESSING {
     //
     FGBIO_COLLECTDUPLEXSEQMETRICS(ch_bam_grouped)
     ch_multiqc_files = ch_multiqc_files.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.metrics.map{it[1]}.collect())
-    ch_multiqc_files = ch_multiqc_files.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.pdf.map{it[1]}.collect())   
+    ch_multiqc_files = ch_multiqc_files.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.pdf.map{it[1]}.collect())
+    ch_group_famsize = FGBIO_COLLECTDUPLEXSEQMETRICS.out.family_sizes
     ch_versions = ch_versions.mix(FGBIO_COLLECTDUPLEXSEQMETRICS.out.versions.first())
 
     //
@@ -230,7 +231,7 @@ workflow UMIPROCESSING {
     //
     // MODULE: Run Preseq LCExtrap
     //
-    PRESEQ_LCEXTRAP(ch_con_family_sizes)
+    PRESEQ_LCEXTRAP(ch_group_famsize)
     ch_versions = ch_versions.mix(PRESEQ_LCEXTRAP.out.versions.first())
 
     //
