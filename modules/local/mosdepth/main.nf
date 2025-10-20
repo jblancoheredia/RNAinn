@@ -219,7 +219,7 @@ process MOSDEPTH_CON {
         ${interval} \\
         ${reference} \\
         ${args} \\
-        ${prefix}.final \\
+        ${prefix}.con \\
         ${bam}
 
     cat <<-END_VERSIONS > versions.yml
@@ -231,18 +231,18 @@ process MOSDEPTH_CON {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.final.global.dist.txt
-    touch ${prefix}.final.region.dist.txt
-    touch ${prefix}.final.summary.txt
-    touch ${prefix}.final.per-base.d4
-    echo "" | gzip > ${prefix}.final.per-base.bed.gz
-    touch ${prefix}.final.per-base.bed.gz.csi
-    echo "" | gzip > ${prefix}.final.regions.bed.gz
-    touch ${prefix}.final.regions.bed.gz.csi
-    echo "" | gzip > ${prefix}.final.quantized.bed.gz
-    touch ${prefix}.final.quantized.bed.gz.csi
-    echo "" | gzip > ${prefix}.final.thresholds.bed.gz
-    touch ${prefix}.final.thresholds.bed.gz.csi
+    touch ${prefix}.con.global.dist.txt
+    touch ${prefix}.con.region.dist.txt
+    touch ${prefix}.con.summary.txt
+    touch ${prefix}.con.per-base.d4
+    echo "" | gzip > ${prefix}.con.per-base.bed.gz
+    touch ${prefix}.con.per-base.bed.gz.csi
+    echo "" | gzip > ${prefix}.con.regions.bed.gz
+    touch ${prefix}.con.regions.bed.gz.csi
+    echo "" | gzip > ${prefix}.con.quantized.bed.gz
+    touch ${prefix}.con.quantized.bed.gz.csi
+    echo "" | gzip > ${prefix}.con.thresholds.bed.gz
+    touch ${prefix}.con.thresholds.bed.gz.csi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
