@@ -12,7 +12,6 @@ process FUSVIZ {
     path(protein_domains)
     path(chromosomes)
     path(cytobands)
-    val(genome)
     path(gtf)
 
     output:
