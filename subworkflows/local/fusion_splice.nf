@@ -10,7 +10,6 @@
 include { FASTP                                                                         } from '../../modules/local/fastp/main'
 include { ARRIBA                                                                        } from '../../modules/nf-core/arriba/main'
 include { FUSVIZ                                                                        } from '../../modules/local/fusviz/main'
-include { CAT_CAT                                                                       } from '../../modules/nf-core/cat/cat/main'
 include { STARFUSION                                                                    } from '../../modules/local/starfusion/detect/main'
 include { VCF_COLLECT                                                                   } from '../../modules/local/vcf_collect/main'
 include { STAR_ARRIBA                                                                   } from '../../modules/local/arriba/star/main'
