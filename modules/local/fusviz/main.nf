@@ -4,8 +4,8 @@ process FUSVIZ {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://blancojmskcc/rnainn_fusviz:7.2.6':
-        'blancojmskcc/rnainn_fusviz:7.2.6' }"
+        'docker://blancojmskcc/rnainn_fusviz:7.4.0':
+        'blancojmskcc/rnainn_fusviz:7.4.0' }"
 
     input:
     tuple val(meta) ,path(bam), path(bai), path(fusions)
@@ -46,7 +46,7 @@ process FUSVIZ {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        fusviz: "7.2.6"
+        fusviz: "7.4.0"
     END_VERSIONS
     """
     stub:
@@ -56,7 +56,7 @@ process FUSVIZ {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        fusviz: "7.2.6"
+        fusviz: "7.4.0"
     END_VERSIONS
     """
 }
