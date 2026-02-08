@@ -8,7 +8,7 @@ process COLLECT_UMI_METRICS {
         'blancojmskcc/collect_umi_consensus_metrics:1.0.3' }"
 
     input:
-    tuple val(meta), path(con_bam), path{con_bai}
+    tuple val(meta), path(con_bam), path(con_bai)
 
     output:
     tuple val(meta), path("*.con_umi_counts.txt")   , emit: con_umi_counts
