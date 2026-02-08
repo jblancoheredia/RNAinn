@@ -418,7 +418,7 @@
                     "help_text": "Automatic sample downsampling."
                 },
                 "ds_totalreads_aim": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Number of Total Reads to downsample overwrites the automatic processing",
                     "fa_icon": "fas fa-book",
                     "help_text": "Number of total reads for sample downsampling."
