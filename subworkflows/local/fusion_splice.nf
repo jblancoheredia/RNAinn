@@ -17,6 +17,8 @@ include { STAR_FUSION                                                           
 include { ARRIBA_INDEX                                                                  } from '../../modules/local/arriba/index/main'
 include { FUSIONREPORT                                                                  } from '../../modules/local/fusionreport/detect/main'
 include { FUSIONCATCHER                                                                 } from '../../modules/local/fusioncatcher/detect/main'
+include { WHIPPET_INDEX                                                                 } from '../../modules/local/whippet/index/main'
+include { WHIPPET_QUANT                                                                 } from '../../modules/local/whippet/quant/main'
 include { FUSIONINSPECTOR                                                               } from '../../modules/local/fusioninspector/main'
 include { PORTCULLIS_FULL                                                               } from '../../modules/nf-core/portcullis/full/main'
 include { STARFUSION_INDEX                                                              } from '../../modules/local/starfusion/index/main'
@@ -107,10 +109,30 @@ workflow FUSION_SPLICE {
     // MODULE: Run Portcullis
     //
     PORTCULLIS_FULL (ch_bam_star_arriba, params.bed, params.fai, params.fasta)
-    ch_versions = ch_versions.mix(PORTCULLIS_FULL.out.versions)
     ch_portcullis_log = PORTCULLIS_FULL.out.log
+    ch_portcullis_bam = PORTCULLIS_FULL.out.spliced_bam
+    ch_portcullis_bai = PORTCULLIS_FULL.out.spliced_bai
     ch_portcullis_bed = PORTCULLIS_FULL.out.pass_junctions_bed
     ch_portcullis_tab = PORTCULLIS_FULL.out.pass_junctions_tab
+    ch_versions = ch_versions.mix(PORTCULLIS_FULL.out.versions)
+
+    //
+    // MODULE: Creat the Index for Whippet <- Only need to be run once
+    //
+    ch_portculis_bam_bai = ch_portcullis_bam.join(ch_portcullis_bai)
+    WHIPPET_INDEX(ch_portculis_bam_bai, ch_fasta, ch_gtf)
+    ch_whippet_jls = WHIPPET_INDEX.out.jls
+    ch_whippet_graph = WHIPPET_INDEX.out.graph
+    ch_versions = ch_versions.mix(WHIPPET_INDEX.out.versions)
+
+    //
+    // MODULE: Run Quant for Whippet
+    //
+    ch_whippet_quant_input = ch_reads_all.join(ch_whippet_jls)
+    WHIPPET_QUANT(ch_whippet_quant_input)
+    ch_whippet_psi = WHIPPET_QUANT.out.psi
+    ch_whippet_tmp = WHIPPET_QUANT.out.tmp
+    ch_versions = ch_versions.mix(WHIPPET_QUANT.out.versions)
 
     //
     // WORKFLOW: Run STAR for STARfusion
