@@ -13,10 +13,11 @@ process PORTCULLIS {
     path(fasta)
 
     output:
-    tuple val(meta), path("*.bed"), emit: bed
-    tuple val(meta), path("*.log"), emit: log
-    tuple val(meta), path("*.tab"), emit: tab
-    path "versions.yml"           , emit: versions
+    tuple val(meta), path("*.bed")                                   , emit: bed
+    tuple val(meta), path("*.log")                                   , emit: log
+    tuple val(meta), path("*.tab")                                   , emit: tab
+    tuple val(meta), path("*.spliced.bam"), path("*.spliced.bam.bai"), emit: bam_bai
+    path "versions.yml"                                              , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -30,13 +31,13 @@ process PORTCULLIS {
         full \\
         ${args} \\
         -t ${task.cpus} \\
-        -o $prefix \\
-        -r $bed \\
-        $fasta \\
-        $bam > $log_file
+        -o ${prefix} \\
+        -r ${bed} \\
+        ${fasta} \\
+        ${bam} > ${log_file}
 
-    mv ${meta.id}/3-filt/portcullis_filtered.pass.junctions.bed ${meta.id}_portcullis_junctions.bed
-    mv ${meta.id}/3-filt/portcullis_filtered.pass.junctions.tab ${meta.id}_portcullis_junctions.tab
+    mv ${prefix}/3-filt/portcullis_filtered.pass.junctions.bed ${prefix}_portcullis_junctions.bed
+    mv ${prefix}/3-filt/portcullis_filtered.pass.junctions.tab ${prefix}_portcullis_junctions.tab
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -47,10 +48,12 @@ process PORTCULLIS {
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def log_file = "${meta.id}.portcullis.log"
     """
-    touch ${log_file}
-    mkdir ${prefix}
+    touch ${prefix}.spliced.bam
+    touch ${prefix}.portcullis.log
+    touch ${prefix}.spliced.bam.bai
+    touch ${prefix}_portcullis_junctions.bed
+    touch ${prefix}_portcullis_junctions.tab
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
