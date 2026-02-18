@@ -17,7 +17,8 @@ include { STAR_FUSION                                                           
 include { ARRIBA_INDEX                                                                  } from '../../modules/local/arriba/index/main'
 include { FUSIONREPORT                                                                  } from '../../modules/local/fusionreport/detect/main'
 include { FUSIONCATCHER                                                                 } from '../../modules/local/fusioncatcher/detect/main'
-include { WHIPPET_INDEX                                                                 } from '../../modules/local/whippet/index/main'
+include { WHIPPET_INDEX                        as WHIPPET_INDEX_1ST_PASS                } from '../../modules/local/whippet/index/main'
+include { WHIPPET_INDEX                        as WHIPPET_INDEX_2ND_PASS                } from '../../modules/local/whippet/index/main'
 include { WHIPPET_QUANT                                                                 } from '../../modules/local/whippet/quant/main'
 include { FUSIONINSPECTOR                                                               } from '../../modules/local/fusioninspector/main'
 include { PORTCULLIS_FULL                                                               } from '../../modules/nf-core/portcullis/full/main'
@@ -63,6 +64,13 @@ workflow FUSION_SPLICE {
     ch_arriba_ref_protein_domains
 
     main:
+
+    //
+    // MODULE: Run 1st Pass of Index for Whippet
+    //
+    ch_empty_bam_input = ('[]', '[]', '[]')
+    WHIPPET_INDEX_1ST_PASS(ch_gtf, ch_fasta, ch_empty_bam_input)
+    ch_versions = ch_versions.mix(STAR_ARRIBA.out.versions)
 
     //
     // MODULE: Run STAR for Arriba
