@@ -8,9 +8,9 @@ process WHIPPET_INDEX {
         'blancojmskcc/whippet:1.6.2' }"
 
     input:
-    tuple val(meta) , path(bam), path(bai)
+    tuple val(meta) , path(gtf)
     tuple val(meta1), path(fasta)
-    tuple val(meta2), path(gtf)
+    tuple val(meta2), path(bam), path(bai)
     
     output:
     tuple val(meta), path("*.jls")         , emit: jls
@@ -23,11 +23,12 @@ process WHIPPET_INDEX {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def bam_input = bam ? "--bam ${bam}" : ""
     """
     whippet-index \\
         --fasta ${fasta} \\
-        --bam ${bam} \\
         --gtf ${gtf} \\
+        ${bam_input} \\
         $args \\
 
     cat <<-END_VERSIONS > versions.yml
@@ -42,8 +43,8 @@ process WHIPPET_INDEX {
     """
     echo $args
     
-    touch graph.exons.tab.gz
-    touch graph.jls
+    touch index.exons.tab.gz
+    touch index.graph.jls
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
