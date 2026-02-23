@@ -1,54 +1,45 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
-# # TODO nf-core: Add a description of the module and list keywords
 name: "gtfcollapser"
 description: write your description here
 keywords:
-  - sort
-  - example
-  - genomics
+  - isoforms
+  - transcripts
+  - RNAseq
 tools:
-  ## TODO nf-core: Add a description and other details for the software below
-  - "gtfcollapser":
-      description: "Freely available tools for computational molecular biology."
-      homepage: "None"
+  - "collapse_annotation.py":
+      description: "Collapse isoforms into single transcript per gene and remove overlapping intervals between genes."
+      homepage: "https://github.com/broadinstitute/gtex-pipeline/blob/master/gene_model/collapse_annotation.py"
       documentation: "None"
       tool_dev_url: "None"
       doi: ""
-      licence: ["Biopython License Agreement"]
-      identifier: biotools:biopython
+      licence: ["MIT"]
 
 input:
-  ### TODO nf-core: Add a description of all of the variables used as input
   - - meta:
         type: map
         description: |
           Groovy Map containing sample information
           e.g. `[ id:'sample1' ]`
-    - bam:
+    - gtf:
         type: file
-        description: Sorted BAM/CRAM/SAM file
-        pattern: "*.{bam,cram,sam}"
+        description: Gene Transfer Format file
+        pattern: "*.{gtf,gtf.gz}"
         ontologies:
-          - edam: "http://edamontology.org/format_2572" # BAM
-          - edam: "http://edamontology.org/format_2573" # CRAM
-          - edam: "http://edamontology.org/format_3462" # SAM
+          - edam: "http://edamontology.org/format_2306" # GTF
 
 output:
-  ### TODO nf-core: Add a description of all of the variables used as output
   bam:
     - - meta:
           type: map
           description: |
             Groovy Map containing sample information
             e.g. `[ id:'sample1' ]`
-      - "*.bam":
+      - "core_gtf":
           type: file
           description: Sorted BAM/CRAM/SAM file
-          pattern: "*.{bam,cram,sam}"
+          pattern: "*.{core.gtf.gz}"
           ontologies:
-            - edam: "http://edamontology.org/format_2572" # BAM
-            - edam: "http://edamontology.org/format_2573" # CRAM
-            - edam: "http://edamontology.org/format_3462" # SAM
+            - edam: "http://edamontology.org/format_2306" # GTF
   versions_gtfcollapser:
     - - "${task.process}":
           type: string
@@ -67,10 +58,8 @@ topics:
           description: The name of the process
       - gtfcollapser:
           type: string
-          description: The name of the tool
-      - gtfcollapser --version:
-          type: eval
-          description: The expression to obtain the version of the tool
+          description: The name of the module
+
 authors:
   - "@jblancoheredia"
 maintainers:
