@@ -30,6 +30,7 @@ process WHIPPET_INDEX {
         --fasta ${fasta} \\
         --gtf ${gtf} \\
         ${bam_input} \\
+        -x graph.jls \\
         $args
 
     cat <<-END_VERSIONS > versions.yml
