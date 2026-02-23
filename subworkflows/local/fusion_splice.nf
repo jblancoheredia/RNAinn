@@ -70,7 +70,7 @@ workflow FUSION_SPLICE {
     //
     ch_empty_bam_input = ('[]', '[]', '[]')
     WHIPPET_INDEX_1ST_PASS(ch_gtf, ch_fasta, ch_empty_bam_input)
-    ch_versions = ch_versions.mix(STAR_ARRIBA.out.versions)
+    ch_versions = ch_versions.mix(WHIPPET_INDEX_1ST_PASS.out.versions)
 
     //
     // MODULE: Run STAR for Arriba
