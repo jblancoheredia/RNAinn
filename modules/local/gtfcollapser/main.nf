@@ -3,9 +3,9 @@ process GTFCOLLAPSER {
     label 'process_high'
 
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/biopython:1.70--np112py36_0':
-        'biocontainers/biopython:1.70--np112py36_0' }"
+    container "${ workflow.containerEngine == 'singularity' ?
+        'docker://community.wave.seqera.io/library/bx-python_pandas:7c54f17e120956fd':
+        'community.wave.seqera.io/library/bx-python_pandas:7c54f17e120956fd' }"
 
     input:
     tuple val(meta), path(gtf)
