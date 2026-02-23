@@ -42,26 +42,24 @@ include { FUSIONINSPECTOR_WORKFLOW                                              
 */
 
 workflow FUSION_SPLICE {
-
     take:
-
-    ch_fai
-    ch_gtf
-    ch_fasta
-    ch_chrgtf
-    ch_refflat
-    ch_versions
-    ch_hgnc_ref
-    ch_hgnc_date
-    ch_reads_all
-    ch_star_index
-    ch_samplesheet
-    ch_multiqc_files
-    ch_rrna_intervals
-    ch_fusionreport_ref
-    ch_arriba_ref_blocklist
-    ch_arriba_ref_known_fusions
-    ch_arriba_ref_protein_domains
+        ch_fai
+        ch_gtf
+        ch_fasta
+        ch_chrgtf
+        ch_refflat
+        ch_versions
+        ch_hgnc_ref
+        ch_hgnc_date
+        ch_reads_all
+        ch_star_index
+        ch_samplesheet
+        ch_multiqc_files
+        ch_rrna_intervals
+        ch_fusionreport_ref
+        ch_arriba_ref_blocklist
+        ch_arriba_ref_known_fusions
+        ch_arriba_ref_protein_domains
 
     main:
 
