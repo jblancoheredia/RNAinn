@@ -16,6 +16,7 @@ include { STAR_ARRIBA                                                           
 include { STAR_FUSION                                                                   } from '../../modules/local/starfusion/star/main'
 include { ARRIBA_INDEX                                                                  } from '../../modules/local/arriba/index/main'
 include { FUSIONREPORT                                                                  } from '../../modules/local/fusionreport/detect/main'
+include { GTFCOLLAPSER                                                                  } from '../../modules/local/gtfcollapser/main'
 include { FUSIONCATCHER                                                                 } from '../../modules/local/fusioncatcher/detect/main'
 include { WHIPPET_INDEX                        as WHIPPET_INDEX_1ST_PASS                } from '../../modules/local/whippet/index/main'
 include { WHIPPET_INDEX                        as WHIPPET_INDEX_2ND_PASS                } from '../../modules/local/whippet/index/main'
@@ -63,6 +64,14 @@ workflow FUSION_SPLICE {
     ch_arriba_ref_protein_domains
 
     main:
+
+    //
+    // MODULE: Run GTF Collapser
+    //
+    GTFCOLLAPSER(ch_gtf)
+    ch_gft_core = GTFCOLLAPSER.out.core_gtf
+    ch_versions = ch_versions.mix(GTFCOLLAPSER.out.versions)
+
     //
     // MODULE: Run 1st Pass of Index for Whippet
     //
