@@ -110,121 +110,121 @@ workflow FUSION_SPLICE {
     ch_versions = ch_versions.mix(ARRIBA_VISUALISATION.out.versions)
     ch_multiqc_files = ch_multiqc_files.mix(ch_arriba_visualisation.collect{it[1]}.ifEmpty([]))
 
-//    //
-//    // MODULE: Run Portcullis
-//    //
-//    PORTCULLIS_FULL (ch_bam_star_arriba, params.bed, params.fai, params.fasta)
-//    ch_portcullis_log = PORTCULLIS_FULL.out.log
-//    ch_portcullis_bam = PORTCULLIS_FULL.out.spliced_bam
-//    ch_portcullis_bai = PORTCULLIS_FULL.out.spliced_bai
-//    ch_portcullis_bed = PORTCULLIS_FULL.out.pass_junctions_bed
-//    ch_portcullis_tab = PORTCULLIS_FULL.out.pass_junctions_tab
-//    ch_versions = ch_versions.mix(PORTCULLIS_FULL.out.versions)
-//
-//    //
-//    // MODULE: Creat the Index for Whippet <- Only need to be run once
-//    //
-//    ch_portculis_bam_bai = ch_portcullis_bam.join(ch_portcullis_bai)
-//    WHIPPET_INDEX(ch_portculis_bam_bai, ch_fasta, ch_gtf)
-//    ch_whippet_jls = WHIPPET_INDEX.out.jls
-//    ch_whippet_graph = WHIPPET_INDEX.out.graph
-//    ch_versions = ch_versions.mix(WHIPPET_INDEX.out.versions)
-//
-//    //
-//    // MODULE: Run Quant for Whippet
-//    //
-//    ch_whippet_quant_input = ch_reads_all.join(ch_whippet_jls)
-//    WHIPPET_QUANT(ch_whippet_quant_input)
-//    ch_whippet_psi = WHIPPET_QUANT.out.psi
-//    ch_whippet_tmp = WHIPPET_QUANT.out.tmp
-//    ch_versions = ch_versions.mix(WHIPPET_QUANT.out.versions)
-//
-//    //
-//    // WORKFLOW: Run STAR for STARfusion
-//    //
-//    STAR_FUSION(ch_reads_all, ch_star_index, ch_chrgtf, params.star_seq_platform, params.star_seq_center)
-//    ch_bam_star_fusion = STAR_FUSION.out.bam_sorted
-//    ch_star_fusion_stats = STAR_FUSION.out.log_final
-//    ch_versions = ch_versions.mix(STAR_FUSION.out.versions)
-//    ch_star_fusion_gene_count = STAR_FUSION.out.read_per_gene_tab
-//    ch_star_fusion_reads_junction = ch_reads_all.join(STAR_FUSION.out.junction)
-//    ch_multiqc_files = ch_multiqc_files.mix(ch_star_fusion_stats.collect{it[1]}.ifEmpty([]))
-//    ch_multiqc_files = ch_multiqc_files.mix(ch_star_fusion_gene_count.collect{it[1]}.ifEmpty([]))
-//
-//    //
-//    // MODULE: Index BAM file
-//    //
-//    STARFUSION_INDEX(ch_bam_star_fusion)
-//    ch_versions = ch_versions.mix(STARFUSION_INDEX.out.versions)
-//    ch_bam_star_fusion_indexed = STAR_FUSION.out.bam_sorted.join(STARFUSION_INDEX.out.bai)
-//
-//    //
-//    // MODULE: Run STARfusion
-//    //
-//    STARFUSION(ch_star_fusion_reads_junction, params.starfusion_ref)
-//    ch_versions = ch_versions.mix(STARFUSION.out.versions)
-//    ch_starfusion_fusions = STARFUSION.out.fusions
-//
-//    //
-//    // MODULE: Run FastP to filter by min lenght since FusionCatcher can't handle much
-//    //
-//    FASTP(ch_reads_all)
-//    ch_versions = ch_versions.mix(FASTP.out.versions)
-//    ch_reads_4fusioncatcher = FASTP.out.reads
-//
-//    //
-//    // WORKFLOW: Run FusionCatcher
-//    //
-//    FUSIONCATCHER(ch_reads_4fusioncatcher, params.fusioncatcher_ref)
-//    ch_versions = ch_versions.mix(FUSIONCATCHER.out.versions)
-//    ch_fusioncatcher_fusions = FUSIONCATCHER.out.fusions
-//
-//    //
-//    // Combine the Fusion Callers Output By ID
-//    //
-//    ch_fusionreport_input = ch_reads_all
-//    .join(ch_arriba_fusions, remainder: true)
-//    .join(ch_starfusion_fusions, remainder: true)
-//    .join(ch_fusioncatcher_fusions, remainder: true)
-//
-//    //
-//    // MODULE: Run FusionReport
-//    //
-//    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
-//    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
-//    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
-//    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
-//    ch_fusionreport_csv = FUSIONREPORT.out.csv
-//    ch_fusionreport = FUSIONREPORT.out.report
-//
-//    //
-//    // WORKFLOW: Run FusionInspector
-//    //
-//    FUSIONINSPECTOR_WORKFLOW (
-//        ch_fusionreport_list_filtered,
-//        ch_bam_star_fusion_indexed,
-//        ch_fusionreport_list,
-//        ch_fusionreport_csv,
-//        ch_fusionreport,
-//        ch_hgnc_date,
-//        ch_hgnc_ref,
-//        ch_reads_all
-//    )
-//    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
-//    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
-//
-//    //
-//    // Combine the FusionInspector Output & BAMs By ID
-//    //
-//    ch_fusviz_input = ch_bam_star_arriba_indexed
-//    .join(ch_fusioninspectortsv, remainder: true)
-//
-//    //
-//    // MODULE: Run FusViz
-//    //
-//    FUSVIZ(ch_fusviz_input, params.protein_domains, params.fusviz_chr, params.cytobands, params.annotations)
-//    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
-//    ch_fusviz_pdf = FUSVIZ.out.pdf
+    //
+    // MODULE: Run Portcullis
+    //
+    PORTCULLIS_FULL (ch_bam_star_arriba, params.bed, params.fai, params.fasta)
+    ch_portcullis_log = PORTCULLIS_FULL.out.log
+    ch_portcullis_bam = PORTCULLIS_FULL.out.spliced_bam
+    ch_portcullis_bai = PORTCULLIS_FULL.out.spliced_bai
+    ch_portcullis_bed = PORTCULLIS_FULL.out.pass_junctions_bed
+    ch_portcullis_tab = PORTCULLIS_FULL.out.pass_junctions_tab
+    ch_versions = ch_versions.mix(PORTCULLIS_FULL.out.versions)
+    ch_portculis_bam_bai = ch_portcullis_bam.join(ch_portcullis_bai)
+
+    //
+    // MODULE: Creat the Index for Whippet <- Only need to be run once
+    //
+    WHIPPET_INDEX_2ND_PASS(ch_portculis_bam_bai, ch_fasta, ch_gtf)
+    ch_whippet_jls = WHIPPET_INDEX_2ND_PASS.out.jls
+    ch_whippet_graph = WHIPPET_INDEX_2ND_PASS.out.graph
+    ch_versions = ch_versions.mix(WHIPPET_INDEX_2ND_PASS.out.versions)
+
+    //
+    // MODULE: Run Quant for Whippet
+    //
+    ch_whippet_quant_input = ch_reads_all.join(ch_whippet_jls)
+    WHIPPET_QUANT(ch_whippet_quant_input)
+    ch_whippet_psi = WHIPPET_QUANT.out.psi
+    ch_whippet_tmp = WHIPPET_QUANT.out.tmp
+    ch_versions = ch_versions.mix(WHIPPET_QUANT.out.versions)
+
+    //
+    // WORKFLOW: Run STAR for STARfusion
+    //
+    STAR_FUSION(ch_reads_all, ch_star_index, ch_chrgtf, params.star_seq_platform, params.star_seq_center)
+    ch_bam_star_fusion = STAR_FUSION.out.bam_sorted
+    ch_star_fusion_stats = STAR_FUSION.out.log_final
+    ch_versions = ch_versions.mix(STAR_FUSION.out.versions)
+    ch_star_fusion_gene_count = STAR_FUSION.out.read_per_gene_tab
+    ch_star_fusion_reads_junction = ch_reads_all.join(STAR_FUSION.out.junction)
+    ch_multiqc_files = ch_multiqc_files.mix(ch_star_fusion_stats.collect{it[1]}.ifEmpty([]))
+    ch_multiqc_files = ch_multiqc_files.mix(ch_star_fusion_gene_count.collect{it[1]}.ifEmpty([]))
+
+    //
+    // MODULE: Index BAM file
+    //
+    STARFUSION_INDEX(ch_bam_star_fusion)
+    ch_versions = ch_versions.mix(STARFUSION_INDEX.out.versions)
+    ch_bam_star_fusion_indexed = STAR_FUSION.out.bam_sorted.join(STARFUSION_INDEX.out.bai)
+
+    //
+    // MODULE: Run STARfusion
+    //
+    STARFUSION(ch_star_fusion_reads_junction, params.starfusion_ref)
+    ch_versions = ch_versions.mix(STARFUSION.out.versions)
+    ch_starfusion_fusions = STARFUSION.out.fusions
+
+    //
+    // MODULE: Run FastP to filter by min lenght since FusionCatcher can't handle much
+    //
+    FASTP(ch_reads_all)
+    ch_versions = ch_versions.mix(FASTP.out.versions)
+    ch_reads_4fusioncatcher = FASTP.out.reads
+
+    //
+    // WORKFLOW: Run FusionCatcher
+    //
+    FUSIONCATCHER(ch_reads_4fusioncatcher, params.fusioncatcher_ref)
+    ch_versions = ch_versions.mix(FUSIONCATCHER.out.versions)
+    ch_fusioncatcher_fusions = FUSIONCATCHER.out.fusions
+
+    //
+    // Combine the Fusion Callers Output By ID
+    //
+    ch_fusionreport_input = ch_reads_all
+    .join(ch_arriba_fusions, remainder: true)
+    .join(ch_starfusion_fusions, remainder: true)
+    .join(ch_fusioncatcher_fusions, remainder: true)
+
+    //
+    // MODULE: Run FusionReport
+    //
+    FUSIONREPORT(ch_fusionreport_input, ch_fusionreport_ref, params.tools_cutoff)
+    ch_versions = ch_versions.mix(FUSIONREPORT.out.versions)
+    ch_fusionreport_list_filtered = FUSIONREPORT.out.fusion_list_filtered
+    ch_fusionreport_list = FUSIONREPORT.out.fusion_list
+    ch_fusionreport_csv = FUSIONREPORT.out.csv
+    ch_fusionreport = FUSIONREPORT.out.report
+
+    //
+    // WORKFLOW: Run FusionInspector
+    //
+    FUSIONINSPECTOR_WORKFLOW (
+        ch_fusionreport_list_filtered,
+        ch_bam_star_fusion_indexed,
+        ch_fusionreport_list,
+        ch_fusionreport_csv,
+        ch_fusionreport,
+        ch_hgnc_date,
+        ch_hgnc_ref,
+        ch_reads_all
+    )
+    ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
+    ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
+
+    //
+    // Combine the FusionInspector Output & BAMs By ID
+    //
+    ch_fusviz_input = ch_bam_star_arriba_indexed
+    .join(ch_fusioninspectortsv, remainder: true)
+
+    //
+    // MODULE: Run FusViz
+    //
+    FUSVIZ(ch_fusviz_input, params.protein_domains, params.fusviz_chr, params.cytobands, params.annotations)
+    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
+    ch_fusviz_pdf = FUSVIZ.out.pdf
 
     emit:
 
