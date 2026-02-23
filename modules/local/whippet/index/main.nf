@@ -10,7 +10,7 @@ process WHIPPET_INDEX {
     input:
     tuple val(meta) , path(gtf)
     tuple val(meta1), path(fasta)
-    tuple val(meta2), path(bam), path(bai)
+    tuple val(meta2), path(bam), path(bai), optional: true
     
     output:
     tuple val(meta), path("*.jls")         , emit: jls
@@ -22,14 +22,13 @@ process WHIPPET_INDEX {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
     def bam_input = bam ? "--bam ${bam}" : ""
     """
     whippet-index \\
         --fasta ${fasta} \\
         --gtf ${gtf} \\
         ${bam_input} \\
-        $args \\
+        $args
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -37,12 +36,8 @@ process WHIPPET_INDEX {
     END_VERSIONS
     """
     stub:
-    def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
 
-    """
-    echo $args
-    
+    """  
     touch index.exons.tab.gz
     touch index.graph.jls
 
