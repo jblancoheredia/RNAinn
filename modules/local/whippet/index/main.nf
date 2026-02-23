@@ -24,6 +24,8 @@ process WHIPPET_INDEX {
     def args = task.ext.args ?: ''
     def bam_input = bam ? "--bam ${bam}" : ""
     """
+    export JULIA_DEPOT_PATH="${PWD}/.julia"
+    
     whippet-index \\
         --fasta ${fasta} \\
         --gtf ${gtf} \\
