@@ -10,7 +10,7 @@ process WHIPPET_INDEX {
     input:
     tuple val(meta) , path(gtf)
     tuple val(meta1), path(fasta)
-    tuple val(meta2), path(bam), path(bai), optional: true
+    tuple val(meta2), path(bam, stageAs:'bam_input'), path(bai, stageAs:'bai_input')
     
     output:
     tuple val(meta), path("*.jls")         , emit: jls
