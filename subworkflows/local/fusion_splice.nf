@@ -53,11 +53,11 @@ workflow FUSION_SPLICE {
     ch_versions
     ch_hgnc_ref
     ch_hgnc_date
-    ch_reads_all
     ch_star_index
     ch_samplesheet
     ch_multiqc_files
     ch_rrna_intervals
+    ch_reads_finalized
     ch_fusionreport_ref
     ch_arriba_ref_blocklist
     ch_arriba_ref_known_fusions
@@ -76,13 +76,13 @@ workflow FUSION_SPLICE {
     // MODULE: Run 1st Pass of Index for Whippet
     //
     ch_empty_bam_input = Channel.of([[],[],[]])
-    WHIPPET_INDEX_1ST_PASS(ch_gtf, ch_fasta, ch_empty_bam_input)
+    WHIPPET_INDEX_1ST_PASS(ch_gft_core, ch_fasta, ch_empty_bam_input)
     ch_versions = ch_versions.mix(WHIPPET_INDEX_1ST_PASS.out.versions)
 
     //
     // MODULE: Run STAR for Arriba
     //
-    STAR_ARRIBA(ch_reads_all, ch_star_index, ch_gtf, params.star_seq_platform, params.star_seq_center)
+    STAR_ARRIBA(ch_reads_finalized, ch_star_index, ch_gtf, params.star_seq_platform, params.star_seq_center)
     ch_bam_star_arriba = STAR_ARRIBA.out.bam_sorted
     ch_versions = ch_versions.mix(STAR_ARRIBA.out.versions)
     ch_star_arriba_gene_count = STAR_ARRIBA.out.read_per_gene_tab
@@ -134,7 +134,7 @@ workflow FUSION_SPLICE {
     //
     // MODULE: Creat the Index for Whippet <- Only need to be run once
     //
-    WHIPPET_INDEX_2ND_PASS(ch_portculis_bam_bai, ch_fasta, ch_gtf)
+    WHIPPET_INDEX_2ND_PASS(ch_portculis_bam_bai, ch_fasta, ch_gft_core)
     ch_whippet_jls = WHIPPET_INDEX_2ND_PASS.out.jls
     ch_whippet_graph = WHIPPET_INDEX_2ND_PASS.out.graph
     ch_versions = ch_versions.mix(WHIPPET_INDEX_2ND_PASS.out.versions)
@@ -142,7 +142,7 @@ workflow FUSION_SPLICE {
     //
     // MODULE: Run Quant for Whippet
     //
-    ch_whippet_quant_input = ch_reads_all.join(ch_whippet_jls)
+    ch_whippet_quant_input = ch_reads_finalized.join(ch_whippet_jls)
     WHIPPET_QUANT(ch_whippet_quant_input)
     ch_whippet_psi = WHIPPET_QUANT.out.psi
     ch_whippet_tmp = WHIPPET_QUANT.out.tmp
@@ -151,12 +151,12 @@ workflow FUSION_SPLICE {
     //
     // WORKFLOW: Run STAR for STARfusion
     //
-    STAR_FUSION(ch_reads_all, ch_star_index, ch_chrgtf, params.star_seq_platform, params.star_seq_center)
+    STAR_FUSION(ch_reads_finalized, ch_star_index, ch_chrgtf, params.star_seq_platform, params.star_seq_center)
     ch_bam_star_fusion = STAR_FUSION.out.bam_sorted
     ch_star_fusion_stats = STAR_FUSION.out.log_final
     ch_versions = ch_versions.mix(STAR_FUSION.out.versions)
     ch_star_fusion_gene_count = STAR_FUSION.out.read_per_gene_tab
-    ch_star_fusion_reads_junction = ch_reads_all.join(STAR_FUSION.out.junction)
+    ch_star_fusion_reads_junction = ch_reads_finalized.join(STAR_FUSION.out.junction)
     ch_multiqc_files = ch_multiqc_files.mix(ch_star_fusion_stats.collect{it[1]}.ifEmpty([]))
     ch_multiqc_files = ch_multiqc_files.mix(ch_star_fusion_gene_count.collect{it[1]}.ifEmpty([]))
 
@@ -177,7 +177,7 @@ workflow FUSION_SPLICE {
     //
     // MODULE: Run FastP to filter by min lenght since FusionCatcher can't handle much
     //
-    FASTP(ch_reads_all)
+    FASTP(ch_reads_finalized)
     ch_versions = ch_versions.mix(FASTP.out.versions)
     ch_reads_4fusioncatcher = FASTP.out.reads
 
@@ -191,7 +191,7 @@ workflow FUSION_SPLICE {
     //
     // Combine the Fusion Callers Output By ID
     //
-    ch_fusionreport_input = ch_reads_all
+    ch_fusionreport_input = ch_reads_finalized
     .join(ch_arriba_fusions, remainder: true)
     .join(ch_starfusion_fusions, remainder: true)
     .join(ch_fusioncatcher_fusions, remainder: true)
@@ -214,10 +214,10 @@ workflow FUSION_SPLICE {
         ch_bam_star_fusion_indexed,
         ch_fusionreport_list,
         ch_fusionreport_csv,
+        ch_reads_finalized,
         ch_fusionreport,
         ch_hgnc_date,
-        ch_hgnc_ref,
-        ch_reads_all
+        ch_hgnc_ref
     )
     ch_fusioninspectortsv = FUSIONINSPECTOR_WORKFLOW.out.fusioninspectortsv
     ch_versions = ch_versions.mix(FUSIONINSPECTOR_WORKFLOW.out.versions)
