@@ -4,8 +4,8 @@ process GTFCOLLAPSER {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://blancojmskcc/gtf_collapser:1.0.0':
-        'blancojmskcc/gtf_collapser:1.0.0' }"
+        'docker://blancojmskcc/rnainn_gtfcollapser:1.0.0':
+        'blancojmskcc/rnainn_gtfcollapser:1.0.0' }"
 
     input:
     tuple val(meta), path(gtf)
@@ -22,7 +22,7 @@ process GTFCOLLAPSER {
     def output = "${gtf.simpleName}.core.gtf"
 
     """
-    python collapse_annotation.py \\
+    GTFcollapser \\
         ${gtf} \\
         ${output} \\
         $args \\
