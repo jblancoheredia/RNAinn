@@ -25,10 +25,10 @@ workflow FUSIONINSPECTOR_WORKFLOW {
         bam_sorted_indexed
         fusionreport_list
         fusionreport_csv
-        fusionreport_out
+        reads_finalized
+        fusionreport_o
         ch_hgnc_date
         ch_hgnc_ref
-        reads_all
 
     main:
         ch_versions = Channel.empty()
@@ -47,10 +47,10 @@ workflow FUSIONINSPECTOR_WORKFLOW {
 
             CAT_CAT(ch_allowlist)
             ch_versions = ch_versions.mix(CAT_CAT.out.versions)
-            ch_reads_fusion = reads_all.join(CAT_CAT.out.file_out )
+            ch_reads_fusion = reads_finalized.join(CAT_CAT.out.file_out )
         }
         else {
-            ch_reads_fusion = reads_all.join(ch_fusion_list.fusions )
+            ch_reads_fusion = reads_finalized.join(ch_fusion_list.fusions )
         }
 
         FUSIONINSPECTOR(ch_reads_fusion, index)
@@ -59,7 +59,7 @@ workflow FUSIONINSPECTOR_WORKFLOW {
         AGAT_CONVERTSPGFF2TSV(FUSIONINSPECTOR.out.out_gtf)
         ch_versions = ch_versions.mix(AGAT_CONVERTSPGFF2TSV.out.versions)
 
-        fusion_data = FUSIONINSPECTOR.out.tsv_coding_effect.join(AGAT_CONVERTSPGFF2TSV.out.tsv).join(fusionreport_out).join(fusionreport_csv)
+        fusion_data = FUSIONINSPECTOR.out.tsv_coding_effect.join(AGAT_CONVERTSPGFF2TSV.out.tsv).join(fusionreport_o).join(fusionreport_csv)
         VCF_COLLECT(fusion_data, ch_hgnc_ref, ch_hgnc_date)
         ch_versions = ch_versions.mix(VCF_COLLECT.out.versions)
 
