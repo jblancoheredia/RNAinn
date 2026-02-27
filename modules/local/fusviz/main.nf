@@ -31,7 +31,7 @@ process FUSVIZ {
     export MPLBACKEND=Agg
 
     if [ \$(wc -l < ${fusions}) -gt 1 ]; then
-        FusViz.py \\
+        FusViz \\
             --alignments=${bam} \\
             --annotation=${gtf}   \\
             --fusions=${fusions}    \\
