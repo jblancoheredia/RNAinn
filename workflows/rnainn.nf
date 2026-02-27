@@ -58,6 +58,7 @@ ch_intervals                                    = Channel.fromPath(params.interv
 ch_hgnc_date                                    = Channel.fromPath(params.hgnc_date).map                        { it -> [[id:it.Name], it] }.collect()
 ch_star_index                                   = Channel.fromPath(params.star_index).map                       { it -> [[id:it.Name], it] }.collect()
 ch_targets_bed                                  = Channel.fromPath(params.targets_bed).map                      { it -> [[id:it.Name], it] }.collect()
+ch_whippet_gtf                                  = Channel.fromPath(params.whippet_gtf).map                      { it -> [[id:it.Name], it] }.collect()
 ch_known_indels                                 = Channel.fromPath(params.known_indels).map                     { it -> [[id:it.Name], it] }.collect()
 ch_multiqc_logo                                 = Channel.fromPath(params.multiqc_logo).map                     { it -> [[id:it.Name], it] }.collect()
 ch_salmon_index                                 = Channel.fromPath(params.salmon_index).map                     { it -> [[id:it.Name], it] }.collect()
@@ -73,6 +74,7 @@ ch_arriba_ref_blocklist                         = Channel.fromPath(params.arriba
 ch_arriba_ref_cytobands                         = Channel.fromPath(params.arriba_ref_cytobands).map             { it -> [[id:it.Name], it] }.collect()
 ch_arriba_ref_known_fusions                     = Channel.fromPath(params.arriba_ref_known_fusions).map         { it -> [[id:it.Name], it] }.collect()
 ch_arriba_ref_protein_domains                   = Channel.fromPath(params.arriba_ref_protein_domains).map       { it -> [[id:it.Name], it] }.collect()
+
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -264,6 +266,7 @@ workflow RNAINN {
             ch_hgnc_date,
             ch_star_index,
             ch_samplesheet,
+            ch_whippet_gtf,
             ch_multiqc_files,
             ch_rrna_intervals,
             ch_reads_finalized,
