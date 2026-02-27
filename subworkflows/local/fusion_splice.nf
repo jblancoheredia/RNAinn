@@ -55,6 +55,7 @@ workflow FUSION_SPLICE {
     ch_hgnc_date
     ch_star_index
     ch_samplesheet
+    ch_whippet_gtf
     ch_multiqc_files
     ch_rrna_intervals
     ch_reads_finalized
@@ -68,7 +69,7 @@ workflow FUSION_SPLICE {
     //
     // MODULE: Run GTF Collapser
     //
-    GTFCOLLAPSER(ch_gtf)
+    GTFCOLLAPSER(ch_whippet_gtf)
     ch_gft_core = GTFCOLLAPSER.out.core_gtf
     ch_versions = ch_versions.mix(GTFCOLLAPSER.out.versions)
 
