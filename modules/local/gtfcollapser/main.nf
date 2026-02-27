@@ -4,7 +4,7 @@ process GTFCOLLAPSER {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' ?
-        'docker://community.wave.seqera.io/library/pip_bx-python_pandas:677de3d2fb4d8a9e':
+        'https://community.wave.seqera.io/library/pip_bx-python_pandas:677de3d2fb4d8a9e':
         'community.wave.seqera.io/library/pip_bx-python_pandas:677de3d2fb4d8a9e' }"
 
     input:
