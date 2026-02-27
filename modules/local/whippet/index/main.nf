@@ -8,9 +8,9 @@ process WHIPPET_INDEX {
         'blancojmskcc/whippet:1.6.2' }"
 
     input:
-    tuple val(meta) , path(gtf)
+    tuple val(meta) , path(bam, stageAs:'bam_input'), path(bai, stageAs:'bai_input')
     tuple val(meta1), path(fasta)
-    tuple val(meta2), path(bam, stageAs:'bam_input'), path(bai, stageAs:'bai_input')
+    tuple val(meta2), path(gtf)
     
     output:
     tuple val(meta), path("*.jls")         , emit: jls
@@ -22,6 +22,7 @@ process WHIPPET_INDEX {
 
     script:
     def args = task.ext.args ?: ''
+    def prefix = meta ? "${meta.id}" : ""
     def bam_input = bam ? "--bam ${bam}" : ""
     """
     export JULIA_DEPOT_PATH="${PWD}/.julia:/opt/julia_depot"
@@ -30,7 +31,7 @@ process WHIPPET_INDEX {
         --fasta ${fasta} \\
         --gtf ${gtf} \\
         ${bam_input} \\
-        -x graph.jls \\
+        -x ${prefix}_graph.jls \\
         $args
 
     cat <<-END_VERSIONS > versions.yml
@@ -39,10 +40,11 @@ process WHIPPET_INDEX {
     END_VERSIONS
     """
     stub:
+    def prefix = meta ? "${meta.id}" : ""
 
     """  
-    touch index.exons.tab.gz
-    touch index.graph.jls
+    touch ${prefix}_graph.jls.exons.tab.gz
+    touch ${prefix}_graph.jls
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
