@@ -11,18 +11,18 @@ process GTFCOLLAPSER {
     tuple val(meta), path(gtf)
 
     output:
-    tuple val(meta), path("*.core.gtf.gz"), emit: core_gtf
-    path "versions.yml"                   , emit: versions
+    tuple val(meta), path("*.core.gtf"), emit: core_gtf
+    path "versions.yml"                , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
     def args = task.ext.args ?: ''
-    def output = gtf.getName().replaceFirst(/\.gtf\.gz$/, '.core.gtf.gz')
+    def output = "${gtf.simpleName}.core.gtf"
 
     """
-    collapse_annotation.py \\
+    python collapse_annotation.py \\
         ${gtf} \\
         ${output} \\
         $args \\
@@ -34,7 +34,7 @@ process GTFCOLLAPSER {
     """
 
     stub:
-    def output = gtf.getName().replaceFirst(/\.gtf\.gz$/, '.core.gtf.gz')
+    def output = "${gtf.simpleName}.core.gtf"
 
     """
     touch ${output}
