@@ -232,9 +232,9 @@ workflow FUSION_SPLICE {
     //
     // MODULE: Run FusViz
     //
-    FUSVIZ(ch_fusviz_input, params.protein_domains, params.fusviz_chr, params.cytobands, params.annotations)
-    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
-    ch_fusviz_pdf = FUSVIZ.out.pdf
+//    FUSVIZ(ch_fusviz_input, params.protein_domains, params.fusviz_chr, params.cytobands, params.annotations)
+//    ch_versions = ch_versions.mix(FUSVIZ.out.versions)
+//    ch_fusviz_pdf = FUSVIZ.out.pdf
 
     emit:
 
