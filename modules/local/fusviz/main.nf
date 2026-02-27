@@ -3,9 +3,9 @@ process FUSVIZ {
     label 'process_medium'
 
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://blancojmskcc/rnainn_fusviz:7.4.0':
-        'blancojmskcc/rnainn_fusviz:7.4.0' }"
+    container "${ workflow.containerEngine == 'singularity' ?
+        'docker://community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c':
+        'community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c' }"
 
     input:
     tuple val(meta) ,path(bam), path(bai), path(fusions)
@@ -16,6 +16,7 @@ process FUSVIZ {
 
     output:
     tuple val(meta), path("*.pdf"), emit: pdf
+    tuple val(meta), path("*.png"), emit: png
     path "versions.yml"           , emit: versions
 
     when:
@@ -30,13 +31,12 @@ process FUSVIZ {
     export MPLBACKEND=Agg
 
     if [ \$(wc -l < ${fusions}) -gt 1 ]; then
-        FusViz \\
-            --alignments ${bam} \\
-            --annotation ${gtf}   \\
-            --fusions ${fusions}    \\
-            --cytobands ${cytobands}  \\
-            --chromosomes ${chromosomes} \\
-            --output ${prefix}_FusViz.pdf  \\
+        FusViz.py \\
+            --alignments=${bam} \\
+            --annotation=${gtf}   \\
+            --fusions=${fusions}    \\
+            --cytobands=${cytobands}  \\
+            --chromosomes=${chromosomes} \\
             --proteinDomains ${protein_domains} \\
             ${args}
     else
@@ -46,17 +46,18 @@ process FUSVIZ {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        fusviz: "7.4.0"
+        fusviz: \$(echo \$(FusViz.py --version 2>&1) | sed 's/^.*FusViz //;  s/ .*\$//')
     END_VERSIONS
     """
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}_FusViz.pdf
+    touch ${prefix}_FusViz.png
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        fusviz: "7.4.0"
+        fusviz: \$(echo \$(FusViz.py --version 2>&1) | sed 's/^.*FusViz //;  s/ .*\$//')
     END_VERSIONS
     """
 }
