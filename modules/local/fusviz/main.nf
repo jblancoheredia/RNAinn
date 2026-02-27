@@ -5,7 +5,7 @@ process FUSVIZ {
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' ?
         'docker://community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c':
-        'quay.io/community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c' }"
+        'community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c' }"
 
     input:
     tuple val(meta) ,path(bam), path(bai), path(fusions)
