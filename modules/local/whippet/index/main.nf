@@ -22,7 +22,7 @@ process WHIPPET_INDEX {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = meta ? "${meta.id}" : ""
+    def prefix = meta ? "${meta.id}_" : ""
     def bam_input = bam ? "--bam ${bam}" : ""
     """
     export JULIA_DEPOT_PATH="${PWD}/.julia:/opt/julia_depot"
@@ -31,7 +31,7 @@ process WHIPPET_INDEX {
         --fasta ${fasta} \\
         --gtf ${gtf} \\
         ${bam_input} \\
-        -x ${prefix}_graph.jls \\
+        -x ${prefix}graph.jls \\
         $args
 
     cat <<-END_VERSIONS > versions.yml
