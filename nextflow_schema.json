@@ -1045,6 +1045,12 @@
                     "description": "Path to protein domains file",
                     "help_text": "Part of the FusViz references bundle"     
                 },
+                "whippet_gtf": {
+                    "type": "string",
+                    "fa_icon": "far fa-eye-slash",
+                    "description": "Path to Whippet GTF annotations file",
+                    "help_text": "Part of the Whippet tool"     
+                },
                 "cpus": {
                     "type": "integer",
                     "description": "Number of CPUs to allocate",
