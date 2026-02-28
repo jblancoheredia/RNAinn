@@ -19,7 +19,7 @@ process GTFCOLLAPSER {
 
     script:
     def args = task.ext.args ?: ''
-    def output = "${gtf.simpleName}.core.gtf"
+    def output = "${meta.id}.core.gtf"
 
     """
     GTFcollapser \\
@@ -34,7 +34,7 @@ process GTFCOLLAPSER {
     """
 
     stub:
-    def output = "${gtf.simpleName}.core.gtf"
+    def output = "${meta.id}.core.gtf"
 
     """
     touch ${output}
