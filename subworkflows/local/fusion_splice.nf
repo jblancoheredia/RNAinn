@@ -22,7 +22,7 @@ include { WHIPPET_INDEX                        as WHIPPET_INDEX_1ST_PASS        
 include { WHIPPET_INDEX                        as WHIPPET_INDEX_2ND_PASS                } from '../../modules/local/whippet/index/main'
 include { WHIPPET_QUANT                                                                 } from '../../modules/local/whippet/quant/main'
 include { FUSIONINSPECTOR                                                               } from '../../modules/local/fusioninspector/main'
-include { PORTCULLIS_FULL                                                               } from '../../modules/local/portcullis/full/main'
+include { PORTCULLIS_FULL                                                               } from '../../modules/local/portcullis/main'
 include { STARFUSION_INDEX                                                              } from '../../modules/local/starfusion/index/main'
 include { ARRIBA_VISUALISATION                                                          } from '../../modules/local/arriba/visualisation/main'
 include { AGAT_CONVERTSPGFF2TSV                                                         } from '../../modules/nf-core/agat/convertspgff2tsv/main'
