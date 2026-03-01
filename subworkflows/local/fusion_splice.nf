@@ -136,14 +136,13 @@ workflow FUSION_SPLICE {
     // MODULE: Creat the Index for Whippet <- Only need to be run once
     //
     WHIPPET_INDEX_2ND_PASS(ch_portculis_bam_bai, ch_fasta, ch_gft_core)
-    ch_whippet_jls = WHIPPET_INDEX_2ND_PASS.out.jls
     ch_whippet_graph = WHIPPET_INDEX_2ND_PASS.out.graph
     ch_versions = ch_versions.mix(WHIPPET_INDEX_2ND_PASS.out.versions)
 
     //
     // MODULE: Run Quant for Whippet
     //
-    ch_whippet_quant_input = ch_reads_finalized.join(ch_whippet_jls)
+    ch_whippet_quant_input = ch_reads_finalized.join(WHIPPET_INDEX_2ND_PASS.out.jls)
     WHIPPET_QUANT(ch_whippet_quant_input)
     ch_whippet_psi = WHIPPET_QUANT.out.psi
     ch_whippet_tmp = WHIPPET_QUANT.out.tmp
