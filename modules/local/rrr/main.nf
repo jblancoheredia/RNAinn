@@ -8,7 +8,7 @@ process RAW_READS_RECOVERY {
         'blancojmskcc/rnainn_rawreadsrecovery:1.0.0' }"
 
     input:
-    tuple val(meta), path(inputs)
+    tuple val(meta), path(inputs), path(bam), path(bai)
 
     output:
     tuple val(meta), path("*.fastq.gz"), emit: fastq
@@ -18,7 +18,6 @@ process RAW_READS_RECOVERY {
     task.ext.when == null || task.ext.when
 
     script:
-    def bam    = inputs[2]
     def args   = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def reads1 = inputs[0]
