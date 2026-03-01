@@ -8,7 +8,7 @@ process WHIPPET_INDEX {
         'blancojmskcc/whippet:1.6.2' }"
 
     input:
-    tuple val(meta) , path(bam, stageAs:'bam_input'), path(bai, stageAs:'bai_input')
+    tuple val(meta) , path(bam), path(bai)
     tuple val(meta1), path(fasta)
     tuple val(meta2), path(gtf)
     
