@@ -3,9 +3,9 @@ process RAW_READS_RECOVERY {
     label 'process_high'
 
     conda "${moduleDir}/environment.yml"
-    container "${ workflow.containerEngine == 'singularity' ?
-        'docker://community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c':
-        'community.wave.seqera.io/library/pyranges_pysam_samtools_matplotlib_pruned:80797ab907957d3c' }"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'docker://blancojmskcc/rnainn_rawreadsrecovery:1.0.0':
+        'blancojmskcc/rnainn_rawreadsrecovery:1.0.0' }"
 
     input:
     tuple val(meta), path(inputs)
