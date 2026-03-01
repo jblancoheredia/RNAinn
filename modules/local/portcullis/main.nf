@@ -14,15 +14,15 @@ process PORTCULLIS_FULL {
     path(fasta)
 
     output:
-    tuple val(meta), path("*.filtered.bam"), path("*.filtered.bai"), emit: filtered_bam_bai
-    tuple val(meta), path("*.pass.junctions.bed")                  , emit: pass_junctions_bed
-    tuple val(meta), path("*.pass.junctions.tab")                  , emit: pass_junctions_tab
-    tuple val(meta), path("*.portcullis.log")                      , emit: log
-    tuple val(meta), path("*.intron.gff3")                         , emit: intron_gff , optional: true
-    tuple val(meta), path("*.exon.gff3")                           , emit: exon_gff   , optional: true
-    tuple val(meta), path("*.bam")                                 , emit: spliced_bam, optional: true
-    tuple val(meta), path("*.bai")                                 , emit: spliced_bai, optional: true
-    path "versions.yml"                                            , emit: versions
+    tuple val(meta), path("*.filtered.bam"), path("*.filtered.bam.bai"), emit: filtered_bam_bai
+    tuple val(meta), path("*.pass.junctions.bed")                      , emit: pass_junctions_bed
+    tuple val(meta), path("*.pass.junctions.tab")                      , emit: pass_junctions_tab
+    tuple val(meta), path("*.portcullis.log")                          , emit: log
+    tuple val(meta), path("*.intron.gff3")                             , emit: intron_gff , optional: true
+    tuple val(meta), path("*.exon.gff3")                               , emit: exon_gff   , optional: true
+    tuple val(meta), path("*.bam")                                     , emit: spliced_bam, optional: true
+    tuple val(meta), path("*.bai")                                     , emit: spliced_bai, optional: true
+    path "versions.yml"                                                , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
