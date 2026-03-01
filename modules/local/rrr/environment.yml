@@ -1,9 +1,10 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/environment-schema.json
 channels:
-  - conda-forge
-  - bioconda
+- conda-forge
+- bioconda
 dependencies:
-  - bioconda::seqtk=1.5
-  - bioconda::samtools=1.23
-
+- bioconda::samtools=1.23
+- pip
+- pip:
+  - seqtk==0.5.0
