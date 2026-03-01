@@ -11,8 +11,8 @@ process RAW_READS_RECOVERY {
     tuple val(meta), path(inputs)
 
     output:
-    tuple val(meta), path("*.bam"), emit: bam
-    path "versions.yml"              , emit: versions
+    tuple val(meta), path("*.fastq.gz"), emit: fastq
+    path "versions.yml"                , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -25,20 +25,31 @@ process RAW_READS_RECOVERY {
     def reads2 = inputs[1]
 
     """
-    rrr \\
-        $args \\
-        -@ $task.cpus \\
-        -o ${prefix}.bam \\
-        $bam
+    samtools view -F 260 ${bam} | cut -f1 | cut -f1 -d'_' | sort -u > ${prefix}.read_names.txt
+
+    seqtk subseq ${reads1} ${prefix}.read_names.txt | gzip > ${prefix}_R1.fastq.gz
+    seqtk subseq ${reads2} ${prefix}.read_names.txt | gzip > ${prefix}_R2.fastq.gz
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        rrr: 1.0.0
+        samtools: \$(samtools --version | head -1 | sed 's/samtools //')
+        seqtk: \$(seqtk 2>&1 | grep Version | sed 's/Version: //')
+    END_VERSIONS
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    """
-    echo $args
-    
-    touch ${prefix}.bam
+    """    
+    touch ${prefix}_R1.fastq.gz
+    touch ${prefix}_R2.fastq.gz
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        rrr: 1.0.0
+        samtools: \$(samtools --version | head -1 | sed 's/samtools //')
+        seqtk: \$(seqtk 2>&1 | grep Version | sed 's/Version: //')
+    END_VERSIONS
     """
 }
