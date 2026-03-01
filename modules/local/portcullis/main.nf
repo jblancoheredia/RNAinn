@@ -1,4 +1,4 @@
-process PORTCULLIS {
+process PORTCULLIS_FULL {
     tag "$meta.id"
     label 'process_high'
 
@@ -8,16 +8,21 @@ process PORTCULLIS {
         'biocontainers/portcullis:1.2.4--py38haf070c8_0' }"
 
     input:
-    tuple val(meta), path(bam)
+    tuple val(meta) , path(bam)
     path(bed)
+    path(fai)
     path(fasta)
 
     output:
-    tuple val(meta), path("*.bed")                                   , emit: bed
-    tuple val(meta), path("*.log")                                   , emit: log
-    tuple val(meta), path("*.tab")                                   , emit: tab
-    tuple val(meta), path("*.spliced.bam"), path("*.spliced.bam.bai"), emit: bam_bai
-    path "versions.yml"                                              , emit: versions
+    tuple val(meta), path("*.filtered.bam"), path("*.filtered.bai"), emit: filtered_bam_bai
+    tuple val(meta), path("*.pass.junctions.bed")                  , emit: pass_junctions_bed
+    tuple val(meta), path("*.pass.junctions.tab")                  , emit: pass_junctions_tab
+    tuple val(meta), path("*.portcullis.log")                      , emit: log
+    tuple val(meta), path("*.intron.gff3")                         , emit: intron_gff , optional: true
+    tuple val(meta), path("*.exon.gff3")                           , emit: exon_gff   , optional: true
+    tuple val(meta), path("*.bam")                                 , emit: spliced_bam, optional: true
+    tuple val(meta), path("*.bai")                                 , emit: spliced_bai, optional: true
+    path "versions.yml"                                            , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -25,7 +30,6 @@ process PORTCULLIS {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def log_file = "${meta.id}.portcullis.log"
     """
     portcullis \\
         full \\
@@ -34,10 +38,22 @@ process PORTCULLIS {
         -o ${prefix} \\
         -r ${bed} \\
         ${fasta} \\
-        ${bam} > ${log_file}
+        ${bam} > ${prefix}.portcullis.log
 
-    mv ${prefix}/3-filt/portcullis_filtered.pass.junctions.bed ${prefix}_portcullis_junctions.bed
-    mv ${prefix}/3-filt/portcullis_filtered.pass.junctions.tab ${prefix}_portcullis_junctions.tab
+    cp ${prefix}/3-filt/*.pass.junctions.bed .
+    cp ${prefix}/3-filt/*.pass.junctions.tab .
+    mv ${prefix}/portcullis.filtered.bam ${prefix}_portcullis.filtered.bam
+    mv ${prefix}/portcullis.filtered.bam.bai ${prefix}_portcullis.filtered.bai
+    if [ -f ${prefix}/3-filt/*.pass.junctions.intron.gff3 ] ; then
+        cp ${prefix}/3-filt/*.pass.junctions.intron.gff3 .
+    fi
+    if [ -f ${prefix}/3-filt/*.pass.junctions.exon.gff3 ] ; then
+        cp ${prefix}/3-filt/*.pass.junctions.exon.gff3 .
+    fi
+    if [ -f ${prefix}/2-junc/*.spliced.bam ] ; then
+        cp ${prefix}/2-junc/*.spliced.bam.bai .
+        cp ${prefix}/2-junc/*.spliced.bam .
+    fi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -49,11 +65,9 @@ process PORTCULLIS {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}.spliced.bam
     touch ${prefix}.portcullis.log
-    touch ${prefix}.spliced.bam.bai
-    touch ${prefix}_portcullis_junctions.bed
-    touch ${prefix}_portcullis_junctions.tab
+    touch ${prefix}.pass.junctions.bed
+    touch ${prefix}.pass.junctions.tab
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -61,3 +75,4 @@ process PORTCULLIS {
     END_VERSIONS
     """
 }
+
