@@ -22,7 +22,7 @@ include { WHIPPET_INDEX                        as WHIPPET_INDEX_1ST_PASS        
 include { WHIPPET_INDEX                        as WHIPPET_INDEX_2ND_PASS                } from '../../modules/local/whippet/index/main'
 include { WHIPPET_QUANT                                                                 } from '../../modules/local/whippet/quant/main'
 include { FUSIONINSPECTOR                                                               } from '../../modules/local/fusioninspector/main'
-include { PORTCULLIS_FULL                                                               } from '../../modules/nf-core/portcullis/full/main'
+include { PORTCULLIS_FULL                                                               } from '../../modules/local/portcullis/full/main'
 include { STARFUSION_INDEX                                                              } from '../../modules/local/starfusion/index/main'
 include { ARRIBA_VISUALISATION                                                          } from '../../modules/local/arriba/visualisation/main'
 include { AGAT_CONVERTSPGFF2TSV                                                         } from '../../modules/nf-core/agat/convertspgff2tsv/main'
@@ -129,8 +129,8 @@ workflow FUSION_SPLICE {
     ch_portcullis_bai = PORTCULLIS_FULL.out.spliced_bai
     ch_portcullis_bed = PORTCULLIS_FULL.out.pass_junctions_bed
     ch_portcullis_tab = PORTCULLIS_FULL.out.pass_junctions_tab
+    ch_portculis_bam_bai = PORTCULLIS_FULL.out.filtered_bam_bai
     ch_versions = ch_versions.mix(PORTCULLIS_FULL.out.versions)
-    ch_portculis_bam_bai = ch_portcullis_bam.join(ch_portcullis_bai)
 
     //
     // MODULE: Creat the Index for Whippet <- Only need to be run once
