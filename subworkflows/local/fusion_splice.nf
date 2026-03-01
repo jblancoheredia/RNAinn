@@ -24,6 +24,7 @@ include { WHIPPET_QUANT                                                         
 include { FUSIONINSPECTOR                                                               } from '../../modules/local/fusioninspector/main'
 include { PORTCULLIS_FULL                                                               } from '../../modules/local/portcullis/main'
 include { STARFUSION_INDEX                                                              } from '../../modules/local/starfusion/index/main'
+include { RAW_READS_RECOVERY                                                            } from '../../modules/local/rrr/main'
 include { ARRIBA_VISUALISATION                                                          } from '../../modules/local/arriba/visualisation/main'
 include { AGAT_CONVERTSPGFF2TSV                                                         } from '../../modules/nf-core/agat/convertspgff2tsv/main'
 
@@ -84,10 +85,10 @@ workflow FUSION_SPLICE {
     // MODULE: Run STAR for Arriba
     //
     STAR_ARRIBA(ch_reads_finalized, ch_star_index, ch_gtf, params.star_seq_platform, params.star_seq_center)
-    ch_bam_star_arriba = STAR_ARRIBA.out.bam_sorted
-    ch_versions = ch_versions.mix(STAR_ARRIBA.out.versions)
     ch_star_arriba_gene_count = STAR_ARRIBA.out.read_per_gene_tab
+    ch_versions = ch_versions.mix(STAR_ARRIBA.out.versions)
     ch_star_arriba_stats = STAR_ARRIBA.out.log_final
+    ch_bam_star_arriba = STAR_ARRIBA.out.bam_sorted
     ch_multiqc_files = ch_multiqc_files.mix(ch_star_arriba_stats.collect{it[1]}.ifEmpty([]))
     ch_multiqc_files = ch_multiqc_files.mix(ch_star_arriba_gene_count.collect{it[1]}.ifEmpty([]))
 
@@ -140,9 +141,17 @@ workflow FUSION_SPLICE {
     ch_versions = ch_versions.mix(WHIPPET_INDEX_2ND_PASS.out.versions)
 
     //
+    // MODULE: Raw Reads Recovery
+    //
+    ch_rrr_input = ch_reads_finalized.join(ch_bam_star_arriba_indexed)
+    RAW_READS_RECOVERY(ch_rrr_input)
+    ch_rrr_fastq = RAW_READS_RECOVERY.out.fastq
+    ch_versions = ch_versions.mix(RAW_READS_RECOVERY.out.versions)
+
+    //
     // MODULE: Run Quant for Whippet
     //
-    ch_whippet_quant_input = ch_reads_finalized.join(WHIPPET_INDEX_2ND_PASS.out.jls)
+    ch_whippet_quant_input = ch_rrr_fastq.join(WHIPPET_INDEX_2ND_PASS.out.jls)
     WHIPPET_QUANT(ch_whippet_quant_input)
     ch_whippet_psi = WHIPPET_QUANT.out.psi
     ch_whippet_tmp = WHIPPET_QUANT.out.tmp
