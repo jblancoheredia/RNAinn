@@ -43,7 +43,7 @@ process PORTCULLIS_FULL {
     cp ${prefix}/3-filt/*.pass.junctions.bed .
     cp ${prefix}/3-filt/*.pass.junctions.tab .
     mv ${prefix}/portcullis.filtered.bam ${prefix}_portcullis.filtered.bam
-    mv ${prefix}/portcullis.filtered.bam.bai ${prefix}_portcullis.filtered.bai
+    mv ${prefix}/portcullis.filtered.bam.bai ${prefix}_portcullis.filtered.bam.bai
     if [ -f ${prefix}/3-filt/*.pass.junctions.intron.gff3 ] ; then
         cp ${prefix}/3-filt/*.pass.junctions.intron.gff3 .
     fi
