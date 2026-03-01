@@ -25,6 +25,8 @@ process WHIPPET_QUANT {
     def reads1 = inputs[0]
     def reads2 = inputs[1]
     """
+    export JULIA_DEPOT_PATH="${PWD}/.julia:/opt/julia_depot"
+    
     whippet-quant \\
         ${reads1} \\
         ${reads2} \\
