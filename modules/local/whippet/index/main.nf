@@ -23,7 +23,7 @@ process WHIPPET_INDEX {
     script:
     def args = task.ext.args ?: ''
     def prefix = meta ? "${meta.id}_" : ""
-    def bam_arg = bam ? "--bam ${bam_input}" : ""
+    def bam_arg = bam ? "--bam ${bam}" : ""
     """
     export JULIA_DEPOT_PATH="${PWD}/.julia:/opt/julia_depot"
     
