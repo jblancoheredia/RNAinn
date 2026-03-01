@@ -8,7 +8,7 @@ process WHIPPET_QUANT {
         'blancojmskcc/whippet:1.6.2' }"
 
     input:
-    tuple val(meta) , path(reads1), path(reads2), path(jls)
+    tuple val(meta), path(inputs)
 
     output:
     tuple val(meta), path("*.psi.gz"), emit: psi
@@ -19,8 +19,11 @@ process WHIPPET_QUANT {
     task.ext.when == null || task.ext.when
 
     script:
-    def args = task.ext.args ?: ''
+    def jls    = inputs[2]
+    def args   = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def reads1 = inputs[0]
+    def reads2 = inputs[1]
     """
     whippet-quant \\
         ${reads1} \\
