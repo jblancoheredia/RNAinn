@@ -30,6 +30,7 @@ process WHIPPET_QUANT {
         ${reads1} \\
         ${reads2} \\
         -x ${jls} \\
+        -o ${prefix} \\
         $args
 
     cat <<-END_VERSIONS > versions.yml
