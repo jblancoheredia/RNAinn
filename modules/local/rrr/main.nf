@@ -39,8 +39,8 @@ process RAW_READS_RECOVERY {
             r2 = PFX "_R2.fq"
         }
         length(\$2) >= MIN && length(\$6) >= MIN {
-            print \$1 "\n" \$2 "\n" \$3 "\n" \$4 >> r1
-            print \$5 "\n" \$6 "\n" \$7 "\n" \$8 >> r2
+            print \$1 \\n \$2 \\n \$3 \\n \$4 >> r1
+            print \$5 \\n \$6 \\n \$7 \\n \$8 >> r2
         }
         END {
             close(r1)
