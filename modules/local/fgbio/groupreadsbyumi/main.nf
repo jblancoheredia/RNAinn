@@ -4,8 +4,8 @@ process FGBIO_GROUPREADSBYUMI {
 
     conda "bioconda::fgbio=2.2.1"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/fgbio:2.2.1--hdfd78af_0' :
-        'quay.io/biocontainers/fgbio:2.2.1--hdfd78af_0' }"
+        'docker://blancojmskcc/fgbio:2.4.0' :
+        'blancojmskcc/fgbio:2.4.0' }"
 
     input:
     tuple val(meta), path(mapped_bam)
@@ -19,9 +19,10 @@ process FGBIO_GROUPREADSBYUMI {
     val(mark_duplicates)
 
     output:
-    tuple val(meta), path("*.grouped.bam")              , emit: bam
-    tuple val(meta), path("*.grouped-family-sizes.txt") , emit: histogram
-    path "versions.yml"                                 , emit: versions
+    tuple val(meta), path("*.deduped.bam"), path("*.deduped.bam.bai"), emit: bam_bai_deduped
+    tuple val(meta), path("*.grouped-family-sizes.txt")              , emit: histogram
+    tuple val(meta), path("*.grouped.bam")                           , emit: bam
+    path "versions.yml"                                              , emit: versions
 
     script:
     def args = task.ext.args ?: ''
@@ -53,10 +54,22 @@ process FGBIO_GROUPREADSBYUMI {
         --output ${prefix}.grouped.bam \\
         --family-size-histogram ${prefix}.grouped-family-sizes.txt \\
         ${args}
-    
+
+    samtools view \\
+        -b \\
+        -f 3 \\
+        -F 1024 \\
+        -F 2048 \\
+        -o ${prefix}.deduped.bam \\
+        ${prefix}.grouped.bam
+
+    samtools index \\
+        ${prefix}.deduped.bam
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         fgbio: \$( echo \$(fgbio --version 2>&1 | tr -d '[:cntrl:]' ) | sed -e 's/^.*Version: //;s/\\[.*\$//')
+        samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//')
     END_VERSIONS
     """
 
@@ -64,11 +77,14 @@ process FGBIO_GROUPREADSBYUMI {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}.grouped.bam
+    touch ${prefix}.deduped.bam
+    touch ${prefix}.deduped.bam.bai
     touch ${prefix}.grouped-family-sizes.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         fgbio: \$( echo \$(fgbio --version 2>&1 | tr -d '[:cntrl:]' ) | sed -e 's/^.*Version: //;s/\\[.*\$//')
+        samtools: \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//')
     END_VERSIONS
     """
 }
