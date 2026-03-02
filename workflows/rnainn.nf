@@ -151,7 +151,21 @@ workflow RNAINN {
     .set { ch_cat_fastq }
     ch_versions = ch_versions.mix(CAT_FASTQ.out.versions)
 
-    // DOWNSAMPLINGS starts here...
+    //
+    // MODULE: Run in-house script for counting reads
+    //
+    DOWNSAMPLINGS_COUNT(ch_cat_fastq)
+    ch_versions = ch_versions.mix(DOWNSAMPLINGS_COUNT.out.versions)
+    ch_global_min_reads = DOWNSAMPLINGS_COUNT.out.total_reads
+        .map { file -> 
+            def count = file.text.trim()
+            count.toInteger()
+        }
+        .collect()
+        .map { counts -> 
+            def min_count = counts.min()
+            min_count
+        }
 
     if (params.run_downsamplings) {
 
@@ -169,22 +183,6 @@ workflow RNAINN {
         } else {
 
             //
-            // MODULE: Run in-house script for counting reads
-            //
-            DOWNSAMPLING_COUNT(ch_cat_fastq)
-            ch_versions = ch_versions.mix(DOWNSAMPLING_COUNT.out.versions)
-            ch_global_min_reads = DOWNSAMPLING_COUNT.out.total_reads
-                .map { file -> 
-                    def count = file.text.trim()
-                    count.toInteger()
-                }
-                .collect()
-                .map { counts -> 
-                    def min_count = counts.min()
-                    min_count
-                }
-
-            //
             // MODULE: Run Downsampling with seqtk
             //
             DOWNSAMPLING_SEQTK(ch_cat_fastq, ch_global_min_reads)
@@ -200,8 +198,6 @@ workflow RNAINN {
         ch_fastqs = ch_cat_fastq
 
     }
-
-    // UMIPROCESSING starts here...
 
     // Subworkflow Channels
     ch_umiprocessing_output = Channel.empty()
@@ -225,6 +221,7 @@ workflow RNAINN {
         ch_ubam                                     = UMIPROCESSING.out.ubam
         ch_raw_bam					                = UMIPROCESSING.out.raw_bam
         ch_bam_grouped				                = UMIPROCESSING.out.group_bam
+        ch_bam_bai_dedup                            = UMIPROCESSING.out.bam_dedup
         ch_reads_finalized                          = UMIPROCESSING.out.reads_finalized
         ch_versions                                 = ch_versions.mix(UMIPROCESSING.out.versions)
         ch_multiqc_files                            = ch_multiqc_files.mix(UMIPROCESSING.out.multiqc_files)
@@ -245,6 +242,7 @@ workflow RNAINN {
         ch_versions					                = ch_versions.mix(DEDUPONLY4RNA.out.versions)
         ch_split_reads                              = Channel.empty()
         ch_multiqc_files			                = ch_multiqc_files.mix(DEDUPONLY4RNA.out.multiqc_files)
+        ch_bam_bai_dedup                            = DEDUPONLY4RNA.out.bam_dedup
         ch_bam_finalized			                = DEDUPONLY4RNA.out.bam_final
         ch_reads_finalized			                = DEDUPONLY4RNA.out.reads_final
 
@@ -267,6 +265,7 @@ workflow RNAINN {
             ch_star_index,
             ch_samplesheet,
             ch_whippet_gtf,
+            ch_bam_bai_dedup,
             ch_multiqc_files,
             ch_rrna_intervals,
             ch_reads_finalized,
