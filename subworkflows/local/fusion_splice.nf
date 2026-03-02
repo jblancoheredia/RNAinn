@@ -126,8 +126,6 @@ workflow FUSION_SPLICE {
     //
     PORTCULLIS_FULL (ch_bam_star_arriba, params.bed, params.fai, params.fasta)
     ch_portcullis_log = PORTCULLIS_FULL.out.log
-    ch_portcullis_bam = PORTCULLIS_FULL.out.spliced_bam
-    ch_portcullis_bai = PORTCULLIS_FULL.out.spliced_bai
     ch_portcullis_bed = PORTCULLIS_FULL.out.pass_junctions_bed
     ch_portcullis_tab = PORTCULLIS_FULL.out.pass_junctions_tab
     ch_portculis_bam_bai = PORTCULLIS_FULL.out.filtered_bam_bai

@@ -86,6 +86,7 @@ workflow UMIPROCESSING {
     ALIGN_BAM_RAW(ch_ubam, ch_fasta, ch_fai, ch_dict, ch_star_index, ch_gtf, params.seq_platform, params.seq_center, sort)
     ch_versions = ch_versions.mix(ALIGN_BAM_RAW.out.versions.first())
     ch_raw_bam = ALIGN_BAM_RAW.out.bam
+    ch_raw_fastq = ALIGN_BAM_RAW.out.fastq
 
     //
     // MODULE: Run fgbio correctumis
@@ -287,6 +288,7 @@ workflow UMIPROCESSING {
     ubam            = ch_ubam
     raw_bam         = ch_raw_bam
     versions        = ch_cversions
+    raw_reads       = ch_raw_fastq
     group_bam       = ch_bam_grouped
     multiqc_files   = ch_multiqc_files
     reads_finalized = ch_consensus_reads
