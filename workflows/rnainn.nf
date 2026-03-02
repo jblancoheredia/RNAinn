@@ -154,9 +154,9 @@ workflow RNAINN {
     //
     // MODULE: Run in-house script for counting reads
     //
-    DOWNSAMPLINGS_COUNT(ch_cat_fastq)
-    ch_versions = ch_versions.mix(DOWNSAMPLINGS_COUNT.out.versions)
-    ch_global_min_reads = DOWNSAMPLINGS_COUNT.out.total_reads
+    DOWNSAMPLING_COUNT(ch_cat_fastq)
+    ch_versions = ch_versions.mix(DOWNSAMPLING_COUNT.out.versions)
+    ch_global_min_reads = DOWNSAMPLING_COUNT.out.total_reads
         .map { file -> 
             def count = file.text.trim()
             count.toInteger()
