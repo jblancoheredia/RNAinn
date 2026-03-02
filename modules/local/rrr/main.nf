@@ -27,26 +27,29 @@ process RAW_READS_RECOVERY {
     samtools view -F 260 ${bam} | cut -f1 | cut -f1 -d'_' | sort -u > ${prefix}.read_names.txt
 
     MINLEN=30
-    
+
+    set -euo pipefail
+
     paste \\
-      <(seqtk subseq ${reads1} ${prefix}.read_names.txt | paste - - - -) \\
-      <(seqtk subseq ${reads2} ${prefix}.read_names.txt | paste - - - -) \\
-    | awk -v MIN="${MINLEN}" '{
-        if (length($2) >= MIN && length($6) >= MIN) {
-          print $1 "\n" $2 "\n" $3 "\n" $4;
+        <( seqtk subseq ${reads1} ${prefix}.read_names.txt | paste - - - - ) \\
+        <( seqtk subseq ${reads2} ${prefix}.read_names.txt | paste - - - - ) \\
+    | awk -v MIN="${MINLEN}" -v PFX="${prefix}" '
+        BEGIN {
+            r1 = PFX "_R1.fq"
+            r2 = PFX "_R2.fq"
         }
-      }' \\
-    | gzip > ${prefix}_R1.fq.gz
-    
-    paste \\
-      <(seqtk subseq ${reads1} ${prefix}.read_names.txt | paste - - - -) \\
-      <(seqtk subseq ${reads2} ${prefix}.read_names.txt | paste - - - -) \\
-    | awk -v MIN="${MINLEN}" '{
-        if (length($2) >= MIN && length($6) >= MIN) {
-          print $5 "\n" $6 "\n" $7 "\n" $8;
+        length(\$2) >= MIN && length(\$6) >= MIN {
+            print \$1 "\n" \$2 "\n" \$3 "\n" \$4 >> r1
+            print \$5 "\n" \$6 "\n" \$7 "\n" \$8 >> r2
         }
-      }' \\
-    | gzip > ${prefix}_R2.fq.gz
+        END {
+            close(r1)
+            close(r2)
+        }
+    '
+
+    gzip ${prefix}_R1.fq
+    gzip ${prefix}_R2.fq
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
