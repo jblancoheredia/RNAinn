@@ -13,12 +13,11 @@ process GATK4_MARKDUPLICATES {
     tuple val(meta3), path(fai)
 
     output:
-    tuple val(meta), path("*cram"),     emit: cram,  optional: true
-    tuple val(meta), path("*bam"),      emit: bam,   optional: true
-    tuple val(meta), path("*.crai"),    emit: crai,  optional: true
-    tuple val(meta), path("*.bai"),     emit: bai,   optional: true
-    tuple val(meta), path("*.metrics"), emit: metrics
-    path "versions.yml",                emit: versions
+    path "versions.yml",                                    emit: versions
+    tuple val(meta), path("*.metrics"),                     emit: metrics
+    tuple val(meta), path("*_md.bam"),                      emit: bam_md
+    tuple val(meta), path("*_complex_metrics.txt"),         emit: complex_metrics
+    tuple val(meta), path("*_deduped.bam"), path("*.bai"),  emit: bam_dp
 
     when:
     task.ext.when == null || task.ext.when
@@ -26,7 +25,7 @@ process GATK4_MARKDUPLICATES {
     script:
     def args = task.ext.args ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
-    def prefix_bam = "${meta.id}.markdup.sorted.bam"
+
     def input_list = bam.collect{"--INPUT $it"}.join(' ')
     def reference = fasta ? "--REFERENCE_SEQUENCE ${fasta}" : ""
 
@@ -43,18 +42,27 @@ process GATK4_MARKDUPLICATES {
     gatk --java-options "-Xmx${avail_mem}M -XX:-UsePerfData" \\
         MarkDuplicates \\
         $input_list \\
-        --OUTPUT  $prefix_bam \\
+        --OUTPUT ${prefix}_md.bam \\
         --METRICS_FILE ${prefix}.markdup.metrics \\
         --TMP_DIR . \\
         ${reference} \\
         $args
 
-    # If cram files are wished as output, the run samtools for conversion
-    if [[ ${prefix} == *.cram ]]; then
-        samtools view -Ch -T ${fasta} -o ${prefix} ${prefix_bam}
-        rm ${prefix_bam}
-        samtools index ${prefix}
-    fi
+    samtools view \\
+        -b \\
+        -f 3 \\
+        -F 1024 \\
+        -F 2048 \\
+        -o ${prefix}_deduped.bam \\
+        ${prefix}_md.bam
+
+    samtools index \\
+        ${prefix}_deduped.bam 
+
+    gatk --java-options "-Xmx${avail_mem}M -XX:-UsePerfData" \\
+        EstimateLibraryComplexity \\
+        --INPUT ${prefix}_deduped.bam \\
+        --OUTPUT ${prefix}_est_lib_complex_metrics.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -67,11 +75,11 @@ process GATK4_MARKDUPLICATES {
     prefix = task.ext.prefix ?: "${meta.id}.bam"
     prefix_no_suffix = task.ext.prefix ? prefix.tokenize('.')[0] : "${meta.id}"
     """
-    touch ${prefix_no_suffix}.bam
-    touch ${prefix_no_suffix}.cram
-    touch ${prefix_no_suffix}.cram.crai
-    touch ${prefix_no_suffix}.bai
+    touch ${prefix}_md.bam
     touch ${prefix}.metrics
+    touch ${prefix}_deduped.bam
+    touch ${prefix}_deduped.bam.bai
+    touch ${prefix}_est_lib_complex_metrics.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
