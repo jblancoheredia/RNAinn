@@ -155,6 +155,7 @@ workflow UMIPROCESSING {
     ch_multiqc_files = ch_multiqc_files.mix(FGBIO_GROUPREADSBYUMI.out.histogram.map{it[1]}.collect())
     ch_versions = ch_versions.mix(FGBIO_GROUPREADSBYUMI.out.versions.first())
     ch_grouped_family_sizes = FGBIO_GROUPREADSBYUMI.out.histogram
+    ch_bam_deduped = FGBIO_GROUPREADSBYUMI.out.bam_bai_deduped
     ch_bam_grouped = FGBIO_GROUPREADSBYUMI.out.bam
 
     //
@@ -289,9 +290,11 @@ workflow UMIPROCESSING {
     raw_bam         = ch_raw_bam
     versions        = ch_cversions
     raw_reads       = ch_raw_fastq
+    bam_dedup       = ch_bam_deduped
     group_bam       = ch_bam_grouped
     multiqc_files   = ch_multiqc_files
     reads_finalized = ch_consensus_reads
+
 
 }
 
