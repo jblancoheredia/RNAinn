@@ -26,8 +26,8 @@ process RAW_READS_RECOVERY {
     """
     samtools view -F 260 ${bam} | cut -f1 | cut -f1 -d'_' | sort -u > ${prefix}.read_names.txt
 
-    seqtk subseq ${reads1} ${prefix}.read_names.txt | gzip > ${prefix}_R1.fastq.gz
-    seqtk subseq ${reads2} ${prefix}.read_names.txt | gzip > ${prefix}_R2.fastq.gz
+    seqtk subseq ${reads1} ${prefix}.read_names.txt | gzip > ${prefix}_R1.fq.gz
+    seqtk subseq ${reads2} ${prefix}.read_names.txt | gzip > ${prefix}_R2.fq.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
