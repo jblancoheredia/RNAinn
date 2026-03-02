@@ -33,7 +33,7 @@ process RAW_READS_RECOVERY {
     paste \\
         <( seqtk subseq ${reads1} ${prefix}.read_names.txt | paste - - - - ) \\
         <( seqtk subseq ${reads2} ${prefix}.read_names.txt | paste - - - - ) \\
-    | awk -v MIN="${MINLEN}" -v PFX="${prefix}" '
+    | awk -v MIN="\${MINLEN}" -v PFX="${prefix}" '
         BEGIN {
             r1 = PFX "_R1.fq"
             r2 = PFX "_R2.fq"
