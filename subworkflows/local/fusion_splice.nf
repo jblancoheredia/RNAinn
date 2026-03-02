@@ -57,6 +57,7 @@ workflow FUSION_SPLICE {
     ch_star_index
     ch_samplesheet
     ch_whippet_gtf
+    ch_bam_bai_dedup
     ch_multiqc_files
     ch_rrna_intervals
     ch_reads_finalized
