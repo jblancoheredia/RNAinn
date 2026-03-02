@@ -54,7 +54,8 @@ workflow DEDUPONLY4RNA {
     //
     GATK4_MARKDUPLICATES(ch_raw_bam, ch_fasta, ch_fai)
     ch_versions = ch_versions.mix(GATK4_MARKDUPLICATES.out.versions.first())
-    ch_dedup_bam = GATK4_MARKDUPLICATES.out.bam
+    ch_dedup_bam = GATK4_MARKDUPLICATES.out.bam_md
+    ch_bam_dedup = GATK4_MARKDUPLICATES.out.bam_dp
  
     //
     // MODULE: Extract FastQ reads from BAM
@@ -89,8 +90,9 @@ workflow DEDUPONLY4RNA {
 
     versions      = ch_versions
     bam_final     = ch_dedup_bam
+    bam_dedup     = ch_bam_dedup
     reads_final   = ch_reads_all
-    multiqc_files = ch_multiqc_files 
+    multiqc_files = ch_multiqc_files
 
 }
 
