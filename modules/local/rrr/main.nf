@@ -26,7 +26,7 @@ process RAW_READS_RECOVERY {
     """
     samtools view -F 260 ${bam} | cut -f1 | cut -f1 -d'_' | sort -u > ${prefix}.read_names.txt
 
-    MINLEN=30
+    MINLEN=95
 
     set -euo pipefail
 
