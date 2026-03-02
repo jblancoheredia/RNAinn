@@ -26,8 +26,27 @@ process RAW_READS_RECOVERY {
     """
     samtools view -F 260 ${bam} | cut -f1 | cut -f1 -d'_' | sort -u > ${prefix}.read_names.txt
 
-    seqtk subseq ${reads1} ${prefix}.read_names.txt | gzip > ${prefix}_R1.fq.gz
-    seqtk subseq ${reads2} ${prefix}.read_names.txt | gzip > ${prefix}_R2.fq.gz
+    MINLEN=30
+    
+    paste \\
+      <(seqtk subseq ${reads1} ${prefix}.read_names.txt | paste - - - -) \\
+      <(seqtk subseq ${reads2} ${prefix}.read_names.txt | paste - - - -) \\
+    | awk -v MIN="${MINLEN}" '{
+        if (length($2) >= MIN && length($6) >= MIN) {
+          print $1 "\n" $2 "\n" $3 "\n" $4;
+        }
+      }' \\
+    | gzip > ${prefix}_R1.fq.gz
+    
+    paste \\
+      <(seqtk subseq ${reads1} ${prefix}.read_names.txt | paste - - - -) \\
+      <(seqtk subseq ${reads2} ${prefix}.read_names.txt | paste - - - -) \\
+    | awk -v MIN="${MINLEN}" '{
+        if (length($2) >= MIN && length($6) >= MIN) {
+          print $5 "\n" $6 "\n" $7 "\n" $8;
+        }
+      }' \\
+    | gzip > ${prefix}_R2.fq.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
