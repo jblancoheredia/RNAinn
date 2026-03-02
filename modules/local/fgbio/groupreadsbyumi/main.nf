@@ -60,10 +60,16 @@ process FGBIO_GROUPREADSBYUMI {
         -f 3 \\
         -F 1024 \\
         -F 2048 \\
-        -o ${prefix}.deduped.bam \\
+        -o ${prefix}.tmp.bam \\
         ${prefix}.grouped.bam
 
+    samtools sort \\
+        -@ 8 \\
+        -o ${prefix}.deduped.bam \\
+        ${prefix}.tmp.bam
+
     samtools index \\
+        -@ 8 \\
         ${prefix}.deduped.bam
 
     cat <<-END_VERSIONS > versions.yml
