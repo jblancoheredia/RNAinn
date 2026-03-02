@@ -11,8 +11,8 @@ process RAW_READS_RECOVERY {
     tuple val(meta), path(inputs), path(bam), path(bai)
 
     output:
-    tuple val(meta), path("*.fastq.gz"), emit: fastq
-    path "versions.yml"                , emit: versions
+    tuple val(meta), path("*.fq.gz"), emit: fastq
+    path "versions.yml"             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -41,8 +41,8 @@ process RAW_READS_RECOVERY {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """    
-    touch ${prefix}_R1.fastq.gz
-    touch ${prefix}_R2.fastq.gz
+    touch ${prefix}_R1.fq.gz
+    touch ${prefix}_R2.fq.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
